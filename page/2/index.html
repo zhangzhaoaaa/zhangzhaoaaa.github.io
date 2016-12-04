@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mac,linux," />
+  <meta name="keywords" content="zhangzhaoaaa,zeromike,javascript,前端,技术" />
 
 
 
@@ -84,25 +84,15 @@
 
 
 
-<meta name="description" content="在terminal中1sudo vim /etc/sudoers
-在打开的文件中，看到12345#### User privilege specification##root ALL=(ALL) ALL%admin  ALL=(ALL) ALL
-修改为1root ALL=(ALL) NOPASSWD: ALL
-千万别用，用坏了，也有解决办法http://yijiebuyi.com/blog/58f">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sudo免密码">
-<meta property="og:url" content="http://yoursite.com/2016/11/26/sudo免密码/index.html">
+<meta name="description" content="这是zeromike的时光机器,技术博客">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Zeromike的时光机">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="在terminal中1sudo vim /etc/sudoers
-在打开的文件中，看到12345#### User privilege specification##root ALL=(ALL) ALL%admin  ALL=(ALL) ALL
-修改为1root ALL=(ALL) NOPASSWD: ALL
-千万别用，用坏了，也有解决办法http://yijiebuyi.com/blog/58f">
-<meta property="og:updated_time" content="2016-11-29T10:50:08.000Z">
+<meta property="og:description" content="这是zeromike的时光机器,技术博客">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sudo免密码">
-<meta name="twitter:description" content="在terminal中1sudo vim /etc/sudoers
-在打开的文件中，看到12345#### User privilege specification##root ALL=(ALL) ALL%admin  ALL=(ALL) ALL
-修改为1root ALL=(ALL) NOPASSWD: ALL
-千万别用，用坏了，也有解决办法http://yijiebuyi.com/blog/58f">
+<meta name="twitter:title" content="Zeromike的时光机">
+<meta name="twitter:description" content="这是zeromike的时光机器,技术博客">
 
 
 
@@ -123,10 +113,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/26/sudo免密码/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
-  <title> sudo免密码 | Zeromike的时光机 </title>
+  <title> Zeromike的时光机 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -147,7 +137,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
@@ -254,9 +246,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
   
@@ -276,7 +268,10 @@
             
             
               
-                sudo免密码
+                
+                <a class="post-title-link" href="/2016/11/26/2016年11月份感想/" itemprop="url">
+                  2016年11月份感想
+                </a>
               
             
           </h1>
@@ -288,7 +283,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-26T12:18:44+08:00" content="2016-11-26">
+            <time itemprop="dateCreated" datetime="2016-11-26T00:40:09+08:00" content="2016-11-26">
               2016-11-26
             </time>
           </span>
@@ -302,8 +297,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac/" itemprop="url" rel="index">
-                    <span itemprop="name">mac</span>
+                  <a href="/categories/mind/" itemprop="url" rel="index">
+                    <span itemprop="name">mind</span>
                   </a>
                 </span>
 
@@ -318,8 +313,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/26/sudo免密码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/26/sudo免密码/" itemprop="commentsCount"></span>
+                <a href="/2016/11/26/2016年11月份感想/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/26/2016年11月份感想/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,68 +337,63 @@
       
 
       
-        <p>在terminal中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sudoers</div></pre></td></tr></table></figure></p>
-<p>在打开的文件中，看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">##</div><div class="line">## User privilege specification</div><div class="line">##</div><div class="line">root ALL=(ALL) ALL</div><div class="line">%admin  ALL=(ALL) ALL</div></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root ALL=(ALL) NOPASSWD: ALL</div></pre></td></tr></table></figure></p>
-<p>千万别用，用坏了，也有解决办法<br><a href="http://yijiebuyi.com/blog/58f810c105029c29d1c885f4076dde66.html" target="_blank" rel="external">http://yijiebuyi.com/blog/58f810c105029c29d1c885f4076dde66.html</a></p>
+        
+          
+            <p>今年快到年底了，4月底跳槽到美信（现在已经改为国美互联网生态）公司，其实感觉挺好的，终于进入了我想进入的一个自己曾经想象的公司，专职做前端，专职做JS、nodeJS方面的工作，我很开心，小爝也不错，我们属于同龄人，互相理解和信任，属于同一路的人吧。<br>我想聊聊自己本年度剩下一个月的工作和未来一年的计划，差不多一个月前，我的计划如下：</p>
+<ol>
+<li>GMP框架完善</li>
+<li>《JavaScript设计模式与开发实践》做笔记</li>
+<li>《JavaScript函数式编程》做笔记+underscore源码分析</li>
+<li>虚拟dom</li>
+<li>mvvm实现</li>
+<li>hexo博客继续使用</li>
+<li>无限scroll</li>
+</ol>
+<p>到目前为止，1,5,6,7都完成了雏形，有些可以使用了；根据最近我看招聘网站和对我自己的认知来看，我想调整一下计划，除了会继续完善已经有雏形的东西外，我的计划如下：</p>
+<ol>
+<li>虚拟dom实现</li>
+<li>《算法》一书学习 + 笔记</li>
+<li>AST分析器</li>
+<li>Bootstrap源码分析</li>
+<li>Hybrid开发</li>
+</ol>
+<p>其实目标也很明确，造几个轮子，重新学习算法和数据结构，实现一个Hybrid的APP，功能为制定计划和查看最新电影。我自己不是个聪明的人，有时候也挺懒的，有一定程度的拖延症，所以勤能补拙，我比较相信，在这里我也希望自己说到做到，4月份到现在，我做了不少工作，自己提升不少，比如模块化缓存、gulp插件、性能监控平台、打tag平台，GMP框架等，深入学习和使用了es6,nodejs，vue,mv*等。对于程序员来说，技术在不断的变革，不进则退，但是不用一味地去追求新技术。对于新思想，老算法和数据结构需要扎扎实实地落地，编写代码去实现。</p>
+<p>在写轮子的时候，还是先看源码的例子，然后看test，然后精简最小单位的代码，实现功能。如果觉得不行，那就只能靠抄书。</p>
 
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/mac-linux/" rel="tag">#mac,linux</a>
-          
-        </div>
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/11/26/2016年11月份感想/" rel="next" title="2016年11月份感想">
-                <i class="fa fa-chevron-left"></i> 2016年11月份感想
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/29/技术选型的想法/" rel="prev" title="技术选型的想法">
-                技术选型的想法 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -411,14 +401,6 @@
 
 
           
-  <div class="comments" id="comments">
-    
-      <div class="ds-thread" data-thread-key="2016/11/26/sudo免密码/"
-           data-title="sudo免密码" data-url="http://yoursite.com/2016/11/26/sudo免密码/">
-      </div>
-    
-  </div>
-
 
         </div>
         
@@ -438,17 +420,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel ">
+      <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -536,17 +509,6 @@
 
       </section>
 
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
       
 
     </div>
@@ -650,10 +612,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
-
-
 
   
 

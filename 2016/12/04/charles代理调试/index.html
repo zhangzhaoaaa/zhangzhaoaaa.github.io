@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="mac,linux," />
+  <meta name="keywords" content="mac,charles,debug," />
 
 
 
@@ -84,25 +84,43 @@
 
 
 
-<meta name="description" content="在terminal中1sudo vim /etc/sudoers
-在打开的文件中，看到12345#### User privilege specification##root ALL=(ALL) ALL%admin  ALL=(ALL) ALL
-修改为1root ALL=(ALL) NOPASSWD: ALL
-千万别用，用坏了，也有解决办法http://yijiebuyi.com/blog/58f">
+<meta name="description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
+
+Charles版本：4.0.2
+操作系统： MAC
+下载地址： https://www.charlesproxy.com/latest-release/download.do
+代理URL: 
+https://h5.gomeplus.com
+https://js.meixincdn.com
+
+1. 打开">
 <meta property="og:type" content="article">
-<meta property="og:title" content="sudo免密码">
-<meta property="og:url" content="http://yoursite.com/2016/11/26/sudo免密码/index.html">
+<meta property="og:title" content="charles代理调试">
+<meta property="og:url" content="http://yoursite.com/2016/12/04/charles代理调试/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="在terminal中1sudo vim /etc/sudoers
-在打开的文件中，看到12345#### User privilege specification##root ALL=(ALL) ALL%admin  ALL=(ALL) ALL
-修改为1root ALL=(ALL) NOPASSWD: ALL
-千万别用，用坏了，也有解决办法http://yijiebuyi.com/blog/58f">
-<meta property="og:updated_time" content="2016-11-29T10:50:08.000Z">
+<meta property="og:description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
+
+Charles版本：4.0.2
+操作系统： MAC
+下载地址： https://www.charlesproxy.com/latest-release/download.do
+代理URL: 
+https://h5.gomeplus.com
+https://js.meixincdn.com
+
+1. 打开">
+<meta property="og:updated_time" content="2016-12-04T15:48:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sudo免密码">
-<meta name="twitter:description" content="在terminal中1sudo vim /etc/sudoers
-在打开的文件中，看到12345#### User privilege specification##root ALL=(ALL) ALL%admin  ALL=(ALL) ALL
-修改为1root ALL=(ALL) NOPASSWD: ALL
-千万别用，用坏了，也有解决办法http://yijiebuyi.com/blog/58f">
+<meta name="twitter:title" content="charles代理调试">
+<meta name="twitter:description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
+
+Charles版本：4.0.2
+操作系统： MAC
+下载地址： https://www.charlesproxy.com/latest-release/download.do
+代理URL: 
+https://h5.gomeplus.com
+https://js.meixincdn.com
+
+1. 打开">
 
 
 
@@ -123,10 +141,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/11/26/sudo免密码/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/04/charles代理调试/"/>
 
 
-  <title> sudo免密码 | Zeromike的时光机 </title>
+  <title> charles代理调试 | Zeromike的时光机 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -276,7 +294,7 @@
             
             
               
-                sudo免密码
+                charles代理调试
               
             
           </h1>
@@ -288,8 +306,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-26T12:18:44+08:00" content="2016-11-26">
-              2016-11-26
+            <time itemprop="dateCreated" datetime="2016-12-04T22:06:30+08:00" content="2016-12-04">
+              2016-12-04
             </time>
           </span>
 
@@ -302,8 +320,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac/" itemprop="url" rel="index">
-                    <span itemprop="name">mac</span>
+                  <a href="/categories/tech/" itemprop="url" rel="index">
+                    <span itemprop="name">tech</span>
                   </a>
                 </span>
 
@@ -318,8 +336,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/26/sudo免密码/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/26/sudo免密码/" itemprop="commentsCount"></span>
+                <a href="/2016/12/04/charles代理调试/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/04/charles代理调试/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -342,10 +360,29 @@
       
 
       
-        <p>在terminal中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/sudoers</div></pre></td></tr></table></figure></p>
-<p>在打开的文件中，看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">##</div><div class="line">## User privilege specification</div><div class="line">##</div><div class="line">root ALL=(ALL) ALL</div><div class="line">%admin  ALL=(ALL) ALL</div></pre></td></tr></table></figure></p>
-<p>修改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">root ALL=(ALL) NOPASSWD: ALL</div></pre></td></tr></table></figure></p>
-<p>千万别用，用坏了，也有解决办法<br><a href="http://yijiebuyi.com/blog/58f810c105029c29d1c885f4076dde66.html" target="_blank" rel="external">http://yijiebuyi.com/blog/58f810c105029c29d1c885f4076dde66.html</a></p>
+        <p>今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。</p>
+<ul>
+<li>Charles版本：4.0.2</li>
+<li>操作系统： MAC</li>
+<li>下载地址： <a href="https://www.charlesproxy.com/latest-release/download.do" target="_blank" rel="external">https://www.charlesproxy.com/latest-release/download.do</a></li>
+<li>代理URL: </li>
+<li><a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a></li>
+<li><a href="https://js.meixincdn.com" target="_blank" rel="external">https://js.meixincdn.com</a></li>
+</ul>
+<h4 id="1-打开charles，设置Root认证"><a href="#1-打开charles，设置Root认证" class="headerlink" title="1. 打开charles，设置Root认证"></a>1. 打开charles，设置Root认证</h4><p>1.1【Proxy】菜单-&gt;勾选【macOS Proxy】。</p>
+<p>1.2 保存root证书。【Help】菜单-&gt;点击【SSL Proxying】-&gt;点击【Save Charles Root Certificate…】-&gt;保存root认证(默认pem结尾的，你选择.crt结尾保存)，保存到你的桌面，或者你能很容易找到此文件的地方。</p>
+<p>1.3 chrome浏览器信任证书。打开chrome浏览器，打开【设置】页面，找到【HTTPS/SSL】，点击【管理证书…】-&gt;钥匙串为【系统】，种类为【证书】，导入刚才保存的.crt结尾的证书，导入后会显示个红叉-&gt;右键导入的证书，点击【显示简介】，在弹出框中的【信任】里，选择【始终信任】，证书会显示成蓝色加号-&gt; OK，搞定，chrome就会总是信任Charles证书了。</p>
+<p>1.4 IOS devices认证，在移动设备的safari浏览器里，打开<a href="http://www.charlesproxy.com/getssl" target="_blank" rel="external">SSL证书</a>，安装证书即可。</p>
+<p>1.5 导出root认证。【Help】菜单-&gt;点击【SSL Proxying】-&gt;点击【Export Charles Root Certificate and private key…】,此时会弹出一个框让你输入密码，你自己输入一个密码并记住它-&gt;导出到你的桌面或者你自己能找到的地方，此文件以.p12结尾的文件。</p>
+<p>1.6 Root系统认证。【Proxy】菜单-&gt;【SSL Proxying Settings…】-&gt;【Root Certificate】选项卡，导入.p12结尾的认证文件，此时会让你输入密码，就是你刚才导出此文件时输入的密码。</p>
+<p>根据以上步骤，已经设置好系统的SSL认证问题。  </p>
+<h4 id="2-以下设置代理url及其认证："><a href="#2-以下设置代理url及其认证：" class="headerlink" title="2. 以下设置代理url及其认证："></a>2. 以下设置代理url及其认证：</h4><p>2.1 增加SSL代理。【Proxy】菜单-&gt;【SSL Proxying Settings…】-&gt;【SSL Proxying】选项卡，勾选【Enable SSL Proxying】-&gt;点击【Add】增加代理url，填入h5.gomeplus.com和443端口，填入js.meixincdn.com和端口443，点击【ok】</p>
+<p>2.2 增加客户端Url认证。【Proxy】菜单-&gt;【SSL Proxying Settings…】-&gt;【Client Certificates】选项卡，点击【Add】增加代理url，填入js.meixincdn.com和端口443，选择.p12结尾的认证文件，输入密码，点击【ok】</p>
+<p>2.3 代理本地文件。【Tools】菜单-&gt;勾选【Map Local】，打开对话框，勾选【Enable Map Local】-&gt;点击【Add】增加本地代理文件，在弹出框中：</p>
+<p> 选择Https协议<br> Host： js.meixincdn.com<br> Path:  填入/m/app/dist/js/conf/newhome/index.js<br> Query: 参数写上timestamp=0.0.140，这个是url后面所带的请求参数<br> LocalPath:  在你本机上选择要代理的对应的js文件<br> -&gt;点击【ok】大功告成</p>
+<p>2.4 代理本地文件夹：【Tools】菜单-&gt;勾选【Map Local】，打开对话框，勾选【Enable Map Local】-&gt;点击【Add】增加本地代理文件，在弹出框中：</p>
+<p> 选择Https协议<br> Host： js.meixincdn.com<br> Path:  填入/m/app/dist/js/*<br> Query: 参数写上timestamp=0.0.140，这个是url后面所带的请求参数<br> LocalPath: 在你本机上选择要代理的对应的js文件夹<br> 如：<code>/Users/zhangmike/WebstormProjects/gomeplus/gitlab/app/dist/js</code><br> -&gt;点击【ok】大功告成  </p>
+<h4 id="3-最后"><a href="#3-最后" class="headerlink" title="3.最后"></a>3.最后</h4><p>在以上步骤完成后，其他都按照charles的默认选项即可，在chrome浏览器里，输入  <a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a> 就可以代理本机的文件了；如果是手机app代理的话，需要让本机和手机处在同一个网络，然后在手机的网络代理中，服务器地址输入本机地址，端口号为8888(charles代理默认端口)</p>
 
       
     </div>
@@ -368,7 +405,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/mac-linux/" rel="tag">#mac,linux</a>
+            <a href="/tags/mac-charles-debug/" rel="tag">#mac,charles,debug</a>
           
         </div>
       
@@ -377,17 +414,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/26/2016年11月份感想/" rel="next" title="2016年11月份感想">
-                <i class="fa fa-chevron-left"></i> 2016年11月份感想
+              <a href="/2016/12/04/npm命令/" rel="next" title="npm命令">
+                <i class="fa fa-chevron-left"></i> npm命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/11/29/技术选型的想法/" rel="prev" title="技术选型的想法">
-                技术选型的想法 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -413,8 +446,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/26/sudo免密码/"
-           data-title="sudo免密码" data-url="http://yoursite.com/2016/11/26/sudo免密码/">
+      <div class="ds-thread" data-thread-key="2016/12/04/charles代理调试/"
+           data-title="charles代理调试" data-url="http://yoursite.com/2016/12/04/charles代理调试/">
       </div>
     
   </div>
@@ -543,7 +576,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-打开charles，设置Root认证"><span class="nav-number">1.</span> <span class="nav-text">1. 打开charles，设置Root认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-以下设置代理url及其认证："><span class="nav-number">2.</span> <span class="nav-text">2. 以下设置代理url及其认证：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-最后"><span class="nav-number">3.</span> <span class="nav-text">3.最后</span></a></li></ol></div>
             
           </div>
         </section>
