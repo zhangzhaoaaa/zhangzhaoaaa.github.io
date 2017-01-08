@@ -269,6 +269,181 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/08/理解Resource-Timing/" itemprop="url">
+                  理解Resource Timing
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-08T21:38:59+08:00" content="2017-01-08">
+              2017-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/08/理解Resource-Timing/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/08/理解Resource-Timing/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。</p>
+<ul>
+<li><p>理解资源请求时间的阶段</p>
+</li>
+<li><p>了解每个阶段提供了什么样的Resouce Timing API</p>
+</li>
+<li><p>在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。</p>
+</li>
+</ul>
+<p>所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network Panel界面使用对开发者来说，使用相同的可用的Resouce Timing API</p>
+<p>注意： 当使用Resouce Timing API处理跨域资源的时候，确保所有资源有CORS的header头。</p>
+<p>对于每一个独立的被接收的资源，Resouce Timing API 提供了一套丰富的API细节。这个请求的主要的生命周期阶段如下：</p>
+<ol>
+<li>重定向</li>
+<li>立即开始startTime</li>
+<li>如果重定向发生了，redirectStart就开始了</li>
+<li>如果重定向结束，redirectEnd就发生了</li>
+<li>App Cache</li>
+<li>如果application cache满足了请求，fetchStart就会发生</li>
+<li>DNS</li>
+<li>在DNS请求的开始，domainLookupStart触发</li>
+<li>在DNS请求结束时，domainLookupEnd触发</li>
+<li>TCP</li>
+<li>当初始化连接到服务器时，connectStart触发</li>
+<li>如果TLS或者SSL被用了，当安全握手开始的时候，secureConnectionStart触发</li>
+<li>当服务器连接完成时，connectEnd触发</li>
+<li>Request</li>
+<li>请求的资源一旦被发送到服务器，requestStart触发</li>
+<li>Response</li>
+<li>当服务器初始化响应请求的时候，responseStart触发</li>
+<li>当请求结束并且数据被接收到时，responseEnd触发</li>
+</ol>
+<h3 id="DevTools中查看"><a href="#DevTools中查看" class="headerlink" title="DevTools中查看"></a>DevTools中查看</h3><p>以下代码可以运行在console里查看<br>performance.getEntriesByType(‘resource’).filter(item =&gt; item.name.includes(“style.css”))</p>
+<img src="/2017/01/08/理解Resource-Timing/resource.png" alt="Resource Timing" title="Resource Timing">
+<h4 id="Queuing（队列）"><a href="#Queuing（队列）" class="headerlink" title="Queuing（队列）"></a>Queuing（队列）</h4><p>在队列中的请求意味着：<br>    这个请求被渲染引擎推迟了，因为它被考虑优先级低于一些关键资源（scripts/styles）.这个经常出现在images上面<br>    请求会被搁置，直到等到一个不可用的TCP socket连接被释放。<br>    因为浏览器在HTTP1协议上对于每个源来说，仅仅允许连接6个TCP，所以请求会被搁置<br>    时间被花在建立磁盘缓存上了（通常来说非常快）</p>
+<h4 id="Stalled-Blocking"><a href="#Stalled-Blocking" class="headerlink" title="Stalled/Blocking"></a>Stalled/Blocking</h4><p>在请求被发送前的等待时间。这个时间是等待任何描述Queuing的原因的时间。另外，这个时间包含花费在代理协商的任何时间。</p>
+<h4 id="Proxy-Negotiation"><a href="#Proxy-Negotiation" class="headerlink" title="Proxy Negotiation"></a>Proxy Negotiation</h4><p>和一个代理服务连接的协商时间</p>
+<h4 id="DNS-Lookup"><a href="#DNS-Lookup" class="headerlink" title="DNS Lookup"></a>DNS Lookup</h4><p>DNS寻址时间。在一个页面中每一个新的域名需要完成一个完整的路由寻址。</p>
+<h4 id="Initial-Connection-Connecting"><a href="#Initial-Connection-Connecting" class="headerlink" title="Initial Connection/Connecting"></a>Initial Connection/Connecting</h4><p>建立连接的时间，包含TCP握手/重试和协商SSL的时间</p>
+<h4 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h4><p>完成一次SSL握手的时间</p>
+<h4 id="Request-Sent-Sending"><a href="#Request-Sent-Sending" class="headerlink" title="Request Sent/Sending"></a>Request Sent/Sending</h4><p>网络请求时间。通常来说，是零点几毫秒。</p>
+<h4 id="Waiting-TTFB"><a href="#Waiting-TTFB" class="headerlink" title="Waiting(TTFB)"></a>Waiting(TTFB)</h4><p>等待初始化响应的时间，也可以认为是第一个字节的时间。这个时间捕捉了到服务器的往返时间，除此之外还有等待服务器的发送响应的时间。</p>
+<h4 id="Content-Download-Downloading"><a href="#Content-Download-Downloading" class="headerlink" title="Content Download/Downloading"></a>Content Download/Downloading</h4><p>接收响应数据所花的时间</p>
+<h3 id="诊断网络问题"><a href="#诊断网络问题" class="headerlink" title="诊断网络问题"></a>诊断网络问题</h3><p>通过Network Panel可以查看到很多明显的可能存在的问题。找到这些问题需要对客户端和服务器如何交互，对协议上的限制有个很好的理解。</p>
+<h4 id="Queued-or-Stalled-系列"><a href="#Queued-or-Stalled-系列" class="headerlink" title="Queued or Stalled 系列"></a>Queued or Stalled 系列</h4><p>最普遍的问题是一系列被排队和阻塞的请求。这意味着太多资源从单一域名下请求了。在HTTP 1.0/1.1 连接下，Chrome强制执行每一个Host有6个TCP连接的最大值。假如你一次请求了12个资源，先6个资源开始，剩下的6个进入队列。一旦开始的那6个中有一个被请求完了，在队列中的第一个将开始请求进程。</p>
+<p>为了解决HTTP1 中的这个问题，你可以实现domain的拆分。在你的应用上可以建立多个子域名来提供给资源服务。然后在子域名中，均匀地分割资源然后提供服务。</p>
+<p>对于HTTP1连接的修复不能应用在HTTP2的连接上。事实上，这样会影响它。如果以部署了HTTP2，不要使用域名拆分你的资源，因为这样会和HTTP2的设计使用上冲突。在HTTP2中，有一个单独的TCP连接到服务器提供一个多路复用连接。这个就会摆脱HTTP1中的6个连接的限制，并且多个资源能够在单独的连接中同时被传输。</p>
+<h4 id="获取第一个字节时间太慢"><a href="#获取第一个字节时间太慢" class="headerlink" title="获取第一个字节时间太慢"></a>获取第一个字节时间太慢</h4><p>一个慢的TTFB被认为是一个很长的等待时间。建议这个时间在200ms以下。一个高的TTFB时间可能暴露两个主要问题中的一个</p>
+<ol>
+<li>在客户端和服务器端有很差的网络情况</li>
+<li>服务器应用响应很慢</li>
+</ol>
+<p>为了描述一个高TTFB，首先尽可能切掉网络，理想情况下，从本地访问应用，看是否有大的TTFB。如果有，那么应用需要优化响应速度。这可能需要优化数据库查询，实现某些部分内容的缓存存储，或者修改你的服务器配置。在后端有太多原因让访问变慢。在你的软件上做些研究，发现什么部分不能满足你的性能预期。</p>
+<p>如果本地访问TTFB比较低，那么在你客户端和服务器之间的网络可能就是这个问题。网络可能被各种事情阻塞。在客户端和服务器端之间有很多点，并且每一个点都有自己的连接限制，并且都可能导致问题出现。测试问题的最简单的方法是减去它从你的应用到另一个主机，并且看TTFB是否提升。</p>
+<h4 id="高吞吐能力"><a href="#高吞吐能力" class="headerlink" title="高吞吐能力"></a>高吞吐能力</h4><p>如果你看到在Content Download阶段花费了大量时间，那么提升服务器响应或则连接它们在一起都没用。最主要的解决办法是发送较少的字节。</p>
+<p><strong>原文链接:</strong> <a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" target="_blank" rel="external">Understanding Resouce Timing</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/08/用RAIL模型来测量性能/" itemprop="url">
                   用RAIL模型来测量性能
                 </a>
@@ -1529,128 +1704,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/02/后生可畏/" itemprop="url">
-                  后生可畏
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-02T22:23:44+08:00" content="2016-12-02">
-              2016-12-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mind/" itemprop="url" rel="index">
-                    <span itemprop="name">mind</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/02/后生可畏/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/后生可畏/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>其实我技术水平真的一般，有几年前后端工作经验，但刚踏入中年，发现身边的年轻人确实够生猛的，学习快上手快，令我这样的“老油条”有点惊讶和羡慕不已。我虽然也在不断的学习，但有点力不从心的感觉。遥想当年自己刚入行的时候，懵懵懂懂，没人带，没有技术圈子，全凭自己瞎琢磨，学习路线是曲折的，弯曲的，甚至是错误的。 现在的互联网发达，信息获取十分方便，圈子，群什么的，思想和代码交流也十分方便和快捷，羡慕活在这个时代的年轻人。</p>
-<p>多和年轻人学习，多找找方法论，多思想碰撞，勤上手。</p>
-<p>该code了。。。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1696,7 +1749,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">16</span>
+              <span class="site-state-item-count">17</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
