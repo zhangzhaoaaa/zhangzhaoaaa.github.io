@@ -269,6 +269,168 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/08/如何进行性能优化/" itemprop="url">
+                  如何进行性能优化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-08T15:45:57+08:00" content="2017-01-08">
+              2017-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/08/如何进行性能优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/08/如何进行性能优化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们为什么要做性能优化，终极原因是我们的网站被访问的慢了，担心用户流失。</p>
+<p>那我们如何做性能优化呢，需要做各个环节去查找原因。我在这里列举一些可能存在问题的地方：</p>
+<ol>
+<li>网络原因</li>
+<li>文件大小</li>
+<li>页面渲染问题</li>
+<li>前端、后端缓存问题</li>
+<li>脚本执行原因</li>
+<li>接口问题</li>
+<li>磁盘问题</li>
+<li>服务端程序问题</li>
+<li>数据库问题</li>
+</ol>
+<p>我们一般会从前端到后端来追踪性能瓶颈</p>
+<p>下面我们简单分析一下从浏览器请求到服务器响应的环节</p>
+<ol>
+<li>首屏加载的全过程</li>
+<li>TCP连接简述</li>
+<li>Web服务器会做些什么</li>
+</ol>
+<p>navigationStart-&gt;redirectStart-&gt;redirectEnd-&gt;fetchStart-&gt;domainLookupStart-&gt;domainLookupEnd-&gt;connectStart-&gt;secureConnectStart-&gt;connectEnd-&gt;requestStart-&gt;responseStart-&gt;responseEnd-&gt;domLoading-&gt;domInteractive-&gt;domContentLoaded-&gt;domCompleted-&gt;loadEventStart-&gt;loadEventEnd</p>
+<img src="/2017/01/08/如何进行性能优化/firstPaint.png" alt="首屏渲染全过程" title="首屏渲染全过程">
+<p>接着我们来看一下HTTP/HTTPS请求的过程：</p>
+<p>世界上几乎所有的HTTP通信都是由TCP/IP承载的，TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。客户端应用程序可以打开一条TCP/IP连接，连接到可能运行在世界任何地方的服务器应用程序。一旦连接建立起来了，在客户端和服务器的计算机之间交换的报文就永远不会丢失、受损或者失序。</p>
+<p>HTTP请求：</p>
+<p>比如，你想获取Joe的五金商店最新的电动工具价目表：<br><a href="http://www.joes-hardware.com:80/power-tools.html" target="_blank" rel="external">http://www.joes-hardware.com:80/power-tools.html</a></p>
+<p>1.浏览器收到这个URL是，会解析出主机名，www.joes-hardware.com<br>2.浏览器查询这个主机名的IP地址（DNS） 202.43.78.3</p>
+<ol>
+<li>浏览器获得端口号(80)</li>
+<li>浏览器发起到202.43.78.3端口80的连接<br>5.浏览器向服务器发送一条HTTP GET报文</li>
+<li>浏览器从服务器读取HTTP响应报文</li>
+<li>浏览器关闭连接</li>
+</ol>
+<p>HTTPS请求：</p>
+<p>SSL是个二进制协议，与HTTP完全不同，其流量是承载在另一个端口上的（443）。<br>需要进行安全握手操作，SSL安全参数握手过程如下：</p>
+<ol>
+<li>客户端发送可供选择的密码并请求证书，服务器发送选中的密码和证书</li>
+<li>客户端发送保密信息，客户端和服务器生成密钥</li>
+<li>客户端和服务器互相告知，开始加密过程</li>
+</ol>
+<p>最后在服务器端，简单来说，会执行以下几项任务：</p>
+<p>1.建立连接——接受一个客户端连接，或者如果不希望与这个客户端建立连接，就将其关闭<br>2.接收请求——从网络中读取一条HTTP请求报文<br>3.处理请求——对请求报文进行解释，并采取行动<br>4.访问资源——访问报文中指定的资源<br>5.构建响应——创建带有正确首部的HTTP响应报文<br>6.发送响应——将响应回送给客户端<br>7.记录事务处理过程——将与已完成事务有关的内容记录在一个日志文件中</p>
+<p>总体来说，从浏览器请求-&gt;网络连接-&gt;中间件-&gt;服务器，从前到后，从后到前的环节进行分析</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/01/2016总结/" itemprop="url">
                   2016总结
                 </a>
@@ -1454,126 +1616,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/01/max卸载jenkins/" itemprop="url">
-                  mac卸载jenkins
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-01T15:08:00+08:00" content="2016-12-01">
-              2016-12-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mac/" itemprop="url" rel="index">
-                    <span itemprop="name">mac</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/01/max卸载jenkins/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/max卸载jenkins/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/Library/Application Support/Jenkins/Uninstall.command</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1619,7 +1661,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">15</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1627,7 +1669,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1636,7 +1678,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
