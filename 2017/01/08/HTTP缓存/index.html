@@ -1,0 +1,786 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="性能优化," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Web缓存是可以自动保存常见文档副本的HTTP设备。当Web请求抵达缓存时，如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。使用缓存有下列优点。
+
+缓存减少了冗余的数据传输，节省了你的网络费用。
+缓存缓解了网络瓶颈的问题，不需要更多的带宽就能够更快地加载页面。
+缓存降低了对原始服务器的要求，服务器可以更快地响应，避免过载的出现。
+缓存降低了距离时延，因为从较远的地方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTTP缓存">
+<meta property="og:url" content="http://yoursite.com/2017/01/08/HTTP缓存/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="Web缓存是可以自动保存常见文档副本的HTTP设备。当Web请求抵达缓存时，如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。使用缓存有下列优点。
+
+缓存减少了冗余的数据传输，节省了你的网络费用。
+缓存缓解了网络瓶颈的问题，不需要更多的带宽就能够更快地加载页面。
+缓存降低了对原始服务器的要求，服务器可以更快地响应，避免过载的出现。
+缓存降低了距离时延，因为从较远的地方">
+<meta property="og:updated_time" content="2017-01-08T14:27:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTTP缓存">
+<meta name="twitter:description" content="Web缓存是可以自动保存常见文档副本的HTTP设备。当Web请求抵达缓存时，如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。使用缓存有下列优点。
+
+缓存减少了冗余的数据传输，节省了你的网络费用。
+缓存缓解了网络瓶颈的问题，不需要更多的带宽就能够更快地加载页面。
+缓存降低了对原始服务器的要求，服务器可以更快地响应，避免过载的出现。
+缓存降低了距离时延，因为从较远的地方">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/08/HTTP缓存/"/>
+
+
+  <title> HTTP缓存 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTTP缓存
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-08T22:15:14+08:00" content="2017-01-08">
+              2017-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/08/HTTP缓存/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/08/HTTP缓存/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Web缓存是可以自动保存常见文档副本的HTTP设备。当Web请求抵达缓存时，如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。使用缓存有下列优点。</p>
+<ul>
+<li>缓存减少了冗余的数据传输，节省了你的网络费用。</li>
+<li>缓存缓解了网络瓶颈的问题，不需要更多的带宽就能够更快地加载页面。</li>
+<li>缓存降低了对原始服务器的要求，服务器可以更快地响应，避免过载的出现。</li>
+<li>缓存降低了距离时延，因为从较远的地方加载页面会更慢一些。</li>
+</ul>
+<h2 id="命中和未命中的"><a href="#命中和未命中的" class="headerlink" title="命中和未命中的"></a>命中和未命中的</h2><h3 id="再验证"><a href="#再验证" class="headerlink" title="再验证"></a>再验证</h3><p>原始服务器的内容可能会发生变化，缓存要不时对其进行检测，看看它们保存的副本是否仍是服务器上最新的副本。这些“新鲜度检测”被称为HTTP再验证（revalidation）。为了有效地进行再验证，HTTP定义了一些特殊的请求，不用从服务器获取整个对象，就可以快速检测出内容是否是最新的。</p>
+<p>缓存可以在任意时刻，以任意的频率对副本进行再验证。但由于缓存中通常会包含数百万的文档，而且网络带宽是很珍贵的，所以大部分缓存只有在客户端发起请求，并且副本旧得足以需要检测的时候，才会对副本进行再验证。</p>
+<p>缓存对缓存的副本进行再验证时，会向原始服务器发送一个小的再验证请求。如果内容没有变化，服务器会以一个小的304 Not Modified进行响应。只要缓存知道副本仍然有效，就会再次将副本标识为暂时新鲜的，并将副本提供给客户端。这被称为再验证命中(revalidate hit)或缓慢命中(slow hit)。这种方式确实要与原始服务器进行核对，所以会比单纯的缓存命中要慢，但它没有从服务器中获取对象数据，所以要比缓存未命中快一些。</p>
+<p>HTTP为我们提供了几个用来对已缓存对象进行再验证的工具，但最常用的是If-Modified-Since首部。将这个首部添加到GET请求中去，就可以告诉服务器，只有在缓存了对象的副本之后，又对其进行了修改的情况下，才发送此对象。</p>
+<p>这里列出了在3种情况下（服务器内容未被修改，服务器内容已被修改，或者服务器上的对象被删除了）服务器收到GET If-Modified-Since请求时会发生的情况：</p>
+<ul>
+<li>再验证命中</li>
+</ul>
+<p>如果服务器对象未被修改，服务器会向客户端发送一个小的HTTP 304 Not Modified响应。</p>
+<ul>
+<li>再验证未命中</li>
+</ul>
+<p>如果服务器对象与已缓存副本不同，服务器向客户端发送一条普通的、带有完整内容的HTTP 200 OK响应</p>
+<ul>
+<li>对象被删除</li>
+</ul>
+<p>如果服务器对象已经被删除了，服务器就回送一个 404 Not Found响应，缓存也会将其副本删除。</p>
+<p>每个私有缓存都要获取同一份文档，这样它就会多次穿过网络<br>使用共享的公有缓存时，对于这个流行的对象，缓存只要取一次就行了，它会用共享的副本为所有的请求服务</p>
+<h3 id="缓存的处理步骤"><a href="#缓存的处理步骤" class="headerlink" title="缓存的处理步骤"></a>缓存的处理步骤</h3><ol>
+<li>接收——缓存从网络中读取抵达的请求报文</li>
+<li>解析——缓存对报文进行解析，提取出URL和各种首部</li>
+<li>查询——缓存查看是否有本地副本可用，如果没有，就获取一份副本（并将其保存在本地）</li>
+<li>新鲜度检测——缓存查看已缓存副本是否足够新鲜，如果不是，就询问服务器是否有任何更新</li>
+<li>创建响应——缓存会用新的首部和已缓存的主题来构建一条响应报文</li>
+<li>发送——缓存通过网络将响应发回给客户端</li>
+<li>日志——缓存可选地创建一个日志文件条目来描述这个事务</li>
+</ol>
+<h2 id="保持副本的新鲜"><a href="#保持副本的新鲜" class="headerlink" title="保持副本的新鲜"></a>保持副本的新鲜</h2><p>可能不是所有的已缓存副本都与服务器上的文档一致。毕竟，这些文档会随着时间发生变化。报告可能每个月都会变化。在线报纸每天都会发生变化。财经数据可能每过几秒钟就会发生变化。如果缓存提供的总是老的数据，就会变得毫无用处。已缓存数据要与服务器数据保持一致。</p>
+<p>HTTP有一些简单的机制可以在不要求服务器记住有哪些缓存拥有其文档副本的情况下，保持已缓存数据与服务器数据之间充分一致。HTTP将这些简单的机制称为文档过期和服务器再验证。</p>
+<h3 id="文档过期"><a href="#文档过期" class="headerlink" title="文档过期"></a>文档过期</h3><p>通过特殊的HTTP Cache-Control首部和Expires首部，HTTP让原始服务器向每个文档附加了一个“过期日期”。<br>在缓存文档过期之前，缓存可以以任意频率使用这些副本，而无需与服务器联系——当然，除非客户端请求中包含有阻止提供已缓存或未验证资源的首部。但一旦已缓存文档过期，缓存就必须与服务器进行核对，询问文档是否被修改过，如果被修改过，就要获取一份新鲜（带有新的过期日期）的副本。</p>
+<h3 id="过期日期和使用期"><a href="#过期日期和使用期" class="headerlink" title="过期日期和使用期"></a>过期日期和使用期</h3><p>服务器用Expires的首部或者Cache-Control:max-age响应首部来指定过期日期，同时还会带有响应主题。Expires首部和Cache-Control:max-age首部所做的事情本质上是一样的，但由于Cache-Control首部使用的是相对时间而不是绝对日期，所以我们更倾向于使用比较新的Cache-Control首部。绝对日期依赖于计算机时钟的正确设置。</p>
+<h3 id="服务器再验证"><a href="#服务器再验证" class="headerlink" title="服务器再验证"></a>服务器再验证</h3><p>仅仅是已缓存文档过期了并不意味着它和原始服务器上目前处于活跃状态的文档有实际的区别，这只是意味着到了要进行核对的时间了。这种情况被称为“服务器再验证”，说明缓存需要询问原始服务器文档是否发生了变化。<br>如果再验证显示内容发生了变化，缓存会获取一份新的文档副本，并将其存储在旧文档的位置上，然后将文档发送给客户端。<br>如果再验证显示内容没有发生变化，缓存只需要获取新的首部，包括一个新的过期日期，并对缓存中的首部进行更新就行了。</p>
+<p>缓存并不一定要为每条请求验证文档的有效性——只有在文档过期时它才需要与服务器进行再验证。这样不会提供陈旧的内容，还可以节省服务器的流量，并拥有更好的用户响应时间。</p>
+<p>HTTP协议要求行为正确的缓存返回下列内容之一：<br>“足够新鲜”的已缓存副本<br>与服务器进行再验证，确认其仍然新鲜的已缓存副本<br>如果需要与之进行再验证的原始服务器出故障了，就返回一条错误报文<br>附有警告新鲜说明内容可能不正确的已缓存副本</p>
+<h3 id="用条件方法进行再验证"><a href="#用条件方法进行再验证" class="headerlink" title="用条件方法进行再验证"></a>用条件方法进行再验证</h3><p>HTTP的条件方法可以高效地实现再验证。HTTP允许缓存向原始服务器发送一个“条件GET”，请求服务器只有在文档与缓存中现有的副本不同时，才回送对象主体。通过这种方式，将新鲜度检测和对象获取结合成了单个条件GET。向GET请求报文中添加一些特殊的条件首部，就可以发起条件GET。只有条件为真时，Web服务器才会返回对象。</p>
+<p>HTTP定义了5个条件请求首部。对缓存再验证来说最有用的2个首部是If-Modified-Since和If-None-Match.所有的条件首部都以前缀“If-”开头。</p>
+<p>If-Modified-Since:<date> 如果指定日期之后文档被修改过了，就执行请求的方法。可以与Last-Modified服务器响应首部配合使用，只有在内容被修改后与已缓存版本有所不同的时候采取获取内容。</date></p>
+<p>If-None-Match:<tags> 服务器可以为文档提供特殊的标签（参见ETag），而不是将其与最近修改日期相匹配，这些标签就像序列号一样。如果已缓存标签与服务器文档中的标签有所不同，If-None-Match首部就会执行所请求的方法。</tags></p>
+<h3 id="If-Modified-Since-Date再验证"><a href="#If-Modified-Since-Date再验证" class="headerlink" title="If-Modified-Since:Date再验证"></a>If-Modified-Since:Date再验证</h3><p>最常见的缓存再验证首部是If-Modified-Since。If-Modified-Since再验证请求通常被称为IMS请求。只有自某个日期之后资源发生了变化的时候，IMS请求才会指示服务器执行请求：如果自指定日期后，文档被修改了，If-Modified-Since条件就为真，通常GET就会成功执行。携带新首部的新文档会被返回给缓存，新首部除了其他信息之外，还包含了一个新的过期日期。如果自指定日期后，文档没被修改过，条件为假，会向客户端返回一个小的304 Not Modified响应报文，为了提高有效性，不会返回文档的主体。这些首部是放在响应中返回的，但只会返回那些需要在源端更新的首部。比如，Content-Type首部通常不会被修改，所以通常不需要发送。一般会发送一个新的过期日期。</p>
+<p>If-Modified-Since首部可以与Last-Modified服务器响应首部配合工作。原始服务器会将最后的修改日期附加到所提供的文档上去。当缓存要对已缓存文档进行再验证时，就会包含一个If-Modified-Since首部，其中携带有最后修改已缓存副本的日期：If-Modified-Since:<cached last-modified="" date=""><br>如果在此期间内容被修改了，最后的修改日期就会有所不同，原始服务器就会回送新的文档。否则，服务器会注意到缓存的最后修改日期与服务器文档当前的最后修改日期相符，会返回一个304 Not Modified响应。</cached></p>
+<h3 id="If-None-Match-实体标签再验证"><a href="#If-None-Match-实体标签再验证" class="headerlink" title="If-None-Match:实体标签再验证"></a>If-None-Match:实体标签再验证</h3><p>  有些情况下仅使用最后修改日期进行再验证是不够的。</p>
+<ul>
+<li><p>有些文档可能会被周期性地重写（比如，从一个后台进程中写入），但实际包含的数据常常是一样的。尽管内容没有变化，但修改日期会发生变化。</p>
+</li>
+<li><p>有些文档可能被修改了，但所做修改并不重要，不需要让世界范围内的缓存都重装数据（比如对拼写或注释的修改）</p>
+</li>
+<li>有些服务器无法准确地判定其页面的最后修改日期</li>
+<li>有些服务器提供的文档会在亚秒间隙发生变化（比如，实时监视器），对这些服务器来说，以一秒为粒度的修改日期可能就不够用了。</li>
+</ul>
+<p>为了解决这些问题，HTTP允许用户对被称为实体标签（ETag）的“版本标识符”进行比较。实体标签是附加到文档上的任意标签（引用字符串）。它们可能包含了文档的序列号或版本名，或者是文档内容的校验和及其他指纹信息。</p>
+<p>当发布者对文档进行修改时，可以修改文档的实体标签来说明这个新的版本。这样，如果实体标签被修改了，缓存就可以用If-None-Match条件首部来GET文档的新副本了。<br>比如：缓存中有一个实体标签为v2.6的文档。它会与原始服务器进行再验证，如果标签v2.6不再匹配，就会请求一个新对象。标签仍然与之匹配，会返回一条304 Not Modified响应。<br>如果服务器上的实体标签已经发生了变化（可能变成了v3.0）。服务器会在一个200 OK响应中返回新的内容以及相应的新ETag</p>
+<p>缓存分强弱缓存<br>ETag可以用前缀”W/“来标识弱验证器。</p>
+<p>原始服务器一定不能为两个不同的实体重用一个特定的强实体标签值，或者为两个语义不同的实体重用一个特定的弱实体标签值。缓存条目都可能会留存任意长的时间，与国企时间无关，有人可能希望当缓存验证条目时，绝对不会再次使用在过去某一时刻获得的验证器，这种愿望可能不太现实。</p>
+<p>什么时候应该使用实体标签和最近修改日期</p>
+<p>如果服务器回送了一个实体标签，HTTP/1.1客户端就必须使用实体标签验证器。如果服务器只回送了一个Last-Modified值，客户端就可以使用If-Modified-Since验证。如果实体标签和最后修改日期都提供了，客户端就应该使用这两种再验证方案，这样HTTP/1.0和HTTP/1.1缓存就都可以正确响应了。</p>
+<p>除非HTTP/1.1原始服务器无法生成实体标签验证器，否则就应该发送一个出去，如果使用弱实体标签有优势的话，发送的可能就是个弱实体标签，而不是强实体标签。而且，最好同时发送一个最近修改值。</p>
+<p>如果HTTP/1.1缓存或服务器收到的请求既带有If-Modified-Since，又带有实体标签条件首部，那么只有这两个条件都满足时，才能返回304 Not Modified响应。</p>
+<h2 id="控制缓存的能力"><a href="#控制缓存的能力" class="headerlink" title="控制缓存的能力"></a>控制缓存的能力</h2><p>服务器可以通过HTTP定义的几种方式来指定在文档过期之前可以将其缓存多长时间，按照优先级递减的顺序，服务器可以：<br>附加一个Cache-Control:no-store首部到响应中去<br>附加一个Cache-Contorl:no-cache首部到响应中去<br>must-revalidate<br>max-age<br>Expires日期<br>不附加过期信息，让缓存确定自己的过期日期</p>
+<h3 id="no-Store与no-Cache响应首部"><a href="#no-Store与no-Cache响应首部" class="headerlink" title="no-Store与no-Cache响应首部"></a>no-Store与no-Cache响应首部</h3><p>HTTP/1.1提供了几种限制对象缓存，或者限制提供已缓存对象的方式，以维持对象的新鲜度。no-store首部和no-cache首部可以防止缓存提供未经证实的已缓存对象；</p>
+<p>Pragma: no-cache<br>Cache-Control: no-store<br>Cache-Control: no-cache</p>
+<p>标识为no-store的响应会禁止缓存对响应进行复制。缓存通常会像非缓存代理服务器一样，向客户端转发一条no-store响应，然后删除对象。</p>
+<p>标识为no-cache的响应实际上是可以存储在本地缓存区中的。只是在与原始服务器进行新鲜度再验证之前，缓存不能将其提供给客户端使用。这个首部使用do-not-serve-from-cache-without-revalidation这个名字更恰当一些。</p>
+<p>HTTP/1.1提供Pragma: no-cache首部是为了兼容HTTP/1.0+。除了与只理解Pragma: no-cache的HTTP/1.0应用程序交互时，HTTP 1.1应用程序都应该使用Cache-Control: no-cache.</p>
+<h3 id="max-age响应首部"><a href="#max-age响应首部" class="headerlink" title="max-age响应首部"></a>max-age响应首部</h3><p>Cache-Control: max-age首部表示的是从服务器将文档传来之时起，可以认为此文档处于新鲜状态的秒数。还有一个s-maxage首部（注意maxage的中间没有连接线），其行为与max-age类似，但仅适用于共享（公有）缓存；</p>
+<p>Cache-Control: max-age=3600<br>Cache-Control:s-maxage=3600</p>
+<p>服务器可以请求缓存不要缓存文档，或者将最大使用期设置为0，从而在每次访问的时候进行刷新：<br>Cache-Control: max-age=0<br>Cache-Control:s-maxage=0</p>
+<h3 id="Expires响应首部"><a href="#Expires响应首部" class="headerlink" title="Expires响应首部"></a>Expires响应首部</h3><p>不推荐使用Expires首部，它指定的是实际的过期日期而不是描述。HTTP设计者后来认为，由于很多服务器的时钟都不同步，或者不正确，所以最好还是用剩余秒数，而不是绝对时间来表示过期时间。可以通过计算过期值和日期值之间的秒数差来计算类似的新鲜生存期：<br>Expires: Fri, 05 Jul 2002, 05:00:00 GMT<br>有些服务器还会回送一个Expires:0响应首部，试图将文档置于永远过期的状态，但这种语法是非法的，可能给某些软件带来问题。应该试着支持这种结构的输入，但不应该产生这种结构的输出。</p>
+<h3 id="must-revalidate响应首部"><a href="#must-revalidate响应首部" class="headerlink" title="must-revalidate响应首部"></a>must-revalidate响应首部</h3><p>可以配置缓存，使其提供一些陈旧（过期）的对象，以提供性能。如果原始服务器希望缓存严格遵守过期信息，可以在原始响应中附加一个Cache-Control:must-revalidation首部</p>
+<p>Cache-Control: must-revalidate</p>
+<p>Cache-Control: must-revalidate响应首部告诉缓存，在事先没有跟原服务器进行再验证的情况下，不能提供这个对象的陈旧副本。缓存仍然可以随意提供新鲜的副本。如果在缓存进行must-revalidate新鲜度检查时，原始服务器不可用，缓存就必须返回一条504 Gateway Timeout错误。</p>
+<p>注意事项</p>
+<p>文档过期系统并不是一个完美的系统。如果发布者不小心分配了一个很久之后地 过期日期，在文档过期之前，她要对文档做的任何修改都不一定能显示在所有缓存中。因此，很多发布者都不会使用很长的过期时间，而且，很多发布者甚至都不使用过期日期，这样缓存就很难确定文档会在多长时间内保持新鲜了。</p>
+<p><strong>内容来源：</strong>《HTTP权威指南》</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/性能优化/" rel="tag">#性能优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/08/理解Resource-Timing/" rel="next" title="理解Resource Timing">
+                <i class="fa fa-chevron-left"></i> 理解Resource Timing
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/08/HTTP缓存/"
+           data-title="HTTP缓存" data-url="http://yoursite.com/2017/01/08/HTTP缓存/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#命中和未命中的"><span class="nav-number">1.</span> <span class="nav-text">命中和未命中的</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#再验证"><span class="nav-number">1.1.</span> <span class="nav-text">再验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缓存的处理步骤"><span class="nav-number">1.2.</span> <span class="nav-text">缓存的处理步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#保持副本的新鲜"><span class="nav-number">2.</span> <span class="nav-text">保持副本的新鲜</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#文档过期"><span class="nav-number">2.1.</span> <span class="nav-text">文档过期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#过期日期和使用期"><span class="nav-number">2.2.</span> <span class="nav-text">过期日期和使用期</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#服务器再验证"><span class="nav-number">2.3.</span> <span class="nav-text">服务器再验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用条件方法进行再验证"><span class="nav-number">2.4.</span> <span class="nav-text">用条件方法进行再验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#If-Modified-Since-Date再验证"><span class="nav-number">2.5.</span> <span class="nav-text">If-Modified-Since:Date再验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#If-None-Match-实体标签再验证"><span class="nav-number">2.6.</span> <span class="nav-text">If-None-Match:实体标签再验证</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制缓存的能力"><span class="nav-number">3.</span> <span class="nav-text">控制缓存的能力</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#no-Store与no-Cache响应首部"><span class="nav-number">3.1.</span> <span class="nav-text">no-Store与no-Cache响应首部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#max-age响应首部"><span class="nav-number">3.2.</span> <span class="nav-text">max-age响应首部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expires响应首部"><span class="nav-number">3.3.</span> <span class="nav-text">Expires响应首部</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#must-revalidate响应首部"><span class="nav-number">3.4.</span> <span class="nav-text">must-revalidate响应首部</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lovecoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
