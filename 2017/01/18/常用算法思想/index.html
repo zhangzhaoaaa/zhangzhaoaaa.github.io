@@ -1,0 +1,790 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="算法设计," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="《算法设计》一书的作者将算法设计定义为一个这样的设计过程：从广泛的计算机应用中提出问题开始，建立在对算法设计技术理解的基础上，并最终发展成对这些问题的有效解决。从这个意义上理解，算法确实是一次智力活动的结果，但是并不是毫无章法的爆发，它应该是遵循一定规律的智力活动。首先，它需要一些基础性的知识作为这种智力活动的着力点，比如数据结构。其次，它需要对问题域做充分的分析和研究，高度概括并抽象出问题的精">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用算法思想">
+<meta property="og:url" content="http://yoursite.com/2017/01/18/常用算法思想/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="《算法设计》一书的作者将算法设计定义为一个这样的设计过程：从广泛的计算机应用中提出问题开始，建立在对算法设计技术理解的基础上，并最终发展成对这些问题的有效解决。从这个意义上理解，算法确实是一次智力活动的结果，但是并不是毫无章法的爆发，它应该是遵循一定规律的智力活动。首先，它需要一些基础性的知识作为这种智力活动的着力点，比如数据结构。其次，它需要对问题域做充分的分析和研究，高度概括并抽象出问题的精">
+<meta property="og:updated_time" content="2017-01-18T09:08:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用算法思想">
+<meta name="twitter:description" content="《算法设计》一书的作者将算法设计定义为一个这样的设计过程：从广泛的计算机应用中提出问题开始，建立在对算法设计技术理解的基础上，并最终发展成对这些问题的有效解决。从这个意义上理解，算法确实是一次智力活动的结果，但是并不是毫无章法的爆发，它应该是遵循一定规律的智力活动。首先，它需要一些基础性的知识作为这种智力活动的着力点，比如数据结构。其次，它需要对问题域做充分的分析和研究，高度概括并抽象出问题的精">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/01/18/常用算法思想/"/>
+
+
+  <title> 常用算法思想 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                常用算法思想
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-18T17:04:53+08:00" content="2017-01-18">
+              2017-01-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/算法设计/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/18/常用算法思想/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/18/常用算法思想/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p> 《算法设计》一书的作者将算法设计定义为一个这样的设计过程：从广泛的计算机应用中提出问题开始，建立在对算法设计技术理解的基础上，并最终发展成对这些问题的有效解决。从这个意义上理解，算法确实是一次智力活动的结果，但是并不是毫无章法的爆发，它应该是遵循一定规律的智力活动。首先，它需要一些基础性的知识作为这种智力活动的着力点，比如数据结构。其次，它需要对问题域做充分的分析和研究，高度概括并抽象出问题的精确描述，也就是各种建立数学模型的方法。最后，有一些常用的模式和原则，可以作为构造算法的选择项，有人称之为算法设计方法，我建议称之为算法设计模式或算法设计思想。</p>
+<p>模式作为算法演进的一些固定的思路，提供了一些构造算法的常用思想。</p>
+<h2 id="贪婪法"><a href="#贪婪法" class="headerlink" title="贪婪法"></a>贪婪法</h2><p>贪婪法，又称贪心算法，是寻找最优解问题的常用方法。这种方法模式一般将求解过程分成若干个步骤，在每个步骤都应用贪心原则，选取当前状态下最好的或最优的选择（局部最有利的选择），并以此希望最后堆叠出的结果也是最好或者最优的解。贪婪法的每次决策都以当前情况为基础并根据某个最优原则进行选择，不从整体上考虑其他各种可能的情况。</p>
+<p>一般来说，这种贪心原则在各种算法模式中都会体现，单独作为一种方法来说明，是因为贪婪法对于特定的问题是非常有效的方法。</p>
+<p>贪婪法和动态规划法以及分治法一样，都需要对问题进行分解，定义最优解的子结构。但是，贪婪法与其他方法最大的不同在于，贪婪法每一步选择完之后，局部最优解就确定了，不再进行回溯处理，也就是说，每一个步骤的局部最优解确定以后，就不再修改，直到算法结束。因为不进行回溯处理，贪婪法只在很少的情况下可以得到真正的最优解，比如最短路径问题、图的最小生成树问题。大多数情况下，由于选择策略的“短视”，贪婪法会错过真正的最优解，得不到问题的真正答案。但是贪婪法简单高效，省去了为找最优解可能需要的穷举操作，可以得到与最优解比较接近的近似最优解，通常作为其他算法的辅助算法使用。</p>
+<h3 id="贪婪法的基本思想"><a href="#贪婪法的基本思想" class="headerlink" title="贪婪法的基本思想"></a>贪婪法的基本思想</h3><p>贪婪法的基本设计思想有以下三个步骤。</p>
+<ol>
+<li>建立对问题精确描述的数学模型，包括定义最优解的模型</li>
+<li>将问题分解为一系列子问题，同时定义子问题的最优解结构</li>
+<li>应用贪心原则确定每个子问题的局部最优解，并根据最优解的模型，用子问题的局部最优解堆叠出全局最优解。</li>
+</ol>
+<p>定义最优解的模型通常和定义子问题的最优解结构是同时进行的，最优解的模型一般都体现了最优解子问题的分解结构和堆叠方式，对于子问题的分解有多种方式，有的问题可以按照问题的求解过程一步一步地进行分解，每一步都在前一步的基础上选择当前最好的解，每做一次选择就将问题简化为一个规模更小的子问题，当最后一步的求解完成后就得到了全局最优解。还有的问题可以将问题分解成相对独立的几个子问题，对每个子问题求解完成后再按照一定的规则将其组合起来得到全局最优解。</p>
+<p>这里说的定义子问题分解和子问题的最优解结构可能有点抽象，看个例子。找零钱是一个经典的例子，假如某国发行的货币有25分、10分、5分和1分四种硬币，假如你是售货员，你要找给客户41分钱的硬币，如何安排能使得找给客人的钱正确，但是硬币个数最少。这个问题的子问题定义就是从四种币值的硬币中选中一枚，使这个硬币的币值和其他已经选择的硬币的币值综合不超过41分钱。子问题的最优解结构就是在之前的步骤中已经选择的硬币加上当前选择的一枚硬币，当然，选择的策略是贪婪策略，即在币值总和不超过41的前提下选择币值最大的那种硬币按照这个策略，第一次选择25分的硬币一枚，第二次选择10分的硬币一枚，第三次选择5分的硬币一枚，第四次选择1分的硬币一枚，总共需要4枚硬币。</p>
+<p>上面的例子得到的确实是一个最优解，但是很多情况下贪婪法都不能得到最优解。同样以找零钱为例，加入某国发行的货币是25分、20分、5分和1分四种硬币，这时候找41分钱的最优策略是2枚20分的硬币加一枚1分硬币供3枚硬币，但是贪婪法得到的结果却是1枚25分硬币，三枚5分硬币和一枚1分硬币共5枚硬币。</p>
+<h4 id="贪婪法的例子：-0-1背包问题"><a href="#贪婪法的例子：-0-1背包问题" class="headerlink" title="贪婪法的例子： 0-1背包问题"></a>贪婪法的例子： 0-1背包问题</h4><p>有N件物品和一个承重为C的背包（也可定义为体积），每件物品的重量是wi，价值是pi，求解将哪几件物品装入背包可使这些物品在重量综合不超过C的情况下价值总和最大。背包问题是此类组合优化的NP完全问题的统称，比如货箱装载问题、货船载物问题等，因问题最初来源于如何选择最合适的物品装在背包中而得名。这个问题隐含了一个条件，每个物品只有一件，也就是限定每件物品只能选择0个或1个，因此又被称为0-1背包问题。</p>
+<p>来看一个具体的例子，有个背包，最多能承载重量为C=150的物品，现在有7个物品（物品不能分割成任意大小），编号为1-7，重量分别是wi=[35,30,60,50,40,10,25]，价值分别是pi=[10,40,30,50,35,40,30]，现在从这7个物品中选择一个或多个装入背包，要求在物品总重量不超过C的前提下，所装入的物品总价值最高。这个问题的子问题可以按照选择物品装入背包的过程按部就班地一步一步分解，将子问题定义为在被背包容量还有C’的情况下，选择一个物品装入背包。最初的求解C’就是150，加入选择了一个重量为35的物品，则子问题就变成在背包容量C’是115的情况下，从剩下的6件物品中选择一个物品，这样每选择一个物品就相当于子问题的规模减小了。</p>
+<p>那么如何选择物品呢？这个就是贪婪策略的选择问题。对于本题，常见的贪婪策略有三种。第一种策略是根据物品价值选择，每次都选择价值最高的物品。根据这个策略最终选择装入背包的物品编号依次是4、2、6、5，此时包中物品总重量是130，总价值是165。第二种策略是根据物品重量选择，每次都选择重量最轻的物品。根据这个策略最终选择装入背包的物品编号依次是6、7、2、1、5，此时包中物品总重量是140，总价值是155.第三种策略是定义一个价值密度的概念，每次选择都选价值密度最高的物品。物品的价值密度si定义为pi/wi，这7件物品的价值密度分别为si = [0.286,1.333,0.5,1.0,0.875,4.0,1.2]。根据这个策略最终选择装入背包的物品编号依次是6、2、7、4、1，此时包中物品的总重量是150，总价值是170.</p>
+<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法的设计思想是将无法着手解决的大问题分解成一系列规模较小的相同问题，然后逐个解决小问题，即所谓的分而治之。分治法产生的子问题与原始问题相同，只是规模减小，反复使用分治方法，可以使得子问题的规模不断减小，直到能够被直接求解为止。</p>
+<p>分治法作为算法设计中一个古老的策略，在很多问题中得到了广泛的应用，比如最大、最小问题，矩阵乘法、大整数乘法以及排序。</p>
+<p>应用分治法，一般处于两个目的：一是通过分解问题，使无法着手解决的大问题变成容易解决的小问题；二是通过减小问题的规模，降低解决问题的复杂度。给1000个数排序，可能因为问题的规模太大而无从下手，但是如果减小这个问题的规模，将问题一分为二，变成分别对两个拥有500个数的序列排序，然后再将两个排序后的序列合并成一个就得到了1000个数的排序结果。对500个数排序仍然无法下手，需要继续分解，直到最后问题的规模变成2个数排序的时候，只需要一次比较就可以确定顺序。这正是快速排序的实现思想，通过减小问题的规模使问题由难以解决变得容易解决。计算N个采样点的离散傅里叶变换，需要做N平方次复数乘法，但是将其分解成两个N/2个采样点的离散傅里叶变化，则只需要做（N/2）平方 + (N/2)平方 = N平方/2次复数乘法，做一次分解就使得计算量减少了一半，这正是快速傅里叶变换的实现思想，通过减小问题的规模减少计算量，降低问题的复杂度。</p>
+<h3 id="分治法的基本思想"><a href="#分治法的基本思想" class="headerlink" title="分治法的基本思想"></a>分治法的基本思想</h3><p>很多情况下，分治法都会使用递归的方式对问题逐级分解，但是在每个子问题的层面上，分治法基本上可以归纳为以下三个步骤。</p>
+<p>1.分解： 将问题分解为若干个规模较小，相互独立且与原问题形式相同的子问题，确保各个子问题的解具有相同的子结构。</p>
+<p>2.解决： 如果上一步分解得到的子问题可以解决，则解决这些子问题，否则，对每个子问题使用和上一步相同的方法再次分解，然后求解分解后的子问题，这个过程可能是一个递归的过程。</p>
+<p>3.合并： 将上一步解决的各个子问题的解通过某种规则合并起来，得到原问题的解。</p>
+<p>分治法的实现模式可以是递归方式，也可以是非递归方式，一般采用递归方式的算法模式。</p>
+<p>分治法的难点是如何将子问题分解，并且将子问题的解合并出原始问题的解。针对不同的问题，通常有不同的分解与合并的方式。</p>
+<ul>
+<li><p>快速排序算法的分解思想是选择一个标兵数，将待排序的序列分成两个子序列，其中一个子序列中的数都小于标兵数，另一个子序列中的数都大于标兵数，然后分别对这两个子序列排序，其合并思想就是将两个已经排序的子序列一前一后拼接在标兵数前后，组成一个完整的有序序列。</p>
+</li>
+<li><p>快速傅里叶变换的分解思想是将一个N点离散傅里叶变换，按照奇偶关系分成两个N/2点离散傅里叶变换，其合并思想就是将两个N/2点离散傅里叶变换的结果按照蝶形运算的位置关系重新排列成一个N点序列。</p>
+</li>
+<li><p>Karatsuba乘法算法的分解思想是将n位大数分成两部分：a+b，其中a是整数幂，然后利用乘法的分解公式：(a+b)(c+d)=ac+ad+bc+bd,将其分解为四次小规模大数的乘法计算，然后利用一个小技巧将其化解成三次乘法和少量移位操作。最终结果的合并思想就是用几次加法对小规模乘法的结果进行求和，得到原始问题的解。</p>
+</li>
+</ul>
+<p>分治法最难也是最灵活的部分就是对问题的分解和结果的合并。对于一个未知的问题，只要能找到对子问题的分解方式和结果的合并方式，应用分治法可以迎刃而解。而在数学上，只要是能用数学归纳法证明的问题，一般都可以应用分治法解决，这也是一个应用分治法的强烈信号。</p>
+<h3 id="递归和分治，一对好朋友"><a href="#递归和分治，一对好朋友" class="headerlink" title="递归和分治，一对好朋友"></a>递归和分治，一对好朋友</h3><p>递归作为一种算法的实现方式，与分治法天生是一对好朋友。问题的分解肯定不是一步到位的，需要反复使用分治手段，在多个层次上层层分解，这种分解的方法很自然地导致了递归方式的使用。从算法实现的角度看，分治法得到的子问题和原问题是相同的，当然可以用相同的函数来解决，区别只在于问题的规模和范围不同。通过特定的函数参数安排，使得同一个函数可以解决不同规模的相同问题，这就是递归方法的基础。</p>
+<p>以快速排序为例，如果把待排序的序列作为问题的话，那么子问题的规模就可以定义为子序列在原始序列中的起始位置。对此一般化之后，原始问题和子问题的描述就统一了，都是原始序列+起始位置，原始问题的起始位置就是[1,n]，子问题的起始位置就是[1,n]的某一个子区间</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划是解决多阶段决策问题常用的最优化理论，该理论由美国数学家Bellman等人在1957年提出，用于研究多阶段决策过程的优化问题。动态规划方法的原理就是把多阶段决策过程转化为一系列的单阶段决策问题，利用各个阶段之间的递推关系，逐个确定每个阶段的最优化决策，最终堆叠出多阶段决策的最优化决策结果。</p>
+<p>Kleigberg在他的《算法设计》一书中认为动态规划法通过将问题细分为一系列子问题，从而隐含地探查了所有可行解的空间，于是我们可以从某种程度上把动态规划看作接近暴力搜索边缘的危险操作。对于多项式时间的问题，动态规划法可能得到多项式时间复杂度的高效算法，但是对于NP问题，动态规划法也只能得到指数时间复杂度的算。Kleigberg认为，动态规划对子问题的处理方式使得它可以遍历问题可行解的指数规模的集合，甚至可以在没有明确地价差所有解的情况下就做到这一点。可以认为这是因为动态规划拥有比穷举更高效的剪枝判断，这是一种对重叠问题（子问题包含子子问题）处理的内在机制。</p>
+<p>每种方法都有自身的局限性，动态规划法也不是万能的。动态规划适合求解多阶段（状态转换）决策问题的最优解，也可用于含有线性或非线性递推关系的最优解问题，但是这些问题都必须满足最优化原理和子问题的“无后向性”。</p>
+<ul>
+<li><p>最优化原理： 最优化原理其实就是问题的最优子结构的性质，如果一个问题的最优子结构是不论过去状态和决策如何，对前面的决策所形成的状态而言，其后的决策必须构成最优策略。也就是说，不管之前决策是否是最优决策，都必须保证从现在开始的决策是在之前决策基础上的最优决策，则这样的最优子结构就符合最优化原理。</p>
+</li>
+<li><p>无后向性（无后效性）：所谓”无后向性“，就是当各个阶段的子问题确定以后，对于某个特定阶段的子问题来说，它之前的各个阶段的子问题的决策只影响该阶段的决策，对该阶段之后的决策不产生影响，也就是说，每个阶段的决策仅受之前决策的影响，但是不影响之后各阶段的决策。</p>
+</li>
+</ul>
+<h3 id="动态规划的基本思想"><a href="#动态规划的基本思想" class="headerlink" title="动态规划的基本思想"></a>动态规划的基本思想</h3><p>和分治法一样，动态规划解决复杂问题的思路也是对问题进行分解，通过求解小规模的子问题再反推出原问题的结果。但是动态规划分解子问题不是简单地按照”大事化小“的方式进行的，二是沿着决策的阶段划分子问题，决策的阶段可以随时间划分，也可以随着问题的眼花状态划分。分治法要求子问题是互相独立的，以便分别求解并最终合并出原始问题的解，但是动态规划法的子问题不是互相独立的，子问题之间通常有包含关系，甚至两个子问题可以包含相同的子子问题。比如，子问题A的解可能由子问题C的解递推得到，同时，子问题B的解也可能由子问题C的解递推得到。对于这种情况，动态规划法对子问题C只求解一次，然后将其结果保存在一张表中，避免每次遇到这种情况都重复计算子问题C的解。除此之外，动态规划法的子问题还要满足”无后向性“要求。</p>
+<p>动态规划法不像贪婪法或分治法那样有固定的算法实现模式，作为解决多阶段决策最优化问题的一种思想，它没有具体的实现模式，可以根据堆叠子问题之间的递推公式用递推的方法实现。但是从算法设计的角度分析，使用动态规划法一般需要四个步骤，分别是定义最优子问题、定义状态、定义决策和状态转换方程以及确定边界条件，这四个问题解决了，算法也就确定了。</p>
+<p>1.定义最优子问题</p>
+<p>定义最优子问题，也就是确定问题的优化目标以及如何决策最优解，并对决策过程划分阶段。所谓阶段，可以理解为一个问题从开始到解决需要经过的环节，这些环节前后关联。划分阶段没有固定的方法，根据问题的结构，可以按照时间顺序划分阶段，也可以按照问题的眼花状态划分阶段。阶段划分以后，对问题的求解就变成对各个阶段分别进行最优化决策，问题的解就变成按照阶段顺序依次选择的一个决策序列。</p>
+<p>装配站问题的阶段划分比较清晰，把工件从一个装配站移到下一个装配站就可以看作是一个阶段，其子问题就可以定义为从一个装配站转移到下一个装配站，直到最后一个装配站完成工件组装。对于背包问题，每选择<br>装一个物品就可以看作一个阶段，其子问题就可以定义为每次向包中装一个物品，直到超过背包的最大容量为止。最长公共子序列问题可以按照问题的演化状态划分阶段，这需要首先定义状态，有了状态的定义，只要状态发生了变化，就可以认为是一个阶段。</p>
+<p>2.定义状态<br>状态既是决策的对象，也是决策的结果，对于每个阶段来说，对起始状态施加决策，使得状态发生改变，得到决策的结果状态。初始状态经过每一个阶段的决策（状态改变）之后，最终得到的状态就是问题的解。当然，不是所有的决策序列施加于初始状态后都可以得到最优解，只有一个决策序列能得到最优解。状态的定义是建立在子问题定义的基础上的，因此状态必须满足”无后向性“要求。</p>
+<p>装配站问题的实质就是在不同的装配线之间选择装配站，使得工件装配完成的时间最短，其状态s[i,j]就可以定义为通过第i条装配线的第j个装配站所需要的最短时间。背包问题本身是个线性过程，但是如果简单将状态定义为装入的物品编号，也就是定义s[i]为装入第i件物品后获得的最大价值，则子问题无法满足”无后向性“要求，原因是之前的任何一个决策都会影响到所有的后序决策（因为装入物品后背包容量发生了变化），因此需要增加一个维度的约束。考虑到每装入一个物品，背包的剩余容量就会减少，故而选择将背包容量也包含的状态定义中。最终背包问题的状态s[i,j]定义为将第i件物品装入容量为j的背包中所能获得的最大价值。对于最长公共子序列问题，如果定义str1[1…j]为第一个字符串前i个字符组成的子串，定义str2[1…j]为第二个字符串的前j个字符组成的子串，则最长公共子序列问题的状态s[i,j]定义为str1[1…i]与str2[1…j]的最长公共子序列长度。</p>
+<p>3.定义决策和状态转换方程</p>
+<p>决策就是能使状态发生转变的选择动作，如果选择动作有多个，则决策就是取其中能使得阶段结果最优的那一个。状态转换方程是描述状态转换关系的一系列等式，也就是从n-1阶段到n阶段演化的规律。状态转换取决于子问题的堆叠方式，如果状态定义得不合适，就会导致子问题之间没有重叠，也就不存在状态转换关系了。没有状态转换关系，动态规划也就没有意义了，实际算法就退化为像分治法那样的朴素递归搜索算法。</p>
+<p>对于装配站问题，其决策就是选择在当前工作线上的下一个工作站继续装配，或者花费一定的开销将其转移到另一条工作线上的下一个工作站继续装配。如果定义a[i,j]为第i条工作线的第j个装配站需要的装配时间，k[i,j]为另一条工作线转移到第i条装配线的第j个装配站需要的转移开销，则装配站问题的状态转换方程可以描述为：</p>
+<p>s[1,j] = min(s[1,j-1] + a[1,j], s[2,j-1] + k[1,j] + a[1,j])<br>s[2,j] = min(s[2,j-1] + a[2,j], s[1,j-1] + k[2,j] + a[2,j])</p>
+<p>背包问题的决策很简单，就是判断装入第i件物品获得的收益最大还是不装入第i件物品获得的收益最大。如果不装入第i件物品，则背包内物品的价值仍然是s[i-1,j]状态，如果装入第i件物品，则背包内物品的价值就变成s[i,j-vi]+pi状态，其中vi和pi分别是第i件物品的容积和价值，决策的状态转换方程就是：<br>s[i,j] = max(s[i-1,j],s[i,j-vi]+pi)</p>
+<p>4.确定边界条件</p>
+<p>对于递归加备忘录方式（记忆搜索）实现的动态规划方法，边界条件实际上就是递归终结条件，无需额外的计算。对于使用递推关系直接实现的动态规划方法，需要确定状态转换方程的递推式的初始条件或者边界条件，否则无法开始递推计算。</p>
+<p>对于装配站问题，初始条件就是工件通过第一个装配站的时间，对于两条装配线来说，工件通过第一个装配站的时间虽然不相同，但是都是确定的值，就是移入装配线的开销加上第一个装配站的装配时间。</p>
+<h3 id="动态规划法的例子：字符串的编辑距离"><a href="#动态规划法的例子：字符串的编辑距离" class="headerlink" title="动态规划法的例子：字符串的编辑距离"></a>动态规划法的例子：字符串的编辑距离</h3><p>我们把两个字符串的相似度定义为：将一个字符串转换成另外一个字符串时需要付出的代价。转换可以采用插入、删除和替换三种编辑方式，因此转换的代价就是对字符串的编辑次数。字符串转换的方法不唯一，以字符串“SNOWY”和“SUNNY”为例，下面是两种将”SNOWY”转换成”SUNNY”的方法。</p>
+<p>转换方法1：</p>
+<p>S - N O W Y<br>S U N N -  Y<br>转换代价Cost = 3(插入U、替换O、删除W)</p>
+<p>转换方法2：</p>
+<ul>
+<li>S N O W - Y<br>S U N - -  N Y<br>转换代价Cost = 5(插入S、替换S、删除O、删除W、插入N)</li>
+</ul>
+<p>不同的转换方法需要的编辑次数也不一样，最少的那个编辑次数就是字符串的编辑距离。</p>
+<h2 id="解空间的穷举搜索"><a href="#解空间的穷举搜索" class="headerlink" title="解空间的穷举搜索"></a>解空间的穷举搜索</h2><p>解空间又称为状态空间，是所有可能是解的候选解的集合，之所以特别强调在解空间内穷举搜索，是想传达一个重要的思想，那就是穷举并不是漫无目的地乱找，它是一种在有限的解空间（解空间至少在理论上是有限的）内按照一定的策略进行查找的思想。数学上也把穷举法称为枚举法，就是在一个由有限个元素构成的集合中，将所有元素一一枚举研究的方法。比如要找出一个班上身高最高的同学，只需要给这个班上的同学一一测量身高，然后通过比较就可以确定哪个身高最高。穷举法就是这样一种思想，对解空间内的候选解按某种顺序进行逐一枚举和检验，并根据问题给定的条件从中找出那些符合要求的候选解作为问题的解。穷举法一般可以找出解空间中所有正确的解，如果给定最优解的判断条件，穷举法也可以用于求解最优解问题。</p>
+<p>一般来说，只要一个问题有其他更好的解决方法，通常不会选择穷举法，穷举法也常被称作“不是办法的办法”或“最后的办法”。但是绝对不能因为这样而轻视穷举法，穷举法在算法设计模式中占有非常重要的地位。解空间或者状态空间的定义没有具体的模式，不同问题的解空间形式上差异巨大。针对不同问题都要选择不同的搜索算法，有很多问题都要选择不同的搜索算法，需要对问题做细致的分析才能得到。穷举法也被公认为是最“难用”的算法模式，看起来简单，但是面对问题往往无从下手。但是如果能用好穷举法，你就掌握了能解决所有问题的“通用算法”，至少理论上是这样。</p>
+<p>穷举法的基本思想就是以下两个步骤。</p>
+<p>1.确定问题的解（或状态）的定义，解空间的范围以及正确解的判定条件。</p>
+<p>2.根据解空间的特点选择搜索策略，一一检验解空间中的候选解是否正确，必要时可辅助一些剪枝算法，排除一些明显不可能是正确解的检验过程，提高穷举的效率。</p>
+<p>正如前面所讲的那样，穷举法的设计思想非常简单，没有任何条件性的约束和假设，使得穷举法几乎适合求解任何问题，当然，穷举法的“难用”也体现在这两个步骤上。</p>
+<h3 id="解空间的定义"><a href="#解空间的定义" class="headerlink" title="解空间的定义"></a>解空间的定义</h3><p>解空间就是全部可能的候选解的一个约束范围，确定问题的解就在这个范围内，将搜索策略应用到这个约束范围就可以找到问题的解。用“空间”这个词是为了说明候选解不一定是线性结构，根据问题的类型，解空间的结构可能是线性表、集合、树或者图。有时候，这个空间内的对象不是问题的解，而是一些被称为状态的对象，通过对状态的计算和处理，可以间接地得到问题的解，这样的搜索空间也常被理解为状态空间。</p>
+<p>要确定解空间，首先要定义问题的解，建立解的数学模型。如果解的数学模型选择错误或者不合适，会导致解空间结构繁杂，范围难以界定，甚至无法设计搜索算法。给出的0-1背包问题，如果将物品的最大价值定为解的数学模型，则解空间内的候选解就是某几件物品的价值总和，解空间的范围就是[0,235]，235是全部7件物品的价值总和。如果对这个解空间穷举搜索，就需要根据每一个价值总和反推出这个价值总和由哪几个物品组成，这会使搜索算法非常麻烦。如果换一个角度考虑这个问题，将解的数学模型定义为物品的选择状态，用一个7元组分别表示7件物品的选择状态，0表示不选择装入该物品，1表示选择装入该物品。根据之前解题的答案，最优解是选择1、2、4、6、7号物品，用7元组表示就是[1,1,0,1,0,1,1]。根据这个选择状态，计算最终的物品总价值的方法非常简单，直接求和即可，比前一种方案的根据价值总和反推物品选择状态也简单多。根据状态定义，解空间一共有127（2的7次方）个状态，非法解判断与合法解的判断，以及最优解的比较算法都非常简单。最重要的是，搜索算法的设计也很简单，n元组的遍历有递归、多重循环等多种成熟的实现方法可以选择，简单套用即可。</p>
+<p>上例中的解空间是一种相对简单的定义，候选解或状态之间相互独立，没有关联关系，可以用线性表，也可以用集合来组织解空间。在很多情况下，候选解或状态之间不独立，存在各种关联关系。</p>
+<h3 id="穷举解空间的策略"><a href="#穷举解空间的策略" class="headerlink" title="穷举解空间的策略"></a>穷举解空间的策略</h3><p>穷举解空间的策略就是搜索算法的设计策略，简单的问题可以用通用的搜索算法，比如0-1背包问题的解空间可以用排列组合算法得到，复杂的问题需要根据实际情况设计搜索算法。根据问题的需要设计搜索算法没有捷径，只能在常用搜索策略的基础上多实践，多积累。盲目搜索和启发性搜索是两种最常用的搜索策略。顾名思义，盲目搜索就是不带任何假设的穷举搜索，不管行不行，眉毛胡子一把抓。启发性搜索是利用某种策略或计算依据，有目的地搜索，这些策略和依据通常能够加快算法的收敛速度，或者能够划定一个更小的、最有可能出现解的空间并在此空间上搜索。</p>
+<p>一般来说，为了加快算法的求解，通常会在搜索算法的执行过程中伴随一些剪枝动作。剪枝是一个很形象的比喻，如果某一个状态节点确定不可能演化出结果，就应该停止这个状态节点开始的搜索，相当于状态树上这一分支就被剪掉了。除了采用剪枝策略，还可以使用限制搜索深度的方法加快算法的收敛，但是限制搜索深度会导致无解，或错过最优解，通常只在特定的情况下使用，比如博弈树的搜索。</p>
+<p>1.盲目搜索算法</p>
+<p>广度优先搜索和深度优先搜索是两种常用的盲目搜索算法，这种搜索算法只根据问题的规模，按照广度优先和深度优先的原则搜索解空间内的每一个状态。广度优先算法因为需要额外的存储空间，因此在设计算法时要考虑此额外空间的规模。深度优先算法在搜索过程中容易陷入状态循环，导致在一个没有解的子树上“死循环”，一般需要做状态循环的判断和避免。但总的来说，两种策略并无优劣之分，很多情况下可以互换使用。</p>
+<p>2.启发式搜索算法</p>
+<p>很多情况下，当问题的规模达到一定的程度，盲目搜索算法就会因为低效而被排斥，理论上可以得到答案，但是要等一万年，这是人类不能接受的结果。如果搜索能够智能化一点，利用搜索过程中出现的额外信息直接跳过一些状态，避免盲目的、机械式的搜索，就可以加快搜索算法的收敛，这就是启发性搜索。启发性搜索需要一些额外信息和操作来“启发”搜索算法，根据这些信息的不同，启发方式也不同。如果知道解空间的状态分布呈现正太分布的特征，则可以从分布中间值开始向两边搜索，因为在中间值附近出现最优解的概率更高，这就是启发式搜索。如果能有一个状态评估函数，可以对每个状态节点能演化出解的可能性评估，搜索过程中根据这种可能性对待搜索的状态节点排序，也是一种启发式搜索。再简单一点，如果在某一个层面的搜索能应用贪婪策略，优先选择与贪婪策略符合的状态节点进行搜索，也是一种启发式搜索。</p>
+<p>3.剪枝策略</p>
+<p>对解空间穷举搜索时，如果有一些状态节点可以根据问题提供的信息明确地被判定为不可能演化出最优解，从此节点开始遍历得到的子树，可能存在正确的解，但是肯定不是最优解，就可以跳过此状态节点的遍历，这将极大地提高算法的执行效率。这就是剪枝策略。应用剪枝策略的难点在于如何找到一个评价方法（估值函数）对状态节点进行评估。特定的评价方法都附着在特定的搜索算法中，比如博弈树算法中常用的极大极小值算法和“a-b”算法，都伴随着相应的剪枝算法。除了针对特定问题类型的剪枝算法之外，没有可以一统天下的通用评价方法，通常需要根据实际问题小心地分析，确定评价方法。</p>
+<p>除了最优解问题，还有一种情况也会用到剪枝策略。对解空间内的状态节点遍历搜索的过程中，会有一些在特定搜索策略下重复出现的状态节点，对这些状态节点如果不做特殊处理，不仅会因为重复处理相同的状态节点而降低效率，还可能会导致深度优先搜索算法“陷入”到某个子树的搜索中无法退出。</p>
+<p>4.搜索算法的评估和收敛</p>
+<p>当规模大道一定程度时，使用穷举法就只具有理论上的可行性。对某些问题，穷举法是最后的办法，但是问题规模又大到无法对解空间进行完整的搜索，这时候就需要对搜索算法进行评估，并确定一些收敛原则。收敛原则就是只要能找到一个比较好的解就返回（不求最好），根据解的评估判断是否需要继续下一次搜索。大型棋类游戏通常面临这种问题，比如国际象棋和围棋的求解算法，想要搜索整个解空间得到最优解目前是不可能的，所以此类搜索算法通常都通过一个搜索深度参数来控制搜索算法的收敛，当搜索到指定的深度时就返回当前已经找到的最好的结果，这种退而求其次的策略也是不得已而为之。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/算法设计/" rel="tag">#算法设计</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/01/17/Sleep方法/" rel="next" title="Sleep方法">
+                <i class="fa fa-chevron-left"></i> Sleep方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/01/18/常用算法思想/"
+           data-title="常用算法思想" data-url="http://yoursite.com/2017/01/18/常用算法思想/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">24</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#贪婪法"><span class="nav-number">1.</span> <span class="nav-text">贪婪法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#贪婪法的基本思想"><span class="nav-number">1.1.</span> <span class="nav-text">贪婪法的基本思想</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#贪婪法的例子：-0-1背包问题"><span class="nav-number">1.1.1.</span> <span class="nav-text">贪婪法的例子： 0-1背包问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治法"><span class="nav-number">2.</span> <span class="nav-text">分治法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#分治法的基本思想"><span class="nav-number">2.1.</span> <span class="nav-text">分治法的基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归和分治，一对好朋友"><span class="nav-number">2.2.</span> <span class="nav-text">递归和分治，一对好朋友</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划"><span class="nav-number">3.</span> <span class="nav-text">动态规划</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划的基本思想"><span class="nav-number">3.1.</span> <span class="nav-text">动态规划的基本思想</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划法的例子：字符串的编辑距离"><span class="nav-number">3.2.</span> <span class="nav-text">动态规划法的例子：字符串的编辑距离</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解空间的穷举搜索"><span class="nav-number">4.</span> <span class="nav-text">解空间的穷举搜索</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#解空间的定义"><span class="nav-number">4.1.</span> <span class="nav-text">解空间的定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#穷举解空间的策略"><span class="nav-number">4.2.</span> <span class="nav-text">穷举解空间的策略</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lovecoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
