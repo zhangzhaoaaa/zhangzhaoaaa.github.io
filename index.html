@@ -349,9 +349,14 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by mike on 16-3-24.</div><div class="line"> */</div><div class="line">function Duck() &#123;</div><div class="line">    this.quack = function() &#123;console.log(&apos;Quaaaaaack!&apos;)&#125;</div><div class="line">    this.feathers = function() &#123;console.log(&apos;The duck has white and gray feathers.&apos;);&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Person() &#123;</div><div class="line">    this.quack = function() &#123;console.log(&apos;The person imitates a duck.&apos;)&#125;</div><div class="line">    this.feathers = function() &#123;console.log(&apos;The person takes a feather from the ground and shows it.&apos;)&#125;</div><div class="line">    this.name = function() &#123;console.log(&apos;John Smith&apos;)&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function inTheForest(object) &#123;</div><div class="line">    object.quack()</div><div class="line">    object.feathers()</div><div class="line">&#125;</div><div class="line"></div><div class="line">function game() &#123;</div><div class="line">    var donald = new Duck()</div><div class="line">    var john = new Person()</div><div class="line">    inTheForest(donald)</div><div class="line">    inTheForest(john)</div><div class="line">&#125;</div><div class="line"></div><div class="line">game()</div></pre></td></tr></table></figure>
+          在面向对象的程序语言中,鸭子类型是高于类型的编程语言和设计准则的一层.类型关心的是把一个类型赋值给一个对象.鸭子类型关心的是出于某种目的建立一个对象的适应性.一般的类型,它们的适应性仅仅取决于一个对象
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/19/鸭子类型/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -469,12 +474,15 @@
       
         
           
-            <p>1.函数重载</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">function foo(a,b,opts)&#123;</div><div class="line">    if (arguments.length === 0) &#123;</div><div class="line">        console.log(&apos;empty&apos;);</div><div class="line">    &#125;else if (arguments.length === 1 &amp;&amp; opts === undefined) &#123;</div><div class="line">        if (typeof arguments[0] === &apos;number&apos;) &#123;</div><div class="line">            console.log(&apos;only one number&apos;,a);</div><div class="line">        &#125;</div><div class="line">        if (typeof arguments[0] === &apos;string&apos;) &#123;</div><div class="line">            console.log(&apos;only one string&apos;,a);</div><div class="line">        &#125;</div><div class="line">    &#125;else if (arguments.length === 2 &amp;&amp; opts === undefined) &#123;</div><div class="line">        if (typeof arguments[0] === &apos;number&apos; &amp;&amp; typeof arguments[1] === &apos;number&apos;)&#123;</div><div class="line">            console.log(&apos;all number&apos;,a,b);</div><div class="line">        &#125;</div><div class="line">        if (typeof arguments[0] === &apos;string&apos; &amp;&amp; typeof arguments[1] === &apos;string&apos;)&#123;</div><div class="line">            console.log(&apos;all string&apos;,a,b);</div><div class="line">        &#125;</div><div class="line">    &#125;else if (opts.method === &apos;add&apos;) &#123;</div><div class="line">        console.log(&apos;add&apos;,a + b);</div><div class="line">    &#125;else if (opts.method === &apos;minus&apos;) &#123;</div><div class="line">        console.log(&apos;minus&apos;,a - b);</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">foo();</div><div class="line">foo(1);</div><div class="line">foo(&quot;mike&quot;);</div><div class="line">foo(1,2);</div><div class="line">foo(&apos;Buy&apos;,&apos;an apple&apos;);</div><div class="line">foo(1,2,&#123;method:&apos;add&apos;&#125;);</div><div class="line">foo(3,4,&#123;method:&apos;minus&apos;&#125;);</div><div class="line"></div><div class="line">function addMethod(object, name, fn)&#123;</div><div class="line">    var old = object[name];</div><div class="line">    if (old) &#123;</div><div class="line">    	object[name] = function()&#123;</div><div class="line">            if (fn.length == arguments.length) &#123;</div><div class="line">                return fn.apply( this, arguments );</div><div class="line">            &#125;</div><div class="line">            else if (typeof old == &apos;function&apos;)&#123;</div><div class="line">                return old.apply( this, arguments );</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">    &#125; else &#123;</div><div class="line">        object[name] = fn;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">function Users()&#123;&#125;</div><div class="line">addMethod(Users.prototype, &quot;find&quot;, function()&#123;</div><div class="line">    console.log(&apos;findAll&apos;);</div><div class="line">&#125;);</div><div class="line">addMethod(Users.prototype, &quot;find&quot;, function(name)&#123;</div><div class="line">    console.log(&apos;findByName&apos;,name);</div><div class="line">&#125;);</div><div class="line">addMethod(Users.prototype, &quot;find&quot;, function(first, last)&#123;</div><div class="line">    console.log(&apos;findByFirstNameAndLastName&apos;,first,last);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var user = new Users();</div><div class="line">user.find();</div><div class="line">user.find(&apos;mike&apos;);</div><div class="line">user.find(&apos;zero&apos;,&apos;mike&apos;);</div></pre></td></tr></table></figure>
-<p>2.函数重写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">function inherit(child,parent,options)&#123;</div><div class="line">    function F()&#123;&#125;;</div><div class="line">    F.prototype = parent.prototype;</div><div class="line">    F.constructor = child;</div><div class="line">    child.prototype = new F();</div><div class="line">    child._super = parent.prototype;</div><div class="line"></div><div class="line">    for (var n in options) &#123;</div><div class="line">        if (options.hasOwnProperty(n)) &#123;</div><div class="line">            child.prototype[n] = options[n];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Human()&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">Human.prototype.walk = function()&#123;</div><div class="line">    console.log(&apos;human walk&apos;);</div><div class="line">&#125;</div><div class="line">Human.prototype.cry = function()&#123;</div><div class="line">    console.log(&apos;human cry&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Man()&#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">inherit(Man,Human,&#123;</div><div class="line">    walk:function()&#123;</div><div class="line">        console.log(&apos;man walk&apos;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">var man = new Man();</div><div class="line">man.cry();</div><div class="line">Man._super.walk();</div><div class="line">man.walk();</div></pre></td></tr></table></figure>
+          在JavaScript中没有相关语法进行直接的函数重载和重写，但是我们可以实现它首先我们得明白，简单来说函数的重载：函数名称一样，但是参数不同函数的重写：在继承关系中，子类方法重写父类方法  
+1.函
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/19/函数的重载和重写/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -592,10 +600,14 @@
       
         
           
-            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;d1&quot; style=&quot;width:300px;height:300px;background-color: red;&quot;&gt;有本事点我三次&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var d1 = document.getElementById(&apos;d1&apos;);</div><div class="line">    var counter = 0;</div><div class="line">    d1.onclick = function () &#123;</div><div class="line">        setTimeout(function () &#123;</div><div class="line">            counter = 0;</div><div class="line">        &#125;, 500);</div><div class="line">        if (++counter == 3) &#123;</div><div class="line">            alert(&apos;3次&apos;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;utf-8&quot;/&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line"></div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;d1&quot; onclick=&quot;clickThreeTime()&quot; style=&quot;width:300px;height:300px;background-color: red;&quot;&gt;有本事点我三次&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var counter= 0,time=0;</div><div class="line">    function  clickThreeTime()&#123;</div><div class="line">         if( counter===0)&#123;</div><div class="line">             time = new Date().getSeconds() ;</div><div class="line">         &#125;</div><div class="line">         counter++;</div><div class="line">         if( counter===3) &#123;</div><div class="line">             if((new Date().getSeconds()-parseInt(time))&gt;1) &#123;</div><div class="line">                 alert(&quot;超时&quot;);</div><div class="line">             &#125; else &#123;</div><div class="line">                 alert(&quot;你已经单击了三次&quot;);</div><div class="line">             &#125;</div><div class="line">             counter=0;</div><div class="line">         &#125;</div><div class="line">     &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+          在某些场景下，我们需要处理连续点击的事件，比如就是点三次，我们知道API提供了单击和双击事件，这三击事件该怎么做呢？你是不是慌了，别担心，看下面的代码即可。说白了，都和时间相关，在有限的时间内完成三击
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/18/连续点击三次/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -713,97 +725,14 @@
       
         
           
-            <p> 《算法设计》一书的作者将算法设计定义为一个这样的设计过程：从广泛的计算机应用中提出问题开始，建立在对算法设计技术理解的基础上，并最终发展成对这些问题的有效解决。从这个意义上理解，算法确实是一次智力活动的结果，但是并不是毫无章法的爆发，它应该是遵循一定规律的智力活动。首先，它需要一些基础性的知识作为这种智力活动的着力点，比如数据结构。其次，它需要对问题域做充分的分析和研究，高度概括并抽象出问题的精确描述，也就是各种建立数学模型的方法。最后，有一些常用的模式和原则，可以作为构造算法的选择项，有人称之为算法设计方法，我建议称之为算法设计模式或算法设计思想。</p>
-<p>模式作为算法演进的一些固定的思路，提供了一些构造算法的常用思想。</p>
-<h2 id="贪婪法"><a href="#贪婪法" class="headerlink" title="贪婪法"></a>贪婪法</h2><p>贪婪法，又称贪心算法，是寻找最优解问题的常用方法。这种方法模式一般将求解过程分成若干个步骤，在每个步骤都应用贪心原则，选取当前状态下最好的或最优的选择（局部最有利的选择），并以此希望最后堆叠出的结果也是最好或者最优的解。贪婪法的每次决策都以当前情况为基础并根据某个最优原则进行选择，不从整体上考虑其他各种可能的情况。</p>
-<p>一般来说，这种贪心原则在各种算法模式中都会体现，单独作为一种方法来说明，是因为贪婪法对于特定的问题是非常有效的方法。</p>
-<p>贪婪法和动态规划法以及分治法一样，都需要对问题进行分解，定义最优解的子结构。但是，贪婪法与其他方法最大的不同在于，贪婪法每一步选择完之后，局部最优解就确定了，不再进行回溯处理，也就是说，每一个步骤的局部最优解确定以后，就不再修改，直到算法结束。因为不进行回溯处理，贪婪法只在很少的情况下可以得到真正的最优解，比如最短路径问题、图的最小生成树问题。大多数情况下，由于选择策略的“短视”，贪婪法会错过真正的最优解，得不到问题的真正答案。但是贪婪法简单高效，省去了为找最优解可能需要的穷举操作，可以得到与最优解比较接近的近似最优解，通常作为其他算法的辅助算法使用。</p>
-<h3 id="贪婪法的基本思想"><a href="#贪婪法的基本思想" class="headerlink" title="贪婪法的基本思想"></a>贪婪法的基本思想</h3><p>贪婪法的基本设计思想有以下三个步骤。</p>
-<ol>
-<li>建立对问题精确描述的数学模型，包括定义最优解的模型</li>
-<li>将问题分解为一系列子问题，同时定义子问题的最优解结构</li>
-<li>应用贪心原则确定每个子问题的局部最优解，并根据最优解的模型，用子问题的局部最优解堆叠出全局最优解。</li>
-</ol>
-<p>定义最优解的模型通常和定义子问题的最优解结构是同时进行的，最优解的模型一般都体现了最优解子问题的分解结构和堆叠方式，对于子问题的分解有多种方式，有的问题可以按照问题的求解过程一步一步地进行分解，每一步都在前一步的基础上选择当前最好的解，每做一次选择就将问题简化为一个规模更小的子问题，当最后一步的求解完成后就得到了全局最优解。还有的问题可以将问题分解成相对独立的几个子问题，对每个子问题求解完成后再按照一定的规则将其组合起来得到全局最优解。</p>
-<p>这里说的定义子问题分解和子问题的最优解结构可能有点抽象，看个例子。找零钱是一个经典的例子，假如某国发行的货币有25分、10分、5分和1分四种硬币，假如你是售货员，你要找给客户41分钱的硬币，如何安排能使得找给客人的钱正确，但是硬币个数最少。这个问题的子问题定义就是从四种币值的硬币中选中一枚，使这个硬币的币值和其他已经选择的硬币的币值综合不超过41分钱。子问题的最优解结构就是在之前的步骤中已经选择的硬币加上当前选择的一枚硬币，当然，选择的策略是贪婪策略，即在币值总和不超过41的前提下选择币值最大的那种硬币按照这个策略，第一次选择25分的硬币一枚，第二次选择10分的硬币一枚，第三次选择5分的硬币一枚，第四次选择1分的硬币一枚，总共需要4枚硬币。</p>
-<p>上面的例子得到的确实是一个最优解，但是很多情况下贪婪法都不能得到最优解。同样以找零钱为例，加入某国发行的货币是25分、20分、5分和1分四种硬币，这时候找41分钱的最优策略是2枚20分的硬币加一枚1分硬币供3枚硬币，但是贪婪法得到的结果却是1枚25分硬币，三枚5分硬币和一枚1分硬币共5枚硬币。</p>
-<h4 id="贪婪法的例子：-0-1背包问题"><a href="#贪婪法的例子：-0-1背包问题" class="headerlink" title="贪婪法的例子： 0-1背包问题"></a>贪婪法的例子： 0-1背包问题</h4><p>有N件物品和一个承重为C的背包（也可定义为体积），每件物品的重量是wi，价值是pi，求解将哪几件物品装入背包可使这些物品在重量综合不超过C的情况下价值总和最大。背包问题是此类组合优化的NP完全问题的统称，比如货箱装载问题、货船载物问题等，因问题最初来源于如何选择最合适的物品装在背包中而得名。这个问题隐含了一个条件，每个物品只有一件，也就是限定每件物品只能选择0个或1个，因此又被称为0-1背包问题。</p>
-<p>来看一个具体的例子，有个背包，最多能承载重量为C=150的物品，现在有7个物品（物品不能分割成任意大小），编号为1-7，重量分别是wi=[35,30,60,50,40,10,25]，价值分别是pi=[10,40,30,50,35,40,30]，现在从这7个物品中选择一个或多个装入背包，要求在物品总重量不超过C的前提下，所装入的物品总价值最高。这个问题的子问题可以按照选择物品装入背包的过程按部就班地一步一步分解，将子问题定义为在被背包容量还有C’的情况下，选择一个物品装入背包。最初的求解C’就是150，加入选择了一个重量为35的物品，则子问题就变成在背包容量C’是115的情况下，从剩下的6件物品中选择一个物品，这样每选择一个物品就相当于子问题的规模减小了。</p>
-<p>那么如何选择物品呢？这个就是贪婪策略的选择问题。对于本题，常见的贪婪策略有三种。第一种策略是根据物品价值选择，每次都选择价值最高的物品。根据这个策略最终选择装入背包的物品编号依次是4、2、6、5，此时包中物品总重量是130，总价值是165。第二种策略是根据物品重量选择，每次都选择重量最轻的物品。根据这个策略最终选择装入背包的物品编号依次是6、7、2、1、5，此时包中物品总重量是140，总价值是155.第三种策略是定义一个价值密度的概念，每次选择都选价值密度最高的物品。物品的价值密度si定义为pi/wi，这7件物品的价值密度分别为si = [0.286,1.333,0.5,1.0,0.875,4.0,1.2]。根据这个策略最终选择装入背包的物品编号依次是6、2、7、4、1，此时包中物品的总重量是150，总价值是170.</p>
-<h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><p>分治法的设计思想是将无法着手解决的大问题分解成一系列规模较小的相同问题，然后逐个解决小问题，即所谓的分而治之。分治法产生的子问题与原始问题相同，只是规模减小，反复使用分治方法，可以使得子问题的规模不断减小，直到能够被直接求解为止。</p>
-<p>分治法作为算法设计中一个古老的策略，在很多问题中得到了广泛的应用，比如最大、最小问题，矩阵乘法、大整数乘法以及排序。</p>
-<p>应用分治法，一般处于两个目的：一是通过分解问题，使无法着手解决的大问题变成容易解决的小问题；二是通过减小问题的规模，降低解决问题的复杂度。给1000个数排序，可能因为问题的规模太大而无从下手，但是如果减小这个问题的规模，将问题一分为二，变成分别对两个拥有500个数的序列排序，然后再将两个排序后的序列合并成一个就得到了1000个数的排序结果。对500个数排序仍然无法下手，需要继续分解，直到最后问题的规模变成2个数排序的时候，只需要一次比较就可以确定顺序。这正是快速排序的实现思想，通过减小问题的规模使问题由难以解决变得容易解决。计算N个采样点的离散傅里叶变换，需要做N平方次复数乘法，但是将其分解成两个N/2个采样点的离散傅里叶变化，则只需要做（N/2）平方 + (N/2)平方 = N平方/2次复数乘法，做一次分解就使得计算量减少了一半，这正是快速傅里叶变换的实现思想，通过减小问题的规模减少计算量，降低问题的复杂度。</p>
-<h3 id="分治法的基本思想"><a href="#分治法的基本思想" class="headerlink" title="分治法的基本思想"></a>分治法的基本思想</h3><p>很多情况下，分治法都会使用递归的方式对问题逐级分解，但是在每个子问题的层面上，分治法基本上可以归纳为以下三个步骤。</p>
-<p>1.分解： 将问题分解为若干个规模较小，相互独立且与原问题形式相同的子问题，确保各个子问题的解具有相同的子结构。</p>
-<p>2.解决： 如果上一步分解得到的子问题可以解决，则解决这些子问题，否则，对每个子问题使用和上一步相同的方法再次分解，然后求解分解后的子问题，这个过程可能是一个递归的过程。</p>
-<p>3.合并： 将上一步解决的各个子问题的解通过某种规则合并起来，得到原问题的解。</p>
-<p>分治法的实现模式可以是递归方式，也可以是非递归方式，一般采用递归方式的算法模式。</p>
-<p>分治法的难点是如何将子问题分解，并且将子问题的解合并出原始问题的解。针对不同的问题，通常有不同的分解与合并的方式。</p>
-<ul>
-<li><p>快速排序算法的分解思想是选择一个标兵数，将待排序的序列分成两个子序列，其中一个子序列中的数都小于标兵数，另一个子序列中的数都大于标兵数，然后分别对这两个子序列排序，其合并思想就是将两个已经排序的子序列一前一后拼接在标兵数前后，组成一个完整的有序序列。</p>
-</li>
-<li><p>快速傅里叶变换的分解思想是将一个N点离散傅里叶变换，按照奇偶关系分成两个N/2点离散傅里叶变换，其合并思想就是将两个N/2点离散傅里叶变换的结果按照蝶形运算的位置关系重新排列成一个N点序列。</p>
-</li>
-<li><p>Karatsuba乘法算法的分解思想是将n位大数分成两部分：a+b，其中a是整数幂，然后利用乘法的分解公式：(a+b)(c+d)=ac+ad+bc+bd,将其分解为四次小规模大数的乘法计算，然后利用一个小技巧将其化解成三次乘法和少量移位操作。最终结果的合并思想就是用几次加法对小规模乘法的结果进行求和，得到原始问题的解。</p>
-</li>
-</ul>
-<p>分治法最难也是最灵活的部分就是对问题的分解和结果的合并。对于一个未知的问题，只要能找到对子问题的分解方式和结果的合并方式，应用分治法可以迎刃而解。而在数学上，只要是能用数学归纳法证明的问题，一般都可以应用分治法解决，这也是一个应用分治法的强烈信号。</p>
-<h3 id="递归和分治，一对好朋友"><a href="#递归和分治，一对好朋友" class="headerlink" title="递归和分治，一对好朋友"></a>递归和分治，一对好朋友</h3><p>递归作为一种算法的实现方式，与分治法天生是一对好朋友。问题的分解肯定不是一步到位的，需要反复使用分治手段，在多个层次上层层分解，这种分解的方法很自然地导致了递归方式的使用。从算法实现的角度看，分治法得到的子问题和原问题是相同的，当然可以用相同的函数来解决，区别只在于问题的规模和范围不同。通过特定的函数参数安排，使得同一个函数可以解决不同规模的相同问题，这就是递归方法的基础。</p>
-<p>以快速排序为例，如果把待排序的序列作为问题的话，那么子问题的规模就可以定义为子序列在原始序列中的起始位置。对此一般化之后，原始问题和子问题的描述就统一了，都是原始序列+起始位置，原始问题的起始位置就是[1,n]，子问题的起始位置就是[1,n]的某一个子区间</p>
-<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><p>动态规划是解决多阶段决策问题常用的最优化理论，该理论由美国数学家Bellman等人在1957年提出，用于研究多阶段决策过程的优化问题。动态规划方法的原理就是把多阶段决策过程转化为一系列的单阶段决策问题，利用各个阶段之间的递推关系，逐个确定每个阶段的最优化决策，最终堆叠出多阶段决策的最优化决策结果。</p>
-<p>Kleigberg在他的《算法设计》一书中认为动态规划法通过将问题细分为一系列子问题，从而隐含地探查了所有可行解的空间，于是我们可以从某种程度上把动态规划看作接近暴力搜索边缘的危险操作。对于多项式时间的问题，动态规划法可能得到多项式时间复杂度的高效算法，但是对于NP问题，动态规划法也只能得到指数时间复杂度的算。Kleigberg认为，动态规划对子问题的处理方式使得它可以遍历问题可行解的指数规模的集合，甚至可以在没有明确地价差所有解的情况下就做到这一点。可以认为这是因为动态规划拥有比穷举更高效的剪枝判断，这是一种对重叠问题（子问题包含子子问题）处理的内在机制。</p>
-<p>每种方法都有自身的局限性，动态规划法也不是万能的。动态规划适合求解多阶段（状态转换）决策问题的最优解，也可用于含有线性或非线性递推关系的最优解问题，但是这些问题都必须满足最优化原理和子问题的“无后向性”。</p>
-<ul>
-<li><p>最优化原理： 最优化原理其实就是问题的最优子结构的性质，如果一个问题的最优子结构是不论过去状态和决策如何，对前面的决策所形成的状态而言，其后的决策必须构成最优策略。也就是说，不管之前决策是否是最优决策，都必须保证从现在开始的决策是在之前决策基础上的最优决策，则这样的最优子结构就符合最优化原理。</p>
-</li>
-<li><p>无后向性（无后效性）：所谓”无后向性“，就是当各个阶段的子问题确定以后，对于某个特定阶段的子问题来说，它之前的各个阶段的子问题的决策只影响该阶段的决策，对该阶段之后的决策不产生影响，也就是说，每个阶段的决策仅受之前决策的影响，但是不影响之后各阶段的决策。</p>
-</li>
-</ul>
-<h3 id="动态规划的基本思想"><a href="#动态规划的基本思想" class="headerlink" title="动态规划的基本思想"></a>动态规划的基本思想</h3><p>和分治法一样，动态规划解决复杂问题的思路也是对问题进行分解，通过求解小规模的子问题再反推出原问题的结果。但是动态规划分解子问题不是简单地按照”大事化小“的方式进行的，二是沿着决策的阶段划分子问题，决策的阶段可以随时间划分，也可以随着问题的眼花状态划分。分治法要求子问题是互相独立的，以便分别求解并最终合并出原始问题的解，但是动态规划法的子问题不是互相独立的，子问题之间通常有包含关系，甚至两个子问题可以包含相同的子子问题。比如，子问题A的解可能由子问题C的解递推得到，同时，子问题B的解也可能由子问题C的解递推得到。对于这种情况，动态规划法对子问题C只求解一次，然后将其结果保存在一张表中，避免每次遇到这种情况都重复计算子问题C的解。除此之外，动态规划法的子问题还要满足”无后向性“要求。</p>
-<p>动态规划法不像贪婪法或分治法那样有固定的算法实现模式，作为解决多阶段决策最优化问题的一种思想，它没有具体的实现模式，可以根据堆叠子问题之间的递推公式用递推的方法实现。但是从算法设计的角度分析，使用动态规划法一般需要四个步骤，分别是定义最优子问题、定义状态、定义决策和状态转换方程以及确定边界条件，这四个问题解决了，算法也就确定了。</p>
-<p>1.定义最优子问题</p>
-<p>定义最优子问题，也就是确定问题的优化目标以及如何决策最优解，并对决策过程划分阶段。所谓阶段，可以理解为一个问题从开始到解决需要经过的环节，这些环节前后关联。划分阶段没有固定的方法，根据问题的结构，可以按照时间顺序划分阶段，也可以按照问题的眼花状态划分阶段。阶段划分以后，对问题的求解就变成对各个阶段分别进行最优化决策，问题的解就变成按照阶段顺序依次选择的一个决策序列。</p>
-<p>装配站问题的阶段划分比较清晰，把工件从一个装配站移到下一个装配站就可以看作是一个阶段，其子问题就可以定义为从一个装配站转移到下一个装配站，直到最后一个装配站完成工件组装。对于背包问题，每选择<br>装一个物品就可以看作一个阶段，其子问题就可以定义为每次向包中装一个物品，直到超过背包的最大容量为止。最长公共子序列问题可以按照问题的演化状态划分阶段，这需要首先定义状态，有了状态的定义，只要状态发生了变化，就可以认为是一个阶段。</p>
-<p>2.定义状态<br>状态既是决策的对象，也是决策的结果，对于每个阶段来说，对起始状态施加决策，使得状态发生改变，得到决策的结果状态。初始状态经过每一个阶段的决策（状态改变）之后，最终得到的状态就是问题的解。当然，不是所有的决策序列施加于初始状态后都可以得到最优解，只有一个决策序列能得到最优解。状态的定义是建立在子问题定义的基础上的，因此状态必须满足”无后向性“要求。</p>
-<p>装配站问题的实质就是在不同的装配线之间选择装配站，使得工件装配完成的时间最短，其状态s[i,j]就可以定义为通过第i条装配线的第j个装配站所需要的最短时间。背包问题本身是个线性过程，但是如果简单将状态定义为装入的物品编号，也就是定义s[i]为装入第i件物品后获得的最大价值，则子问题无法满足”无后向性“要求，原因是之前的任何一个决策都会影响到所有的后序决策（因为装入物品后背包容量发生了变化），因此需要增加一个维度的约束。考虑到每装入一个物品，背包的剩余容量就会减少，故而选择将背包容量也包含的状态定义中。最终背包问题的状态s[i,j]定义为将第i件物品装入容量为j的背包中所能获得的最大价值。对于最长公共子序列问题，如果定义str1[1…j]为第一个字符串前i个字符组成的子串，定义str2[1…j]为第二个字符串的前j个字符组成的子串，则最长公共子序列问题的状态s[i,j]定义为str1[1…i]与str2[1…j]的最长公共子序列长度。</p>
-<p>3.定义决策和状态转换方程</p>
-<p>决策就是能使状态发生转变的选择动作，如果选择动作有多个，则决策就是取其中能使得阶段结果最优的那一个。状态转换方程是描述状态转换关系的一系列等式，也就是从n-1阶段到n阶段演化的规律。状态转换取决于子问题的堆叠方式，如果状态定义得不合适，就会导致子问题之间没有重叠，也就不存在状态转换关系了。没有状态转换关系，动态规划也就没有意义了，实际算法就退化为像分治法那样的朴素递归搜索算法。</p>
-<p>对于装配站问题，其决策就是选择在当前工作线上的下一个工作站继续装配，或者花费一定的开销将其转移到另一条工作线上的下一个工作站继续装配。如果定义a[i,j]为第i条工作线的第j个装配站需要的装配时间，k[i,j]为另一条工作线转移到第i条装配线的第j个装配站需要的转移开销，则装配站问题的状态转换方程可以描述为：</p>
-<p>s[1,j] = min(s[1,j-1] + a[1,j], s[2,j-1] + k[1,j] + a[1,j])<br>s[2,j] = min(s[2,j-1] + a[2,j], s[1,j-1] + k[2,j] + a[2,j])</p>
-<p>背包问题的决策很简单，就是判断装入第i件物品获得的收益最大还是不装入第i件物品获得的收益最大。如果不装入第i件物品，则背包内物品的价值仍然是s[i-1,j]状态，如果装入第i件物品，则背包内物品的价值就变成s[i,j-vi]+pi状态，其中vi和pi分别是第i件物品的容积和价值，决策的状态转换方程就是：<br>s[i,j] = max(s[i-1,j],s[i,j-vi]+pi)</p>
-<p>4.确定边界条件</p>
-<p>对于递归加备忘录方式（记忆搜索）实现的动态规划方法，边界条件实际上就是递归终结条件，无需额外的计算。对于使用递推关系直接实现的动态规划方法，需要确定状态转换方程的递推式的初始条件或者边界条件，否则无法开始递推计算。</p>
-<p>对于装配站问题，初始条件就是工件通过第一个装配站的时间，对于两条装配线来说，工件通过第一个装配站的时间虽然不相同，但是都是确定的值，就是移入装配线的开销加上第一个装配站的装配时间。</p>
-<h3 id="动态规划法的例子：字符串的编辑距离"><a href="#动态规划法的例子：字符串的编辑距离" class="headerlink" title="动态规划法的例子：字符串的编辑距离"></a>动态规划法的例子：字符串的编辑距离</h3><p>我们把两个字符串的相似度定义为：将一个字符串转换成另外一个字符串时需要付出的代价。转换可以采用插入、删除和替换三种编辑方式，因此转换的代价就是对字符串的编辑次数。字符串转换的方法不唯一，以字符串“SNOWY”和“SUNNY”为例，下面是两种将”SNOWY”转换成”SUNNY”的方法。</p>
-<p>转换方法1：</p>
-<p>S - N O W Y<br>S U N N -  Y<br>转换代价Cost = 3(插入U、替换O、删除W)</p>
-<p>转换方法2：</p>
-<ul>
-<li>S N O W - Y<br>S U N - -  N Y<br>转换代价Cost = 5(插入S、替换S、删除O、删除W、插入N)</li>
-</ul>
-<p>不同的转换方法需要的编辑次数也不一样，最少的那个编辑次数就是字符串的编辑距离。</p>
-<h2 id="解空间的穷举搜索"><a href="#解空间的穷举搜索" class="headerlink" title="解空间的穷举搜索"></a>解空间的穷举搜索</h2><p>解空间又称为状态空间，是所有可能是解的候选解的集合，之所以特别强调在解空间内穷举搜索，是想传达一个重要的思想，那就是穷举并不是漫无目的地乱找，它是一种在有限的解空间（解空间至少在理论上是有限的）内按照一定的策略进行查找的思想。数学上也把穷举法称为枚举法，就是在一个由有限个元素构成的集合中，将所有元素一一枚举研究的方法。比如要找出一个班上身高最高的同学，只需要给这个班上的同学一一测量身高，然后通过比较就可以确定哪个身高最高。穷举法就是这样一种思想，对解空间内的候选解按某种顺序进行逐一枚举和检验，并根据问题给定的条件从中找出那些符合要求的候选解作为问题的解。穷举法一般可以找出解空间中所有正确的解，如果给定最优解的判断条件，穷举法也可以用于求解最优解问题。</p>
-<p>一般来说，只要一个问题有其他更好的解决方法，通常不会选择穷举法，穷举法也常被称作“不是办法的办法”或“最后的办法”。但是绝对不能因为这样而轻视穷举法，穷举法在算法设计模式中占有非常重要的地位。解空间或者状态空间的定义没有具体的模式，不同问题的解空间形式上差异巨大。针对不同问题都要选择不同的搜索算法，有很多问题都要选择不同的搜索算法，需要对问题做细致的分析才能得到。穷举法也被公认为是最“难用”的算法模式，看起来简单，但是面对问题往往无从下手。但是如果能用好穷举法，你就掌握了能解决所有问题的“通用算法”，至少理论上是这样。</p>
-<p>穷举法的基本思想就是以下两个步骤。</p>
-<p>1.确定问题的解（或状态）的定义，解空间的范围以及正确解的判定条件。</p>
-<p>2.根据解空间的特点选择搜索策略，一一检验解空间中的候选解是否正确，必要时可辅助一些剪枝算法，排除一些明显不可能是正确解的检验过程，提高穷举的效率。</p>
-<p>正如前面所讲的那样，穷举法的设计思想非常简单，没有任何条件性的约束和假设，使得穷举法几乎适合求解任何问题，当然，穷举法的“难用”也体现在这两个步骤上。</p>
-<h3 id="解空间的定义"><a href="#解空间的定义" class="headerlink" title="解空间的定义"></a>解空间的定义</h3><p>解空间就是全部可能的候选解的一个约束范围，确定问题的解就在这个范围内，将搜索策略应用到这个约束范围就可以找到问题的解。用“空间”这个词是为了说明候选解不一定是线性结构，根据问题的类型，解空间的结构可能是线性表、集合、树或者图。有时候，这个空间内的对象不是问题的解，而是一些被称为状态的对象，通过对状态的计算和处理，可以间接地得到问题的解，这样的搜索空间也常被理解为状态空间。</p>
-<p>要确定解空间，首先要定义问题的解，建立解的数学模型。如果解的数学模型选择错误或者不合适，会导致解空间结构繁杂，范围难以界定，甚至无法设计搜索算法。给出的0-1背包问题，如果将物品的最大价值定为解的数学模型，则解空间内的候选解就是某几件物品的价值总和，解空间的范围就是[0,235]，235是全部7件物品的价值总和。如果对这个解空间穷举搜索，就需要根据每一个价值总和反推出这个价值总和由哪几个物品组成，这会使搜索算法非常麻烦。如果换一个角度考虑这个问题，将解的数学模型定义为物品的选择状态，用一个7元组分别表示7件物品的选择状态，0表示不选择装入该物品，1表示选择装入该物品。根据之前解题的答案，最优解是选择1、2、4、6、7号物品，用7元组表示就是[1,1,0,1,0,1,1]。根据这个选择状态，计算最终的物品总价值的方法非常简单，直接求和即可，比前一种方案的根据价值总和反推物品选择状态也简单多。根据状态定义，解空间一共有127（2的7次方）个状态，非法解判断与合法解的判断，以及最优解的比较算法都非常简单。最重要的是，搜索算法的设计也很简单，n元组的遍历有递归、多重循环等多种成熟的实现方法可以选择，简单套用即可。</p>
-<p>上例中的解空间是一种相对简单的定义，候选解或状态之间相互独立，没有关联关系，可以用线性表，也可以用集合来组织解空间。在很多情况下，候选解或状态之间不独立，存在各种关联关系。</p>
-<h3 id="穷举解空间的策略"><a href="#穷举解空间的策略" class="headerlink" title="穷举解空间的策略"></a>穷举解空间的策略</h3><p>穷举解空间的策略就是搜索算法的设计策略，简单的问题可以用通用的搜索算法，比如0-1背包问题的解空间可以用排列组合算法得到，复杂的问题需要根据实际情况设计搜索算法。根据问题的需要设计搜索算法没有捷径，只能在常用搜索策略的基础上多实践，多积累。盲目搜索和启发性搜索是两种最常用的搜索策略。顾名思义，盲目搜索就是不带任何假设的穷举搜索，不管行不行，眉毛胡子一把抓。启发性搜索是利用某种策略或计算依据，有目的地搜索，这些策略和依据通常能够加快算法的收敛速度，或者能够划定一个更小的、最有可能出现解的空间并在此空间上搜索。</p>
-<p>一般来说，为了加快算法的求解，通常会在搜索算法的执行过程中伴随一些剪枝动作。剪枝是一个很形象的比喻，如果某一个状态节点确定不可能演化出结果，就应该停止这个状态节点开始的搜索，相当于状态树上这一分支就被剪掉了。除了采用剪枝策略，还可以使用限制搜索深度的方法加快算法的收敛，但是限制搜索深度会导致无解，或错过最优解，通常只在特定的情况下使用，比如博弈树的搜索。</p>
-<p>1.盲目搜索算法</p>
-<p>广度优先搜索和深度优先搜索是两种常用的盲目搜索算法，这种搜索算法只根据问题的规模，按照广度优先和深度优先的原则搜索解空间内的每一个状态。广度优先算法因为需要额外的存储空间，因此在设计算法时要考虑此额外空间的规模。深度优先算法在搜索过程中容易陷入状态循环，导致在一个没有解的子树上“死循环”，一般需要做状态循环的判断和避免。但总的来说，两种策略并无优劣之分，很多情况下可以互换使用。</p>
-<p>2.启发式搜索算法</p>
-<p>很多情况下，当问题的规模达到一定的程度，盲目搜索算法就会因为低效而被排斥，理论上可以得到答案，但是要等一万年，这是人类不能接受的结果。如果搜索能够智能化一点，利用搜索过程中出现的额外信息直接跳过一些状态，避免盲目的、机械式的搜索，就可以加快搜索算法的收敛，这就是启发性搜索。启发性搜索需要一些额外信息和操作来“启发”搜索算法，根据这些信息的不同，启发方式也不同。如果知道解空间的状态分布呈现正太分布的特征，则可以从分布中间值开始向两边搜索，因为在中间值附近出现最优解的概率更高，这就是启发式搜索。如果能有一个状态评估函数，可以对每个状态节点能演化出解的可能性评估，搜索过程中根据这种可能性对待搜索的状态节点排序，也是一种启发式搜索。再简单一点，如果在某一个层面的搜索能应用贪婪策略，优先选择与贪婪策略符合的状态节点进行搜索，也是一种启发式搜索。</p>
-<p>3.剪枝策略</p>
-<p>对解空间穷举搜索时，如果有一些状态节点可以根据问题提供的信息明确地被判定为不可能演化出最优解，从此节点开始遍历得到的子树，可能存在正确的解，但是肯定不是最优解，就可以跳过此状态节点的遍历，这将极大地提高算法的执行效率。这就是剪枝策略。应用剪枝策略的难点在于如何找到一个评价方法（估值函数）对状态节点进行评估。特定的评价方法都附着在特定的搜索算法中，比如博弈树算法中常用的极大极小值算法和“a-b”算法，都伴随着相应的剪枝算法。除了针对特定问题类型的剪枝算法之外，没有可以一统天下的通用评价方法，通常需要根据实际问题小心地分析，确定评价方法。</p>
-<p>除了最优解问题，还有一种情况也会用到剪枝策略。对解空间内的状态节点遍历搜索的过程中，会有一些在特定搜索策略下重复出现的状态节点，对这些状态节点如果不做特殊处理，不仅会因为重复处理相同的状态节点而降低效率，还可能会导致深度优先搜索算法“陷入”到某个子树的搜索中无法退出。</p>
-<p>4.搜索算法的评估和收敛</p>
-<p>当规模大道一定程度时，使用穷举法就只具有理论上的可行性。对某些问题，穷举法是最后的办法，但是问题规模又大到无法对解空间进行完整的搜索，这时候就需要对搜索算法进行评估，并确定一些收敛原则。收敛原则就是只要能找到一个比较好的解就返回（不求最好），根据解的评估判断是否需要继续下一次搜索。大型棋类游戏通常面临这种问题，比如国际象棋和围棋的求解算法，想要搜索整个解空间得到最优解目前是不可能的，所以此类搜索算法通常都通过一个搜索深度参数来控制搜索算法的收敛，当搜索到指定的深度时就返回当前已经找到的最好的结果，这种退而求其次的策略也是不得已而为之。</p>
+           《算法设计》一书的作者将算法设计定义为一个这样的设计过程：从广泛的计算机应用中提出问题开始，建立在对算法设计技术理解的基础上，并最终发展成对这些问题的有效解决。从这个意义上理解，算法确实是一次智力活
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/18/常用算法思想/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -921,11 +850,14 @@
       
         
           
-            <p>因为JS是单线程的，所以如果让程序挂起一段时间的话，只能让其在一段时间内执行一段无效的代码，这时候只能靠循环来拖长时间了，让其在一段时间内一直执行的逻辑是，方法执行时保存开始时间，然后在循环判断中比较【当前时间】与【开始时间+挂起时间和】的大小，如果【当前时间】小于【开始时间+挂起时间和】，则执行循环，否则就退出循环。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function sleep(time) &#123;</div><div class="line">    var startTime = new Date().getTime();</div><div class="line">    while(new Date().getTime() &lt; (startTime + time));</div><div class="line">&#125;</div><div class="line">console.time(&apos;sleep&apos;);</div><div class="line">sleep(3000);</div><div class="line">console.timeEnd(&apos;sleep&apos;);</div></pre></td></tr></table></figure>
-<p>控制台：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sleep: 2999.857ms</div></pre></td></tr></table></figure></p>
+          因为JS是单线程的，所以如果让程序挂起一段时间的话，只能让其在一段时间内执行一段无效的代码，这时候只能靠循环来拖长时间了，让其在一段时间内一直执行的逻辑是，方法执行时保存开始时间，然后在循环判断中比较
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/17/Sleep方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1043,12 +975,14 @@
       
         
           
-            <p>最近公司进行融合，组织架构动荡，做得事情突然失去了明确的方向，让我对自己的出路又进行了思考。作为一个技术人员，未混到管理者岗位，我就是想把一件事做好而已。在最近的动荡中，我感觉自己其实就是一颗棋子而已，但话又说回来，谁又不是棋子呢？</p>
-<p>在任何一个公司，实现了个人价值，也就实现了公司的价值，这两者是相辅相成的。我是这样考虑的，做两手准备，一边在公司把工作做好，一边把自己想学习想看的书都消化完，变成自己的东西。</p>
-<p>未来的事，边走边看，我能够把握的只是自己而已。很多时候，我们必须对自己狠一点，逼迫一点，才能从舒适区跳出来。</p>
-<p>一切，都先干着再说吧。。。</p>
+          最近公司进行融合，组织架构动荡，做得事情突然失去了明确的方向，让我对自己的出路又进行了思考。作为一个技术人员，未混到管理者岗位，我就是想把一件事做好而已。在最近的动荡中，我感觉自己其实就是一颗棋子而已
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/14/先干着再说/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1166,11 +1100,14 @@
       
         
           
-            <p>在我们的开发过程中，有时候需要遍历同类型的DOM节点然后进行处理，我们知道DOM节点继承于Node，所以其接口方法都是Node的，对于这种类似数组的结构，我们没有办法直接使用Array的方法来处理NodeList，因为它本身不是数组，但是我们有办法将其转化成数组，下面展示NodeList的遍历和转化为数组后的遍历</p>
-<h3 id="NodeList"><a href="#NodeList" class="headerlink" title="NodeList"></a>NodeList</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt; </div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;NodeList to Array&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;!-- div NodeList --&gt;</div><div class="line">&lt;div id=&quot;1&quot; data-value=&quot;1&quot;&gt;1&lt;/div&gt;</div><div class="line">&lt;div id=&quot;2&quot; data-value=&quot;2&quot;&gt;2&lt;/div&gt;</div><div class="line">&lt;div id=&quot;3&quot; data-value=&quot;3&quot;&gt;3&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    // 返回 NodeList</div><div class="line">    var div_list = document.querySelectorAll(&apos;div&apos;);</div><div class="line"></div><div class="line">    // 动态创建一个div</div><div class="line">    var div4 = document.createElement(&apos;div&apos;);</div><div class="line">    div4.setAttribute(&apos;id&apos;, 4);</div><div class="line">    div4.setAttribute(&apos;data-value&apos;, 4);</div><div class="line"></div><div class="line"></div><div class="line">    // 1. 将 NodeList 转换为数组</div><div class="line">    var div_array = Array.prototype.slice.call(div_list);</div><div class="line">    // 增加一个Element</div><div class="line">    div_array.push(div4);</div><div class="line">    // 遍历div_array</div><div class="line">    div_array.forEach(function(current)&#123;</div><div class="line">        console.log(&apos;Array.prototype.slice.call: &apos; + current)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    // 2. 将 NodeList 转换为数组</div><div class="line">    var dArray = Array.from(div_list);</div><div class="line">    // 增加一个Element</div><div class="line">    dArray.push(div4);</div><div class="line">    // 遍历dArray</div><div class="line">    dArray.forEach(function(c)&#123;</div><div class="line">        console.log(&apos;Array.from: &apos; + c.getAttribute(&quot;data-value&quot;))</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    // 3. 将 NodeList 转换为数组</div><div class="line">    var array = [...div_list];</div><div class="line">    // 增加一个Element</div><div class="line">    array.push(div4);</div><div class="line">    // 遍历array</div><div class="line">    array.forEach(function(c)&#123;</div><div class="line">        console.log(&apos;[...]: &apos; + c)</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">    // 4. 对Node本身,可使用for/for..of/forEach遍历</div><div class="line">    for (var i = 0, len = div_list.length; i &lt; len; i++) &#123;</div><div class="line">        console.log(&apos;for: &apos; + div_list[i].getAttribute(&quot;data-value&quot;))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    for (var item of div_list) &#123;</div><div class="line">        console.log(&apos;for...of: &apos; + item.id);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //会报错的</div><div class="line"></div><div class="line">    // div_list.push(&apos;&lt;div&gt;4&lt;/div&gt;&apos;);</div><div class="line"></div><div class="line">    div_list.forEach(function(c) &#123;</div><div class="line">        console.log(&apos;forEach: &apos; + c);</div><div class="line">    &#125;)</div><div class="line"></div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<p><strong>运行结果</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">(4次)Array.prototype.slice.call: [object HTMLDivElement]</div><div class="line">Array.from: 1</div><div class="line">Array.from: 2</div><div class="line">Array.from: 3</div><div class="line">Array.from: 4</div><div class="line">(4次)[...]: [object HTMLDivElement]</div><div class="line">for: 1</div><div class="line">for: 2</div><div class="line">for: 3</div><div class="line">for...of: 1</div><div class="line">for...of: 2</div><div class="line">for...of: 3</div><div class="line">(3次)forEach: [object HTMLDivElement]</div></pre></td></tr></table></figure></p>
+          在我们的开发过程中，有时候需要遍历同类型的DOM节点然后进行处理，我们知道DOM节点继承于Node，所以其接口方法都是Node的，对于这种类似数组的结构，我们没有办法直接使用Array的方法来处理No
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/13/将NodeList转化为Node数组/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1269,8 +1206,14 @@
       
         
           
-            
           
+          
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/13/位移运算/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1388,64 +1331,14 @@
       
         
           
-            <h1 id="算法设计的基础"><a href="#算法设计的基础" class="headerlink" title="算法设计的基础"></a>算法设计的基础</h1><p>   编写程序开发软件是冒险者的游戏，需要胆大心细，设计一个解决实际问题的算法尤其如此。显示问题复杂多样，对应的算法也是复杂多样，形态各异，但是这些算法都遵循一些特定的方法和模式。就算法模式而言，处理各种求最优解问题时，人们常用贪婪法、动态规划法等算法模式；处理迷宫类问题时，穷尽式的枚举和回溯是常用的模式。就算法的实现方法而言，如果算法需要频繁地查表操作，那么数据结构的设计通常会选择有序表来实现；反过来，当设计的算法用到了树和图这样的数据结构时，含有递归结构的方法就常常伴随它们左右。</p>
-<p>   算法设计是个复杂的内容，单就这个话题就可以写一本书了。</p>
-<h2 id="程序的基本结构"><a href="#程序的基本结构" class="headerlink" title="程序的基本结构"></a>程序的基本结构</h2><p>   从大的方面来考量算法问题，相对于并行算法，本书介绍的都是串行算法的设计方法。按照冯 诺依曼计算机体系的设计，计算机的CPU每次只能串行执行一条指令，即使那些号称支持多线程的操作系统，其实际效果也是“宏观上并行、微观上串行”。顺序执行、循环和分支跳转是程序设计的三大基本结构，算法也是程序，千姿百态的算法也是由这三大基础结构构成的。</p>
-<h3 id="顺序执行"><a href="#顺序执行" class="headerlink" title="顺序执行"></a>顺序执行</h3><p>   顺序执行是算法的基础结构，循环结构的每个循环体内也是顺序执行的，分支和跳转的每个分支内也是顺序执行的。假如算法中某个操作需要几个步骤完成，每个步骤都依赖于前一个步骤，将前一个步骤的输出作为下一个步骤的输入，中间不能打断和调整顺序，这样的结构就是算法的顺序执行结构</p>
-<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>   循环结构也是算法中一种很重要的控制流程，循环被定义为在算法中只出现一次但是却有可能被执行多次的一段逻辑体。从实际应用角度看，稍微复杂一点的算法都会用到循环结构。循环结构一般由三部分组成：循环初始化、循环体和循环条件（退出条件）。</p>
-<h3 id="分支和跳转结构"><a href="#分支和跳转结构" class="headerlink" title="分支和跳转结构"></a>分支和跳转结构</h3><p>   顺序结构可以解决计算、输入和输出等问题，但是不能作判断和选择。分支和跳转结构在程序中扮演着重要的角色，正是由于有了分支和跳转，程序才能产生多种多样的结果。</p>
-<h2 id="算法实现与数据结构"><a href="#算法实现与数据结构" class="headerlink" title="算法实现与数据结构"></a>算法实现与数据结构</h2><p>   计算机体系中的数据，是指能被计算机识别和处理的各种符号的总称。人类所能识别的各种数据，比如文字、语言和图像，在计算机内都是以二进制形式存在的，但是这些二进制数据之间存在着各种组织关系。我们通常说的数据结构，其实包含了两层意思，一是指相互之间存在某种特定关系的数据的集合，二是指数据之间的相互关系，也就是数据的逻辑结构。因此，当我们说定义数据结构时，除了定义数据之间的相互关系，还包括根据这些关系组织在一起的数据。在建立数据模型的阶段，我们说的数据结构更偏重于定义数据之间的相互关系，设计具体的算法步骤时，考虑的是如何对构建在这些数据关系之上的实际数据进行加工和处理。</p>
-<h3 id="基本数据结构在算法设计中的应用"><a href="#基本数据结构在算法设计中的应用" class="headerlink" title="基本数据结构在算法设计中的应用"></a>基本数据结构在算法设计中的应用</h3><p>线性表是数据结构中最简单的基本数据结构。线性表的使用和维护都很简单。数组、链表、栈和队列是四种最常见的线性表，其外部行为和接口都各有特色。</p>
-<p>1.数组</p>
-<p>   数组是一种相对比较简单的数据组织关系，所有数据元素存储在一片连续的区域内。对数组的访问方式一般是通过下标直接访问数组元素，除此之外，对数组的基本操作还有插入、删除和查找。数组元素的直接访问几乎没有开销，但是插入和删除操作需要移动数组元素，开销比较大，因此在插入和删除操作比较频繁的场合下，不适合数组。在数组中查找一个元素的时间复杂度是O(n)，如果数组元素是有序存储的，则使用二分查找可以将时间复杂度将为O(lgn).</p>
-<p>   在数组中存储的数组元素，除了数组元素的值需要关注之外，数组元素的下标也是一个很有用的属性，有时候可以巧妙地利用下标简化一些算法的实现方式。例如，有若干个数存放在value数组中，这些数的取值范围是[1-100]，请设计一个算法统计一下这些数中相同的数出现的次数。经分析发现，虽然value中数字的个数很多，但是范围并不大，可以设计一个有100个元素的数组，数组元素的下标对应数字，数组元素的值就是对应数字出现的次数，只需如下两行代码即可完成统计工作：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for (int i = 0; i &lt; count; i++ )&#123;</div><div class="line">numCount[values[i] - 1]++;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>   虽然对于那些没有出现过得数字也需要占用numCountp[]数组的一个位置，但是这点空间上的开销是可以接受的。</p>
-<p>2.链表</p>
-<p>   在线性表的长度不能确定的场合，一般会采用链表的形式。链表结构的每个节点数据都由两个域组成，一个是存放实际数据元素的数据域，另一个是构成链式结构的指针域。对于单向链表，指针域只有一个后向指针，对于双向链表，指针域由一个后向指针和一个前向指针组成。链表的插入和删除只需要修改指针域的指针指向即可完成，比数组的插入和删除操作效率高，但是访问数据元素的效率比较低，需要从链表头部向后（向前）搜索，查找操作的时间复杂度是O(n)。理论上链表的长度是不受限制的，实际使用链表时，常受存储器空间的限制，使得链表长度也不能无限增长，但是链表长度可动态变化这一点，比数组具有很大的优势。</p>
-<p>   单向链表只能在一个方向上遍历链表节点，从一个节点开始遍历到链表的尾部节点就停止。双向链表可以从两个方向遍历链表节点，从一个节点开始，向前遍历到链表头部节点停止，向后遍历到链表尾部节点停止。在某些应用场合，还可以将链表尾部节点的后向指针指向链表头部节点（对于双向链表，其头部节点的前向指针同时指向链表的尾部节点），构成一个环形链表。环形链表中头部节点和尾部节点的概念已经弱化，从任何一个节点开始都可以遍历整个链表。</p>
-<p>   链表的头节点作为整个链表遍历的起点，是一个比较特殊的节点，需要特殊处理，尤其是在插入和删除节点的时候。如果节点插入在头节点之前，或者删除的节点就是头节点，就需要调整链表头节点的指针，否则的话，仍用原来保存的头节点访问链表，就可能跳过新插入的节点，或者操作已经失效的指针。为了解决这个问题，人们设计了一种在链表中使用固定头节点的方法，这个固定的头节点称为“表头节点”。也被称为“哑节点”。表头节点可以是一个没有数据域、只有指针域的特殊节点，也可以是和其他节点类型一样的节点（数据域不使用），更多的情况是在表头节点的数据域中放置一些与链表有关的状态信息，比如当前链表中的数据元素节点个数。表头节点的指针域始终指向第一个实际链表节点，如果表头节点的指针域是NULL，则表示这个链表是空表。使用表头结点的好处有两个，一个好处是无论链表是否为空表，可以用一致的方法处理空链表和非空链表；另一个好处是对链表进行插入、删除和遍历操作时，不需要对数据元素的首节点和中间节点做差异处理，对每个节点的操作可以做到一致性。</p>
-<p>   除了查找和访问的效率没有数组高之外，链表的每个节点都要额外存储一个指针域，因此需要一定的存储开销。对于一些插入和删除操作比较少，查找、遍历操作比较多的场合，应该优先选择使用可变长数组代替链表。</p>
-<p>3.栈</p>
-<p>   栈是一种特殊的线性表，其特殊性在于只能在表的一端插入和删除数组元素，插入和删除动作分别称为“入栈”和“出栈”。严格来说，栈不是一种数据存储方式，二是一种逻辑管理方式，它遵循“后进先出”的原则管理和维护表中的数据。栈的数据存储方式可以采用数组。栈的数据存储方式可以采用数组，也可以使用链表，分别被称为“顺序栈”和“链式栈”，但是无论采用何种存储方式，其外部行为都是一样的，即只能通过“出栈”和“入栈”的方式在数据表的一端操作数据。</p>
-<p>   栈是一种非常有用的数据结构，利用栈的一些特性，可以将某算法的递归实现转成非递归实现，在使用穷尽搜索方法时，也会使用栈保存当前的状态，有时候，广度优先搜索和深度优先搜索的差异仅仅是使用栈还是使用队列。</p>
-<p>4.队列</p>
-<p>   队列也是一种特殊的线性表，普通的队列只能在表的一端插入数据，在另一端删除数据，不能再队列的其他位置插入和删除数据。插入和删除动作分别被称为“入队”和“出队”，能执行“入队”的一端称为“后端”(rear)，能执行出队的一端称为“前端”（front）。与栈一样，队列也不是一种数据存储方式，二是一种逻辑管理方式，它遵循“先进先出”的原则管理和维护表中的数据。队列的数据存储方式可以采用数组，也可以使用链表。</p>
-<p>   队列有多种使用形式，比如环形队列（循环队列），还有可以在队列的两端都执行“入队”和“出队”操作的双端队列，还有给每个数据元素打上优先级标签的优先级队列等。<br>   队列在算法中的应用非常广泛，比如图的广度优先搜索算法，就使用一个队列存放与当前搜索节点有相连的所有邻接点，以先进先出的原则一个一个地处理队列中的节点。操作系统中的线程调度算法，常使用带优先级的队列管理就绪线程列表，高优先级的线程插入在队列的前端，获得优先调度（出队）的机会。队列也是不同速率的IO设备之间缓冲区管理的常用方式，比如打印机打印速度比较慢，操作系统会为每个打印机维护一个打印队列，对不同进程提交的打印操作做入队管理，可以避免因一个大文件打印时间过程造成其他进程无法提交打印操作的问题。网络设备中也普遍使用队列来管理数据报文的发送和接收，以匹配不同速率的设备之间的数据传输。</p>
-<h3 id="复杂数据结构在算法设计中的应用"><a href="#复杂数据结构在算法设计中的应用" class="headerlink" title="复杂数据结构在算法设计中的应用"></a>复杂数据结构在算法设计中的应用</h3><p>   上一节讨论的基本数据结构都属于线性表范围，表中的数据元素之间没有关系，只是通过不同的组织和管理方式将每个数据元素维护在一个线性表中。本节将介绍的这些数据结构不是简单的线性表，并且每个数据元素之间也可能存在关系，比如树的节点之间存在父子关系，图的节点之间存在邻接关系，等。之所以被称为“复杂数据结构”，是因为相关的插入、删除操作不仅对数据元素进行操作，还要同事维护数据元素之间的关系。</p>
-<p>1.树</p>
-<p>   树是一种表达数据之间层次关系的数据结构，树中的每个节点有0个或者多个子节点，但是只有一个父节点，一棵树只有一个根节点。树结构的相对概念如下。</p>
-<p>   树的度： 一个节点含有子树的个数称为该节点的度，一棵树中最大节点的度称为整棵树的度。</p>
-<p>   叶节点： 度为0的节点称为叶节点。</p>
-<p>   根节点： 没有父节点的节点就是根节点。</p>
-<p>   树的高度： 从根节点开始，每多一级子节点，树的层次就+1，一棵树的最大层次数就是树的高度。</p>
-<p>   兄弟节点： 具有相同父节点的子节点互相称为兄弟节点。</p>
-<p>   树适合用来表达有层次关系的数据，比如一个公司的分支结构、计算机上的目录和文件结构，等等。如果树的子节点之间有大小关系，则这样的树就称为有序树。树通常也被认为是图的一种形式，是一种没有环路的图，比如自由树可被视为一个连通的、无环路的无向图。根据每个节点的子节点的数量，又可以将树分为二叉树和多叉树，B树就是一种典型的多叉树。</p>
-<p>   有序的二叉树也被称为二叉查找树(binary search tree)或者二叉排序树(binary sort tree)。相对于普通的二叉树，二叉查找树有以下两个特点：<br>   如果左子树不为空，则左子树上所有节点的值都小于根节点的值<br>   如果右子树不为空，则右子树上所有节点的值</p>
-<p>   二叉查找树的特点是所有新插入的节点都是叶子节点，已经存在的节点的位置比较固定。二叉查找树查找操作的时间复杂度是O(lgn)，虽然线性有序表的查找操作时间复杂度也是O(lgn)（折半查找），但是线性有序表不能表达数据元素之间的关系。简单二叉查找树的插入操作都发生在叶节点，如果构造二叉查找树时依次插入的节点已经是有序的，则二叉树会退化为链表形状的单支树，在这种情况下，查找效率就会下降，查找操作的时间复杂度变成O(n)。为了优化查找效率，就需要二叉查找树能够具有自平衡功能，保证二叉树始终是一棵平衡树。AVL树和红黑树就是这样的自平衡二叉查找树，二者的区别在于维持树的自平衡的方法不一样。在算法设计时，只要有条件就应该优先使用AVL树和红黑树，避免简单二叉查找树可能存在的性能问题。</p>
-<p>   二叉查找树在算法中的应用也很广泛，比如决策问题可以使用二叉查找树构造决策树，一些统计问题也可以使用二叉查找树的形式组织各种信息数据节点，其他的问题如果能将最终的结果转化成取舍问题，也可以使用二叉查找树。</p>
-<p>   多叉树的典型例子就是B树和各种B树的变形树，B树是一种自平衡多叉查找树，对于一棵M阶B树来说，其每个非终端节点至少有[M/2]个子树，但是最多有M个子树，根节点如果不是终端节点，则至少有2个子树。每个节点有N个关键字，所有的终端节点都在统一的层次上，但是不带任何关键字信息。B+树是B树的一种变性，它与B树的差别在于对终端节点的处理，B+树的所有终端节点包含了全部关键字信息，同时还有指向这些关键字所在节点的指针，并且终端节点按照关键字的大小排序，形成一个有序链接，因此对B+树进行查找，可以从最小关键字开始顺序查找（遍历所有的终端节点），也可以从根节点开始遍历。B树常用于文件管理系统和数据库系统，在算法设计师，如果遇到多路分支且有序的层次结构时，就可以考虑使用B树。</p>
-<p>   区间树是一种以区间为数据元素的红黑树，区间树的每个节点都表示一个区间，其关键字是区间的左端点，区间树支持所有的二叉查找树的基本操作，而且区间元素的插入和查找操作都可以在O（lgn）的时间内完成。区间树的查找不是精确查找，但是可以确定区间树上是否存在能完整覆盖给定的被查找区间的节点（区间）。区间树还支持获取某个子树的最大右端点的值的操作，这个操作的意义在于当查找一个区间时，如果左子树的最大右端点的值小于当前查找区间的左端点的值，就说明左子树与当前查找的区间不存在重叠，需要转到右子树继续查找。区间树常用语区间查询相关的问题，比如判断区间之间是否存在重叠区域的呢过问题。</p>
-<p>   线段树也是一种 以区间为数据元素的二叉查找树，和区间树不同的是，线段树上的每个非叶子节点表示的区间范围是其子节点的区间范围之和。如果线段树中一个非叶子节点表示的区间是[a,b],则它的左子树表示的区间就是[a,(a+b)/2],右子树表示的区间就是[(a+b)/2,b]，由此可知，线段树是一棵平衡二叉树，一棵表示长度范围为[1,L]的线段树的高度是lg(L)+1。叶子节点表示不可再分的最小区间范围，如果将一个大区间分成n个小区间，则对应的线段树将有n个叶子节点，n个叶子节点的小区间共同组成整个大区间。和区间树一样，线段树也可以用来做区间重叠性判断，除此之外，线段树在统计学相关的问题中应用也很广泛。比如一些统计信息，既需要查询在一个大的区间上的统计值，也需要查询在这个大范围中的某个小范围的统计值，就可以应用线段树。举个例子，假如某杂志需要统计各个年龄段读者的比例，可以将统计的读者数量信息按照年龄区间组织成一颗线段树，如果一个节点左边子节点是年龄在20-30岁之间的读者数量，右边子节点是年龄在30-40之间的读者数量，则这个节点表示的就是年龄在20-40岁之间啊的读者数量。</p>
-<p>   堆也是一种完全树，除了树的特征之外，堆的父节点和子节点还存在一些特殊关系。最大堆的每个节点的值都大于其子树上所有节点的值，最小堆的每个节点的值都小于其子树上所有节点的值。堆的插入和删除操作除了维持堆的完全树特征之外，还要维持节点之间的这个特殊关系，通常可以利用这一点实现一些特殊的功能，比如堆排序，就是利用堆的这个特殊性质，再比如经典的“求n个数中最大（或最小）的m个数的问题”，就是通过维护一个有m个节点的最大堆（或最小堆）来实现的。</p>
-<p>   解决一些与字符串相关的问题时，还会用到字典树，比如典型的前缀树和后缀树。字典树以树的形式保存大量字符串（前缀或后缀），常被各种文本搜索算法用于文字和词频的统计。字典树的优点是利用字符串的公共前缀或后缀节约存储空间，查找过程中能减少无谓的完整字符串匹配，便于字符串的统计和查找。</p>
-<p>2.集合</p>
-<p>   简单来说，集合（set）是具有某种特性的事务的整体，构成集合的事物或对象称作集合的元素或成员。<br>      无序性： 一个集合中每个元素的地位都是相同的，元素之间不存在有序关系，也没有类似树和图那样的复杂关系。<br>      互异性： 一个集合中每个元素只能出现一次，也就是说，集合内没有重复的元素。<br>      确定性： 集合的定义是确定的，根据这个定义可以明确判断一个对象是否属于这个集合，不存在模棱两可的情况。</p>
-<p>   集合的主要操作包括两部分，一部分是对集合元素的操作，包括插入和删除集合元素、判断一个元素是否属于集合等；另一部分是集合之间的关系运算，包括集合的求交集、并集运算以及求差运算等。</p>
-<p>3.哈希表与映射</p>
-<p>   哈希表与映射都是通过关键字(key)直接访问数据元素的值（value）的数据结构，二者的外部接口是一样的，但是不同的平台上对内部实现稍有差异。</p>
-<p>   哈希表的原理是通过一个哈希函数对关键字进行某种运算，得到对应的数据元素在表中的存储位置，然后访问其值，与普通的有序表查找相比，额外的哈希处理会造成数据访问的开销，但是哈希表的查找时间是固定的，不随哈希表中数据元素的增多而变化。普通有序表的查找时间复杂度是O（lg(n)），随着n的增大，查时间也变长，当数据元素非常多的时候，哈希表的查找速度会比普通有序表快，这就是哈希表的优势。</p>
-<p>   现实生活中有很多采用“key-value”方式组织和存储数据的情况，学生成绩管理系统会通过一个唯一分配的学号建立与具体学生信息的映射关系，可以通过学号查询和管理学生信息，这个学号就是key.</p>
-<p>4.图</p>
-<p>   图是一种特殊的数据组织方式，它不仅可以存储数据元素（对象），还可以存储数据元素之间的复杂关系。从直观上看，图由一些顶点和连接这些顶点的边组成，顶点描述数据元素，边描述数据元素之间的关系。图由很多种分类方式，根据边是否有方向，可将图分为有向图和无向图；根据任意两个顶点之间的边的个数，可将图分为简单图和多重图；根据任意两个顶点之间的连通性，可将图分为连通图和非连通图。根据边的地位平等性，用何种方法对图分类，定义图的方式基本上只有两种：二元组定义和三元组定义。对于图G，如果V(G)表示顶点集，E(G)表示边集，则（V,E）即为图的二元组定义。如果存在关联函数I将E(G)中的每一条边映射到V(G)中的两个顶点，即I(e)=(u,v),其中u,v属于V(G)，且是e的两个顶点，则将（V,E,I）称为图的三元组定义。</p>
-<p>   图的存储常用邻接矩阵（二维数组方式）和邻接表（链表或可变长数组）方式，对于有向图，有时候也采用十字链表方式。图的遍历是一个非常重要的操作，一般可采用深度优先搜索和广度优先搜索两种策略。深度优先搜索策略可以理解为树的中序遍历的推广，深度优先搜索的过程是：从图G的某个顶点v出发，先访问v，然后选择一个与v相邻且没有被访问过的顶点vi访问，再从vi出发选择一个与vi相邻且未被访问的顶点vj进行访问，依次遍历。如果当前被访问过的顶点的所有邻接顶点都已被访问，则退回到已被访问的顶点的相邻顶点的顶点vk，从vk出发按同样的方法向前遍历，直到图中的所有顶点都被访问过。</p>
-<p>   广度优先搜索的过程是：首先访问初始点v，接着依次访问v的所有未被访问过的邻接点v1,v2,v3….,vi,然后再按照v1,v2,….vi的次序，依次访问这些节点的邻接点（未被访问过的邻接点），依次遍历，直到图中所有和初始点vi相邻的顶点都被访问过为止。为了保证v的所有邻接点被按照顺序依次处理，就需要使用队列来管理这些邻接点。</p>
-<p>   显示生活中很多地方都用到了使用图的算法，比如你在地图软件中选择两个点，软件会给出连接这两个点之间的最佳路线，这就要用到图的连通性判断和最短路径搜索算法。当有多条路径可以连接两个点的时候，软件还可以根据不同道路的实时交通拥堵情况，选择最快捷的道路，其实也就是为每条道路设置不同的权重，然后进行带权图的最优路径搜索。交通规划常常需要用最小的成本将不同城市连接起来，保证每个城市之间都可以到达，就需要最小生成树算法。网络设备之间为了避免出现环路，也需要运行一个最小生成树协议，也是图的应用。</p>
-<h2 id="数据结构和数学模型与算法的关系"><a href="#数据结构和数学模型与算法的关系" class="headerlink" title="数据结构和数学模型与算法的关系"></a>数据结构和数学模型与算法的关系</h2><p>   建立问题的数学模型实际上是对问题的一种抽象的表达，通常也需要伴随着一些合理的假设，其目的就是对问题进行简化，抓住主要因素，舍弃次要因素，逐步用更精确的语言描述问题，最终过度到用计算机语言能够描述问题为止。让我们来看两个例子。</p>
-<p>   一个工程项目经过层层结构分解最终得到一系列具体的活动，这些活动之间往往存在复杂的依赖关系，如何安排这些活动的开始顺序，使得项目能够顺利完成是个艰巨的任务。但是如果能把这个问题转化成有向图，图的顶点就是活动，顶点之间的有向边代表活动之间的前后关系，则只需要使用简单的有向图拓扑排序算法就可以解决这个问题。一个工程分解出这么多的活动，每个活动的时间都不一样，如何确定工程的最短完工时间？工程的最短完工时间取决于这些活动中时间最长到额那条关键活动路径，从成百上千个活动中找出关键路径看似是个无法入手的问题，但是如果将问题转化为有向图，顶点代表事件，边代表活动，边的权代表活动时间，则可以利用有向图的关键路径算法解决问题。</p>
-<p>   用三个容器分别为3升、8升和5升的水桶如何获得4升水的问题，是一个经典的智力游戏。如果让计算机像人一样思考并解决这个问题有点困难，但是如果转换思维，将三个水桶中当前的水量定义为一个状态，将倒水定义为一个驱动状态转换的动作，则这个问题就转换为水桶状态的穷举搜索问题。在解空间中用穷举的方法遍历所有可能的解，并找到最终合法的解释解决最优解问题的常用数学模型，只要想到了这个数学模型，这个问题就迎刃而解了。</p>
-<p>文章来源：《算法的乐趣》一书</p>
+          算法设计的基础   编写程序开发软件是冒险者的游戏，需要胆大心细，设计一个解决实际问题的算法尤其如此。显示问题复杂多样，对应的算法也是复杂多样，形态各异，但是这些算法都遵循一些特定的方法和模式。就算法
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/11/算法设计基础/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1563,88 +1456,16 @@
       
         
           
-            <p>Web缓存是可以自动保存常见文档副本的HTTP设备。当Web请求抵达缓存时，如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。使用缓存有下列优点。</p>
-<ul>
-<li>缓存减少了冗余的数据传输，节省了你的网络费用。</li>
-<li>缓存缓解了网络瓶颈的问题，不需要更多的带宽就能够更快地加载页面。</li>
-<li>缓存降低了对原始服务器的要求，服务器可以更快地响应，避免过载的出现。</li>
-<li>缓存降低了距离时延，因为从较远的地方加载页面会更慢一些。</li>
-</ul>
-<h2 id="命中和未命中的"><a href="#命中和未命中的" class="headerlink" title="命中和未命中的"></a>命中和未命中的</h2><h3 id="再验证"><a href="#再验证" class="headerlink" title="再验证"></a>再验证</h3><p>原始服务器的内容可能会发生变化，缓存要不时对其进行检测，看看它们保存的副本是否仍是服务器上最新的副本。这些“新鲜度检测”被称为HTTP再验证（revalidation）。为了有效地进行再验证，HTTP定义了一些特殊的请求，不用从服务器获取整个对象，就可以快速检测出内容是否是最新的。</p>
-<p>缓存可以在任意时刻，以任意的频率对副本进行再验证。但由于缓存中通常会包含数百万的文档，而且网络带宽是很珍贵的，所以大部分缓存只有在客户端发起请求，并且副本旧得足以需要检测的时候，才会对副本进行再验证。</p>
-<p>缓存对缓存的副本进行再验证时，会向原始服务器发送一个小的再验证请求。如果内容没有变化，服务器会以一个小的304 Not Modified进行响应。只要缓存知道副本仍然有效，就会再次将副本标识为暂时新鲜的，并将副本提供给客户端。这被称为再验证命中(revalidate hit)或缓慢命中(slow hit)。这种方式确实要与原始服务器进行核对，所以会比单纯的缓存命中要慢，但它没有从服务器中获取对象数据，所以要比缓存未命中快一些。</p>
-<p>HTTP为我们提供了几个用来对已缓存对象进行再验证的工具，但最常用的是If-Modified-Since首部。将这个首部添加到GET请求中去，就可以告诉服务器，只有在缓存了对象的副本之后，又对其进行了修改的情况下，才发送此对象。</p>
-<p>这里列出了在3种情况下（服务器内容未被修改，服务器内容已被修改，或者服务器上的对象被删除了）服务器收到GET If-Modified-Since请求时会发生的情况：</p>
-<ul>
-<li>再验证命中</li>
-</ul>
-<p>如果服务器对象未被修改，服务器会向客户端发送一个小的HTTP 304 Not Modified响应。</p>
-<ul>
-<li>再验证未命中</li>
-</ul>
-<p>如果服务器对象与已缓存副本不同，服务器向客户端发送一条普通的、带有完整内容的HTTP 200 OK响应</p>
-<ul>
-<li>对象被删除</li>
-</ul>
-<p>如果服务器对象已经被删除了，服务器就回送一个 404 Not Found响应，缓存也会将其副本删除。</p>
-<p>每个私有缓存都要获取同一份文档，这样它就会多次穿过网络<br>使用共享的公有缓存时，对于这个流行的对象，缓存只要取一次就行了，它会用共享的副本为所有的请求服务</p>
-<h3 id="缓存的处理步骤"><a href="#缓存的处理步骤" class="headerlink" title="缓存的处理步骤"></a>缓存的处理步骤</h3><ol>
-<li>接收——缓存从网络中读取抵达的请求报文</li>
-<li>解析——缓存对报文进行解析，提取出URL和各种首部</li>
-<li>查询——缓存查看是否有本地副本可用，如果没有，就获取一份副本（并将其保存在本地）</li>
-<li>新鲜度检测——缓存查看已缓存副本是否足够新鲜，如果不是，就询问服务器是否有任何更新</li>
-<li>创建响应——缓存会用新的首部和已缓存的主题来构建一条响应报文</li>
-<li>发送——缓存通过网络将响应发回给客户端</li>
-<li>日志——缓存可选地创建一个日志文件条目来描述这个事务</li>
-</ol>
-<h2 id="保持副本的新鲜"><a href="#保持副本的新鲜" class="headerlink" title="保持副本的新鲜"></a>保持副本的新鲜</h2><p>可能不是所有的已缓存副本都与服务器上的文档一致。毕竟，这些文档会随着时间发生变化。报告可能每个月都会变化。在线报纸每天都会发生变化。财经数据可能每过几秒钟就会发生变化。如果缓存提供的总是老的数据，就会变得毫无用处。已缓存数据要与服务器数据保持一致。</p>
-<p>HTTP有一些简单的机制可以在不要求服务器记住有哪些缓存拥有其文档副本的情况下，保持已缓存数据与服务器数据之间充分一致。HTTP将这些简单的机制称为文档过期和服务器再验证。</p>
-<h3 id="文档过期"><a href="#文档过期" class="headerlink" title="文档过期"></a>文档过期</h3><p>通过特殊的HTTP Cache-Control首部和Expires首部，HTTP让原始服务器向每个文档附加了一个“过期日期”。<br>在缓存文档过期之前，缓存可以以任意频率使用这些副本，而无需与服务器联系——当然，除非客户端请求中包含有阻止提供已缓存或未验证资源的首部。但一旦已缓存文档过期，缓存就必须与服务器进行核对，询问文档是否被修改过，如果被修改过，就要获取一份新鲜（带有新的过期日期）的副本。</p>
-<h3 id="过期日期和使用期"><a href="#过期日期和使用期" class="headerlink" title="过期日期和使用期"></a>过期日期和使用期</h3><p>服务器用Expires的首部或者Cache-Control:max-age响应首部来指定过期日期，同时还会带有响应主题。Expires首部和Cache-Control:max-age首部所做的事情本质上是一样的，但由于Cache-Control首部使用的是相对时间而不是绝对日期，所以我们更倾向于使用比较新的Cache-Control首部。绝对日期依赖于计算机时钟的正确设置。</p>
-<h3 id="服务器再验证"><a href="#服务器再验证" class="headerlink" title="服务器再验证"></a>服务器再验证</h3><p>仅仅是已缓存文档过期了并不意味着它和原始服务器上目前处于活跃状态的文档有实际的区别，这只是意味着到了要进行核对的时间了。这种情况被称为“服务器再验证”，说明缓存需要询问原始服务器文档是否发生了变化。<br>如果再验证显示内容发生了变化，缓存会获取一份新的文档副本，并将其存储在旧文档的位置上，然后将文档发送给客户端。<br>如果再验证显示内容没有发生变化，缓存只需要获取新的首部，包括一个新的过期日期，并对缓存中的首部进行更新就行了。</p>
-<p>缓存并不一定要为每条请求验证文档的有效性——只有在文档过期时它才需要与服务器进行再验证。这样不会提供陈旧的内容，还可以节省服务器的流量，并拥有更好的用户响应时间。</p>
-<p>HTTP协议要求行为正确的缓存返回下列内容之一：<br>“足够新鲜”的已缓存副本<br>与服务器进行再验证，确认其仍然新鲜的已缓存副本<br>如果需要与之进行再验证的原始服务器出故障了，就返回一条错误报文<br>附有警告新鲜说明内容可能不正确的已缓存副本</p>
-<h3 id="用条件方法进行再验证"><a href="#用条件方法进行再验证" class="headerlink" title="用条件方法进行再验证"></a>用条件方法进行再验证</h3><p>HTTP的条件方法可以高效地实现再验证。HTTP允许缓存向原始服务器发送一个“条件GET”，请求服务器只有在文档与缓存中现有的副本不同时，才回送对象主体。通过这种方式，将新鲜度检测和对象获取结合成了单个条件GET。向GET请求报文中添加一些特殊的条件首部，就可以发起条件GET。只有条件为真时，Web服务器才会返回对象。</p>
-<p>HTTP定义了5个条件请求首部。对缓存再验证来说最有用的2个首部是If-Modified-Since和If-None-Match.所有的条件首部都以前缀“If-”开头。</p>
-<p>If-Modified-Since:<date> 如果指定日期之后文档被修改过了，就执行请求的方法。可以与Last-Modified服务器响应首部配合使用，只有在内容被修改后与已缓存版本有所不同的时候采取获取内容。</date></p>
-<p>If-None-Match:<tags> 服务器可以为文档提供特殊的标签（参见ETag），而不是将其与最近修改日期相匹配，这些标签就像序列号一样。如果已缓存标签与服务器文档中的标签有所不同，If-None-Match首部就会执行所请求的方法。</tags></p>
-<h3 id="If-Modified-Since-Date再验证"><a href="#If-Modified-Since-Date再验证" class="headerlink" title="If-Modified-Since:Date再验证"></a>If-Modified-Since:Date再验证</h3><p>最常见的缓存再验证首部是If-Modified-Since。If-Modified-Since再验证请求通常被称为IMS请求。只有自某个日期之后资源发生了变化的时候，IMS请求才会指示服务器执行请求：如果自指定日期后，文档被修改了，If-Modified-Since条件就为真，通常GET就会成功执行。携带新首部的新文档会被返回给缓存，新首部除了其他信息之外，还包含了一个新的过期日期。如果自指定日期后，文档没被修改过，条件为假，会向客户端返回一个小的304 Not Modified响应报文，为了提高有效性，不会返回文档的主体。这些首部是放在响应中返回的，但只会返回那些需要在源端更新的首部。比如，Content-Type首部通常不会被修改，所以通常不需要发送。一般会发送一个新的过期日期。</p>
-<p>If-Modified-Since首部可以与Last-Modified服务器响应首部配合工作。原始服务器会将最后的修改日期附加到所提供的文档上去。当缓存要对已缓存文档进行再验证时，就会包含一个If-Modified-Since首部，其中携带有最后修改已缓存副本的日期：If-Modified-Since:<cached last-modified="" date=""><br>如果在此期间内容被修改了，最后的修改日期就会有所不同，原始服务器就会回送新的文档。否则，服务器会注意到缓存的最后修改日期与服务器文档当前的最后修改日期相符，会返回一个304 Not Modified响应。</cached></p>
-<h3 id="If-None-Match-实体标签再验证"><a href="#If-None-Match-实体标签再验证" class="headerlink" title="If-None-Match:实体标签再验证"></a>If-None-Match:实体标签再验证</h3><p>  有些情况下仅使用最后修改日期进行再验证是不够的。</p>
-<ul>
-<li><p>有些文档可能会被周期性地重写（比如，从一个后台进程中写入），但实际包含的数据常常是一样的。尽管内容没有变化，但修改日期会发生变化。</p>
-</li>
-<li><p>有些文档可能被修改了，但所做修改并不重要，不需要让世界范围内的缓存都重装数据（比如对拼写或注释的修改）</p>
-</li>
-<li>有些服务器无法准确地判定其页面的最后修改日期</li>
-<li>有些服务器提供的文档会在亚秒间隙发生变化（比如，实时监视器），对这些服务器来说，以一秒为粒度的修改日期可能就不够用了。</li>
-</ul>
-<p>为了解决这些问题，HTTP允许用户对被称为实体标签（ETag）的“版本标识符”进行比较。实体标签是附加到文档上的任意标签（引用字符串）。它们可能包含了文档的序列号或版本名，或者是文档内容的校验和及其他指纹信息。</p>
-<p>当发布者对文档进行修改时，可以修改文档的实体标签来说明这个新的版本。这样，如果实体标签被修改了，缓存就可以用If-None-Match条件首部来GET文档的新副本了。<br>比如：缓存中有一个实体标签为v2.6的文档。它会与原始服务器进行再验证，如果标签v2.6不再匹配，就会请求一个新对象。标签仍然与之匹配，会返回一条304 Not Modified响应。<br>如果服务器上的实体标签已经发生了变化（可能变成了v3.0）。服务器会在一个200 OK响应中返回新的内容以及相应的新ETag</p>
-<p>缓存分强弱缓存<br>ETag可以用前缀”W/“来标识弱验证器。</p>
-<p>原始服务器一定不能为两个不同的实体重用一个特定的强实体标签值，或者为两个语义不同的实体重用一个特定的弱实体标签值。缓存条目都可能会留存任意长的时间，与国企时间无关，有人可能希望当缓存验证条目时，绝对不会再次使用在过去某一时刻获得的验证器，这种愿望可能不太现实。</p>
-<p>什么时候应该使用实体标签和最近修改日期</p>
-<p>如果服务器回送了一个实体标签，HTTP/1.1客户端就必须使用实体标签验证器。如果服务器只回送了一个Last-Modified值，客户端就可以使用If-Modified-Since验证。如果实体标签和最后修改日期都提供了，客户端就应该使用这两种再验证方案，这样HTTP/1.0和HTTP/1.1缓存就都可以正确响应了。</p>
-<p>除非HTTP/1.1原始服务器无法生成实体标签验证器，否则就应该发送一个出去，如果使用弱实体标签有优势的话，发送的可能就是个弱实体标签，而不是强实体标签。而且，最好同时发送一个最近修改值。</p>
-<p>如果HTTP/1.1缓存或服务器收到的请求既带有If-Modified-Since，又带有实体标签条件首部，那么只有这两个条件都满足时，才能返回304 Not Modified响应。</p>
-<h2 id="控制缓存的能力"><a href="#控制缓存的能力" class="headerlink" title="控制缓存的能力"></a>控制缓存的能力</h2><p>服务器可以通过HTTP定义的几种方式来指定在文档过期之前可以将其缓存多长时间，按照优先级递减的顺序，服务器可以：<br>附加一个Cache-Control:no-store首部到响应中去<br>附加一个Cache-Contorl:no-cache首部到响应中去<br>must-revalidate<br>max-age<br>Expires日期<br>不附加过期信息，让缓存确定自己的过期日期</p>
-<h3 id="no-Store与no-Cache响应首部"><a href="#no-Store与no-Cache响应首部" class="headerlink" title="no-Store与no-Cache响应首部"></a>no-Store与no-Cache响应首部</h3><p>HTTP/1.1提供了几种限制对象缓存，或者限制提供已缓存对象的方式，以维持对象的新鲜度。no-store首部和no-cache首部可以防止缓存提供未经证实的已缓存对象；</p>
-<p>Pragma: no-cache<br>Cache-Control: no-store<br>Cache-Control: no-cache</p>
-<p>标识为no-store的响应会禁止缓存对响应进行复制。缓存通常会像非缓存代理服务器一样，向客户端转发一条no-store响应，然后删除对象。</p>
-<p>标识为no-cache的响应实际上是可以存储在本地缓存区中的。只是在与原始服务器进行新鲜度再验证之前，缓存不能将其提供给客户端使用。这个首部使用do-not-serve-from-cache-without-revalidation这个名字更恰当一些。</p>
-<p>HTTP/1.1提供Pragma: no-cache首部是为了兼容HTTP/1.0+。除了与只理解Pragma: no-cache的HTTP/1.0应用程序交互时，HTTP 1.1应用程序都应该使用Cache-Control: no-cache.</p>
-<h3 id="max-age响应首部"><a href="#max-age响应首部" class="headerlink" title="max-age响应首部"></a>max-age响应首部</h3><p>Cache-Control: max-age首部表示的是从服务器将文档传来之时起，可以认为此文档处于新鲜状态的秒数。还有一个s-maxage首部（注意maxage的中间没有连接线），其行为与max-age类似，但仅适用于共享（公有）缓存；</p>
-<p>Cache-Control: max-age=3600<br>Cache-Control:s-maxage=3600</p>
-<p>服务器可以请求缓存不要缓存文档，或者将最大使用期设置为0，从而在每次访问的时候进行刷新：<br>Cache-Control: max-age=0<br>Cache-Control:s-maxage=0</p>
-<h3 id="Expires响应首部"><a href="#Expires响应首部" class="headerlink" title="Expires响应首部"></a>Expires响应首部</h3><p>不推荐使用Expires首部，它指定的是实际的过期日期而不是描述。HTTP设计者后来认为，由于很多服务器的时钟都不同步，或者不正确，所以最好还是用剩余秒数，而不是绝对时间来表示过期时间。可以通过计算过期值和日期值之间的秒数差来计算类似的新鲜生存期：<br>Expires: Fri, 05 Jul 2002, 05:00:00 GMT<br>有些服务器还会回送一个Expires:0响应首部，试图将文档置于永远过期的状态，但这种语法是非法的，可能给某些软件带来问题。应该试着支持这种结构的输入，但不应该产生这种结构的输出。</p>
-<h3 id="must-revalidate响应首部"><a href="#must-revalidate响应首部" class="headerlink" title="must-revalidate响应首部"></a>must-revalidate响应首部</h3><p>可以配置缓存，使其提供一些陈旧（过期）的对象，以提供性能。如果原始服务器希望缓存严格遵守过期信息，可以在原始响应中附加一个Cache-Control:must-revalidation首部</p>
-<p>Cache-Control: must-revalidate</p>
-<p>Cache-Control: must-revalidate响应首部告诉缓存，在事先没有跟原服务器进行再验证的情况下，不能提供这个对象的陈旧副本。缓存仍然可以随意提供新鲜的副本。如果在缓存进行must-revalidate新鲜度检查时，原始服务器不可用，缓存就必须返回一条504 Gateway Timeout错误。</p>
-<p>注意事项</p>
-<p>文档过期系统并不是一个完美的系统。如果发布者不小心分配了一个很久之后地 过期日期，在文档过期之前，她要对文档做的任何修改都不一定能显示在所有缓存中。因此，很多发布者都不会使用很长的过期时间，而且，很多发布者甚至都不使用过期日期，这样缓存就很难确定文档会在多长时间内保持新鲜了。</p>
-<p><strong>内容来源：</strong>《HTTP权威指南》</p>
+          Web缓存是可以自动保存常见文档副本的HTTP设备。当Web请求抵达缓存时，如果本地有“已缓存的”副本，就可以从本地存储设备而不是原始服务器中提取这个文档。使用缓存有下列优点。
 
-          
+缓存减少了冗余的数据
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/08/HTTP缓存/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>

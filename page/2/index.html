@@ -349,64 +349,20 @@
       
         
           
-            <p>理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。</p>
-<ul>
-<li><p>理解资源请求时间的阶段</p>
-</li>
-<li><p>了解每个阶段提供了什么样的Resouce Timing API</p>
-</li>
-<li><p>在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。</p>
-</li>
-</ul>
-<p>所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network Panel界面使用对开发者来说，使用相同的可用的Resouce Timing API</p>
-<p>注意： 当使用Resouce Timing API处理跨域资源的时候，确保所有资源有CORS的header头。</p>
-<p>对于每一个独立的被接收的资源，Resouce Timing API 提供了一套丰富的API细节。这个请求的主要的生命周期阶段如下：</p>
-<ol>
-<li>重定向</li>
-<li>立即开始startTime</li>
-<li>如果重定向发生了，redirectStart就开始了</li>
-<li>如果重定向结束，redirectEnd就发生了</li>
-<li>App Cache</li>
-<li>如果application cache满足了请求，fetchStart就会发生</li>
-<li>DNS</li>
-<li>在DNS请求的开始，domainLookupStart触发</li>
-<li>在DNS请求结束时，domainLookupEnd触发</li>
-<li>TCP</li>
-<li>当初始化连接到服务器时，connectStart触发</li>
-<li>如果TLS或者SSL被用了，当安全握手开始的时候，secureConnectionStart触发</li>
-<li>当服务器连接完成时，connectEnd触发</li>
-<li>Request</li>
-<li>请求的资源一旦被发送到服务器，requestStart触发</li>
-<li>Response</li>
-<li>当服务器初始化响应请求的时候，responseStart触发</li>
-<li>当请求结束并且数据被接收到时，responseEnd触发</li>
-</ol>
-<h3 id="DevTools中查看"><a href="#DevTools中查看" class="headerlink" title="DevTools中查看"></a>DevTools中查看</h3><p>以下代码可以运行在console里查看<br>performance.getEntriesByType(‘resource’).filter(item =&gt; item.name.includes(“style.css”))</p>
-<img src="/2017/01/08/理解Resource-Timing/resource.png" alt="Resource Timing" title="Resource Timing">
-<h4 id="Queuing（队列）"><a href="#Queuing（队列）" class="headerlink" title="Queuing（队列）"></a>Queuing（队列）</h4><p>在队列中的请求意味着：<br>    这个请求被渲染引擎推迟了，因为它被考虑优先级低于一些关键资源（scripts/styles）.这个经常出现在images上面<br>    请求会被搁置，直到等到一个不可用的TCP socket连接被释放。<br>    因为浏览器在HTTP1协议上对于每个源来说，仅仅允许连接6个TCP，所以请求会被搁置<br>    时间被花在建立磁盘缓存上了（通常来说非常快）</p>
-<h4 id="Stalled-Blocking"><a href="#Stalled-Blocking" class="headerlink" title="Stalled/Blocking"></a>Stalled/Blocking</h4><p>在请求被发送前的等待时间。这个时间是等待任何描述Queuing的原因的时间。另外，这个时间包含花费在代理协商的任何时间。</p>
-<h4 id="Proxy-Negotiation"><a href="#Proxy-Negotiation" class="headerlink" title="Proxy Negotiation"></a>Proxy Negotiation</h4><p>和一个代理服务连接的协商时间</p>
-<h4 id="DNS-Lookup"><a href="#DNS-Lookup" class="headerlink" title="DNS Lookup"></a>DNS Lookup</h4><p>DNS寻址时间。在一个页面中每一个新的域名需要完成一个完整的路由寻址。</p>
-<h4 id="Initial-Connection-Connecting"><a href="#Initial-Connection-Connecting" class="headerlink" title="Initial Connection/Connecting"></a>Initial Connection/Connecting</h4><p>建立连接的时间，包含TCP握手/重试和协商SSL的时间</p>
-<h4 id="SSL"><a href="#SSL" class="headerlink" title="SSL"></a>SSL</h4><p>完成一次SSL握手的时间</p>
-<h4 id="Request-Sent-Sending"><a href="#Request-Sent-Sending" class="headerlink" title="Request Sent/Sending"></a>Request Sent/Sending</h4><p>网络请求时间。通常来说，是零点几毫秒。</p>
-<h4 id="Waiting-TTFB"><a href="#Waiting-TTFB" class="headerlink" title="Waiting(TTFB)"></a>Waiting(TTFB)</h4><p>等待初始化响应的时间，也可以认为是第一个字节的时间。这个时间捕捉了到服务器的往返时间，除此之外还有等待服务器的发送响应的时间。</p>
-<h4 id="Content-Download-Downloading"><a href="#Content-Download-Downloading" class="headerlink" title="Content Download/Downloading"></a>Content Download/Downloading</h4><p>接收响应数据所花的时间</p>
-<h3 id="诊断网络问题"><a href="#诊断网络问题" class="headerlink" title="诊断网络问题"></a>诊断网络问题</h3><p>通过Network Panel可以查看到很多明显的可能存在的问题。找到这些问题需要对客户端和服务器如何交互，对协议上的限制有个很好的理解。</p>
-<h4 id="Queued-or-Stalled-系列"><a href="#Queued-or-Stalled-系列" class="headerlink" title="Queued or Stalled 系列"></a>Queued or Stalled 系列</h4><p>最普遍的问题是一系列被排队和阻塞的请求。这意味着太多资源从单一域名下请求了。在HTTP 1.0/1.1 连接下，Chrome强制执行每一个Host有6个TCP连接的最大值。假如你一次请求了12个资源，先6个资源开始，剩下的6个进入队列。一旦开始的那6个中有一个被请求完了，在队列中的第一个将开始请求进程。</p>
-<p>为了解决HTTP1 中的这个问题，你可以实现domain的拆分。在你的应用上可以建立多个子域名来提供给资源服务。然后在子域名中，均匀地分割资源然后提供服务。</p>
-<p>对于HTTP1连接的修复不能应用在HTTP2的连接上。事实上，这样会影响它。如果以部署了HTTP2，不要使用域名拆分你的资源，因为这样会和HTTP2的设计使用上冲突。在HTTP2中，有一个单独的TCP连接到服务器提供一个多路复用连接。这个就会摆脱HTTP1中的6个连接的限制，并且多个资源能够在单独的连接中同时被传输。</p>
-<h4 id="获取第一个字节时间太慢"><a href="#获取第一个字节时间太慢" class="headerlink" title="获取第一个字节时间太慢"></a>获取第一个字节时间太慢</h4><p>一个慢的TTFB被认为是一个很长的等待时间。建议这个时间在200ms以下。一个高的TTFB时间可能暴露两个主要问题中的一个</p>
-<ol>
-<li>在客户端和服务器端有很差的网络情况</li>
-<li>服务器应用响应很慢</li>
-</ol>
-<p>为了描述一个高TTFB，首先尽可能切掉网络，理想情况下，从本地访问应用，看是否有大的TTFB。如果有，那么应用需要优化响应速度。这可能需要优化数据库查询，实现某些部分内容的缓存存储，或者修改你的服务器配置。在后端有太多原因让访问变慢。在你的软件上做些研究，发现什么部分不能满足你的性能预期。</p>
-<p>如果本地访问TTFB比较低，那么在你客户端和服务器之间的网络可能就是这个问题。网络可能被各种事情阻塞。在客户端和服务器端之间有很多点，并且每一个点都有自己的连接限制，并且都可能导致问题出现。测试问题的最简单的方法是减去它从你的应用到另一个主机，并且看TTFB是否提升。</p>
-<h4 id="高吞吐能力"><a href="#高吞吐能力" class="headerlink" title="高吞吐能力"></a>高吞吐能力</h4><p>如果你看到在Content Download阶段花费了大量时间，那么提升服务器响应或则连接它们在一起都没用。最主要的解决办法是发送较少的字节。</p>
-<p><strong>原文链接:</strong> <a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" target="_blank" rel="external">Understanding Resouce Timing</a></p>
+          理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。
 
-          
+理解资源请求时间的阶段
+
+了解每个阶段提供了什么样的Resouce Timing API
+
+在timeline图表中理解不同的
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/08/理解Resource-Timing/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -524,54 +480,17 @@
       
         
           
-            <p>RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们</p>
-<img src="/2017/01/08/用RAIL模型来测量性能/rail.png" alt="RAIL" title="RAIL">
-<ol>
-<li><p>关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐</p>
-</li>
-<li><p>立即响应给用户；在100ms以内感知用户输入</p>
-</li>
-<li><p>有动画或者滚动操作的时候，能够产生10ms以内一帧的效果</p>
-</li>
-<li><p>尽可能利用主线程的空闲时间</p>
-</li>
-<li><p>保持用户的参与；在1000ms以内分发互动内容</p>
-</li>
-</ol>
-<h3 id="关注用户"><a href="#关注用户" class="headerlink" title="关注用户"></a>关注用户</h3><p>努力提升性能的目的是为了用户。用户花费在你网站的大部分时间不是等你加载，但是当使用的时候确实有等待响应。理解用户如何感知性能延迟</p>
-<h4 id="Delay-amp-User-Reaction"><a href="#Delay-amp-User-Reaction" class="headerlink" title="Delay &amp; User Reaction"></a>Delay &amp; User Reaction</h4><p>0-16ms</p>
-<p>人们异常地擅长追踪运动，如果动画不平滑了，他们是不喜欢的。用户感知动画渲染的平滑情况是尽可能每秒60帧。也就是说每帧16ms，包含浏览器绘制新的frame到屏幕上，离开一个app大约10ms，这个时间就能产生一个frame.</p>
-<p>0-100ms<br>在这个时间窗口里响应一个用户的动作，用户会感觉结果是立即响应的。如果时间长了，在动作和反应之间的连接是断掉的。</p>
-<p>100-300ms</p>
-<p>可察觉得轻微的延迟</p>
-<p>300-1000ms</p>
-<p>在这个时间窗口里，延迟让人有这是要操作的任务的一部分的感觉。对于大多数用户来说，加载页面或者切换页面成为了一个任务。</p>
-<p>1000ms以上</p>
-<p>超过1秒，用户就会对于他们要执行的任务失去焦点</p>
-<p>10秒以上<br>用户就会沮丧并且不喜欢的放弃这个任务；他们可能之后就不会再回来执行这个任务了</p>
-<h3 id="Response-响应-：100ms内的响应"><a href="#Response-响应-：100ms内的响应" class="headerlink" title="Response(响应)：100ms内的响应"></a>Response(响应)：100ms内的响应</h3><p>在用户注意到延迟之前，你有100ms的时间来响应用户的输入。这个应用于大多数输入，比如点击按钮，切换form控件或者开始动画。这个不能应用于touch drags或者滚动操作。</p>
-<p>如果你不响应，在操作和反应之间的连接就会断掉。用户就会注意到。</p>
-<p>立即响应用户的操作是很明显的，但并不总是对的。在100ms的窗口内做其他更有价值的工作，但要注意不能阻碍用户。如果可能的话，在后台执行。</p>
-<p>对于超过500ms的操作，总是提供反馈信息</p>
-<h3 id="Animation-动画-：10ms生成一帧"><a href="#Animation-动画-：10ms生成一帧" class="headerlink" title="Animation(动画)：10ms生成一帧"></a>Animation(动画)：10ms生成一帧</h3><p>动画不仅仅是花俏的UI效果。比如，滚动和touch drags也是动画类型。</p>
-<p>当动画帧率变化的时候，用户是注意到的。你的目标是做成60fps，并且每帧不得不完整的走过以下步骤：<br>JavaScript-&gt;Style-&gt;Layout-&gt;Paint-&gt;Composite</p>
-<p>从数学角度来看，每一帧有大约16ms（1000ms/60 frames per second=16.66ms per frame）.但是，因为浏览器需要一些时间来在屏幕上绘制新的frame，你的代码需要在10ms内完成执行。</p>
-<p>像动画这种高压点像，你根本无处可做，你都不能进行绝对的最小化处理。只要有可能，利用100ms的重计算工作的响应，能够让你最大可能的做成60fps</p>
-<h3 id="Idle-最大化空闲时间"><a href="#Idle-最大化空闲时间" class="headerlink" title="Idle:最大化空闲时间"></a>Idle:最大化空闲时间</h3><p>利用空闲时间完成延迟工作。比如，保持预加载数据到最小值以至于你的app加载快速，并且使用空闲时间加载剩下的数据。</p>
-<p>延迟工作应该分组到大约50ms的块中。如果用户开始交互，那么以最高优先级来响应它。</p>
-<p>为了允许100ms以内的响应，app需要每50ms以内回到主线程，诸如执行它的像素管道，响应给用户输入等等</p>
-<p>50ms块的内容执行的时候，仍然确认可以立即响应的时候，允许其完成任务</p>
-<h3 id="Load-1000ms内发送内容"><a href="#Load-1000ms内发送内容" class="headerlink" title="Load: 1000ms内发送内容"></a>Load: 1000ms内发送内容</h3><p>如果你不能保证1秒内加载你的站点，用户的关注点就会游离，他们处理任务的感知就会断裂。</p>
-<p>RAIL度量总结</p>
-<p>通过RAIL矩阵评估你的站点，使用Chrome DevTools的Timeline来记录用户的操作。然后在Timeline里检查记录的times</p>
-<p>RAIL Step                   Key Metric          User Action</p>
-<p>Response     输入延迟小于100ms（从按到绘制）    用户按了一个按钮（比如，打开一个导航）</p>
-<p>Animation  每一帧的工作完成在16ms以内 （从JS到绘制）     用户滚动页面，拖拽一个手指，或者看一个动画。当拖拽时，应用的响应主要是手指的位置，比如pulling to refresh，或者滑动一个轮播。这个度量仅仅应用于拖拽的持续过程，不包含开始</p>
-<p>Idle   主线程js工作块不超过50ms   用户不和页面交互，但是主线程在用户的下一个输入之前有足够可用的时间</p>
-<p>Load  在1秒内页面准备好可用  用户加载页面并看到主要的内容</p>
-<p><strong>原文链接：</strong><a href="https://developers.google.com/web/fundamentals/performance/rail" target="_blank" rel="external">RAIL性能测量</a></p>
+          RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们
 
-          
+
+关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/08/用RAIL模型来测量性能/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -689,51 +608,20 @@
       
         
           
-            <p>我们为什么要做性能优化，终极原因是我们的网站被访问的慢了，担心用户流失。</p>
-<p>那我们如何做性能优化呢，需要做各个环节去查找原因。我在这里列举一些可能存在问题的地方：</p>
-<ol>
-<li>网络原因</li>
-<li>文件大小</li>
-<li>页面渲染问题</li>
-<li>前端、后端缓存问题</li>
-<li>脚本执行原因</li>
-<li>接口问题</li>
-<li>磁盘问题</li>
-<li>服务端程序问题</li>
-<li>数据库问题</li>
-</ol>
-<p>我们一般会从前端到后端来追踪性能瓶颈</p>
-<p>下面我们简单分析一下从浏览器请求到服务器响应的环节</p>
-<ol>
-<li>首屏加载的全过程</li>
-<li>TCP连接简述</li>
-<li>Web服务器会做些什么</li>
-</ol>
-<p>navigationStart-&gt;redirectStart-&gt;redirectEnd-&gt;fetchStart-&gt;domainLookupStart-&gt;domainLookupEnd-&gt;connectStart-&gt;secureConnectStart-&gt;connectEnd-&gt;requestStart-&gt;responseStart-&gt;responseEnd-&gt;domLoading-&gt;domInteractive-&gt;domContentLoaded-&gt;domCompleted-&gt;loadEventStart-&gt;loadEventEnd</p>
-<img src="/2017/01/08/如何进行性能优化/firstPaint.png" alt="首屏渲染全过程" title="首屏渲染全过程">
-<p>接着我们来看一下HTTP/HTTPS请求的过程：</p>
-<p>世界上几乎所有的HTTP通信都是由TCP/IP承载的，TCP/IP是全球计算机及网络设备都在使用的一种常用的分组交换网络分层协议集。客户端应用程序可以打开一条TCP/IP连接，连接到可能运行在世界任何地方的服务器应用程序。一旦连接建立起来了，在客户端和服务器的计算机之间交换的报文就永远不会丢失、受损或者失序。</p>
-<p>HTTP请求：</p>
-<p>比如，你想获取Joe的五金商店最新的电动工具价目表：<br><a href="http://www.joes-hardware.com:80/power-tools.html" target="_blank" rel="external">http://www.joes-hardware.com:80/power-tools.html</a></p>
-<p>1.浏览器收到这个URL是，会解析出主机名，www.joes-hardware.com<br>2.浏览器查询这个主机名的IP地址（DNS） 202.43.78.3</p>
-<ol>
-<li>浏览器获得端口号(80)</li>
-<li>浏览器发起到202.43.78.3端口80的连接<br>5.浏览器向服务器发送一条HTTP GET报文</li>
-<li>浏览器从服务器读取HTTP响应报文</li>
-<li>浏览器关闭连接</li>
-</ol>
-<p>HTTPS请求：</p>
-<p>SSL是个二进制协议，与HTTP完全不同，其流量是承载在另一个端口上的（443）。<br>需要进行安全握手操作，SSL安全参数握手过程如下：</p>
-<ol>
-<li>客户端发送可供选择的密码并请求证书，服务器发送选中的密码和证书</li>
-<li>客户端发送保密信息，客户端和服务器生成密钥</li>
-<li>客户端和服务器互相告知，开始加密过程</li>
-</ol>
-<p>最后在服务器端，简单来说，会执行以下几项任务：</p>
-<p>1.建立连接——接受一个客户端连接，或者如果不希望与这个客户端建立连接，就将其关闭<br>2.接收请求——从网络中读取一条HTTP请求报文<br>3.处理请求——对请求报文进行解释，并采取行动<br>4.访问资源——访问报文中指定的资源<br>5.构建响应——创建带有正确首部的HTTP响应报文<br>6.发送响应——将响应回送给客户端<br>7.记录事务处理过程——将与已完成事务有关的内容记录在一个日志文件中</p>
-<p>总体来说，从浏览器请求-&gt;网络连接-&gt;中间件-&gt;服务器，从前到后，从后到前的环节进行分析</p>
+          我们为什么要做性能优化，终极原因是我们的网站被访问的慢了，担心用户流失。
+那我们如何做性能优化呢，需要做各个环节去查找原因。我在这里列举一些可能存在问题的地方：
 
-          
+网络原因
+文件大小
+页面渲染问题
+前
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/08/如何进行性能优化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -851,27 +739,26 @@
       
         
           
-            <p>2016总结写太多就太矫情了，就把工作和生活的经历写一下，2017年稳扎稳打，不要有太多的想法，专精于几件事情就够了</p>
-<h3 id="生活"><a href="#生活" class="headerlink" title="生活"></a>生活</h3><ul>
-<li>结婚  </li>
-<li>跳槽  </li>
-<li>买房  </li>
-<li>车祸 </li>
-<li>旅游 </li>
-<li>过户 </li>
-<li>装修 </li>
-<li>验收</li>
-</ul>
-<h3 id="工作"><a href="#工作" class="headerlink" title="工作"></a>工作</h3><ul>
-<li>lithe模块加载器combo改造</li>
-<li>lithe的localStorage模块缓存</li>
-<li>tag平台的gitlab版本</li>
-<li>前端性能监控平台</li>
-<li>MV*框架GMP</li>
-<li>RN/Weex调研</li>
-</ul>
+          2016总结写太多就太矫情了，就把工作和生活的经历写一下，2017年稳扎稳打，不要有太多的想法，专精于几件事情就够了
+生活
+结婚  
+跳槽  
+买房  
+车祸 
+旅游 
+过户 
+装修 
+验收
 
-          
+工作
+
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2017/01/01/2016总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -989,43 +876,14 @@
       
         
           
-            <p>我们都知道应用程序和网站的性能是其成功的最关键因素。但是，在使你的应用程序和网站性能更好的过程中并不总是很清晰。代码质量和基础架构当然很关键，但是在很多情况下，通过关注在一些基础应用分发技术上，你能够很大程度上提升你的应用的终端用户体验。其中一个例子是在你的应用栈中实施和优化缓存。这篇文章会包含一些技术能帮助初学者和高级用户进行性能优化，通过在nginx中使用web cache features。</p>
-<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>web cache存在于客户端和源服务器(origin server)之间，保存它所有使用的内容的副本。如果一个客户端请求的内容被缓存已经保存过了，那么客户端就会直接返回文件内容，不去请求源服务器了。这个可以来提升网站性能，因为web cache更接近客户端，这样会更高效的使用应用服务器，因为不用每次请求都去服务器生成页面。</p>
-<p>在浏览器和应用服务器之间，有很多潜在的caches:客户端浏览器缓存，中间件缓存，内容分发网络(CDN)，还有负载均衡或者反向代理在应用服务器前面。即便是在反向代理或者负载均衡的层级，缓存也能极大的提升性能。</p>
-<p>讲一个例子，去年我接受了一个加载慢的网站性能调优的任务。我注意的第一件事是网站花了一秒钟才打开首页。在一些debug后，我发现原因是页面被标记为不可缓存，每一次请求都会动态生成一次。页面本身不经常改变并且没有被定制化，所以这种情况是没有必要的。作为实验，我通过使用负载均衡标记主页可缓存5秒，结果是显而易见的提升。第一个字节的时间下降到了很小的微秒，并且页面加载明显加载快了。</p>
-<p>在一个应用的技术栈里面，nginx作为反向代理或者负载均衡是最普遍的。nginx有一系列很全的缓存特性。下一节我们来讨论如何使用nginx来配置基本的缓存。</p>
-<h2 id="如何设置和配置基本缓存"><a href="#如何设置和配置基本缓存" class="headerlink" title="如何设置和配置基本缓存"></a>如何设置和配置基本缓存</h2><p>仅需要两个指令就可开启基本缓存：proxy_cache_path和proxy_cache。<br>proxy_cache_path 设置缓存的路径和配置<br>proxy_cache 激活缓存</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">proxy_cache_path /path/to/cache levels=1:2 keys_zone=my_cache:10m max_size=10g</div><div class="line">                 inactive=60m use_temp_path=off;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">...</div><div class="line">    location / &#123;</div><div class="line">        proxy_cache my_cache;</div><div class="line">        proxy_pass http://my_upstream;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>proxy_cache_path指令的定义设置如下：</p>
-<ul>
-<li>/path/to/cache/ 缓存的本地路径</li>
-<li>levels 设置在/path/to/cache/目录下的一个两层目录。在单独的目录下大量的文件会使访问变慢，所以我们建议对于大部分缓存部署来说使用两层目录结构。如果levels没有指定，nginx会把所有文件放在同一个文件夹下。</li>
-<li>keys_zone 设置一个共享缓存区来存储缓存的keys和metadata，诸如使用定时器等。在内存中有这些keys的一个copy能使nginx快速的确定是否一个请求时HIT还是MISS，不用再去磁盘读了，更加加速了检查。一个1MB的区域能够存储大于8000个key，所以例子里10m的配置能存储大约8万个key.</li>
-<li>max_size 设置缓存的最大值（例子里是10GB）。这个是可选的；如果不设置一个值，允许缓存增长到可使用的磁盘空间。当缓存大小达到限制，一个进程会调用缓存管理器移除那些最近最少使用的文件，目的是为了让缓存大小低于最大限制。</li>
-<li>inactive 指定一个文件如果没有访问，它能够保留的时长。在这个例子中，一个文件如果在60分钟之内没有被访问过，就会通过缓存管理进程删除掉，无论它是否过期。默认值10分钟（10m）。不活跃的内容和过期的内容是不同的。nginx是不能自动删除那些被cache control header定义的过期内容的。(例子中：Cache-Control:max-age=120)。过期内容(stale)仅仅当它被标记为inactive会被删掉。当过期内容被访问了，nginx会从源服务器(origin server)重新请求刷新它，这样就重置了文件的inactive 时间器。</li>
-<li>nginx首先会把缓存文件写到一个临时存储区域，并且use_temp_path=off 指令指明了Nginx把它们都写到同一个文件夹下。我们建议你设置参数为off避免在文件系统中有不必要的数据备份。use_temp_path从nginx version 1.7.10开始加入了。</li>
-</ul>
-<p>最后，proxy_cache指令意思是：那些匹配父级location URL的区块(例子中是 /)都是需要缓存的内容。你可以把proxy_cache指令放到到server区块；也可以应用到所有location的区块，应用到那些没有自己proxy_cache指令的服务器上。</p>
-<h2 id="当源服务器挂了，分发缓存内容"><a href="#当源服务器挂了，分发缓存内容" class="headerlink" title="当源服务器挂了，分发缓存内容"></a>当源服务器挂了，分发缓存内容</h2><p>nginx 内容缓存的一个强大的特性是nginx可以配置成当它不能够从源服务器上获取新的内容的时候，可以从缓存中分发stale的内容。假如所有的源服务器都挂了或者临时很繁忙，刚说的情况就会发生。不能够传递错误给客户端，nginx会从缓存中分发它过期的文件版本。这是提供一个对nginx代理的服务器一个额外的错误容忍度，能够确保在服务失败或者负载高峰期时正常运行。为了确保这个功能，需要包含一个指令 proxy_cache_use_stale<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">location / &#123;</div><div class="line">    ...</div><div class="line">    proxy_cache_use_stale error timeout http_500 http_502 http_503 http_504;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这个配置是说，如果nginx接收一个error,timeout或者从源服务器上任何5xx的错误，并且此请求有一个过期缓存版本，那么将分发这个过期版本，而不会把错误发给客户端</p>
-<h2 id="调优缓存"><a href="#调优缓存" class="headerlink" title="调优缓存"></a>调优缓存</h2><p>nginx对于cache的性能调优有大量的选项。这里有个例子显示了其中一些：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">proxy_cache_path /path/to/cache levels=1:2 keys_zone=my_cache:10m max_size=10g</div><div class="line">                 inactive=60m use_temp_path=off;</div><div class="line"></div><div class="line">server &#123;</div><div class="line">    ...</div><div class="line">    location / &#123;</div><div class="line">        proxy_cache my_cache;</div><div class="line">        proxy_cache_revalidate on;</div><div class="line">        proxy_cache_min_uses 3;</div><div class="line">        proxy_cache_use_stale error timeout updating http_500 http_502 http_503</div><div class="line">                              http_504;</div><div class="line">        proxy_cache_lock on;</div><div class="line">        proxy_pass http://my_upstream;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>指令如下：</p>
-<ul>
-<li><p>proxy_cache_revalidate 此指令是让nginx使用有条件的GET的请求，当从源服务器请求内容刷新本地内容的时候。如果一个客户端请求一个被缓存的内容，但是cache control headers定义的expire已经过期了，如果GET请求的header头里面包含If-Modified-Since，nginx将这个请求发送到源服务器。这个节省带宽，因为当它header中记录的Last-Modified 被改变后，服务器会发送完整的内容，这时候nginx会缓存到它。</p>
-</li>
-<li><p>proxy_cache_min_uses 在Nginx缓存客户端请求的资源前该资源可请求的次数。这是很有用的，假如缓存持续的填满，这个能确保最频繁使用的项目被增加到缓存中。默认值为1.</p>
-</li>
-<li><p>proxy_cache_use_stale updating参数是说nginx会分发过期的内容，如果客户端请求一个资源，这时资源从源服务器上会更新下来，而不是向服务器重新请求。请求过期文件的第一个用户不得不等待它从源服务器上更新下来。直到更新的文件被完全下载下来，这个过期的文件会返回给所有后续的请求。</p>
-</li>
-<li><p>如果proxy_cache_lock 是可用的，如果多个客户端请求一个文件，这个文件又没有在缓存中，这些请求中的第一个请求被允许请求到源服务器。其他请求等这个请求回来，然后从缓存中获取这个文件。没有proxy_cache_lock选项不可用的话，所有的请求缓存都不会命中，并且直接请求到源服务器。</p>
-</li>
-</ul>
-<h2 id="分隔缓存到多个硬盘中"><a href="#分隔缓存到多个硬盘中" class="headerlink" title="分隔缓存到多个硬盘中"></a>分隔缓存到多个硬盘中</h2><p>使用nginx,没有必要穿件一个RAID。如果有多个硬盘，nginx能够被使用分隔缓存到这些硬盘上来。下面有个例子，使用基于request URI在两个硬盘上来分隔客户端请求</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">proxy_cache_path /path/to/hdd1 levels=1:2 keys_zone=my_cache_hdd1:10m</div><div class="line">                 max_size=10g inactive=60m use_temp_path=off;</div><div class="line">proxy_cache_path /path/to/hdd2 levels=1:2 keys_zone=my_cache_hdd2:10m</div><div class="line">                 max_size=10g inactive=60m use_temp_path=off;</div><div class="line"></div><div class="line">split_clients $request_uri $my_cache &#123;</div><div class="line">              50%          “my_cache_hdd1”;</div><div class="line">              50%          “my_cache_hdd2”;</div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    ...</div><div class="line">    location / &#123;</div><div class="line">        proxy_cache $my_cache;</div><div class="line">        proxy_pass http://my_upstream;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>两个proxy_cache_path 定义了两个缓存（my_cache_hdd1和my_cache_hdd2）在两个不同的磁盘路径上。split_clients 指定了50%的请求的缓存来自my_cache_hdd1里另一半来自my_cache_hdd2里。$request_uri 会指定哪一个缓存被用来给每一个请求，对一个给定的URI的请求的结果总是在相同的cache中被缓存。</p>
-<p><a href="https://www.nginx.com/blog/nginx-caching-guide/" target="_blank" rel="external">原文链接</a></p>
+          我们都知道应用程序和网站的性能是其成功的最关键因素。但是，在使你的应用程序和网站性能更好的过程中并不总是很清晰。代码质量和基础架构当然很关键，但是在很多情况下，通过关注在一些基础应用分发技术上，你能够
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/29/Nginx缓存配置向导/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1143,11 +1001,17 @@
       
         
           
-            <p><a href="http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureForiOS" target="_blank" rel="external">fiddler官方文档</a></p>
-<p><a href="http://www.telerik.com/blogs/using-fiddler-with-apple-ios-devices" target="_blank" rel="external">blog</a></p>
-<p>下载认证：<a href="http://www.telerik.com/docs/default-source/fiddler/addons/fiddlercertmaker.exe?sfvrsn=2" target="_blank" rel="external">CertMaker for iOS and Android</a></p>
+          fiddler官方文档
+blog
+下载认证：CertMaker for iOS and Android
 
           
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/05/fiddler配置IOS设备/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1265,32 +1129,18 @@
       
         
           
-            <p>今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。</p>
-<ul>
-<li>Charles版本：4.0.2</li>
-<li>操作系统： MAC</li>
-<li>下载地址： <a href="https://www.charlesproxy.com/latest-release/download.do" target="_blank" rel="external">https://www.charlesproxy.com/latest-release/download.do</a></li>
-<li>代理URL: </li>
-<li><a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a></li>
-<li><a href="https://js.meixincdn.com" target="_blank" rel="external">https://js.meixincdn.com</a></li>
-</ul>
-<h4 id="1-打开charles，设置Root认证"><a href="#1-打开charles，设置Root认证" class="headerlink" title="1. 打开charles，设置Root认证"></a>1. 打开charles，设置Root认证</h4><p>1.1【Proxy】菜单-&gt;勾选【macOS Proxy】。</p>
-<p>1.2 保存root证书。【Help】菜单-&gt;点击【SSL Proxying】-&gt;点击【Save Charles Root Certificate…】-&gt;保存root认证(默认pem结尾的，你选择.crt结尾保存)，保存到你的桌面，或者你能很容易找到此文件的地方。</p>
-<p>1.3 chrome浏览器信任证书。打开chrome浏览器，打开【设置】页面，找到【HTTPS/SSL】，点击【管理证书…】-&gt;钥匙串为【系统】，种类为【证书】，导入刚才保存的.crt结尾的证书，导入后会显示个红叉-&gt;右键导入的证书，点击【显示简介】，在弹出框中的【信任】里，选择【始终信任】，证书会显示成蓝色加号-&gt; OK，搞定，chrome就会总是信任Charles证书了。</p>
-<p>1.4 IOS devices认证，在移动设备的safari浏览器里，打开<a href="http://www.charlesproxy.com/getssl" target="_blank" rel="external">SSL证书</a>，安装证书即可。</p>
-<p>1.5 导出root认证。【Help】菜单-&gt;点击【SSL Proxying】-&gt;点击【Export Charles Root Certificate and private key…】,此时会弹出一个框让你输入密码，你自己输入一个密码并记住它-&gt;导出到你的桌面或者你自己能找到的地方，此文件以.p12结尾的文件。</p>
-<p>1.6 Root系统认证。【Proxy】菜单-&gt;【SSL Proxying Settings…】-&gt;【Root Certificate】选项卡，导入.p12结尾的认证文件，此时会让你输入密码，就是你刚才导出此文件时输入的密码。</p>
-<p>根据以上步骤，已经设置好系统的SSL认证问题。  </p>
-<h4 id="2-以下设置代理url及其认证："><a href="#2-以下设置代理url及其认证：" class="headerlink" title="2. 以下设置代理url及其认证："></a>2. 以下设置代理url及其认证：</h4><p>2.1 增加SSL代理。【Proxy】菜单-&gt;【SSL Proxying Settings…】-&gt;【SSL Proxying】选项卡，勾选【Enable SSL Proxying】-&gt;点击【Add】增加代理url，填入h5.gomeplus.com和443端口，填入js.meixincdn.com和端口443，点击【ok】</p>
-<p>2.2 增加客户端Url认证。【Proxy】菜单-&gt;【SSL Proxying Settings…】-&gt;【Client Certificates】选项卡，点击【Add】增加代理url，填入js.meixincdn.com和端口443，选择.p12结尾的认证文件，输入密码，点击【ok】</p>
-<p>2.3 代理本地文件。【Tools】菜单-&gt;勾选【Map Local】，打开对话框，勾选【Enable Map Local】-&gt;点击【Add】增加本地代理文件，在弹出框中：</p>
-<p> 选择Https协议<br> Host： js.meixincdn.com<br> Path:  填入/m/app/dist/js/conf/newhome/index.js<br> Query: 参数写上timestamp=0.0.140，这个是url后面所带的请求参数<br> LocalPath:  在你本机上选择要代理的对应的js文件<br> -&gt;点击【ok】大功告成</p>
-<p>2.4 代理本地文件夹：【Tools】菜单-&gt;勾选【Map Local】，打开对话框，勾选【Enable Map Local】-&gt;点击【Add】增加本地代理文件，在弹出框中：</p>
-<p> 选择Https协议<br> Host： js.meixincdn.com<br> Path:  填入/m/app/dist/js/*<br> Query: 参数写上timestamp=0.0.140，这个是url后面所带的请求参数<br> LocalPath: 在你本机上选择要代理的对应的js文件夹<br> 如：<code>/Users/zhangmike/WebstormProjects/gomeplus/gitlab/app/dist/js</code><br> -&gt;点击【ok】大功告成  </p>
-<p> 2.5 请求的<a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a>如果加debug的话，在mapRemote上将其url<br> 改为<a href="https://h5.gomeplus.com?debug=1" target="_blank" rel="external">https://h5.gomeplus.com?debug=1</a></p>
-<h4 id="3-最后"><a href="#3-最后" class="headerlink" title="3.最后"></a>3.最后</h4><p>在以上步骤完成后，其他都按照charles的默认选项即可，在chrome浏览器里，输入  <a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a> 就可以代理本机的文件了；如果是手机app代理的话，需要让本机和手机处在同一个网络，然后在手机的网络代理中，服务器地址输入本机地址，端口号为8888(charles代理默认端口)</p>
+          今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
 
-          
+Charles版本：4.0.2
+操作系统： MAC
+下载地址： https://www.charles
+          ...
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/04/charles代理调试/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1408,41 +1258,14 @@
       
         
           
-            <p>npm相关命令<br>（1）npm install moduleNames<br> 安装到本地目录<br> npm install -g moduleNames安装到全局目录<br> npm install moduleNames –save moduleNames保存在package.json的dependencies<br> npm install moduleNames –save-dev moduleNames保存在package.json的devDependencies</p>
-<p>（2）npm view moduleNames</p>
-<p> 查看node模块的pageckage.json文件夹</p>
-<p> 注意事项：如果想要查看package.json文件夹下某个标签的内容，可以使用</p>
-<p> npm view moduleName labelName</p>
-<p>（3）npm list </p>
-<p> 查看当前目录下已安装的node包。同命令npm ll/npm ls/npm la</p>
-<p> 注意事项：Node模块搜索是从代码执行的当前目录开始的，搜索结果取决于当前使用的目录中的node_modules下的内容。</p>
-<p>（4）npm help</p>
-<p> 查看帮助命令。如果要单独查看install命令的帮助，可以使用的npm help install</p>
-<p>（5）npm view moudleName dependencies</p>
-<p> 查看包的依赖关系</p>
-<p>（6）npm view moduleName repository.url</p>
-<p> 查看包的源文件地址</p>
-<p>  (7) npm view moduleName engines</p>
-<p> 查看包所依赖的Node的版本</p>
-<p> （8）npm help folders</p>
-<p> 查看npm使用的所有文件夹</p>
-<p>（9）npm rebuild moduleName</p>
-<p> 用于更改包内容后进行重建</p>
-<p>（10）npm outdated </p>
-<p> 检查包是否已经过时，此命令会列出所有已经过时的包，可以及时进行包的更新</p>
-<p>（11）npm update moduleName</p>
-<p> 更新node模块</p>
-<p>（12 npm uninstall moudleName</p>
-<p> 卸载node模块</p>
-<p>（13）发布一个npm包的时候，需要检验某个包名是否已存在</p>
-<p> npm search packageName</p>
-<p>（14）npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等</p>
-<p>（15）npm rm <name>移除，卸载一个模块。有以下几种命令形式：<br>     npm rm <name><br>     npm r <name><br>     npm uninstall <name><br>     npm un <name></name></name></name></name></name></p>
-<p>（16）npm root 查看当前工程的包的安装路径，npm root -g  是查看全局的包的安装路径</p>
-<p>（17）npm docs <packagename> 尝试当前包对应的文档URL，并使用浏览器打开该文档。</packagename></p>
-<p>（18）npm config ? 获取配置文件信息，如环境变量，npmrc文件，package.json</p>
+          npm相关命令（1）npm install moduleNames 安装到本地目录 npm install -g moduleNames安装到全局目录 npm install moduleNames 
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/04/npm命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1560,9 +1383,15 @@
       
         
           
-            <p>更新Node<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">brew update</div><div class="line">brew upgrade node</div><div class="line">npm install -g npm</div></pre></td></tr></table></figure></p>
+          更新Node123brew updatebrew upgrade nodenpm install -g npm
 
           
+
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/04/brew命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -1680,14 +1509,14 @@
       
         
           
-            <p>昨天和同事聊到开发的框架的事宜，考虑到在给团队使用前，是否需要出个最佳实践和模块划分的实践，指导团队内的其他人开发，防止他们乱写。我说呢：第一，我不知道他们会怎么乱写，第二，框架本身不会把你模块划分的情况写进来的，这属于代码根据业务场景来自行划分的。</p>
-<p>其实，想想也是，任何东西你做出来，想要有一个规范和条理性地文档，首先得有，哪怕是乱写，有这样的场景才能总结出来规律。</p>
-<p>还有，最近我这边除了框架外，没有其他产出了，让我有点焦虑。技术本身是个工具，即便学了数据结构和算法，最终的目的还是为了解决问题，做出东西来，通过实践的细节去总结各种知识。</p>
-<p>实现想法，哪怕再难，也要跳出舒适区去做。</p>
-<p>认识到自己：不聪明，理解慢，上手慢</p>
-<p>解决办法：多花时间研究，多练习。</p>
+          昨天和同事聊到开发的框架的事宜，考虑到在给团队使用前，是否需要出个最佳实践和模块划分的实践，指导团队内的其他人开发，防止他们乱写。我说呢：第一，我不知道他们会怎么乱写，第二，框架本身不会把你模块划分的
+          ...
 
-          
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/12/04/实践出真知/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
