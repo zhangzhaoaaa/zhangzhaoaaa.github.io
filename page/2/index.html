@@ -279,6 +279,171 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/08/用RAIL模型来测量性能/" itemprop="url">
+                  用RAIL模型来测量性能
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-08T16:31:26+08:00" content="2017-01-08">
+              2017-01-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/性能优化/" itemprop="url" rel="index">
+                    <span itemprop="name">性能优化</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/08/用RAIL模型来测量性能/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/08/用RAIL模型来测量性能/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们</p>
+<img src="/2017/01/08/用RAIL模型来测量性能/rail.png" alt="RAIL" title="RAIL">
+<ol>
+<li><p>关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐</p>
+</li>
+<li><p>立即响应给用户；在100ms以内感知用户输入</p>
+</li>
+<li><p>有动画或者滚动操作的时候，能够产生10ms以内一帧的效果</p>
+</li>
+<li><p>尽可能利用主线程的空闲时间</p>
+</li>
+<li><p>保持用户的参与；在1000ms以内分发互动内容</p>
+</li>
+</ol>
+<h3 id="关注用户"><a href="#关注用户" class="headerlink" title="关注用户"></a>关注用户</h3><p>努力提升性能的目的是为了用户。用户花费在你网站的大部分时间不是等你加载，但是当使用的时候确实有等待响应。理解用户如何感知性能延迟</p>
+<h4 id="Delay-amp-User-Reaction"><a href="#Delay-amp-User-Reaction" class="headerlink" title="Delay &amp; User Reaction"></a>Delay &amp; User Reaction</h4><p>0-16ms</p>
+<p>人们异常地擅长追踪运动，如果动画不平滑了，他们是不喜欢的。用户感知动画渲染的平滑情况是尽可能每秒60帧。也就是说每帧16ms，包含浏览器绘制新的frame到屏幕上，离开一个app大约10ms，这个时间就能产生一个frame.</p>
+<p>0-100ms<br>在这个时间窗口里响应一个用户的动作，用户会感觉结果是立即响应的。如果时间长了，在动作和反应之间的连接是断掉的。</p>
+<p>100-300ms</p>
+<p>可察觉得轻微的延迟</p>
+<p>300-1000ms</p>
+<p>在这个时间窗口里，延迟让人有这是要操作的任务的一部分的感觉。对于大多数用户来说，加载页面或者切换页面成为了一个任务。</p>
+<p>1000ms以上</p>
+<p>超过1秒，用户就会对于他们要执行的任务失去焦点</p>
+<p>10秒以上<br>用户就会沮丧并且不喜欢的放弃这个任务；他们可能之后就不会再回来执行这个任务了</p>
+<h3 id="Response-响应-：100ms内的响应"><a href="#Response-响应-：100ms内的响应" class="headerlink" title="Response(响应)：100ms内的响应"></a>Response(响应)：100ms内的响应</h3><p>在用户注意到延迟之前，你有100ms的时间来响应用户的输入。这个应用于大多数输入，比如点击按钮，切换form控件或者开始动画。这个不能应用于touch drags或者滚动操作。</p>
+<p>如果你不响应，在操作和反应之间的连接就会断掉。用户就会注意到。</p>
+<p>立即响应用户的操作是很明显的，但并不总是对的。在100ms的窗口内做其他更有价值的工作，但要注意不能阻碍用户。如果可能的话，在后台执行。</p>
+<p>对于超过500ms的操作，总是提供反馈信息</p>
+<h3 id="Animation-动画-：10ms生成一帧"><a href="#Animation-动画-：10ms生成一帧" class="headerlink" title="Animation(动画)：10ms生成一帧"></a>Animation(动画)：10ms生成一帧</h3><p>动画不仅仅是花俏的UI效果。比如，滚动和touch drags也是动画类型。</p>
+<p>当动画帧率变化的时候，用户是注意到的。你的目标是做成60fps，并且每帧不得不完整的走过以下步骤：<br>JavaScript-&gt;Style-&gt;Layout-&gt;Paint-&gt;Composite</p>
+<p>从数学角度来看，每一帧有大约16ms（1000ms/60 frames per second=16.66ms per frame）.但是，因为浏览器需要一些时间来在屏幕上绘制新的frame，你的代码需要在10ms内完成执行。</p>
+<p>像动画这种高压点像，你根本无处可做，你都不能进行绝对的最小化处理。只要有可能，利用100ms的重计算工作的响应，能够让你最大可能的做成60fps</p>
+<h3 id="Idle-最大化空闲时间"><a href="#Idle-最大化空闲时间" class="headerlink" title="Idle:最大化空闲时间"></a>Idle:最大化空闲时间</h3><p>利用空闲时间完成延迟工作。比如，保持预加载数据到最小值以至于你的app加载快速，并且使用空闲时间加载剩下的数据。</p>
+<p>延迟工作应该分组到大约50ms的块中。如果用户开始交互，那么以最高优先级来响应它。</p>
+<p>为了允许100ms以内的响应，app需要每50ms以内回到主线程，诸如执行它的像素管道，响应给用户输入等等</p>
+<p>50ms块的内容执行的时候，仍然确认可以立即响应的时候，允许其完成任务</p>
+<h3 id="Load-1000ms内发送内容"><a href="#Load-1000ms内发送内容" class="headerlink" title="Load: 1000ms内发送内容"></a>Load: 1000ms内发送内容</h3><p>如果你不能保证1秒内加载你的站点，用户的关注点就会游离，他们处理任务的感知就会断裂。</p>
+<p>RAIL度量总结</p>
+<p>通过RAIL矩阵评估你的站点，使用Chrome DevTools的Timeline来记录用户的操作。然后在Timeline里检查记录的times</p>
+<p>RAIL Step                   Key Metric          User Action</p>
+<p>Response     输入延迟小于100ms（从按到绘制）    用户按了一个按钮（比如，打开一个导航）</p>
+<p>Animation  每一帧的工作完成在16ms以内 （从JS到绘制）     用户滚动页面，拖拽一个手指，或者看一个动画。当拖拽时，应用的响应主要是手指的位置，比如pulling to refresh，或者滑动一个轮播。这个度量仅仅应用于拖拽的持续过程，不包含开始</p>
+<p>Idle   主线程js工作块不超过50ms   用户不和页面交互，但是主线程在用户的下一个输入之前有足够可用的时间</p>
+<p>Load  在1秒内页面准备好可用  用户加载页面并看到主要的内容</p>
+<p><strong>原文链接：</strong><a href="https://developers.google.com/web/fundamentals/performance/rail" target="_blank" rel="external">RAIL性能测量</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/08/如何进行性能优化/" itemprop="url">
                   如何进行性能优化
                 </a>
@@ -1496,136 +1661,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/02/技术改造的想法/" itemprop="url">
-                  技术改造的想法
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-02T00:13:57+08:00" content="2016-12-02">
-              2016-12-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mind/" itemprop="url" rel="index">
-                    <span itemprop="name">mind</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/02/技术改造的想法/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/02/技术改造的想法/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>这两天的现实和思想碰撞，让我了解到：做任何事，不能太过于激进，在做之前先通盘考虑一下方案是不是合适。架构组不能离一线开发组太遥远，架构组的工作是围绕业务线来做的。架构组做的是认清业务线中的实际开发的技术痛点，然后快速做出稳定的方案解决，一切围绕线上的方案都是稳定和温和的。而非我看到一个好的、新的东西，我就直接往线上的技术方案里放，这是有极大风险的，第一，新的技术方案是否无缝衔接到业务线上的所有业务细节当中，第二，团队成员是否能够接受此技术方案。</p>
-<p>如果让我负责业务线中的开发，我不会激进地去大的改变现有的技术方案，会先自己尝试深入业务线做一段时间的开发，从中找出我认为不爽的地方，和业务线里的人探讨是否不爽，有没有更好的方式和方法。我没有排斥新的技术，但也没有鄙视现有的技术，我会权衡能够解决痛点又能让团队改造成本很小并让团队成员接受的技术方案。世界上没有一劳永逸的技术方案，但是有稳定演进的方案。</p>
-<p>最近我一直在想，自己的前端之路继续走下去，应该如何提高，如何体现自己的价值？JS、NodeJS在一直往前奔跑着，层出不穷的框架和工具让人眼花缭乱。我觉得我不会也不应该成为一个API使用者，应该属于一个创造者或者造论者。在业务线中去发掘痛点，使用技术去完善技术。在个人成长上，只需关注底层、原理、架构、设计模式、算法和数据结构就行。在以下方面要形成一套自己的方法论。</p>
-<ol>
-<li>流程规范</li>
-<li>技术选型</li>
-<li>项目构建</li>
-<li>自动化测试</li>
-<li>部署流程和部署平台</li>
-<li>监控体系</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1671,7 +1706,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">25</span>
+              <span class="site-state-item-count">26</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
