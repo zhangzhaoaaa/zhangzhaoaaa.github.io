@@ -85,18 +85,36 @@
 
 
 <meta name="description" content="这个脚本，生成过去7天的repo的commit信息，当然这个不是我原创的，我只是分析一下
-脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/bin/sh# optional parameters# -a    to filter by author# -s    t">
+
+脚本
+shell命令说明
+git命令说明
+
+以下是分析的过程：
+脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/bin/sh# optional parameters# -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="生成过去7天的commit信息">
 <meta property="og:url" content="http://yoursite.com/2017/03/01/shell编程一例/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
 <meta property="og:description" content="这个脚本，生成过去7天的repo的commit信息，当然这个不是我原创的，我只是分析一下
-脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/bin/sh# optional parameters# -a    to filter by author# -s    t">
-<meta property="og:updated_time" content="2017-03-01T07:10:10.000Z">
+
+脚本
+shell命令说明
+git命令说明
+
+以下是分析的过程：
+脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/bin/sh# optional parameters# -">
+<meta property="og:updated_time" content="2017-03-01T07:17:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生成过去7天的commit信息">
 <meta name="twitter:description" content="这个脚本，生成过去7天的repo的commit信息，当然这个不是我原创的，我只是分析一下
-脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/bin/sh# optional parameters# -a    to filter by author# -s    t">
+
+脚本
+shell命令说明
+git命令说明
+
+以下是分析的过程：
+脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/bin/sh# optional parameters# -">
 
 
 
@@ -347,6 +365,12 @@
 
       
         <p>这个脚本，生成过去7天的repo的commit信息，当然这个不是我原创的，我只是分析一下</p>
+<ol>
+<li>脚本</li>
+<li>shell命令说明</li>
+<li>git命令说明</li>
+</ol>
+<p>以下是分析的过程：</p>
 <h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">#!/bin/sh</div><div class="line"># optional parameters</div><div class="line"># -a    to filter by author</div><div class="line"># -s    to select start date</div><div class="line"># -e    to select end date</div><div class="line"># -o    to save it to file</div><div class="line"># -r    to specify the repository path</div><div class="line">NEXT=$(date +%F)</div><div class="line">SINCE=&quot;last 7&quot;</div><div class="line">UNTIL=$NEXT</div><div class="line">AUTHOR=$(git config user.email)</div><div class="line">OUTPUT=&quot;$(date +%F).md&quot;</div><div class="line">while getopts &quot;a:s:e:o:r:&quot; arg</div><div class="line">do</div><div class="line">  case $arg in</div><div class="line">    a)</div><div class="line">      AUTHOR=$OPTARG</div><div class="line">      ;;</div><div class="line">    s)</div><div class="line">      SINCE=$OPTARG</div><div class="line">      ;;</div><div class="line">    e)</div><div class="line">      UNTIL=$OPTARG</div><div class="line">      ;;</div><div class="line">    o)</div><div class="line">      OUTPUT=$OPTARG</div><div class="line">      ;;</div><div class="line">    r)</div><div class="line">      REPO=$OPTARG</div><div class="line">      ;;</div><div class="line">    ?)</div><div class="line">      echo &quot;unknown argument&quot;</div><div class="line">      exit 1</div><div class="line">      ;;</div><div class="line">  esac</div><div class="line">done</div><div class="line">(</div><div class="line">git -C &quot;$&#123;REPO&#125;&quot; log --author=&quot;$&#123;AUTHOR&#125;&quot; --since=&quot;$&#123;SINCE&#125;&quot; --until=&quot;$&#123;UNTIL&#125;&quot; --format=&quot;%cd&quot; --date=short | sort -u | while read DATE ; do</div><div class="line">  GIT_PAGER=$(git -C &quot;$&#123;REPO&#125;&quot; log --no-merges --reverse --format=&quot;* %s&quot; --since=&quot;$&#123;DATE&#125; 00:00:00&quot; --until=&quot;$&#123;DATE&#125; 23:59:59&quot; --author=&quot;$&#123;AUTHOR&#125;&quot;)</div><div class="line">  if [ ! -z &quot;$GIT_PAGER&quot; ]</div><div class="line">  then</div><div class="line">    echo &quot;[$&#123;DATE&#125;]&quot;</div><div class="line">    echo &quot;$&#123;GIT_PAGER&#125;&quot;</div><div class="line">    echo</div><div class="line">  fi</div><div class="line">done</div><div class="line">) &gt; $OUTPUT</div><div class="line">echo &quot;log is written to $&#123;OUTPUT&#125;&quot;</div></pre></td></tr></table></figure>
 <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><h4 id="shell说明"><a href="#shell说明" class="headerlink" title="shell说明"></a>shell说明</h4><p>1.$(date +%F)    当前日期 +%F 日期格式化，生成的是年-月-日<br>2.last 7 过去7天<br>3.shell循环体<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">while condition</div><div class="line">do</div><div class="line">    command</div><div class="line">done</div></pre></td></tr></table></figure></p>
 <p>4.shell的case</p>
