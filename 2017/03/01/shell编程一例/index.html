@@ -104,7 +104,7 @@ git命令说明
 
 以下是分析的过程：
 脚本123456789101112131415161718192021222324252627282930313233343536373839404142434445464748#!/bin/sh# optional parameters# -">
-<meta property="og:updated_time" content="2017-03-01T07:17:55.000Z">
+<meta property="og:updated_time" content="2017-03-01T07:21:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="生成过去7天的commit信息">
 <meta name="twitter:description" content="这个脚本，生成过去7天的repo的commit信息，当然这个不是我原创的，我只是分析一下
@@ -376,7 +376,7 @@ git命令说明
 <p>4.shell的case</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">case 值 in</div><div class="line">模式1)</div><div class="line">    command1</div><div class="line">    command2</div><div class="line">    ...</div><div class="line">    commandN</div><div class="line">    ;;</div><div class="line">模式2）</div><div class="line">    command1</div><div class="line">    command2</div><div class="line">    ...</div><div class="line">    commandN</div><div class="line">    ;;</div><div class="line">esac</div><div class="line"></div><div class="line">case工作方式如上所示。取值后面必须为单词in，每一模式必须以右括号结束。取值可以为变量或常数。匹配发现取值符合某一模式后，其间所有命令开始执行直至 ;;。</div><div class="line">取值将检测匹配的每一个模式。一旦模式匹配，则执行完匹配模式相应命令后不再继续其他模式。如果无一匹配模式，使用星号 * 捕获该值，再执行后面的命令。</div><div class="line"></div><div class="line">esac</div><div class="line">case的语法和C family语言差别很大，它需要一个esac（就是case反过来）作为结束标记，每个case分支用右圆括号，用两个分号表示break。</div></pre></td></tr></table></figure>
 <p>5.getopts “a:s:e:o:r:”<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">获取输入参数  参数以冒号分隔  </div><div class="line"></div><div class="line">命令行输入 时，比如</div><div class="line">-a 参数</div><div class="line">-s 参数</div></pre></td></tr></table></figure></p>
-<p>6.-z 字符串的长度为零则为真</p>
+<p>6.-z 字符串的长度为零则为真<br>7.sort -u 唯一性排序</p>
 <h4 id="git说明"><a href="#git说明" class="headerlink" title="git说明"></a>git说明</h4><p>1.git config user.email git 提交作者<br>2.git -C 参数<br>指定git项目地址，在该项目地址执行git命令<br>3.git log 获取commit日志<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">--author 作者</div><div class="line">--since 从什么时候开始</div><div class="line">--until 到什么时候结束</div><div class="line">--format 日志格式%cd 代表commit信息和日期</div><div class="line">--date 日期格式为年-月-日</div><div class="line">--no-merges 只打印1个父级提交</div><div class="line">--reverse 反向</div></pre></td></tr></table></figure></p>
 <p><a href="https://blog.yeatse.com/2016/03/07/git-log-weekly-report/" target="_blank" rel="external">原链接</a></p>
 
