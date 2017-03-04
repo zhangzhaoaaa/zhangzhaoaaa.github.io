@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="JS基础," />
+  <meta name="keywords" content="回到顶部,js组件," />
 
 
 
@@ -84,18 +84,60 @@
 
 
 
-<meta name="description" content="尽管ECMAScript包含对class的定义，ECMAScript对象在根本上来说不是像C++、Smalltalk、Java这些class-based的对象。它的对象是通过一个文字符号或者通过constructors（构造器）创建出来的，然后初始化代码，将初始值赋值给它们的属性。每一个构造器是一个函数，这个函数有个”prototype”的属性，被用来实现prototype-based 继承和共享">
+<meta name="description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑
+需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮
+前提不考虑兼容性的手机端或者只考虑chrome浏览器
+分析思路我们分析这个需求里都包含的元素和交互
+
+一个按钮
+按钮显示和隐藏
+滑出半屏幕
+点击按钮
+回到页面顶部
+平滑地
+
+然后我们逐一击破：
+
+一个按钮：构建一个div配合css实现，放到body底部">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JS对象">
-<meta property="og:url" content="http://yoursite.com/2017/01/22/JS对象/index.html">
+<meta property="og:title" content="回到顶部组件研究">
+<meta property="og:url" content="http://yoursite.com/2017/03/04/回到顶部组件研究/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="尽管ECMAScript包含对class的定义，ECMAScript对象在根本上来说不是像C++、Smalltalk、Java这些class-based的对象。它的对象是通过一个文字符号或者通过constructors（构造器）创建出来的，然后初始化代码，将初始值赋值给它们的属性。每一个构造器是一个函数，这个函数有个”prototype”的属性，被用来实现prototype-based 继承和共享">
-<meta property="og:image" content="http://yoursite.com/2017/01/22/JS对象/object.png">
-<meta property="og:updated_time" content="2017-01-22T06:42:58.000Z">
+<meta property="og:description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑
+需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮
+前提不考虑兼容性的手机端或者只考虑chrome浏览器
+分析思路我们分析这个需求里都包含的元素和交互
+
+一个按钮
+按钮显示和隐藏
+滑出半屏幕
+点击按钮
+回到页面顶部
+平滑地
+
+然后我们逐一击破：
+
+一个按钮：构建一个div配合css实现，放到body底部">
+<meta property="og:image" content="http://yoursite.com/2017/03/04/回到顶部组件研究/back2top.jpg">
+<meta property="og:updated_time" content="2017-03-04T09:56:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JS对象">
-<meta name="twitter:description" content="尽管ECMAScript包含对class的定义，ECMAScript对象在根本上来说不是像C++、Smalltalk、Java这些class-based的对象。它的对象是通过一个文字符号或者通过constructors（构造器）创建出来的，然后初始化代码，将初始值赋值给它们的属性。每一个构造器是一个函数，这个函数有个”prototype”的属性，被用来实现prototype-based 继承和共享">
-<meta name="twitter:image" content="http://yoursite.com/2017/01/22/JS对象/object.png">
+<meta name="twitter:title" content="回到顶部组件研究">
+<meta name="twitter:description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑
+需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮
+前提不考虑兼容性的手机端或者只考虑chrome浏览器
+分析思路我们分析这个需求里都包含的元素和交互
+
+一个按钮
+按钮显示和隐藏
+滑出半屏幕
+点击按钮
+回到页面顶部
+平滑地
+
+然后我们逐一击破：
+
+一个按钮：构建一个div配合css实现，放到body底部">
+<meta name="twitter:image" content="http://yoursite.com/2017/03/04/回到顶部组件研究/back2top.jpg">
 
 
 
@@ -116,10 +158,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/22/JS对象/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/04/回到顶部组件研究/"/>
 
 
-  <title> JS对象 | Zeromike的时光机 </title>
+  <title> 回到顶部组件研究 | Zeromike的时光机 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +321,7 @@
             
             
               
-                JS对象
+                回到顶部组件研究
               
             
           </h1>
@@ -291,8 +333,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-22T14:39:53+08:00" content="2017-01-22">
-              2017-01-22
+            <time itemprop="dateCreated" datetime="2017-03-04T17:12:52+08:00" content="2017-03-04">
+              2017-03-04
             </time>
           </span>
 
@@ -305,8 +347,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JS基础/" itemprop="url" rel="index">
-                    <span itemprop="name">JS基础</span>
+                  <a href="/categories/JS组件/" itemprop="url" rel="index">
+                    <span itemprop="name">JS组件</span>
                   </a>
                 </span>
 
@@ -321,8 +363,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/01/22/JS对象/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/22/JS对象/" itemprop="commentsCount"></span>
+                <a href="/2017/03/04/回到顶部组件研究/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/04/回到顶部组件研究/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -345,16 +387,43 @@
       
 
       
-        <p>尽管ECMAScript包含对class的定义，ECMAScript对象在根本上来说不是像C++、Smalltalk、Java这些class-based的对象。它的对象是通过一个文字符号或者通过constructors（构造器）创建出来的，然后初始化代码，将初始值赋值给它们的属性。每一个构造器是一个函数，这个函数有个”prototype”的属性，被用来实现prototype-based 继承和共享属性。使用通过构造器使用new表达式创建的对象；比如，new Date(2009, 11)创建了一个新的Date对象。调用构造器，不使用new表达式，比如，Date()创建一个当前日期和时间的字符串而不是一个对象。</p>
-<p>每一个被构造器创建出来的对象有一个隐式的引用指向构造器的”prototype”属性。而且，一个原型可能有一个非空的隐式引用指向它的原型，并且等等，周而复始；这被称为原型链。一个对象中的属性引用，那么这个属性的引用是在原型链中包含这个名字的属性的第一个对象。换句话说，第一个对象会被直接检验是否包含这个属性；如果这个对象包含这个名字的属性，那么就返回这个属性，否则就会沿着原型链去查找这个名字的属性。</p>
-<p>通常来说，在以class-based的面向对象的语言中，实例携带着状态，类携带着方法，继承是结构和行为。在ECMASCript中，状态和方法被对象携带，结构、行为和状态被继承。</p>
-<p>所有的对象，不能在它们的原型对象上包含一个特别的属性，因为原型对象上的属性和值是共享的。看下面一个例子：</p>
-<p>CF是一个构造器（当然也是一个对象）。5个对象是通过new表达式创建出来的：cf1,cf2,cf3,cf4,cf5.以上每个对象都包含q1和q2的属性。虚线表示的是隐式的prototype关系；比如，cf3的原型是CFP。构造器CF本身有两个属性P1和P2,对CFP,cf1,cf2,cf3,cf4和cf5是不可见的。在CFP中的属性CFP1是被cf1,cf2,cf3,cf4和cf5(不包括CF)共享的，在CFP的隐式的原型链中会找到q1,q2或者CFP1.注意在CF和CFP之间没有隐式的原型连接。</p>
-<p>不像大多数class-based的对象语言，属性是通过赋值给它们动态地增加到对象中的。构造器不需要命名或者赋值给所有或者构造器对象属性的任何一个。在上面的图表中，一个新的共享属性只需增加到CFP中，cf1,cf2,cf3,cf4和cf5就能同时共享此属性。</p>
-<p>尽管ECMAScript对象不是class-based继承的，但是基于一个通用的构造器函数，原型对象和方法，很方便的定义了一个class-like的抽象。ECMAScript的内置对象本身依据的就是一个class-like模型。从ECMAScript2015开始，ECMAScript包含了class语法的定义，允许开发者通过使用内置对象定义符合类似class-like抽象的对象。</p>
-<img src="/2017/01/22/JS对象/object.png" alt="object.png" title="">
-<p>翻译有些狗P不通的地方，我也不知道咋翻译，反正我自己是理解了。。。。</p>
-<p><a href="http://www.ecma-international.org/ecma-262/6.0/#sec-objects" target="_blank" rel="external">http://www.ecma-international.org/ecma-262/6.0/#sec-objects</a></p>
+        <p>我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑</p>
+<h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮</p>
+<h3 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h3><p>不考虑兼容性的手机端或者只考虑chrome浏览器</p>
+<h3 id="分析思路"><a href="#分析思路" class="headerlink" title="分析思路"></a>分析思路</h3><p>我们分析这个需求里都包含的元素和交互</p>
+<ol>
+<li>一个按钮</li>
+<li>按钮显示和隐藏</li>
+<li>滑出半屏幕</li>
+<li>点击按钮</li>
+<li>回到页面顶部</li>
+<li>平滑地</li>
+</ol>
+<p>然后我们逐一击破：</p>
+<ol>
+<li>一个按钮：构建一个div配合css实现，放到body底部</li>
+<li>显示和隐藏：display: none,block</li>
+<li>滑出半屏：获取屏幕高度/2，监听scroll事件，判断scrollY的高度，如果大于屏幕一半高度，那么显示按钮，否则隐藏按钮</li>
+<li>点击按钮：触发一个事件，开始向上滚动</li>
+<li>回到顶部：如何让纵向滚动条回到顶部，那肯定是window.scrollTo(0,0)</li>
+<li>平滑地：平滑就是有个速度的问题，要让滚动条有由快而慢的到顶端，纵坐标就得由大到小的减为0，这样滚动的时候就会看起来有个速度的变化。</li>
+</ol>
+<h3 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">var div = document.createElement(&apos;div&apos;); // 创建DIV</div><div class="line">div.className = &apos;back2top&apos;; // 添加样式</div><div class="line">div.style.display = &apos;none&apos;; // 刚开始为隐藏</div><div class="line">var screenHeight = window.screen.height / 2; // 屏幕一半的高度</div><div class="line">document.body.append(div);</div><div class="line">var body = document.querySelector(&apos;body&apos;);</div><div class="line">document.addEventListener(&apos;scroll&apos;, function (e) &#123;</div><div class="line">    var scrollTop = window.pageYOffset; // 纵向滚动条距顶部的高度</div><div class="line">    if (scrollTop &gt; screenHeight) &#123; // 和半屏高度比较</div><div class="line">        div.style.display = &apos;block&apos;;</div><div class="line">    &#125; else &#123;</div><div class="line">        div.style.display = &apos;none&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">function scroll(duration) &#123;</div><div class="line">    document.querySelector(&apos;.back2top&apos;).addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">        var scrollY = window.scrollY;</div><div class="line">        var scrollMargin,</div><div class="line">            scrollCount = 0;</div><div class="line">        var half = scrollY / 2; // 滚动条距离顶部的一半距离</div><div class="line">        var step = Math.PI / Math.floor(duration / 15);</div><div class="line">        var timer = setInterval(function render() &#123;</div><div class="line">            if (window.scrollY != 0) &#123;</div><div class="line">                scrollCount = scrollCount + 1;</div><div class="line">                scrollMargin = half - half * Math.cos(scrollCount * step);</div><div class="line">                // console.log(scrollY, scrollMargin);</div><div class="line">                window.scrollTo(0, (scrollY - scrollMargin));</div><div class="line">            &#125; else &#123;</div><div class="line">                clearInterval(timer);</div><div class="line">            &#125;</div><div class="line">        &#125;, 15);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">scroll(500); // 给500的duration</div></pre></td></tr></table></figure>
+<p>window.pageYOffset和window.scrollY的值是一样的，都是滚动条距离顶部的距离</p>
+<h4 id="平缓滚动代码分析"><a href="#平缓滚动代码分析" class="headerlink" title="平缓滚动代码分析"></a>平缓滚动代码分析</h4><p>因为需要滚动条连续周期性的滚动，所以我们这里使用setInterval函数，我们看里面的代码，如果滚动条的距离距离页面顶部不为0，则执行滚动，否则清除interval</p>
+<p>我们再看怎么就可以平滑滚动的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Window.scrollTo(0, scrollY-scrollMargin);</div></pre></td></tr></table></figure>
+<p>如果回到顶部，scrollMaring必须等于scrollY<br>我们再看scrollMargin = half - half <em> 参数<br>这个怎么就能够让scrollMargin等于scrollY呢，我们来看参数<br><strong>Math.cos(权值)</strong><br><img src="/2017/03/04/回到顶部组件研究/back2top.jpg" alt="余弦函数" title="余弦函数"><br>首先我们得了解点数学知识，cos(0)等于1，cos(Math.PI/2)是0，cos(Math.PI)是-1, cos(3 </em> Math.PI/2)是0，cos(2 * Math.PI)是1，这是余弦函数的特性</p>
+<p>然后我们再看 -half <em> 参数，参数从1到-1，然后half - half </em> 参数就能达到滚动距离慢慢变成scrollY了。</p>
+<p>好了我们分析完了怎么进行平缓滚动了。<br>我们接下来分析这些数据之间的关系。</p>
+<h4 id="平滑滚动的数据关系"><a href="#平滑滚动的数据关系" class="headerlink" title="平滑滚动的数据关系"></a>平滑滚动的数据关系</h4><p>我们根据上面的分析知道，为了让Math.cos达到-1，那么它的参数就必须是Math.PI，也就是Math.cos(Math.PI)的值是-1，而Math.cos(Math.PI/2)为0，所以这个参数只要比Math.PI/2，那么Math.cos(Math.PI / 参数)就无限接近于1，（我们的目的是让这个值从1转变到-1），我们用一个接近1的数到-1，不会影响整体效果。<br>所以现在的问题就是怎么让参数变为1，我们可以迭代一个数字，让迭代次数乘以参数为1，就可以达到我们的最终目的获得Math.PI这个值了。然而这个迭代的过程，就是距离变化的过程，scrollMargin的距离可以认为从0 -&gt; half -&gt; 2 * half 的转变</p>
+<p>所以为了参数变为Math.PI，我们可以看出它们之间的关系</p>
+<p>(Math.PI / 2) / duration = 迭代次数</p>
+<p>PI = 迭代次数 <em> duration </em> 2<br>迭代次数和duration成反比关系</p>
+<p>另外，总耗时 = 间隔时间(setInterval设置的时间) * 迭代次数</p>
+<p>公式一合并 总耗时 = duration * 间隔时间 / 2</p>
+<p>duration和总耗时成正比关系</p>
+<p>我们可以看到随着迭代次数增加，Math.cos的值会从1左右向-1进行变化，然后 half - half * 参数越来越接近scrollY，距离顶部的距离会越来越近，直到scrollY - scrollMargin为0，之后将定时器清除，这个平滑动画结束</p>
 
       
     </div>
@@ -377,7 +446,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JS基础/" rel="tag">#JS基础</a>
+            <a href="/tags/回到顶部-js组件/" rel="tag">#回到顶部,js组件</a>
           
         </div>
       
@@ -386,17 +455,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/19/鸭子类型/" rel="next" title="鸭子类型">
-                <i class="fa fa-chevron-left"></i> 鸭子类型
+              <a href="/2017/03/02/commit规范/" rel="next" title="commit规范">
+                <i class="fa fa-chevron-left"></i> commit规范
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/02/08/最近一个月计划/" rel="prev" title="本月计划">
-                本月计划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -445,8 +510,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/22/JS对象/"
-           data-title="JS对象" data-url="http://yoursite.com/2017/01/22/JS对象/">
+      <div class="ds-thread" data-thread-key="2017/03/04/回到顶部组件研究/"
+           data-title="回到顶部组件研究" data-url="http://yoursite.com/2017/03/04/回到顶部组件研究/">
       </div>
     
   </div>
@@ -575,7 +640,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#需求"><span class="nav-number">1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前提"><span class="nav-number">2.</span> <span class="nav-text">前提</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析思路"><span class="nav-number">3.</span> <span class="nav-text">分析思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析代码"><span class="nav-number">4.</span> <span class="nav-text">分析代码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#平缓滚动代码分析"><span class="nav-number">4.1.</span> <span class="nav-text">平缓滚动代码分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#平滑滚动的数据关系"><span class="nav-number">4.2.</span> <span class="nav-text">平滑滚动的数据关系</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
