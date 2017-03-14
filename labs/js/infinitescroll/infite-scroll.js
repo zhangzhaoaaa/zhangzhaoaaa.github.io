@@ -139,7 +139,7 @@ InfiniteScroll.prototype = {
         this.scrollListener();
     },
     detachScrollListner: function () {
-        this.win.removeEventListener('scroll');
+        this.win.removeEventListener('scroll', this.scrollListenerWrapThrottle);
     },
     throwException:function () {
         this.showExceptionDom();
