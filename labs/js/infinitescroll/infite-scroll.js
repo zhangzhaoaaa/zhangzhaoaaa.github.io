@@ -125,6 +125,9 @@ InfiniteScroll.prototype = {
       this.showNoDataDom();
       this.detachScrollListner();
     },
+    lock: function() {
+      this.isLock = true;
+    },
     unLock: function () {
       this.isLock = false;
       if (this.hasMore) {
