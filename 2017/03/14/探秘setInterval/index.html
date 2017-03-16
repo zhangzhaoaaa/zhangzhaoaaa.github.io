@@ -1,0 +1,799 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="setInterval," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。
+概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。
+语法12var intervalID = scope.setInterva">
+<meta property="og:type" content="article">
+<meta property="og:title" content="探秘setInterval">
+<meta property="og:url" content="http://yoursite.com/2017/03/14/探秘setInterval/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。
+概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。
+语法12var intervalID = scope.setInterva">
+<meta property="og:updated_time" content="2017-03-16T07:05:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="探秘setInterval">
+<meta name="twitter:description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。
+概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。
+语法12var intervalID = scope.setInterva">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/14/探秘setInterval/"/>
+
+
+  <title> 探秘setInterval | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                探秘setInterval
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-03-14T23:37:56+08:00" content="2017-03-14">
+              2017-03-14
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JS基础/" itemprop="url" rel="index">
+                    <span itemprop="name">JS基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/03/14/探秘setInterval/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/14/探秘setInterval/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。</p>
+<h4 id="概念和定义"><a href="#概念和定义" class="headerlink" title="概念和定义"></a>概念和定义</h4><p>window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。</p>
+<p>语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var intervalID = scope.setInterval(func, delay[,param1,param2,...]);</div><div class="line">var intervalID = scope.setInterval(code, delay);</div></pre></td></tr></table></figure></p>
+<p>func<br>每delay毫秒被执行的方法</p>
+<p>code</p>
+<p>一个可选的语法，允许使用一段字符串代替function，每隔delay毫秒被编译和执行。这个语法和eval一样有相同的安全风险不建议使用。</p>
+<p>delay<br>这个时间是毫秒，定时器会在延迟这个时间执行特定的function、code。如果这个参数小于10，那么这个时间就会被指定为10。因为实际的delay比这个要长。</p>
+<p>param1,…paramN 可选项<br>传给func的参数</p>
+<p>返回值</p>
+<p>返回的timeoutID是一个非零数字，是调用setInterval时创建的；这个值被传递给clearInterval()会cancel掉这个timeout</p>
+<p>注意：setInterval()和setTimeout()是共享IDS的，技术上来说，clearInterval()和clearTimeout()是可以交换使用的。但是，为了清楚起见，当维护你的代码的时候，你应该总是匹配使用避免歧义</p>
+<p>这个delay的参数会被转化为一个有符号的32位整数，被限制在2147483647ms。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</div><div class="line">  &lt;title&gt;setInterval/clearInterval example&lt;/title&gt;</div><div class="line"></div><div class="line">  &lt;script&gt;</div><div class="line">    var nIntervId;</div><div class="line"> </div><div class="line">    function changeColor() &#123;</div><div class="line">      nIntervId = setInterval(flashText, 1000);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    function flashText() &#123;</div><div class="line">      var oElem = document.getElementById(&apos;my_box&apos;);</div><div class="line">      oElem.style.color = oElem.style.color == &apos;red&apos; ? &apos;blue&apos; : &apos;red&apos;;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    function stopTextColor() &#123;</div><div class="line">      clearInterval(nIntervId);</div><div class="line">    &#125;</div><div class="line">  &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"> </div><div class="line">&lt;body onload=&quot;changeColor();&quot;&gt;</div><div class="line">  &lt;div id=&quot;my_box&quot;&gt;</div><div class="line">    &lt;p&gt;Hello World&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line"></div><div class="line">  &lt;button onclick=&quot;stopTextColor();&quot;&gt;Stop&lt;/button&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="This"><a href="#This" class="headerlink" title="This"></a>This</h4><p>setInterval()的代码在一个独立的执行环境中执行，里面的this指向了window(or global)对象</p>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>setInterval()方法通常是被用来设置一个delay给来一次一次的执行functions，比如动画。</p>
+<p>确保执行周期是小于interval的频率</p>
+<p>假如有一种可能是你的逻辑会执行超过interval time的时间，建议你周期性的调用setTimeout方法。比如，使用setInterval每隔5秒获取远程服务器的数据，网络延迟，没有响应的服务和其他一些问题能够阻止你在你分配的时间内完成这次请求的。你可以将没必要顺序返回的XHR的请求放入队列</p>
+<p>这种情况下，一个循环的setTimeout模式可能是更好的选择：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(function loop()&#123;</div><div class="line">	setTimeout(function()&#123;</div><div class="line">	  // 你的逻辑...</div><div class="line">		loop();</div><div class="line">	&#125;, delay);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure></p>
+<p>在上面的代码片段中，一个名为loop()的方法被声明，并且会立即执行。在代码逻辑执行完成后，loop()在setTimeout()里面循环调用。这种模式不能保证执行是在一个固定的周期，它能保证在循环开始之前，之前的周期已经完成了。</p>
+<h4 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h4><p>我们来看标准是如何定义setInterval（）方法的</p>
+<p>setInterval()方法必须返回timer initialization steps的返回值，传递它们给方法的参数，。。。。</p>
+<p>timer initialization steps，调用一些方法的参数，方法的上下文，还有一个重复的flag，可能是true or false，还有一个可选的预处理(仅当repeat flag 是true的时候)，如下：</p>
+<ol>
+<li>方法的上下文是WorkerGlobalScope或者WindowProxy</li>
+<li>如果有预处理，让handle是预处理，否则handle是用户代理定义的一个大于0的整数，这个整数指向了timeout，被设置在了list of active timers中</li>
+<li>如果没有预处理，增加一个入口到list of active timers中代表handle</li>
+<li>让callerRealm是current Realm Record，并且calleeRealm是方法上下文的JavaScript realm</li>
+<li><p>任务会执行以下步骤：</p>
+<p> 1.如果list of active timers的入口的handle被清掉了，那么不用执行这个任务的步骤了<br> 2.运行下面列表中的详细的步骤：</p>
+<pre><code>如果第一个方法参数是一个Function
+   调用这个Function。使用第三个和随后的参数（如果有的话）作为参数调用Function
+   使用方法的上下文代理callback中的this
+否则
+   1.执行HostEnsureCanCompileStrings(callerRealm,calleeRealm)。如果抛出异常，报告这个异常
+   2.script的代码是第一个方法参数
+   3.Let settings object be method context&apos;s environment settings object
+   4.Let script be the result of creating a classic script using script source and settings object
+   5.Run the classic script script
+</code></pre><p> 3.如果repeat flag为true，再次调用timer initialization steps,使用相同的方法参数，相同的方法上下文，repeat flag仍然设置为true，之前的handle还设置为handle</p>
+</li>
+<li><p>timeout是方法的第二个参数</p>
+</li>
+<li>如果当前运行的任务是被这个算法创建的任务，那么nesting level是任务的timer nesting level.否则nesting level是0.</li>
+<li>如果nesting level大于5，并且timeout小于4，timeout就为4</li>
+<li>nesting level一次加1</li>
+<li>任务的timer nesting level是nesting level</li>
+<li>返回handle，并且继续并行运行这个算法</li>
+<li>如果方法的上下文是window对象，wait util the Document associated with method context has been fully active for a further timeout milliseconds(没必要是连续地)否则，如果方法的上下文是WorkerGlobalScope对象；wait until timeout milliseconds have passed with the worker not suspended(没必要是连续地)</li>
+<li>Wait until any invocation of this algorithm that had the same method context,that started before this one,and whose timeout is equal to or less than this one’s,have completed.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">So for example, the following rather silly code will result in the log containing &quot;ONE TWO &quot;:</div><div class="line">var log = &apos;&apos;;</div><div class="line">function logger(s) &#123; log += s + &apos; &apos;; &#125;</div><div class="line"></div><div class="line">setTimeout(&#123; toString: function () &#123;</div><div class="line">  setTimeout(&quot;logger(&apos;ONE&apos;)&quot;, 100);</div><div class="line">  return &quot;logger(&apos;TWO&apos;)&quot;;</div><div class="line">&#125; &#125;, 100);</div></pre></td></tr></table></figure>
+<ol>
+<li>可选的是，等一个更远的用户代理定义的时间长度</li>
+<li>把任务放入队列</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/setInterval/" rel="tag">#setInterval</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/14/无限滚动条/" rel="next" title="无限滚动组件">
+                <i class="fa fa-chevron-left"></i> 无限滚动组件
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/16/Event-loops/" rel="prev" title="Event loops">
+                Event loops <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/14/探秘setInterval/"
+           data-title="探秘setInterval" data-url="http://yoursite.com/2017/03/14/探秘setInterval/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">42</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念和定义"><span class="nav-number">1.</span> <span class="nav-text">概念和定义</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#This"><span class="nav-number">3.</span> <span class="nav-text">This</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#注意"><span class="nav-number">4.</span> <span class="nav-text">注意</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#本质"><span class="nav-number">5.</span> <span class="nav-text">本质</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"lovecoder"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
