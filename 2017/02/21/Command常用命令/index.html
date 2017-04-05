@@ -84,46 +84,43 @@
 
 
 
-<meta name="description" content="查看文件大小
-
+<meta name="description" content="1.查看文件大小
 1ls -lhs
-
-查看端口号使用情况  
-
+2.查看端口号使用情况  
 1lsof -i:443
-
-改变文件权限
-
-在sudo su下，将当前html目录下的文件夹权限给zeromike1chown -R zeromike html">
+3.改变文件权限
+在sudo su下，将当前html目录下的文件夹权限给zeromike1chown -R zeromike html
+4.解压文件
+1234解压xz$xz -d ***.tar.xz  解压tar$tar -xvf  ***.tar
+5.查看系统信息
+12# uname -a">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Command常用命令">
 <meta property="og:url" content="http://yoursite.com/2017/02/21/Command常用命令/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="查看文件大小
-
+<meta property="og:description" content="1.查看文件大小
 1ls -lhs
-
-查看端口号使用情况  
-
+2.查看端口号使用情况  
 1lsof -i:443
-
-改变文件权限
-
-在sudo su下，将当前html目录下的文件夹权限给zeromike1chown -R zeromike html">
-<meta property="og:updated_time" content="2017-03-02T02:41:08.000Z">
+3.改变文件权限
+在sudo su下，将当前html目录下的文件夹权限给zeromike1chown -R zeromike html
+4.解压文件
+1234解压xz$xz -d ***.tar.xz  解压tar$tar -xvf  ***.tar
+5.查看系统信息
+12# uname -a">
+<meta property="og:updated_time" content="2017-04-05T03:54:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Command常用命令">
-<meta name="twitter:description" content="查看文件大小
-
+<meta name="twitter:description" content="1.查看文件大小
 1ls -lhs
-
-查看端口号使用情况  
-
+2.查看端口号使用情况  
 1lsof -i:443
-
-改变文件权限
-
-在sudo su下，将当前html目录下的文件夹权限给zeromike1chown -R zeromike html">
+3.改变文件权限
+在sudo su下，将当前html目录下的文件夹权限给zeromike1chown -R zeromike html
+4.解压文件
+1234解压xz$xz -d ***.tar.xz  解压tar$tar -xvf  ***.tar
+5.查看系统信息
+12# uname -a">
 
 
 
@@ -376,18 +373,18 @@
       
 
       
-        <ol>
-<li>查看文件大小</li>
-</ol>
+        <p>1.查看文件大小</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ls -lhs</div></pre></td></tr></table></figure>
-<ol>
-<li>查看端口号使用情况  </li>
-</ol>
+<p>2.查看端口号使用情况  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof -i:443</div></pre></td></tr></table></figure>
-<ol>
-<li>改变文件权限</li>
-</ol>
+<p>3.改变文件权限</p>
 <p>在sudo su下，将当前html目录下的文件夹权限给zeromike<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chown -R zeromike html</div></pre></td></tr></table></figure></p>
+<p>4.解压文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">解压xz</div><div class="line">$xz -d ***.tar.xz  </div><div class="line">解压tar</div><div class="line">$tar -xvf  ***.tar</div></pre></td></tr></table></figure>
+<p>5.查看系统信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># uname -a               # 查看内核/操作系统/CPU信息</div><div class="line"># head -n 1 /etc/issue   # 查看操作系统版本</div></pre></td></tr></table></figure>
+<p>6.查看磁盘情况<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># df -h                  # 查看各分区使用情况</div><div class="line"># du -sh &lt;目录名&gt;        # 查看指定目录的大小</div></pre></td></tr></table></figure></p>
+<p>7.文件内容过滤<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">grep是Linux命令行下常用于查找过滤文本文件内容的命令。最简单的用法是：</div><div class="line">grep apple fruitlist.txt</div><div class="line">如果想忽略大小写，可以用-i参数：</div><div class="line">grep -i apple fruitlist.txt</div><div class="line">如果想搜索目录里所有文件，包括子目录的话，并且在结果中显示行号，可以用以下命令：</div><div class="line">grep -nr apple *</div><div class="line">grep的语法支持正则表达式，正则表达式有些复杂，以后再讲解。下面是一些有用的参数：</div><div class="line">	•	-A num, --after-context=num: 在结果中同时输出匹配行之后的num行</div><div class="line">	•	-B num, --before-context=num: 在结果中同时输出匹配行之前的num行，有时候我们需要显示几行上下文。</div><div class="line">	•	-i, --ignore-case: 忽略大小写</div><div class="line">	•	-n, --line-number: 显示行号</div><div class="line">	•	-R, -r, --recursive: 递归搜索子目录</div><div class="line">	•	-v, --invert-match: 输出没有匹配的行</div><div class="line">我们可以通过管道操作来让grep变得更强大，管道操作就是把前面一条命令的输出作为后面一条命令的输入，从而把很多简单的命令组合起来完成复杂的功能。例如，如果我们想查找包含apple的行，但又想过滤掉pineapple，可以用下面的命令：</div><div class="line">grep apple fruitlist.txt | grep -v pineapple</div><div class="line">如果我们想把搜索结果保存起来，那么可以把命令的标准输出重定向到文件：</div><div class="line">grep apple fruitlist.txt | grep -v pineapple &gt; apples.txt</div><div class="line">重定向符号&gt;和管道操作符号|的区别是，重定向后面接的是一个文件，它后面不能再接任何文件或命令了；而管道操作后面接的是命令，可以无限地接下去。如果想以追加方式写到文件，可以用&gt;&gt;。管道操作是Linux命令行的一种哲学，它是计算机技术中少有的能沿用几十年的技术之一。通过管道操作，一行命令可以完成Windows下上千行程序也不能完成的文本处理功能。</div></pre></td></tr></table></figure></p>
 
       
     </div>
