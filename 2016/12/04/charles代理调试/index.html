@@ -108,7 +108,7 @@ https://h5.gomeplus.com
 https://js.meixincdn.com
 
 1. 打开">
-<meta property="og:updated_time" content="2016-12-05T05:30:18.000Z">
+<meta property="og:updated_time" content="2017-04-27T03:51:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="charles代理调试">
 <meta name="twitter:description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
@@ -340,8 +340,8 @@ https://js.meixincdn.com
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/tech/" itemprop="url" rel="index">
-                    <span itemprop="name">tech</span>
+                  <a href="/categories/Mobile开发/" itemprop="url" rel="index">
+                    <span itemprop="name">Mobile开发</span>
                   </a>
                 </span>
 
@@ -397,6 +397,7 @@ https://js.meixincdn.com
 <p> 选择Https协议<br> Host： js.meixincdn.com<br> Path:  填入/m/app/dist/js/*<br> Query: 参数写上timestamp=0.0.140，这个是url后面所带的请求参数<br> LocalPath: 在你本机上选择要代理的对应的js文件夹<br> 如：<code>/Users/zhangmike/WebstormProjects/gomeplus/gitlab/app/dist/js</code><br> -&gt;点击【ok】大功告成  </p>
 <p> 2.5 请求的<a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a>如果加debug的话，在mapRemote上将其url<br> 改为<a href="https://h5.gomeplus.com?debug=1" target="_blank" rel="external">https://h5.gomeplus.com?debug=1</a></p>
 <h4 id="3-最后"><a href="#3-最后" class="headerlink" title="3.最后"></a>3.最后</h4><p>在以上步骤完成后，其他都按照charles的默认选项即可，在chrome浏览器里，输入  <a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a> 就可以代理本机的文件了；如果是手机app代理的话，需要让本机和手机处在同一个网络，然后在手机的网络代理中，服务器地址输入本机地址，端口号为8888(charles代理默认端口)</p>
+<h4 id="4-补充"><a href="#4-补充" class="headerlink" title="4.补充"></a>4.补充</h4><p>如果在手机上调试，在本地启动webpack中的服务（比如端口号是8080），在charles中，选中要代理的js文件，在mapremote中，设置本地127.0.0.1，端口8080，代理文件路径（webpack服务启动后，在本地浏览器端可以访问的js文件路径）</p>
 
       
     </div>
@@ -537,7 +538,7 @@ https://js.meixincdn.com
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -613,7 +614,7 @@ https://js.meixincdn.com
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-打开charles，设置Root认证"><span class="nav-number">1.</span> <span class="nav-text">1. 打开charles，设置Root认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-以下设置代理url及其认证："><span class="nav-number">2.</span> <span class="nav-text">2. 以下设置代理url及其认证：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-最后"><span class="nav-number">3.</span> <span class="nav-text">3.最后</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-打开charles，设置Root认证"><span class="nav-number">1.</span> <span class="nav-text">1. 打开charles，设置Root认证</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-以下设置代理url及其认证："><span class="nav-number">2.</span> <span class="nav-text">2. 以下设置代理url及其认证：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-最后"><span class="nav-number">3.</span> <span class="nav-text">3.最后</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-补充"><span class="nav-number">4.</span> <span class="nav-text">4.补充</span></a></li></ol></div>
             
           </div>
         </section>
