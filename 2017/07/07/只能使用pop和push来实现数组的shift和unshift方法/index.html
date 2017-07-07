@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="js基础，insertAdjacentHTML," />
+  <meta name="keywords" content="算法设计," />
 
 
 
@@ -84,19 +84,19 @@
 
 
 
-<meta name="description" content="Element.insertAdjacentHTML简述insertAdjacentHTML()将指定的text解析成HTML或者XML，将这些Nodes插入到DOM树的特定的位置。它不会重新解析它正在使用的元素，因此它不会破坏元素内的现有元素。这避免了额外的序列化步骤，使其比直接innerHTML操作更快。
-语法1element.insertAdjacentHTML(position, text">
+<meta name="description" content="题目除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法
+分析我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转">
 <meta property="og:type" content="article">
-<meta property="og:title" content="insertAdjacentHTML">
-<meta property="og:url" content="http://yoursite.com/2017/03/27/insertAdjacentHTML/index.html">
+<meta property="og:title" content="只能使用pop和push来实现数组的shift和unshift方法">
+<meta property="og:url" content="http://yoursite.com/2017/07/07/只能使用pop和push来实现数组的shift和unshift方法/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="Element.insertAdjacentHTML简述insertAdjacentHTML()将指定的text解析成HTML或者XML，将这些Nodes插入到DOM树的特定的位置。它不会重新解析它正在使用的元素，因此它不会破坏元素内的现有元素。这避免了额外的序列化步骤，使其比直接innerHTML操作更快。
-语法1element.insertAdjacentHTML(position, text">
-<meta property="og:updated_time" content="2017-03-27T15:44:38.000Z">
+<meta property="og:description" content="题目除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法
+分析我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转">
+<meta property="og:updated_time" content="2017-07-07T02:37:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="insertAdjacentHTML">
-<meta name="twitter:description" content="Element.insertAdjacentHTML简述insertAdjacentHTML()将指定的text解析成HTML或者XML，将这些Nodes插入到DOM树的特定的位置。它不会重新解析它正在使用的元素，因此它不会破坏元素内的现有元素。这避免了额外的序列化步骤，使其比直接innerHTML操作更快。
-语法1element.insertAdjacentHTML(position, text">
+<meta name="twitter:title" content="只能使用pop和push来实现数组的shift和unshift方法">
+<meta name="twitter:description" content="题目除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法
+分析我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转">
 
 
 
@@ -117,10 +117,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/27/insertAdjacentHTML/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/07/只能使用pop和push来实现数组的shift和unshift方法/"/>
 
 
-  <title> insertAdjacentHTML | Zeromike的时光机 </title>
+  <title> 只能使用pop和push来实现数组的shift和unshift方法 | Zeromike的时光机 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +290,7 @@
             
             
               
-                insertAdjacentHTML
+                只能使用pop和push来实现数组的shift和unshift方法
               
             
           </h1>
@@ -302,8 +302,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-27T23:17:23+08:00" content="2017-03-27">
-              2017-03-27
+            <time itemprop="dateCreated" datetime="2017-07-07T10:34:05+08:00" content="2017-07-07">
+              2017-07-07
             </time>
           </span>
 
@@ -316,8 +316,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JS基础/" itemprop="url" rel="index">
-                    <span itemprop="name">JS基础</span>
+                  <a href="/categories/算法设计/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计</span>
                   </a>
                 </span>
 
@@ -349,19 +349,10 @@
       
 
       
-        <h2 id="Element-insertAdjacentHTML"><a href="#Element-insertAdjacentHTML" class="headerlink" title="Element.insertAdjacentHTML"></a>Element.insertAdjacentHTML</h2><h3 id="简述"><a href="#简述" class="headerlink" title="简述"></a>简述</h3><p>insertAdjacentHTML()将指定的text解析成HTML或者XML，将这些Nodes插入到DOM树的特定的位置。它不会重新解析它正在使用的元素，因此它不会破坏元素内的现有元素。这避免了额外的序列化步骤，使其比直接innerHTML操作更快。</p>
-<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">element.insertAdjacentHTML(position, text);</div></pre></td></tr></table></figure>
-<p>position是相对于元素的位置，并且必须是以下字符串之一：</p>
-<ol>
-<li>beforebegin<br>元素自身的前面</li>
-<li>afterbegin<br>插入元素内部的第一个子节点之前</li>
-<li>beforeend<br>插入元素内部的最后一个子节点之后</li>
-<li>afterend<br>元素自身的后面</li>
-</ol>
-<p>text是要被解析为HTML或XML，并插入到DOM树中的字符串</p>
-<p>位置名称的可视化：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;!--beforebegin---&gt;</div><div class="line">&lt;p&gt;</div><div class="line">&lt;!--afterbegin---&gt;</div><div class="line">foo</div><div class="line">&lt;!--beforeend--&gt;</div><div class="line">&lt;/p&gt;</div><div class="line">&lt;!--afterend--&gt;</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;div&quot;&gt;123&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var div = document.querySelector(&apos;#div&apos;);</div><div class="line">    div.insertAdjacentHTML(&apos;beforebegin&apos;, &apos;&lt;p&gt;beforebegin&lt;/p&gt;&apos;);</div><div class="line">    div.insertAdjacentHTML(&apos;afterbegin&apos;, &apos;&lt;span&gt;afterbegin&lt;/span&gt;&apos;)</div><div class="line">    div.insertAdjacentHTML(&apos;beforeend&apos;, &apos;&lt;span&gt;beforeend&lt;/span&gt;&apos;)</div><div class="line">    div.insertAdjacentHTML(&apos;afterend&apos;, &apos;&lt;span&gt;afterend&lt;/span&gt;&apos;)</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;beforebegin&lt;/p&gt;</div><div class="line">&lt;div id=&quot;div&quot;&gt;</div><div class="line">  &lt;span&gt;afterbegin&lt;/span&gt;</div><div class="line">  123</div><div class="line">  &lt;span&gt;beforeend&lt;/span&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;span&gt;afterend&lt;/span&gt;</div></pre></td></tr></table></figure>
+        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转回来</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Array.prototype.reverse = function () &#123;</div><div class="line">    var nums = this;</div><div class="line">    for (var i = 0, len = nums.length; i &lt; len / 2; i++) &#123;</div><div class="line">        var t = nums[i];</div><div class="line">        nums[i] = nums[len - i - 1];</div><div class="line">        nums[len - i - 1] = t;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Array.prototype.shift = function () &#123;</div><div class="line">    var nums = this;</div><div class="line">    this.reverse(nums);</div><div class="line">    var ele = nums.pop();</div><div class="line">    this.reverse(nums);</div><div class="line">    return ele;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Array.prototype.unshift = function () &#123;</div><div class="line">    var nums = this;</div><div class="line">    this.reverse(nums);</div><div class="line">    for (var i = arguments.length - 1; i &gt;= 0; i--) &#123;</div><div class="line">        nums.push(arguments[i]);</div><div class="line">    &#125;</div><div class="line">    this.reverse(nums);</div><div class="line">    return nums.length;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var arr = [1,2,3,4];</div><div class="line">console.log(&quot;shift.return element...&quot;, arr.shift());</div><div class="line">console.log(&quot;after shift...&quot;, arr);</div><div class="line"></div><div class="line">arr = [1,2,3,4,5];</div><div class="line">console.log(&quot;unshift return new array length&quot;, arr.unshift(0,1,2));</div><div class="line">console.log(&quot;after unshift...&quot;, arr);</div></pre></td></tr></table></figure>
+<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">shift.return element... 1</div><div class="line">after shift... [ 2, 3, 4 ]</div><div class="line">unshift return new array length 8</div><div class="line">after unshift... [ 0, 1, 2, 1, 2, 3, 4, 5 ]</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -384,7 +375,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/js基础，insertAdjacentHTML/" rel="tag">#js基础，insertAdjacentHTML</a>
+            <a href="/tags/算法设计/" rel="tag">#算法设计</a>
           
         </div>
       
@@ -393,17 +384,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/26/移动端调试/" rel="next" title="移动端调试">
-                <i class="fa fa-chevron-left"></i> 移动端调试
+              <a href="/2017/07/06/移动数字0和数组内除自己外的乘积/" rel="next" title="移动数字0和数组内除自己外的乘积">
+                <i class="fa fa-chevron-left"></i> 移动数字0和数组内除自己外的乘积
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/30/Mac不用root启动80端口/" rel="prev" title="Mac不用root启动80端口">
-                Mac不用root启动80端口 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -578,7 +565,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Element-insertAdjacentHTML"><span class="nav-number">1.</span> <span class="nav-text">Element.insertAdjacentHTML</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简述"><span class="nav-number">1.1.</span> <span class="nav-text">简述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.2.</span> <span class="nav-text">语法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行结果"><span class="nav-number">4.</span> <span class="nav-text">运行结果</span></a></li></ol></div>
             
           </div>
         </section>
