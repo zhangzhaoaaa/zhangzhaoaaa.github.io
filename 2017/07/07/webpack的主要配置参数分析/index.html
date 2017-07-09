@@ -1,0 +1,830 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webpack主要配置参数," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="我们知道webpack的核心概念就是
+
+Entry
+Output
+Loader
+Plugin
+
+所以我们依然主要围绕着这几个核心概念进行主要参数的分析，plugin属性本身没什么配置，就是一个插件数组，所以我们先按下不表，之后有plugin插件专题会讨论
+Entry这是应用程序的入口根据不同的业务场景，会有单页应用和多页应用，那么该如何处理呢
+1.单页应用
+用法： entry: string |">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack的主要配置参数分析">
+<meta property="og:url" content="http://yoursite.com/2017/07/07/webpack的主要配置参数分析/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="我们知道webpack的核心概念就是
+
+Entry
+Output
+Loader
+Plugin
+
+所以我们依然主要围绕着这几个核心概念进行主要参数的分析，plugin属性本身没什么配置，就是一个插件数组，所以我们先按下不表，之后有plugin插件专题会讨论
+Entry这是应用程序的入口根据不同的业务场景，会有单页应用和多页应用，那么该如何处理呢
+1.单页应用
+用法： entry: string |">
+<meta property="og:updated_time" content="2017-07-09T12:01:36.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack的主要配置参数分析">
+<meta name="twitter:description" content="我们知道webpack的核心概念就是
+
+Entry
+Output
+Loader
+Plugin
+
+所以我们依然主要围绕着这几个核心概念进行主要参数的分析，plugin属性本身没什么配置，就是一个插件数组，所以我们先按下不表，之后有plugin插件专题会讨论
+Entry这是应用程序的入口根据不同的业务场景，会有单页应用和多页应用，那么该如何处理呢
+1.单页应用
+用法： entry: string |">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/07/webpack的主要配置参数分析/"/>
+
+
+  <title> webpack的主要配置参数分析 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                webpack的主要配置参数分析
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-07T16:29:00+08:00" content="2017-07-07">
+              2017-07-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我们知道webpack的核心概念就是</p>
+<ol>
+<li>Entry</li>
+<li>Output</li>
+<li>Loader</li>
+<li>Plugin</li>
+</ol>
+<p>所以我们依然主要围绕着这几个核心概念进行主要参数的分析，plugin属性本身没什么配置，就是一个插件数组，所以我们先按下不表，之后有plugin插件专题会讨论</p>
+<h3 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h3><p>这是应用程序的入口<br>根据不同的业务场景，会有单页应用和多页应用，那么该如何处理呢</p>
+<p>1.单页应用</p>
+<p>用法： entry: string | Array<string><br>例子：</string></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const config = &#123;</div><div class="line">  entry: &apos;./path/to/my/entry/file.js&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = config;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    context: __dirname,</div><div class="line">    entry: [</div><div class="line">        &apos;./index.js&apos;,</div><div class="line">        &apos;./home.js&apos;</div><div class="line">    ],</div><div class="line">    output: &#123;</div><div class="line">        path: path.resolve(__dirname, &apos;dist&apos;),</div><div class="line">        filename: &apos;bundle.js&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>2.多页应用</p>
+<p>用法： entry: {[entryChunkName: string]: string | Array<string>}</string></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">    context: __dirname,</div><div class="line">    entry: &#123;</div><div class="line">        main: &apos;./index.js&apos;,</div><div class="line">        home: &apos;./home.js&apos;</div><div class="line">    &#125;,</div><div class="line">    output: &#123;</div><div class="line">        path: path.resolve(__dirname, &apos;dist&apos;),</div><div class="line">        filename: &apos;[name]-[hash].js&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>我们看到多页应用的时候，输出文件是[name]-[hash].js，这就是为了处理多入口文件的一种方式。<br>我们就来说明一下filename，这些属性是什么意思。</p>
+<p>1.filename</p>
+<table>
+<thead>
+<tr>
+<th>模板</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[hash]</td>
+<td>module的标识的hash</td>
+</tr>
+<tr>
+<td>[chunckhash]</td>
+<td>chunk内容的hash</td>
+</tr>
+<tr>
+<td>[name]</td>
+<td>module名称</td>
+</tr>
+<tr>
+<td>[id]</td>
+<td>module标识</td>
+</tr>
+<tr>
+<td>[file]</td>
+<td>module文件名</td>
+</tr>
+<tr>
+<td>[filebase]</td>
+<td>模块的basename</td>
+</tr>
+<tr>
+<td>[query]</td>
+<td>模块query，文件名?后面的字符串  </td>
+</tr>
+</tbody>
+</table>
+<p>2.path<br>输出bundle路径</p>
+<p>3.hashDigest<br>    生成hash值的编码，默认使用hex。<br>4.hashDigestLength<br>  hash数字的长度，默认20.<br>5.library<br>  这个一般在写JavaScript库的时候使用，这个是library的名字<br>6.libraryTarget<br>  配置这个library如何暴露出来。<br>  默认export出来是var，当你的library加载的时候，返回的你entry的值要赋值给一个变量<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"> 	var MyLibrary = _entry_return_;</div><div class="line"></div><div class="line">// your users will use your library like:</div><div class="line">MyLibrary.doSomething();</div></pre></td></tr></table></figure></p>
+<p>  当然还  有”this”,”window”,”global”,”commonjs”,”commonjs2”,”amd”,”umd”,”assign”,”jsonp”<br>  我们一般使用umd就可以了，包含了commonjs,amd和全局变量方式。</p>
+<p>7.publicPath<br>当使用按需加载或者加载外部资源的时候，如图片，文件等，这个选项很重要啊。当设置了不正确的值，你加载这些资源的时候，会收到404的错误。<br>当output目录在浏览器中引用的时候，这个参数指定了输出目录的public URL.<br>这个默认值是“”</p>
+<p>例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">publicPath: &quot;/assets/&quot;,</div><div class="line">chunkFilename: &quot;[id].chunk.js&quot;</div></pre></td></tr></table></figure>
+<p>一个chunk的请求如同/assets/4.chunk.js</p>
+<p>我们之后在devServer的时候会再次说明这个属性</p>
+<h3 id="Loaders（Module）"><a href="#Loaders（Module）" class="headerlink" title="Loaders（Module）"></a>Loaders（Module）</h3><p>loaders是转换成webpack认识的模块的配置</p>
+<p>1.module.noParse<br>用法： RegExp | [RegExp] | function<br>会阻止webpack解析匹配上的文件。忽略import,require,define或者其他引入模块机制。忽略这些大的包会提升编译性能。<br>2.moduel.rules<br>是一个规则数组</p>
+<h4 id="Rule-规则"><a href="#Rule-规则" class="headerlink" title="Rule(规则)"></a>Rule(规则)</h4><p>一个规则会被分成三个部分——Conditions（条件），Results(结果)和nested Results（内置结果）</p>
+<h5 id="Rule-Conditions"><a href="#Rule-Conditions" class="headerlink" title="Rule Conditions"></a>Rule Conditions</h5><p>对于条件有两个输入：</p>
+<ol>
+<li>资源文件</li>
+<li>资源所被应用的地方</li>
+</ol>
+<p>在app.js中我们 import “./style.css”,资源是/path/to/style.css,提供者是/path/to/app.js </p>
+<p>在Rule里的属性，test，include，exclude和resource对应了资源</p>
+<h5 id="Rule-results"><a href="#Rule-results" class="headerlink" title="Rule results"></a>Rule results</h5><p>当Rule条件匹配了，rule的results就可以被用了。<br>一个Rule会有两个参数：</p>
+<ol>
+<li>loaders: 一个loaders的数组来应用到resource上</li>
+<li>parser参数： 这些parser在生成module时所需要的参数</li>
+</ol>
+<p>参数有loader, options, use，兼容参数有query,loaders</p>
+<h5 id="Nested-Rules"><a href="#Nested-Rules" class="headerlink" title="Nested Rules"></a>Nested Rules</h5><p>Rule.enforce: “pre”|”post”<br>指定了loader的分类。没有值意味着是normal loader</p>
+<p>所有loaders的排序是post inline normal pre</p>
+<p>所有normal loaders可以使用前缀!触发<br>所有normal和pre loaders可以用-！触发<br>所有normal ,post,pre loaders可以用!!触发<br>Inline loaders和!前缀不应该被用，因为它们是非标准的。</p>
+<h3 id="Rule"><a href="#Rule" class="headerlink" title="Rule"></a>Rule</h3><p>1.Rule.use<br>UseEntries的一个列表。<br>UseEntry是个对象，必须有一个loader属性是字符串，有一个options属性是字符串或者对象。这个值会被传递给loader，在解析的时候使用。</p>
+<p>看个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">use: [</div><div class="line">  &apos;style-loader&apos;,</div><div class="line">  &#123;</div><div class="line">    loader: &apos;css-loader&apos;,</div><div class="line">    options: &#123;</div><div class="line">      importLoaders: 1</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  &#123;</div><div class="line">    loader: &apos;less-loader&apos;,</div><div class="line">    options: &#123;</div><div class="line">      noIeCompat: true</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">]</div></pre></td></tr></table></figure></p>
+<h4 id="Condition"><a href="#Condition" class="headerlink" title="Condition"></a>Condition</h4><ol>
+<li>一个字符串： 匹配一个提供的字符串。比如：一个绝对路径或者一个文件的绝对路径</li>
+<li>正则表达式：匹配输入</li>
+<li>一个方法：必须返回一个真值来匹配</li>
+<li>一个条件数组：至少有一个条件匹配</li>
+<li>一个对象：所有属性匹配。</li>
+</ol>
+<p>{test: condition}:提供一个正则或者正则数组，<br>include：condition 字符串、字符串数组<br>exclude:condition 不要匹配，字符串、字符串数组<br>and :[condition]  所有条件匹配<br>or:[condition] 所有条件匹配<br>not:[condition] 所有条件不匹配</p>
+<h3 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h3><ol>
+<li>extensions 处理的文件扩展（后缀）</li>
+<li>alias 给资源起个别名</li>
+</ol>
+<h3 id="externals"><a href="#externals" class="headerlink" title="externals"></a>externals</h3><p><a href="https://webpack.js.org/configuration/externals/" target="_blank" rel="external">externals</a></p>
+<h3 id="devtool"><a href="#devtool" class="headerlink" title="devtool"></a><a href="https://webpack.js.org/configuration/devtool/" target="_blank" rel="external">devtool</a></h3><h3 id="stats"><a href="#stats" class="headerlink" title="stats"></a><a href="https://webpack.js.org/configuration/stats/" target="_blank" rel="external">stats</a></h3>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack主要配置参数/" rel="tag">#webpack主要配置参数</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/07/只能使用pop和push来实现数组的shift和unshift方法/" rel="next" title="只能使用pop和push来实现数组的shift和unshift方法">
+                <i class="fa fa-chevron-left"></i> 只能使用pop和push来实现数组的shift和unshift方法
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">59</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">40</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Entry"><span class="nav-number">1.</span> <span class="nav-text">Entry</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Output"><span class="nav-number">2.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loaders（Module）"><span class="nav-number">3.</span> <span class="nav-text">Loaders（Module）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Rule-规则"><span class="nav-number">3.1.</span> <span class="nav-text">Rule(规则)</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Rule-Conditions"><span class="nav-number">3.1.1.</span> <span class="nav-text">Rule Conditions</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Rule-results"><span class="nav-number">3.1.2.</span> <span class="nav-text">Rule results</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Nested-Rules"><span class="nav-number">3.1.3.</span> <span class="nav-text">Nested Rules</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rule"><span class="nav-number">4.</span> <span class="nav-text">Rule</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Condition"><span class="nav-number">4.1.</span> <span class="nav-text">Condition</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#resolve"><span class="nav-number">5.</span> <span class="nav-text">resolve</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#externals"><span class="nav-number">6.</span> <span class="nav-text">externals</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#devtool"><span class="nav-number">7.</span> <span class="nav-text">devtool</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stats"><span class="nav-number">8.</span> <span class="nav-text">stats</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
