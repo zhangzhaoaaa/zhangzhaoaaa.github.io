@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Event Loops," />
+  <meta name="keywords" content="算法设计," />
 
 
 
@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="为了协调events,用户交互，scripts,渲染，网络请求等等，用户代理必须使用event loops有两种event loops:浏览器上下文和workers每个用户代理必须至少有一个浏览器上下文的event loopevent loop有一个或者多个task queues.一个task queue是一个有序的tasks列表，这个算法负责以下工作：
-Events分发一个Event对象到一个特">
+<meta name="description" content="返回一个字符串里第一个唯一的字符的位置题目给定一个字符串，在这个字符串里找到第一个不重复的字符并返回其索引。如果不存在这样的情况，返回-1。
+例子12345s = &amp;quot;leetcode&amp;quot;return 0.s = &amp;quot;loveleetcode&amp;quot;,return 2.
+提示你可以假设字符串里仅仅包含小写字母
+思路对在字符串中出现的字符进行统计，记录字符的位置和出现的次">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Event loops">
-<meta property="og:url" content="http://yoursite.com/2017/03/16/Event-loops/index.html">
+<meta property="og:title" content="First Unique Character in a String">
+<meta property="og:url" content="http://yoursite.com/2017/07/11/First-Unique-Character-in-a-String/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="为了协调events,用户交互，scripts,渲染，网络请求等等，用户代理必须使用event loops有两种event loops:浏览器上下文和workers每个用户代理必须至少有一个浏览器上下文的event loopevent loop有一个或者多个task queues.一个task queue是一个有序的tasks列表，这个算法负责以下工作：
-Events分发一个Event对象到一个特">
-<meta property="og:updated_time" content="2017-03-16T07:04:41.000Z">
+<meta property="og:description" content="返回一个字符串里第一个唯一的字符的位置题目给定一个字符串，在这个字符串里找到第一个不重复的字符并返回其索引。如果不存在这样的情况，返回-1。
+例子12345s = &amp;quot;leetcode&amp;quot;return 0.s = &amp;quot;loveleetcode&amp;quot;,return 2.
+提示你可以假设字符串里仅仅包含小写字母
+思路对在字符串中出现的字符进行统计，记录字符的位置和出现的次">
+<meta property="og:updated_time" content="2017-07-11T07:05:29.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Event loops">
-<meta name="twitter:description" content="为了协调events,用户交互，scripts,渲染，网络请求等等，用户代理必须使用event loops有两种event loops:浏览器上下文和workers每个用户代理必须至少有一个浏览器上下文的event loopevent loop有一个或者多个task queues.一个task queue是一个有序的tasks列表，这个算法负责以下工作：
-Events分发一个Event对象到一个特">
+<meta name="twitter:title" content="First Unique Character in a String">
+<meta name="twitter:description" content="返回一个字符串里第一个唯一的字符的位置题目给定一个字符串，在这个字符串里找到第一个不重复的字符并返回其索引。如果不存在这样的情况，返回-1。
+例子12345s = &amp;quot;leetcode&amp;quot;return 0.s = &amp;quot;loveleetcode&amp;quot;,return 2.
+提示你可以假设字符串里仅仅包含小写字母
+思路对在字符串中出现的字符进行统计，记录字符的位置和出现的次">
 
 
 
@@ -117,10 +123,10 @@ Events分发一个Event对象到一个特">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/16/Event-loops/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/11/First-Unique-Character-in-a-String/"/>
 
 
-  <title> Event loops | Zeromike的时光机 </title>
+  <title> First Unique Character in a String | Zeromike的时光机 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +296,7 @@ Events分发一个Event对象到一个特">
             
             
               
-                Event loops
+                First Unique Character in a String
               
             
           </h1>
@@ -302,8 +308,8 @@ Events分发一个Event对象到一个特">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-03-16T13:38:49+08:00" content="2017-03-16">
-              2017-03-16
+            <time itemprop="dateCreated" datetime="2017-07-11T14:01:06+08:00" content="2017-07-11">
+              2017-07-11
             </time>
           </span>
 
@@ -316,8 +322,8 @@ Events分发一个Event对象到一个特">
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/JS基础/" itemprop="url" rel="index">
-                    <span itemprop="name">JS基础</span>
+                  <a href="/categories/算法设计/" itemprop="url" rel="index">
+                    <span itemprop="name">算法设计</span>
                   </a>
                 </span>
 
@@ -349,15 +355,14 @@ Events分发一个Event对象到一个特">
       
 
       
-        <p>为了协调events,用户交互，scripts,渲染，网络请求等等，用户代理必须使用event loops<br>有两种event loops:浏览器上下文和workers<br>每个用户代理必须至少有一个浏览器上下文的event loop<br>event loop有一个或者多个task queues.一个task queue是一个有序的tasks列表，这个算法负责以下工作：</p>
-<h4 id="Events"><a href="#Events" class="headerlink" title="Events"></a>Events</h4><p>分发一个Event对象到一个特别的EventTarget对象会被一个特别的task来处理<br>注意：不是所有的事件被task queue来分发，在其他tasks中，很多也被分发</p>
-<h4 id="Parsing"><a href="#Parsing" class="headerlink" title="Parsing"></a>Parsing</h4><p>HTML解析</p>
-<h4 id="Callbacks"><a href="#Callbacks" class="headerlink" title="Callbacks"></a>Callbacks</h4><p>调用callback</p>
-<h4 id="Using-a-resource"><a href="#Using-a-resource" class="headerlink" title="Using a resource"></a>Using a resource</h4><p>请求资源</p>
-<h4 id="Reacting-to-DOM-manipulation"><a href="#Reacting-to-DOM-manipulation" class="headerlink" title="Reacting to DOM manipulation"></a>Reacting to DOM manipulation</h4><p>DOM的操作处理</p>
-<p>当一个用户代理要将一个task加入队列，那么必须指明在相关的event loop中的指定的task queues中。</p>
-<p>每一个任务被定义为来自一个特别的task source。所有来自一种task source的tasks目标是一种类型的event loop,它们总是被增加到同样的task queue里，但是来自不同的task sources的tasks会放置到不同的task queues里。</p>
-<p>每一个event loop有个当前运行的task。初始化时，这个是null。每一个event loop有个performing a microtask checkpoint 标志，这个标志初始化为false。被用来阻止performing a microtask checkpoint算法的重复调用。</p>
+        <h3 id="返回一个字符串里第一个唯一的字符的位置"><a href="#返回一个字符串里第一个唯一的字符的位置" class="headerlink" title="返回一个字符串里第一个唯一的字符的位置"></a>返回一个字符串里第一个唯一的字符的位置</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定一个字符串，在这个字符串里找到第一个不重复的字符并返回其索引。如果不存在这样的情况，返回-1。</p>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">s = &quot;leetcode&quot;</div><div class="line">return 0.</div><div class="line"></div><div class="line">s = &quot;loveleetcode&quot;,</div><div class="line">return 2.</div></pre></td></tr></table></figure>
+<h4 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h4><p>你可以假设字符串里仅仅包含小写字母</p>
+<h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><p>对在字符串中出现的字符进行统计，记录字符的位置和出现的次数，找出出现次数第一个为1的字符的位置</p>
+<h4 id="答案1"><a href="#答案1" class="headerlink" title="答案1"></a>答案1</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var firstUniqChar = function(s) &#123;</div><div class="line">    var arr = s.split(&quot;&quot;);</div><div class="line">    var obj = &#123;&#125;;</div><div class="line">    for (var i = 0, len = arr.length; i &lt; len;i++) &#123;</div><div class="line">        if (obj[arr[i]]) &#123;</div><div class="line">            obj[arr[i]] = &#123;</div><div class="line">                num : obj[arr[i]].num + 1,</div><div class="line">                inx: i</div><div class="line">            &#125;;</div><div class="line">        &#125; else &#123;</div><div class="line">            obj[arr[i]] = &#123;</div><div class="line">                num : 1,</div><div class="line">                inx: i</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var f = -1;</div><div class="line">    var keys = Object.keys(obj);</div><div class="line">    for (i =0,len =keys.length; i&lt;len;i++) &#123;</div><div class="line">        if (obj[keys[i]].num == 1) &#123;</div><div class="line">            f = obj[keys[i]].inx;</div><div class="line">            break;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return f;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line">console.log(firstUniqChar(&apos;llee&apos;));</div></pre></td></tr></table></figure>
+<h4 id="结果1"><a href="#结果1" class="headerlink" title="结果1"></a>结果1</h4><p>-1</p>
+<h4 id="答案2"><a href="#答案2" class="headerlink" title="答案2"></a>答案2</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">lastIndexOf:最后出现该字符的位置</div><div class="line">indexOf: 首次出现该字符的位置</div><div class="line">var firstUniqChar1 = function(s) &#123;</div><div class="line">    for(i=0;i&lt;s.length;i++)&#123;</div><div class="line">        if (s.indexOf(s[i])===s.lastIndexOf(s[i]))&#123;</div><div class="line">            return i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return -1;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">console.log(firstUniqChar1(&apos;lleea&apos;));</div></pre></td></tr></table></figure>
+<h4 id="结果2"><a href="#结果2" class="headerlink" title="结果2"></a>结果2</h4><p>4</p>
 
       
     </div>
@@ -380,7 +385,7 @@ Events分发一个Event对象到一个特">
       
         <div class="post-tags">
           
-            <a href="/tags/Event-Loops/" rel="tag">#Event Loops</a>
+            <a href="/tags/算法设计/" rel="tag">#算法设计</a>
           
         </div>
       
@@ -389,17 +394,13 @@ Events分发一个Event对象到一个特">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/14/探秘setInterval/" rel="next" title="探秘setInterval">
-                <i class="fa fa-chevron-left"></i> 探秘setInterval
+              <a href="/2017/07/10/number/" rel="next" title="Excel Sheet column number">
+                <i class="fa fa-chevron-left"></i> Excel Sheet column number
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/26/移动端调试/" rel="prev" title="移动端调试">
-                移动端调试 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -574,7 +575,7 @@ Events分发一个Event对象到一个特">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Events"><span class="nav-number">1.</span> <span class="nav-text">Events</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parsing"><span class="nav-number">2.</span> <span class="nav-text">Parsing</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Callbacks"><span class="nav-number">3.</span> <span class="nav-text">Callbacks</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Using-a-resource"><span class="nav-number">4.</span> <span class="nav-text">Using a resource</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Reacting-to-DOM-manipulation"><span class="nav-number">5.</span> <span class="nav-text">Reacting to DOM manipulation</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#返回一个字符串里第一个唯一的字符的位置"><span class="nav-number">1.</span> <span class="nav-text">返回一个字符串里第一个唯一的字符的位置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例子"><span class="nav-number">1.2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#提示"><span class="nav-number">1.3.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#思路"><span class="nav-number">1.4.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#答案1"><span class="nav-number">1.5.</span> <span class="nav-text">答案1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果1"><span class="nav-number">1.6.</span> <span class="nav-text">结果1</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#答案2"><span class="nav-number">1.7.</span> <span class="nav-text">答案2</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结果2"><span class="nav-number">1.8.</span> <span class="nav-text">结果2</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
