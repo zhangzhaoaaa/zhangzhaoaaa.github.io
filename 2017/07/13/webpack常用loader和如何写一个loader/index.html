@@ -1,0 +1,738 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webpack,loader," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="LoadersLoaders是一个module中源码的转换器。这些loaders允许你预处理那些你import或者load进来的文件。因此，loaders在其他构建工具中像是tasks，提供一个更强大的方式来处理前端构建步骤。Loaders作为转化器，能够从一个不同的语言，比如TypeScript转换到JavaScript，或者内联图片作为data URLs。Loaders甚至允许你直接从Java">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack常用loader和如何写一个loader">
+<meta property="og:url" content="http://yoursite.com/2017/07/13/webpack常用loader和如何写一个loader/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="LoadersLoaders是一个module中源码的转换器。这些loaders允许你预处理那些你import或者load进来的文件。因此，loaders在其他构建工具中像是tasks，提供一个更强大的方式来处理前端构建步骤。Loaders作为转化器，能够从一个不同的语言，比如TypeScript转换到JavaScript，或者内联图片作为data URLs。Loaders甚至允许你直接从Java">
+<meta property="og:updated_time" content="2017-07-13T03:29:31.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack常用loader和如何写一个loader">
+<meta name="twitter:description" content="LoadersLoaders是一个module中源码的转换器。这些loaders允许你预处理那些你import或者load进来的文件。因此，loaders在其他构建工具中像是tasks，提供一个更强大的方式来处理前端构建步骤。Loaders作为转化器，能够从一个不同的语言，比如TypeScript转换到JavaScript，或者内联图片作为data URLs。Loaders甚至允许你直接从Java">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/07/13/webpack常用loader和如何写一个loader/"/>
+
+
+  <title> webpack常用loader和如何写一个loader | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                webpack常用loader和如何写一个loader
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-07-13T10:17:50+08:00" content="2017-07-13">
+              2017-07-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/webpack/" itemprop="url" rel="index">
+                    <span itemprop="name">webpack</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a>Loaders</h3><p>Loaders是一个module中源码的转换器。这些loaders允许你预处理那些你import或者load进来的文件。因此，loaders在其他构建工具中像是tasks，提供一个更强大的方式来处理前端构建步骤。Loaders作为转化器，能够从一个不同的语言，比如TypeScript转换到JavaScript，或者内联图片作为data URLs。Loaders甚至允许你直接从JavaScript模块中处理import的CSS 文件。</p>
+<p>我们在使用loaders的时候，需要了解这些loaders都有哪些特性</p>
+<h3 id="Loaders的特性"><a href="#Loaders的特性" class="headerlink" title="Loaders的特性"></a>Loaders的特性</h3><pre><code>* loader 支持链式传递，能够对资源使用pipeline处理。一组链式的 loader 将按照先后顺序进行编译。loader 链中的第一个 loader 返回值给下一个 loader，在最后一个 loader，返回 webpack 所预期的 JavaScript。
+* loader 可以是同步的，也可以是异步的。
+* loader 运行在 Node.js 中，并且能够执行任何可能的操作。
+* loader 接收查询参数。用于对 loader 传递配置。
+* loader 也能够使用 options 对象进行配置。
+* 除了使用 package.json 常见的 main 属性，还可以将普通的 npm 模块导出为 loader，做法是在 package.json 里定义一个 loader 字段。
+* 插件(plugin)可以为 loader 带来更多特性。
+* loader 能够产生额外的任意文件。
+</code></pre><p>loader 通过（loader）预处理函数，为 JavaScript 生态系统提供了更多能力。用户现在可以更加灵活地引入细粒度逻辑，例如压缩、打包、语言翻译和其他更多。</p>
+<h3 id="解析-Loader"><a href="#解析-Loader" class="headerlink" title="解析 Loader"></a>解析 Loader</h3><p>loader 遵循标准的模块解析。多数情况下，loader 将从模块路径（通常将模块路径认为是 npm install, node_modules）解析。<br>loader 模块需要导出为一个函数，并且使用 Node.js 兼容的 JavaScript 编写。通常使用 npm 进行管理，但是也可以将自定义 loader 作为应用程序中的文件。按照约定，loader 通常被命名为 xxx-loader（例如 json-loader）</p>
+<h3 id="主要的loaders"><a href="#主要的loaders" class="headerlink" title="主要的loaders"></a>主要的loaders</h3><ul>
+<li>url-loader</li>
+<li>file-loader</li>
+<li>css-loader</li>
+<li>sass-loader</li>
+<li>babel-loader</li>
+<li>html-loader</li>
+<li>postcss-loader</li>
+</ul>
+<h3 id="如何写一个-Loader"><a href="#如何写一个-Loader" class="headerlink" title="如何写一个 Loader"></a>如何写一个 Loader</h3><p>我们知道loader是用于对模块的源代码进行转换的。它们是（运行在 Node.js 中）的函数，此函数将资源文件的源码作为参数，并返回新的源码。<br>所谓 loader 只是导出为一个函数的 JavaScript 模块。loader runner 会调用这个函数，然后把上一个 loader 产生的结果或者资源文件(resource file)传入进去。函数的 this 上下文将由 webpack 填充，并且 loader runner 带有一些有用方法，可以使 loader 改变为异步调用方式，或者获取 query 参数。<br>第一个 loader 传入的参数只有一个：资源文件(resource file)的内容。compiler 会接收上一个 loader 产生的处理结果。这些处理结果应该是一些 String 或者 Buffer（被转换为一个 string），呈现为模块的 JavaScript 源码。另外还可以传递一个可选的 SourceMap 结果（即 JSON 对象）。<br>如果是单个处理结果，可以在同步模式中直接返回。如果有多个处理结果，则需要调用 this.callback()。在异步模式中，必须调用 this.async()，来指示 loader runner 等待异步结果，如果异步模式被允许，那么它会返回 this.callback()，随后 Loader 必须返回 undefined 并且调用回调函数。</p>
+<p>在复杂的情况下，当多个loaders被串联调用时，只有最后一个loader能够获取资源文件并且只有第一个loader预期返回一个或者两个值（JavaScript和SourceMap）。其它任何loader返回的值会传到之前的loader中。</p>
+<h4 id="指南"><a href="#指南" class="headerlink" title="指南"></a>指南</h4><p>（按照优先级排序，第一个具有最高的优先级）<br>    •    Loaders应该只做一个任务<br>    •    Loaders能够被串联调用。为每一步创建loaders，而不是在一个loader中做所有事情。<br>这也意味着不必须的话它们不应该转换成JavaScript。<br>例子：通过应用查询参数来将模板文件渲染成HTML。<br>我可以写一个能够将源文件编译成模板的loader，执行并且返回一个模块，这个模板能够导出一个包含HTML代码的字符串。这样不好。<br>相反，我应该为这个用例中的每一个任务写入loaders并且应用它们（管道）：<br>    •    jade-loader：将模板转化为模块，这个模块导出一个函数。<br>    •    apply-loader：采取一个导出模块函数并且通过应用查询参数来返回原结果。<br>    •    html-loader：采取HTML并且通过导出字符串来导出模块。</p>
+<h5 id="产生标准化模块"><a href="#产生标准化模块" class="headerlink" title="产生标准化模块"></a>产生标准化模块</h5><p>Loader生成的模块应遵循与常规模块相同的设计原则。<br>例子：这是一个不好的设计：（非标准化的，全局状态，…）<br>require(“any-template-language-loader!./xyz.atl”);</p>
+<p>var html = anyTemplateLanguage.render(“xyz”);</p>
+<h5 id="不要在运行和模块间保存状态"><a href="#不要在运行和模块间保存状态" class="headerlink" title="不要在运行和模块间保存状态"></a>不要在运行和模块间保存状态</h5><p>loader应该和其它编译后的模块相互独立。（除非这个loader自身能够处理这些问题）<br>loader应该和相同模块的之前汇编相互独立。</p>
+<h5 id="使用-loader-utils"><a href="#使用-loader-utils" class="headerlink" title="使用 loader-utils"></a>使用 loader-utils</h5><p>为了使其他开发人员体验一致，您应该使用 loader-utils 来获取 loader 选项：<br>const loaderUtils = require(“loader-utils”);</p>
+<p>module.exports = function(source) {<br>    const options = loaderUtils.getOptions(this);<br>};<br>还有其他通用函数，如 interpolateName。</p>
+<h5 id="标志依赖"><a href="#标志依赖" class="headerlink" title="标志依赖"></a>标志依赖</h5><p>如果loader使用外部资源（比如读文件系统），它们必须说明。在观察模式下，这个信息被用来使缓存的loader失效，然后重新编译。<br>// 在loader中添加header<br>var path = require(“path”);<br>module.exports = function(source) {<br>  var callback = this.async();<br>  var headerPath = path.resolve(“header.js”);<br>  this.addDependency(headerPath);<br>  fs.readFile(headerPath, “utf-8”, function(err, header) {<br>    if(err) return callback(err);<br>    callback(null, header + “\n” + source);<br>  });<br>};</p>
+<h5 id="解析依赖关系"><a href="#解析依赖关系" class="headerlink" title="解析依赖关系"></a>解析依赖关系</h5><p>在很多语言中存在某些机制来规定依赖，比如在css里面使用@import以及url(…)。这些依赖可以通过模块系统来解析。<br>存在两个选项：<br>    •    将它们转化成 require。<br>    •    使用this.resolve函数来解析路径。<br>示例1 css-loader：css-loader 将@import替换为require（也是通过css-loader来处理）, url(…)替换为@import，这样就把所有的依赖转化为了require的形式。<br>示例2 less-loader：less-loader 不能够将@import 转换成 require，因为所有的less文件需要一起编译来跟踪变量和mixins。因此 less-loader 通过一个定制的路径解析逻辑来拓展less编译器。这个定制的逻辑使用this.resolve通过模块系统的配置（别名使用，自定义模块目录，等等）来解析文件。<br>如果语言只支持相对路径（比如在 css 中：url(file) 总是表示 ./file），利用~约定来规定模块的引用。<br>url(file) -&gt; require(“./file”)<br>url(~module) -&gt; require(“module”)<br>提取共用代码<br>不要有过多在每个 loader 都会用到的共用代码。在 loader 中创建一个（运行期）文件并且创建对共用代码的 require。<br>不要嵌入绝对路径<br>不要在模块中使用绝对路径。因为当项目根路径改变时，它们的hash也会改变。在 loader-utils 中有 stringifyRequest 这个方法能够将绝对路径转成相对路径。<br>例子：<br>var loaderUtils = require(“loader-utils”);</p>
+<p>return “var runtime = require(“ +<br>  loaderUtils.stringifyRequest(this, “!” + require.resolve(“module/runtime”)) +<br>  “);”;<br>使用 peerDependencies 来包裹 library<br>例如，sass-loader 指定 node-sass 作为对等依赖(peer dependency)：<br>“peerDependencies”: {<br>  “node-sass”: “^4.0.0”<br>}<br>使用对等依赖(peer dependency)允许应用程序开发人员在 package.json 中指定需要的确切版本。</p>
+<h3 id="举两个例子"><a href="#举两个例子" class="headerlink" title="举两个例子"></a>举两个例子</h3><ol>
+<li>raw-loader</li>
+<li>string-replace-loader</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webpack-loader/" rel="tag">#webpack,loader</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/07/11/First-Unique-Character-in-a-String/" rel="next" title="First Unique Character in a String">
+                <i class="fa fa-chevron-left"></i> First Unique Character in a String
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">43</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loaders"><span class="nav-number">1.</span> <span class="nav-text">Loaders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Loaders的特性"><span class="nav-number">2.</span> <span class="nav-text">Loaders的特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解析-Loader"><span class="nav-number">3.</span> <span class="nav-text">解析 Loader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#主要的loaders"><span class="nav-number">4.</span> <span class="nav-text">主要的loaders</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何写一个-Loader"><span class="nav-number">5.</span> <span class="nav-text">如何写一个 Loader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#指南"><span class="nav-number">5.1.</span> <span class="nav-text">指南</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#产生标准化模块"><span class="nav-number">5.1.1.</span> <span class="nav-text">产生标准化模块</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不要在运行和模块间保存状态"><span class="nav-number">5.1.2.</span> <span class="nav-text">不要在运行和模块间保存状态</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#使用-loader-utils"><span class="nav-number">5.1.3.</span> <span class="nav-text">使用 loader-utils</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#标志依赖"><span class="nav-number">5.1.4.</span> <span class="nav-text">标志依赖</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解析依赖关系"><span class="nav-number">5.1.5.</span> <span class="nav-text">解析依赖关系</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#举两个例子"><span class="nav-number">6.</span> <span class="nav-text">举两个例子</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
