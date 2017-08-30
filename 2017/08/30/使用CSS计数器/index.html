@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="感悟," />
+  <meta name="keywords" content="CSS计数器," />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="其实我技术水平真的一般，有几年前后端工作经验，但刚踏入中年，发现身边的年轻人确实够生猛的，学习快上手快，令我这样的“老油条”有点惊讶和羡慕不已。我虽然也在不断的学习，但有点力不从心的感觉。遥想当年自己刚入行的时候，懵懵懂懂，没人带，没有技术圈子，全凭自己瞎琢磨，学习路线是曲折的，弯曲的，甚至是错误的。 现在的互联网发达，信息获取十分方便，圈子，群什么的，思想和代码交流也十分方便和快捷，羡慕活在这个">
+<meta name="description" content="本质上CSS计数器是由CSS维护的变量，这些变量可能根据CSS规则增加以跟踪使用次数。
+计数器的值通过使用counter-reset和counter-increment操作，在content上应用counter()或counters()函数来显示在页面上。
+使用计数器使用CSS计数器之前，必须重置一个值，默认是0。使用counter()函数来给元素增加计数器。下面的CSS给每个p元素的前面增加了”">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后生可畏">
-<meta property="og:url" content="http://yoursite.com/2016/12/02/后生可畏/index.html">
+<meta property="og:title" content="使用CSS计数器">
+<meta property="og:url" content="http://yoursite.com/2017/08/30/使用CSS计数器/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="其实我技术水平真的一般，有几年前后端工作经验，但刚踏入中年，发现身边的年轻人确实够生猛的，学习快上手快，令我这样的“老油条”有点惊讶和羡慕不已。我虽然也在不断的学习，但有点力不从心的感觉。遥想当年自己刚入行的时候，懵懵懂懂，没人带，没有技术圈子，全凭自己瞎琢磨，学习路线是曲折的，弯曲的，甚至是错误的。 现在的互联网发达，信息获取十分方便，圈子，群什么的，思想和代码交流也十分方便和快捷，羡慕活在这个">
-<meta property="og:updated_time" content="2016-12-02T14:50:28.000Z">
+<meta property="og:description" content="本质上CSS计数器是由CSS维护的变量，这些变量可能根据CSS规则增加以跟踪使用次数。
+计数器的值通过使用counter-reset和counter-increment操作，在content上应用counter()或counters()函数来显示在页面上。
+使用计数器使用CSS计数器之前，必须重置一个值，默认是0。使用counter()函数来给元素增加计数器。下面的CSS给每个p元素的前面增加了”">
+<meta property="og:updated_time" content="2017-08-30T14:57:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后生可畏">
-<meta name="twitter:description" content="其实我技术水平真的一般，有几年前后端工作经验，但刚踏入中年，发现身边的年轻人确实够生猛的，学习快上手快，令我这样的“老油条”有点惊讶和羡慕不已。我虽然也在不断的学习，但有点力不从心的感觉。遥想当年自己刚入行的时候，懵懵懂懂，没人带，没有技术圈子，全凭自己瞎琢磨，学习路线是曲折的，弯曲的，甚至是错误的。 现在的互联网发达，信息获取十分方便，圈子，群什么的，思想和代码交流也十分方便和快捷，羡慕活在这个">
+<meta name="twitter:title" content="使用CSS计数器">
+<meta name="twitter:description" content="本质上CSS计数器是由CSS维护的变量，这些变量可能根据CSS规则增加以跟踪使用次数。
+计数器的值通过使用counter-reset和counter-increment操作，在content上应用counter()或counters()函数来显示在页面上。
+使用计数器使用CSS计数器之前，必须重置一个值，默认是0。使用counter()函数来给元素增加计数器。下面的CSS给每个p元素的前面增加了”">
 
 
 
@@ -114,10 +120,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/02/后生可畏/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/30/使用CSS计数器/"/>
 
 
-  <title> 后生可畏 | Zeromike的时光机 </title>
+  <title> 使用CSS计数器 | Zeromike的时光机 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -287,7 +293,7 @@
             
             
               
-                后生可畏
+                使用CSS计数器
               
             
           </h1>
@@ -299,8 +305,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-02T22:23:44+08:00" content="2016-12-02">
-              2016-12-02
+            <time itemprop="dateCreated" datetime="2017-08-30T22:24:42+08:00" content="2017-08-30">
+              2017-08-30
             </time>
           </span>
 
@@ -313,8 +319,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/mind/" itemprop="url" rel="index">
-                    <span itemprop="name">mind</span>
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
                   </a>
                 </span>
 
@@ -346,9 +352,13 @@
       
 
       
-        <p>其实我技术水平真的一般，有几年前后端工作经验，但刚踏入中年，发现身边的年轻人确实够生猛的，学习快上手快，令我这样的“老油条”有点惊讶和羡慕不已。我虽然也在不断的学习，但有点力不从心的感觉。遥想当年自己刚入行的时候，懵懵懂懂，没人带，没有技术圈子，全凭自己瞎琢磨，学习路线是曲折的，弯曲的，甚至是错误的。 现在的互联网发达，信息获取十分方便，圈子，群什么的，思想和代码交流也十分方便和快捷，羡慕活在这个时代的年轻人。</p>
-<p>多和年轻人学习，多找找方法论，多思想碰撞，勤上手。</p>
-<p>该code了。。。</p>
+        <p>本质上CSS计数器是由CSS维护的变量，这些变量可能根据CSS规则增加以跟踪使用次数。</p>
+<p>计数器的值通过使用counter-reset和counter-increment操作，在content上应用counter()或counters()函数来显示在页面上。</p>
+<h3 id="使用计数器"><a href="#使用计数器" class="headerlink" title="使用计数器"></a>使用计数器</h3><p>使用CSS计数器之前，必须重置一个值，默认是0。使用counter()函数来给元素增加计数器。下面的CSS给每个p元素的前面增加了”mynum &lt;计数器值&gt;:”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        body &#123;</div><div class="line">            counter-reset: mynum;           /* 重置计数器成0 */</div><div class="line">        &#125;</div><div class="line">        p.number:before &#123;</div><div class="line">            content: counter(mynum) &quot;:&quot;;</div><div class="line">            counter-increment: mynum;</div><div class="line">            font-weight: bold;</div><div class="line">        &#125;</div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;p class=&quot;number&quot;&gt;122&lt;/p&gt;</div><div class="line">&lt;p class=&quot;number&quot;&gt;3333&lt;/p&gt;</div><div class="line">&lt;p class=&quot;number&quot;&gt;444444&lt;/p&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h3 id="计数器嵌套"><a href="#计数器嵌套" class="headerlink" title="计数器嵌套"></a>计数器嵌套</h3><p>CSS计数器对创建有序列表特别有用，因为在子元素中会自动创建一个CSS计数器的实例。使用counters()函数，在不同级别的嵌套计数器之间可以插入字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line"></div><div class="line">        ol &#123;</div><div class="line">            counter-reset: section;                /* 为每个ol元素创建新的计数器实例 */</div><div class="line">            list-style-type: none;</div><div class="line">        &#125;</div><div class="line">        li:before &#123;</div><div class="line">            counter-increment: section;            /* 只增加计数器的当前实例 */</div><div class="line">            content: counters(section, &quot;.&quot;) &quot; &quot;;   /* 为所有计数器实例增加以“.”分隔的值 */</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;ol&gt;</div><div class="line">    &lt;li&gt;item&lt;/li&gt;          &lt;!-- 1     --&gt;</div><div class="line">    &lt;li&gt;item               &lt;!-- 2     --&gt;</div><div class="line">        &lt;ol&gt;</div><div class="line">            &lt;li&gt;item&lt;/li&gt;      &lt;!-- 2.1   --&gt;</div><div class="line">            &lt;li&gt;item&lt;/li&gt;      &lt;!-- 2.2   --&gt;</div><div class="line">            &lt;li&gt;item           &lt;!-- 2.3   --&gt;</div><div class="line">                &lt;ol&gt;</div><div class="line">                    &lt;li&gt;item&lt;/li&gt;  &lt;!-- 2.3.1 --&gt;</div><div class="line">                    &lt;li&gt;item&lt;/li&gt;  &lt;!-- 2.3.2 --&gt;</div><div class="line">                &lt;/ol&gt;</div><div class="line">                &lt;ol&gt;</div><div class="line">                    &lt;li&gt;item&lt;/li&gt;  &lt;!-- 2.3.1 --&gt;</div><div class="line">                    &lt;li&gt;item&lt;/li&gt;  &lt;!-- 2.3.2 --&gt;</div><div class="line">                    &lt;li&gt;item&lt;/li&gt;  &lt;!-- 2.3.3 --&gt;</div><div class="line">                &lt;/ol&gt;</div><div class="line">            &lt;/li&gt;</div><div class="line">            &lt;li&gt;item&lt;/li&gt;      &lt;!-- 2.4   --&gt;</div><div class="line">        &lt;/ol&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">    &lt;li&gt;item&lt;/li&gt;          &lt;!-- 3     --&gt;</div><div class="line">    &lt;li&gt;item&lt;/li&gt;          &lt;!-- 4     --&gt;</div><div class="line">&lt;/ol&gt;</div><div class="line">&lt;ol&gt;</div><div class="line">    &lt;li&gt;item&lt;/li&gt;          &lt;!-- 1     --&gt;</div><div class="line">    &lt;li&gt;item&lt;/li&gt;          &lt;!-- 2     --&gt;</div><div class="line">&lt;/ol&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Counters" target="_blank" rel="external">CSS计数器</a></p>
 
       
     </div>
@@ -371,7 +381,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/感悟/" rel="tag">#感悟</a>
+            <a href="/tags/CSS计数器/" rel="tag">#CSS计数器</a>
           
         </div>
       
@@ -380,17 +390,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/02/技术改造的想法/" rel="next" title="技术改造的想法">
-                <i class="fa fa-chevron-left"></i> 技术改造的想法
+              <a href="/2017/08/25/flex-弹性布局基本知识/" rel="next" title="flex 弹性布局基本知识">
+                <i class="fa fa-chevron-left"></i> flex 弹性布局基本知识
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/04/实践出真知/" rel="prev" title="实践出真知">
-                实践出真知 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +571,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用计数器"><span class="nav-number">1.</span> <span class="nav-text">使用计数器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数器嵌套"><span class="nav-number">2.</span> <span class="nav-text">计数器嵌套</span></a></li></ol></div>
             
           </div>
         </section>
