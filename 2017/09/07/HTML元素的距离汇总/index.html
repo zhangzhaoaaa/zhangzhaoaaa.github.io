@@ -1,0 +1,903 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="HTML，距离," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="我每次对HTML元素的高度或者宽度的距离属性都有种懵逼的感觉，每次使用都需要重新查一下，今天我就总结一下这部分的概念，以供下次查询。。。主要以高度为主，宽度概念类似
+距离概念clientHeightElement.clientHeight返回元素内部的高度（单位像素），包含内边距，但不包括水平滚动条、边框和外边距。clientHeight可以通过CSS height + CSS padding -">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML元素的距离汇总">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/HTML元素的距离汇总/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="我每次对HTML元素的高度或者宽度的距离属性都有种懵逼的感觉，每次使用都需要重新查一下，今天我就总结一下这部分的概念，以供下次查询。。。主要以高度为主，宽度概念类似
+距离概念clientHeightElement.clientHeight返回元素内部的高度（单位像素），包含内边距，但不包括水平滚动条、边框和外边距。clientHeight可以通过CSS height + CSS padding -">
+<meta property="og:image" content="http://yoursite.com/2017/09/07/HTML元素的距离汇总/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/09/07/HTML元素的距离汇总/1.png">
+<meta property="og:updated_time" content="2017-09-07T15:53:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HTML元素的距离汇总">
+<meta name="twitter:description" content="我每次对HTML元素的高度或者宽度的距离属性都有种懵逼的感觉，每次使用都需要重新查一下，今天我就总结一下这部分的概念，以供下次查询。。。主要以高度为主，宽度概念类似
+距离概念clientHeightElement.clientHeight返回元素内部的高度（单位像素），包含内边距，但不包括水平滚动条、边框和外边距。clientHeight可以通过CSS height + CSS padding -">
+<meta name="twitter:image" content="http://yoursite.com/2017/09/07/HTML元素的距离汇总/2.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/07/HTML元素的距离汇总/"/>
+
+
+  <title> HTML元素的距离汇总 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                HTML元素的距离汇总
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-09-07T15:27:33+08:00" content="2017-09-07">
+              2017-09-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/JS应用/" itemprop="url" rel="index">
+                    <span itemprop="name">JS应用</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>我每次对HTML元素的高度或者宽度的距离属性都有种懵逼的感觉，每次使用都需要重新查一下，今天我就总结一下这部分的概念，以供下次查询。。。<br>主要以高度为主，宽度概念类似</p>
+<h3 id="距离概念"><a href="#距离概念" class="headerlink" title="距离概念"></a>距离概念</h3><h4 id="clientHeight"><a href="#clientHeight" class="headerlink" title="clientHeight"></a>clientHeight</h4><p>Element.clientHeight<br>返回元素内部的高度（单位像素），包含内边距，但不包括水平滚动条、边框和外边距。<br>clientHeight可以通过CSS height + CSS padding - 水平滚动条高度(如果存在)来计算。</p>
+<h4 id="scrollHeight"><a href="#scrollHeight" class="headerlink" title="scrollHeight"></a>scrollHeight</h4><p>Element.scrollHeight<br>Element.scrollHeight是计量元素内容高度的只读属性，包括overflow样式属性导致的视图中不可见内容。没有垂直滚动条的情况下，scrollHeight值与元素视图填充所有内容所需要的最小值clientHeight相同。包括元素的padding，但不包括元素的margin.</p>
+<h4 id="innerHeight"><a href="#innerHeight" class="headerlink" title="innerHeight"></a>innerHeight</h4><p>window.innerHeight<br>浏览器窗口的视口高度（以像素为单位），如果存在水平滚动条，则包括它。</p>
+<h4 id="offsetHeight"><a href="#offsetHeight" class="headerlink" title="offsetHeight"></a>offsetHeight</h4><p>HTMLElement.offsetHeight<br>是一个只读属性，它返回该元素的像素高度，高度包含该元素的垂直内边距和边框，且是一个整数。<br>通常，元素的offsetHeight是一种衡量标准，包括元素的边框、垂直内边距和元素的水平滚动条（如果存在且渲染的话）和元素的CSS高度。</p>
+<p>对于文档的主体对象，它包括代替元素的CSS高度线性总含量高。浮动元素的向下延伸内容高度是被忽略的。</p>
+<h4 id="clientLeft"><a href="#clientLeft" class="headerlink" title="clientLeft"></a>clientLeft</h4><p>Element.clientLeft<br>表示一个元素的左边框的宽度，以像素表示。如果元素的文本方向是从右向左，并且由于内容溢出导致左边出现了一个垂直滚动条，则该属性包括滚动条的宽度。clientLeft不包括左外边距和左内边距。clientLeft是只读的。</p>
+<h4 id="scrollTop"><a href="#scrollTop" class="headerlink" title="scrollTop"></a>scrollTop</h4><p>Element.scrollTop<br>属性可以设置或者获取一个元素被卷起的像素距离。一个元素的scrollTop是可以去计算出这个元素最高高度距离它容器顶部的可见高度。当一个元素的容器没有产生垂直方向的滚动条，那么它的scrollTop的值默认为0.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">获取滚动的距离</div><div class="line">var intElemScrollTop = someElement.scrollTop</div></pre></td></tr></table></figure></p>
+<p>scrollTop可以被设置任何的整数，但以下情况会报错：</p>
+<ul>
+<li>如果一个元素不能被滚动，scrollTop被设置为0</li>
+<li>设置scrollTop小于0，将会被设为0</li>
+<li>如果设置了超出这个容器可滚动的值，scrollTop会被设为最大值</li>
+</ul>
+<h4 id="scrollY"><a href="#scrollY" class="headerlink" title="scrollY"></a>scrollY</h4><p>返回文档在垂直方向已滚动的像素值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var y = window.scrollY</div></pre></td></tr></table></figure></p>
+<p>y是文档从顶部开始滚动过的像素值。</p>
+<h4 id="pageYOffset"><a href="#pageYOffset" class="headerlink" title="pageYOffset"></a>pageYOffset</h4><p>pageYOffset属性是scrollY属性的别名<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">window.pageYOffset == window.scrollY</div></pre></td></tr></table></figure></p>
+<p>总是返回true</p>
+<h4 id="getBoundingClientRect"><a href="#getBoundingClientRect" class="headerlink" title="getBoundingClientRect"></a>getBoundingClientRect</h4><p>Element.getBoundingClientRect()方法返回元素的大小及其相对于视口的位置。<br>返回值是一个DOMRect对象，这个对象是由该元素的getClientRects()方法返回的一组矩形的集合，即：是与该元素相关的CSS边框集合。</p>
+<p>DOMRect对象包含了一组用于描述边框的只读属性，left、top、right和bottom，单位为像素。除了width和height外的属性都是相对于视口的左上角位置而言的。</p>
+<p>没有内容的边框会被忽略。如果所有的元素边框都是空边框，那么这个矩形给该元素返回的width、height值为0，left、top值为第一个css盒子（按内容顺序）的top-left值。</p>
+<p>当计算边界矩形时，会考虑视口区域（或其他可滚动元素）内的滚动操作，也就是说，当滚动位置发生了改变，top和left属性值就会随之立即发生变化（因此，它们的值是相对于视口的，而不是绝对的）。如果不希望属性值随视口变化，那么只要给top、left属性值加上当前的滚动位置(window.pageXOffset和window.pageYOffset)，这样就可以获取与当前的滚动位置无关的常量值。<br><img src="/2017/09/07/HTML元素的距离汇总/2.png" alt="getBoundingClientRect" title="getBoundingClientRect"></p>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width,user-scalable=no&quot;&gt;
+    &lt;title&gt;Title&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;style&gt;
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 300px;
+        height: 500px;
+        position: absolute;
+        top:0;
+        left:0;
+        border: 10px solid red;
+        overflow-x: hidden;
+    }
+    .child {
+        width: 50px;
+        height: 50px;
+        background: #00A1CB;
+        border: 10px solid #0a4b3e;
+    }
+    .item {
+        height:5px;
+    }
+    .cal {
+        margin-left: 40px;
+    }
+&lt;/style&gt;
+&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;123&lt;/div&gt;
+    &lt;div class=&quot;child&quot;&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;cal&quot;&gt;&lt;/div&gt;
+
+&lt;script&gt;
+    var child = document.querySelector(&apos;.child&apos;);
+    var container = document.querySelector(&apos;.container&apos;);
+    var rect = child.getBoundingClientRect();
+    document.querySelector(&apos;.cal&apos;).innerHTML =&apos;&lt;br&gt;&apos; +
+        &apos;containerTop:&apos; + container.getBoundingClientRect().top+&apos;&lt;br&gt;&apos;+
+        &apos;containerHeight:&apos; + container.getBoundingClientRect().height+&apos;&lt;br&gt;&apos;+
+        &apos;containerClientHeight:&apos; + container.clientHeight+&apos;&lt;br&gt;&apos;+
+        &apos;containerScrollHeight:&apos; + container.scrollHeight+&apos;&lt;br&gt;&apos;+
+        &apos;boundingTop:&apos; + rect.top + &apos;&lt;br&gt;&apos;+
+        &apos;boundingLeft:&apos; + rect.left + &apos;&lt;br&gt;&apos;+
+        &apos;boundingright:&apos; + rect.right + &apos;&lt;br&gt;&apos;+
+        &apos;boundingbottom:&apos; + rect.bottom+ &apos;&lt;br&gt;&apos;+
+        &apos;boundingheight:&apos; + rect.height+ &apos;&lt;br&gt;&apos;+
+        &apos;boundingwidth:&apos; + rect.width+ &apos;&lt;br&gt;&apos;+
+        &apos;childclientHeight:&apos;+child.clientHeight+&apos;&lt;br&gt;&apos;+
+        &apos;childHeight:&apos;+child.style.height+&apos;&lt;br&gt;&apos;+
+        &apos;childClientWidth:&apos; +   child.clientWidth+&apos;&lt;br&gt;&apos;+
+        &apos;childClientLeft:&apos; +child.clientLeft+&apos;&lt;br&gt;&apos;+
+        &apos;childoffsetHeight:&apos; +child.offsetHeight+&apos;&lt;br&gt;&apos;+
+        &apos;childClientTop:&apos;+child.clientTop;
+
+
+
+    container.addEventListener(&apos;scroll&apos;, function(e) {
+        console.log(child.getBoundingClientRect().top, container.scrollHeight, container.scrollTop, window.scrollY);
+    }, false);
+
+
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><img src="/2017/09/07/HTML元素的距离汇总/1.png" alt="结果" title="结果">
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/HTML，距离/" rel="tag">#HTML，距离</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/05/CSS-自定义radio和checkbox按钮选中样式/" rel="next" title="CSS 自定义radio和checkbox按钮选中样式">
+                <i class="fa fa-chevron-left"></i> CSS 自定义radio和checkbox按钮选中样式
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">71</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">50</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#距离概念"><span class="nav-number">1.</span> <span class="nav-text">距离概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#clientHeight"><span class="nav-number">1.1.</span> <span class="nav-text">clientHeight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrollHeight"><span class="nav-number">1.2.</span> <span class="nav-text">scrollHeight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#innerHeight"><span class="nav-number">1.3.</span> <span class="nav-text">innerHeight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#offsetHeight"><span class="nav-number">1.4.</span> <span class="nav-text">offsetHeight</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#clientLeft"><span class="nav-number">1.5.</span> <span class="nav-text">clientLeft</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrollTop"><span class="nav-number">1.6.</span> <span class="nav-text">scrollTop</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#scrollY"><span class="nav-number">1.7.</span> <span class="nav-text">scrollY</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pageYOffset"><span class="nav-number">1.8.</span> <span class="nav-text">pageYOffset</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#getBoundingClientRect"><span class="nav-number">1.9.</span> <span class="nav-text">getBoundingClientRect</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-number">2.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结果"><span class="nav-number">3.</span> <span class="nav-text">结果</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
