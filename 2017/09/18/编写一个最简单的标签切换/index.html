@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法设计," />
+  <meta name="keywords" content="tabs,标签切换," />
 
 
 
@@ -84,19 +84,45 @@
 
 
 
-<meta name="description" content="题目除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法
-分析我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转">
+<meta name="description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件
+使用技术
+原生JS
+jQuery
+CSS:flexbox
+
+分析首先我们知道一个标签切换有标签头(navigator)+标签体(content)
+所以我们来先把结构写出来
+html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法
+标签体就是div了，有几个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="只能使用pop和push来实现数组的shift和unshift方法">
-<meta property="og:url" content="http://yoursite.com/2017/07/07/只能使用pop和push来实现数组的shift和unshift方法/index.html">
+<meta property="og:title" content="编写一个最简单的标签切换">
+<meta property="og:url" content="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="题目除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法
-分析我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转">
-<meta property="og:updated_time" content="2017-07-07T02:37:18.000Z">
+<meta property="og:description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件
+使用技术
+原生JS
+jQuery
+CSS:flexbox
+
+分析首先我们知道一个标签切换有标签头(navigator)+标签体(content)
+所以我们来先把结构写出来
+html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法
+标签体就是div了，有几个">
+<meta property="og:image" content="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/1.png">
+<meta property="og:updated_time" content="2017-09-18T10:06:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="只能使用pop和push来实现数组的shift和unshift方法">
-<meta name="twitter:description" content="题目除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法
-分析我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转">
+<meta name="twitter:title" content="编写一个最简单的标签切换">
+<meta name="twitter:description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件
+使用技术
+原生JS
+jQuery
+CSS:flexbox
+
+分析首先我们知道一个标签切换有标签头(navigator)+标签体(content)
+所以我们来先把结构写出来
+html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法
+标签体就是div了，有几个">
+<meta name="twitter:image" content="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/1.png">
 
 
 
@@ -117,10 +143,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/07/只能使用pop和push来实现数组的shift和unshift方法/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/"/>
 
 
-  <title> 只能使用pop和push来实现数组的shift和unshift方法 | Zeromike的时光机 </title>
+  <title> 编写一个最简单的标签切换 | Zeromike的时光机 </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -290,7 +316,7 @@
             
             
               
-                只能使用pop和push来实现数组的shift和unshift方法
+                编写一个最简单的标签切换
               
             
           </h1>
@@ -302,8 +328,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-07-07T10:34:05+08:00" content="2017-07-07">
-              2017-07-07
+            <time itemprop="dateCreated" datetime="2017-09-18T17:22:48+08:00" content="2017-09-18">
+              2017-09-18
             </time>
           </span>
 
@@ -316,8 +342,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法设计/" itemprop="url" rel="index">
-                    <span itemprop="name">算法设计</span>
+                  <a href="/categories/JS应用/" itemprop="url" rel="index">
+                    <span itemprop="name">JS应用</span>
                   </a>
                 </span>
 
@@ -349,10 +375,123 @@
       
 
       
-        <h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>除了pop和push之外不能使用数组其他任何方法，也不能新增数组，如给定数组是nums，里面有n个数字，来实现数组的shift和unshift方法</p>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>我本来想利用扩大nums数组长度来搞，但是搞了之后发现没办法回收扩出去的空间，所以还是得利用它自己的空间处理，因为shift和unshift处理的是数组的头部，pop和push处理的是数组的尾部，所以只能先将数组反转然后调用对应方法，最后再反转回来</p>
-<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">Array.prototype.reverse = function () &#123;</div><div class="line">    var nums = this;</div><div class="line">    for (var i = 0, len = nums.length; i &lt; len / 2; i++) &#123;</div><div class="line">        var t = nums[i];</div><div class="line">        nums[i] = nums[len - i - 1];</div><div class="line">        nums[len - i - 1] = t;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Array.prototype.shift = function () &#123;</div><div class="line">    var nums = this;</div><div class="line">    this.reverse(nums);</div><div class="line">    var ele = nums.pop();</div><div class="line">    this.reverse(nums);</div><div class="line">    return ele;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Array.prototype.unshift = function () &#123;</div><div class="line">    var nums = this;</div><div class="line">    this.reverse(nums);</div><div class="line">    for (var i = arguments.length - 1; i &gt;= 0; i--) &#123;</div><div class="line">        nums.push(arguments[i]);</div><div class="line">    &#125;</div><div class="line">    this.reverse(nums);</div><div class="line">    return nums.length;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var arr = [1,2,3,4];</div><div class="line">console.log(&quot;shift.return element...&quot;, arr.shift());</div><div class="line">console.log(&quot;after shift...&quot;, arr);</div><div class="line"></div><div class="line">arr = [1,2,3,4,5];</div><div class="line">console.log(&quot;unshift return new array length&quot;, arr.unshift(0,1,2));</div><div class="line">console.log(&quot;after unshift...&quot;, arr);</div></pre></td></tr></table></figure>
-<h3 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">shift.return element... 1</div><div class="line">after shift... [ 2, 3, 4 ]</div><div class="line">unshift return new array length 8</div><div class="line">after unshift... [ 0, 1, 2, 1, 2, 3, 4, 5 ]</div></pre></td></tr></table></figure>
+        <p>标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件<br><img src="/2017/09/18/编写一个最简单的标签切换/1.png" alt="标签切换组件" title="标签切换组件"></p>
+<h3 id="使用技术"><a href="#使用技术" class="headerlink" title="使用技术"></a>使用技术</h3><ul>
+<li>原生JS</li>
+<li>jQuery</li>
+<li>CSS:flexbox</li>
+</ul>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>首先我们知道一个标签切换有标签头(navigator)+标签体(content)</p>
+<p>所以我们来先把结构写出来</p>
+<h4 id="html结构"><a href="#html结构" class="headerlink" title="html结构"></a>html结构</h4><p>一般来说标签头使用ul&gt;li&gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法</p>
+<p>标签体就是div了，有几个标签头就对应几个标签体</p>
+<pre><code>&lt;div&gt;
+    &lt;div&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a&gt;Pictures&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;Music&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;Videos&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a&gt;Documents&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div&gt;123&lt;/div&gt;
+        &lt;div&gt;456&lt;/div&gt;
+        &lt;div&gt;789&lt;/div&gt;
+        &lt;div&gt;abc&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><h4 id="样式和交互"><a href="#样式和交互" class="headerlink" title="样式和交互"></a>样式和交互</h4><p>结构写出来之后，我们就需要考虑一下tabs的样式和交互状态了</p>
+<p>一般tabs都有一个默认激活标签，其他标签默认是隐藏状态。因此在样式上，默认标签需要一个激活状态，其他标签是默认状态。先说明，我们这里处理的tabs是横向的标签。然后，交互上，点击某个标签头，当前标签头处于激活状态，标签体显示出来，其他的标签头变成默认状态，标签体变为隐藏状态。在鼠标滑过的时候，默认标签头样式有个变化。</p>
+<p>ok，我们来看下样式</p>
+<pre><code>* {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    max-width: 1152px;
+    width: 1152px;
+    margin: 0 auto;
+}
+.tabs {
+    display: flex;
+    justify-content: space-between;
+}
+.tabs ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style: none;
+    border-bottom: 1px solid #dbdbdb;
+    flex-grow: 1;
+}
+.tabs ul li{
+    display: block;
+}
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+a:hover {
+    color: #00d1b2;
+}
+.tabs a {
+    display: flex;
+    padding: 0.5rem 2rem;
+}
+.tabs a:hover {
+    border-bottom: 1px solid #363636;
+    color: #363636;
+}
+.tabs li.is-active a {
+    border-bottom: 1px solid #00d1b2;
+    color: #00d1b2;
+}
+.tabpane {
+    display: none;
+}
+</code></pre><p>添加样式后的html结构</p>
+<pre><code>&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;tabs&quot;&gt;
+        &lt;ul&gt;
+            &lt;li class=&quot;is-active tab&quot;&gt;&lt;a&gt;Pictures&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;tab&quot;&gt;&lt;a&gt;Music&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;tab&quot;&gt;&lt;a&gt;Videos&lt;/a&gt;&lt;/li&gt;
+            &lt;li class=&quot;tab&quot;&gt;&lt;a&gt;Documents&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;div class=&quot;tabpane&quot;&gt;123&lt;/div&gt;
+        &lt;div class=&quot;tabpane&quot;&gt;456&lt;/div&gt;
+        &lt;div class=&quot;tabpane&quot;&gt;789&lt;/div&gt;
+        &lt;div class=&quot;tabpane&quot;&gt;abc&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre><p>交互代码如下<br>jQuery</p>
+<pre><code>$(function () {
+    $(&apos;.tab&apos;).click(function(){  // 标签头
+        var index = $(this).index(); // 当前标签头的序号
+        $(this).addClass(&quot;is-active&quot;).siblings().removeClass(&apos;is-active&apos;); // 将当前点击的标签头加上激活状态，兄弟标签头去除激活状态
+        $(&apos;.tabs-body .tabpane&apos;).eq(index).show(200).siblings().hide(); // 将对应的标签体显示，其他的兄弟标签体隐藏
+    });
+    $(&apos;.tabs .tab:eq(0)&apos;).click(); // 点击第一个标签头
+});
+</code></pre><p>原生JS</p>
+<pre><code>var navs = document.querySelectorAll(&apos;.tab&apos;);  // 标签头
+var cons = document.querySelectorAll(&apos;.tabpane&apos;); // 标签体
+
+for (var  i = 0; i &lt; navs.length; i++) {
+    navs[i].index = i;  // 记录每个标签头的序号
+    navs[i].onclick = function () {
+        for(var n = 0; n &lt; cons.length; n++) { // 将所有标签体和标签头样式reset
+            cons[n].style.display = &quot;none&quot;;
+            navs[n].className = &quot;&quot;;
+        }
+        cons[this.index].style.display = &quot;block&quot; // 当前标签体显示
+        navs[this.index].className = &quot;is-active&quot;; // 当前标签头激活
+    }
+}
+navs[0].click(); // 触发第一个标签头点击事件
+</code></pre><h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>以上都是最原始，最简单粗暴的一种tab切换的实现方法，其他比如使用框架或者面向对象的方式实现tabs，都可以围绕以上的代码进行改造</p>
 
       
     </div>
@@ -375,7 +514,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/算法设计/" rel="tag">#算法设计</a>
+            <a href="/tags/tabs-标签切换/" rel="tag">#tabs,标签切换</a>
           
         </div>
       
@@ -384,17 +523,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/06/移动数字0和数组内除自己外的乘积/" rel="next" title="移动数字0和数组内除自己外的乘积">
-                <i class="fa fa-chevron-left"></i> 移动数字0和数组内除自己外的乘积
+              <a href="/2017/09/17/感想二三事/" rel="next" title="感想二三事">
+                <i class="fa fa-chevron-left"></i> 感想二三事
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/07/webpack的主要配置参数分析/" rel="prev" title="webpack的主要配置参数分析">
-                webpack的主要配置参数分析 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -569,7 +704,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行结果"><span class="nav-number">4.</span> <span class="nav-text">运行结果</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用技术"><span class="nav-number">1.</span> <span class="nav-text">使用技术</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">2.</span> <span class="nav-text">分析</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#html结构"><span class="nav-number">2.1.</span> <span class="nav-text">html结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#样式和交互"><span class="nav-number">2.2.</span> <span class="nav-text">样式和交互</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">3.</span> <span class="nav-text">结论</span></a></li></ol></div>
             
           </div>
         </section>
