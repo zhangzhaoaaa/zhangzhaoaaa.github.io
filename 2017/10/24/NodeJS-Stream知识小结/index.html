@@ -1,0 +1,769 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="nodejs,stream," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="Stream(流)是一个抽象接口，在Node里被不同的对象实现。因为我们经常用到的很多模块都是在stream模块的基础上封装的，是stream模块的子类。比如常见的请求流，响应流，文件流，socket流等等。流是可读，可写，或者可读写，所有的流是 EventEmitter 的实例。
+Stream的作用Stream模块是处理系统缓存的一种方式。操作系统采用数据块（chunk）的方式读取数据，每收到一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS Stream知识小结">
+<meta property="og:url" content="http://yoursite.com/2017/10/24/NodeJS-Stream知识小结/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="Stream(流)是一个抽象接口，在Node里被不同的对象实现。因为我们经常用到的很多模块都是在stream模块的基础上封装的，是stream模块的子类。比如常见的请求流，响应流，文件流，socket流等等。流是可读，可写，或者可读写，所有的流是 EventEmitter 的实例。
+Stream的作用Stream模块是处理系统缓存的一种方式。操作系统采用数据块（chunk）的方式读取数据，每收到一">
+<meta property="og:updated_time" content="2017-10-24T12:55:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NodeJS Stream知识小结">
+<meta name="twitter:description" content="Stream(流)是一个抽象接口，在Node里被不同的对象实现。因为我们经常用到的很多模块都是在stream模块的基础上封装的，是stream模块的子类。比如常见的请求流，响应流，文件流，socket流等等。流是可读，可写，或者可读写，所有的流是 EventEmitter 的实例。
+Stream的作用Stream模块是处理系统缓存的一种方式。操作系统采用数据块（chunk）的方式读取数据，每收到一">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/24/NodeJS-Stream知识小结/"/>
+
+
+  <title> NodeJS Stream知识小结 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                NodeJS Stream知识小结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-24T16:36:10+08:00" content="2017-10-24">
+              2017-10-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Stream(流)是一个抽象接口，在Node里被不同的对象实现。因为我们经常用到的很多模块都是在stream模块的基础上封装的，是stream模块的子类。比如常见的请求流，响应流，文件流，socket流等等。流是可读，可写，或者可读写，所有的流是 EventEmitter 的实例。</p>
+<h3 id="Stream的作用"><a href="#Stream的作用" class="headerlink" title="Stream的作用"></a>Stream的作用</h3><p>Stream模块是处理系统缓存的一种方式。操作系统采用数据块（chunk）的方式读取数据，每收到一次数据，就存入缓存。而程序处理缓存有两种方式，一种是等所有数据接收完毕，一次从缓存中读取（遇到大文件内存容易搞崩）。另一种是读取一块就处理一块， 就像流水一样。</p>
+<p>其中包括了 Readable 流、Writable 流、Duplex 流和 Transform 流的基类。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">const fs = require(&apos;fs&apos;)</div><div class="line"></div><div class="line">let data = &apos;&apos;</div><div class="line"></div><div class="line">// 创建可读流</div><div class="line">let readerStream = fs.createReadStream(&apos;./file.js&apos;)</div><div class="line">readerStream.setEncoding(&apos;utf8&apos;)</div><div class="line"></div><div class="line">readerStream.on(&apos;data&apos;, function (chunk) &#123;</div><div class="line">	data += chunk</div><div class="line">&#125;)</div><div class="line"></div><div class="line">readerStream.on(&apos;end&apos;, function () &#123;</div><div class="line">	console.log(&apos;end&apos;)</div><div class="line">	console.log(data)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="Stream-模式"><a href="#Stream-模式" class="headerlink" title="Stream 模式"></a>Stream 模式</h3><p>可读流（Readable stream） 有2种模式: 流动模式（flowing mode）和暂停模式（paused mode）</p>
+<p>流动模式（flowing mode）时，尽快的从底层系统读取数据并提供给你的程序<br>暂停模式（paused mode）时，你必须明确的调用 stream.read() 来读取数据<br>暂停模式（paused mode）是默认模式</p>
+<p>注意: 如果没有绑定数据处理函数，并且没有 pipe() 目标，流会切换到流动模式（flowing mode），并且数据会丢失</p>
+<p>注意, 为了向后兼容考虑， 移除 ‘data’ 事件监听器并不会自动暂停流。同样的，当有导流目标时，调用 pause() 并不能保证流在那些目标排空后，请求更多数据时保持暂停状态。</p>
+<h3 id="可读流事件"><a href="#可读流事件" class="headerlink" title="可读流事件"></a>可读流事件</h3><ul>
+<li><p>readable<br>当一个数据块可以从流中读出，将会触发’readable’事件。</p>
+</li>
+<li><p>data<br>  chunk {Buffer|String}数据块</p>
+<p>  绑定一个data事件的监听器(listener)到一个未明确暂停的流，会将流切换到流动模式。数据会尽可能的传递</p>
+</li>
+<li><p>end<br>  如果没有更多的可读数据，将会触发这个事件<br>注意，除非数据已经被完全消费，the end事件才会触发。</p>
+</li>
+<li><p>close<br>  当底层资源关闭时触发。并不是所有流都会触发这个事件。</p>
+</li>
+<li><p>error<br>  {Error Object}<br>  当接收数据时发生错误触发</p>
+</li>
+</ul>
+<h3 id="可读流方法"><a href="#可读流方法" class="headerlink" title="可读流方法"></a>可读流方法</h3><ul>
+<li><p>readable.read([size])<br>  size {Number}可选参数，需要读入的数据量<br>  返回{String|Buffer|null}</p>
+<p>  read()方法从内部缓存中拉取数据。如果没有可用数据，将会返回null<br>  如果传了size参数，将会返回相当字节的数据。如果size不可用，将会返回null<br>  如果你没有指定size参数。将会返回内部缓存的所有数据。<br>  这个方法仅能在暂停模式里调用</p>
+</li>
+<li><p>readable.setEncoding(encoding)<br>  •    encoding {String} 要使用的编码<br>  •    返回: this</p>
+<p>调用此函数会使得流返回指定编码的字符串，而不是 Buffer 对象。例如，如果你调用readable.setEncoding(‘utf8’)，输出数据将会是UTF-8 编码，并且返回字符串。如果你调用 readable.setEncoding(‘hex’)，将会返回2进制编码的数据。该方法能正确处理多字节字符。如果不想这么做，仅简单的直接拉取缓存并调buf.toString(encoding) ，可能会导致字节错位。因此，如果你想以字符串读取数据，请使用这个方法</p>
+</li>
+<li><p>readable.resume()<br>  返回this</p>
+<p>  这个方法让可读流(Readable stream)继续触发data事件<br>  这个方法会将流切换到流动模式。如果你不想从流中消费数据，而想得到end事件，可以调用readable.resume()来打开数据流</p>
+</li>
+<li><p>readable.pause()<br>  返回this<br>  这个方法会使得流动模式的流停止触发data事件，切换到流动模式，并让后续可用数据留在内部缓冲区中</p>
+</li>
+<li><p>readable.pipe(destination[, options])<br>  destination {Writable Stream} 写入数据的目标<br>  options {Object} 导流(pipe)选项</p>
+<pre><code>end {Boolean} 读取到结束符时，结束写入者。默认=true
+</code></pre><p> 这个方法从可读流拉取所有数据，并将数据写入到提供的木笔中。自动管理流量，这样目标不会快速的可读流淹没<br>   默认情况下，当源数据流触发end的时候调用end()，所以destination不可再写。传{end:false}作为options，可以保持目标流打开状态。</p>
+</li>
+<li><p>readable.isPaused()<br>  •    返回: Boolean<br>  这个方法返回readable 是否被客户端代码 明确的暂停（调用 readable.pause()）</p>
+</li>
+<li><p>readable.unpipe([destination])<br>  •    destination {Writable Stream} 可选，指定解除导流的流<br>这个方法会解除之前调用 pipe() 设置的钩子（ pipe() ）<br>如果没有指定 destination,所有的 导流（pipe） 都会被移除<br>如果指定了 destination，但是没有建立如果没有指定 destination，则什么事情都不会发生</p>
+</li>
+<li><p>readable.unshift(chunk)<br>  •    chunk {Buffer | String} 数据块插入到读队列中<br>这个方法很有用，当一个流正被一个解析器消费，解析器可能需要将某些刚拉取出的数据“逆消费”，返回到原来的源，以便流能将它传递给其它消费者。</p>
+</li>
+</ul>
+<h3 id="可读流的暂停和流动两种状态"><a href="#可读流的暂停和流动两种状态" class="headerlink" title="可读流的暂停和流动两种状态"></a>可读流的暂停和流动两种状态</h3><p>可读流是将资源源源不断的写进缓存池中，它可以看作是生产者。而缓存池可以看作是一个水桶，而桶也是有容量的（缓存池的大小），用highWaterMark来标记。当我们开始读数据的时候，可读流是处于流动状态的，但是有些时候，生产数据的速度和消费数据的速度是不对等的。当生产数据的速度大于消费数据的速度时，缓存池中的数据就会越来越多，直到装满。这个时候我们就需要暂停向缓存池写入数据。可读流从流动状态转为暂停状态。当缓存池中的数据被消费掉的时候，流可以从暂停状态转为流动状态。<br>可读流在创建时都是暂停模式，暂停模式和流动模式可以互相转换。<br>要从暂停模式切换到流动模式，有下面三种办法：<br>    •    给“data”事件关联了一个处理器<br>    •    显式调用resume()<br>    •    调用pipe()方法将数据送往一个可写数据流<br>要从流动模式切换到暂停模式，有两种途径：<br>    •    如果这个可读的流没有桥接可写流组成管道，直接调用pause()<br>    •    如果这个可读的流与若干可写流组成了管道，需要移除与“data”事件关联的所有处理器，并且调用unpipe() 方法断开所有管道</p>
+<h3 id="可写流-Writable-Stream"><a href="#可写流-Writable-Stream" class="headerlink" title="可写流(Writable Stream)"></a>可写流(Writable Stream)</h3><p>原理与 Readable Stream 是比较相似的，数据流过来的时候，会直接写入到资源池，当写入速度比较缓慢或者写入暂停时，数据流会进入队列池缓存起来。当生产者写入速度过快，把队列池装满了之后，就会出现背压(back-pressure)，这个时候是需要告诉生产者暂停生产的，当队列释放之后，Writable Stream 会给生产者发送一个 drain 消息，让它恢复生产</p>
+<ul>
+<li>writable.write(chunk[,encoding][,callback])  <pre><code>chunk {String|Buffer} 准备写的数据  
+encoding {String} 编码方式(如果chunk是字符串)  
+callback {Function}数据库写入后的回调  
+</code></pre></li>
+</ul>
+<p>返回：{Boolean}如果数据已经被全部处理返回true</p>
+<p>这个方法向底层系统写入数据，并在数据处理完毕后调用所给的回调<br>返回值表示你是否应该继续立即写入。如果数据要缓存在内部，将会返回false,否则返回true.<br>返回值仅供参考。即使返回 false，你也可能继续写。但是写会缓存在内存里，所以不要做的太过分。最好的办法是等待drain 事件后，再写入数据。</p>
+<ul>
+<li><p>drain<br>  如果调用 writable.write(chunk) 返回 false, drain 事件会告诉你什么时候将更多的数据写入到流中</p>
+</li>
+<li><p>finish<br>  调用end() 方法后，并且所有的数据已经写入到底层系统，将会触发这个事件。</p>
+</li>
+<li>pipe<br>  •    src {Readable Stream} 是导流（pipe）到可写流的源流<br>无论何时在可写流（Writable stream ）上调用pipe() 方法，都会触发 ‘pipe’ 事件，添加这个流到目标</li>
+<li>unpipe<br>  •    src {Readable Stream} The source stream that unpiped this writable<br>无论何时在可写流（Writable stream ）上调用unpipe() 方法,都会触发 ‘unpipe’ 事件,将这个流从目标上移除。<br>error</li>
+</ul>
+<h3 id="Duplex-Stream"><a href="#Duplex-Stream" class="headerlink" title="Duplex Stream"></a>Duplex Stream</h3><p>使用duplexer2 的包</p>
+<h3 id="Transform-stream"><a href="#Transform-stream" class="headerlink" title="Transform stream"></a>Transform stream</h3><p>使用through2的包</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/nodejs-stream/" rel="tag">#nodejs,stream</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/16/前端工程化小记/" rel="next" title="前端工程化小记">
+                <i class="fa fa-chevron-left"></i> 前端工程化小记
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">79</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream的作用"><span class="nav-number">1.</span> <span class="nav-text">Stream的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Stream-模式"><span class="nav-number">2.</span> <span class="nav-text">Stream 模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可读流事件"><span class="nav-number">3.</span> <span class="nav-text">可读流事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可读流方法"><span class="nav-number">4.</span> <span class="nav-text">可读流方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可读流的暂停和流动两种状态"><span class="nav-number">5.</span> <span class="nav-text">可读流的暂停和流动两种状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可写流-Writable-Stream"><span class="nav-number">6.</span> <span class="nav-text">可写流(Writable Stream)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Duplex-Stream"><span class="nav-number">7.</span> <span class="nav-text">Duplex Stream</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Transform-stream"><span class="nav-number">8.</span> <span class="nav-text">Transform stream</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
