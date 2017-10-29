@@ -1,0 +1,825 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="promise," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译
+一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。
+================译文术语
+
+解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Promise A+规范">
+<meta property="og:url" content="http://yoursite.com/2017/10/28/Promise-A-规范/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译
+一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。
+================译文术语
+
+解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+<meta property="og:updated_time" content="2017-10-29T12:18:21.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Promise A+规范">
+<meta name="twitter:description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译
+一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。
+================译文术语
+
+解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/10/28/Promise-A-规范/"/>
+
+
+  <title> Promise A+规范 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Promise A+规范
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-10-28T17:20:56+08:00" content="2017-10-28">
+              2017-10-28
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/promise/" itemprop="url" rel="index">
+                    <span itemprop="name">promise</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译</p>
+<p>一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。</p>
+<p>================<br>译文术语</p>
+<ul>
+<li><p>解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以resolve来指代之。</p>
+</li>
+<li><p>拒绝(reject): 指一个promise失败时进行的一系列操作。</p>
+</li>
+<li>终值(eventual value): 所谓终值，指的是promise被解决时传递给解决回调的值，由于promise有一次性的特征，因此当这个值被传递时，标志着promise等状态的结束，故称之终值，有时也直接简称为值(value)</li>
+<li>拒因(reason): 也就是拒绝的原因，指在promise被拒绝时传递给拒绝回调的值</li>
+</ul>
+<p>=================</p>
+<p>Promise表示一个异步操作的最终结果，与之进行交互的方式主要是then方法，该方法注册了两个回调函数，用于接收promise的终值或本promise不能执行的原因。</p>
+<p>本规范详细列出了then方法的执行过程，所有遵循Promises/A+规范实现的promise均可以本标准作为参照基础来实施then方法。因而本规范是十分稳定的。尽管Promises/A+ 组织有时可能会修订本规范，但主要是为了处理一些特殊的边界情况，且这些改动都是微小且向下兼容的。如果我们要进行大规模不兼容的更新，我们一定会是事先进行谨慎地考虑、详尽的探讨和严格的测试。</p>
+<p>从历史上说，本规范实际上是把之前Promises/A 规范中的建议明确成为了行为准则：我们一方面扩展了原有规范约定俗成的行为，一方面删减了原规范的一些特例情况和有问题的部分。</p>
+<p>最后，核心的Promises/A+ 规范不涉及如何创建、解决和拒绝promises，而是专注于提供一个通用的then方法。上述对于promise的操作方法将来在其他规范中可能会提及。</p>
+<p>==============</p>
+<h3 id="术语"><a href="#术语" class="headerlink" title="术语"></a>术语</h3><h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><p>promise是一个拥有then方法的对象或者函数，其行为符合本规范。</p>
+<h4 id="thenable"><a href="#thenable" class="headerlink" title="thenable"></a>thenable</h4><p>是一个定义了then方法的对象或函数，文中译作 “拥有then 方法”</p>
+<h4 id="值（value）"><a href="#值（value）" class="headerlink" title="值（value）"></a>值（value）</h4><p>指任何JavaScript的合法值（包括undefined,thenable和promise）</p>
+<h4 id="异常（exception）"><a href="#异常（exception）" class="headerlink" title="异常（exception）"></a>异常（exception）</h4><p>是使用throw语句抛出的一个值</p>
+<h4 id="拒因-reason"><a href="#拒因-reason" class="headerlink" title="拒因(reason)"></a>拒因(reason)</h4><h1 id="表示一个promise的拒绝原因"><a href="#表示一个promise的拒绝原因" class="headerlink" title="表示一个promise的拒绝原因"></a>表示一个promise的拒绝原因</h1><h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><h4 id="Promise的状态"><a href="#Promise的状态" class="headerlink" title="Promise的状态"></a>Promise的状态</h4><p>一个Promise的当前状态必须为以下三种状态的一种：等待态(Pending)、执行态(Fulfilled)和拒绝态(Rejected)</p>
+<h4 id="等待态-Pending"><a href="#等待态-Pending" class="headerlink" title="等待态(Pending)"></a>等待态(Pending)</h4><p>处于等待态，promise需满足以下条件：<br>可以迁移至执行态或拒绝态</p>
+<h4 id="执行态-Fulfilled"><a href="#执行态-Fulfilled" class="headerlink" title="执行态(Fulfilled)"></a>执行态(Fulfilled)</h4><p>处于执行态时，promise需满足以下条件：<br>不能迁移至其他任何状态<br>必须拥有一个不可变的终值</p>
+<h4 id="拒绝态-Rejected"><a href="#拒绝态-Rejected" class="headerlink" title="拒绝态(Rejected)"></a>拒绝态(Rejected)</h4><p>处于拒绝态时，promise需满足以下条件：<br>不能迁移至其他任何状态<br>必须拥有一个不可变的拒因</p>
+<p>这里的不可变指的是恒等(===)，而不是意味着更深层次的不可变（当value或reason不是基本值时，只要求其引用地址相等，但属性值可被更改）</p>
+<h3 id="Then方法"><a href="#Then方法" class="headerlink" title="Then方法"></a>Then方法</h3><p>一个promise必须提供一个then方法以访问其当前值、终值和拒因</p>
+<p>promise的then方法接受两个参数：</p>
+<pre><code>promise.then(onFulfilled, onRejected)
+</code></pre><p>参数可选<br>onFulfilled和onRejected都是可选参数</p>
+<ul>
+<li>如果onFulfilled不是函数，其必须被忽略</li>
+<li>如果onRejected不是函数，其必须被忽略</li>
+</ul>
+<h4 id="onFulfilled-特性"><a href="#onFulfilled-特性" class="headerlink" title="onFulfilled 特性"></a>onFulfilled 特性</h4><p>如果onFulfilled是函数：</p>
+<ul>
+<li>当promise执行结束后其必须被调用，其第一个参数为promise的终值</li>
+<li>在promise执行结束前其不可被调用</li>
+<li>其调用次数不可超过一次</li>
+</ul>
+<h4 id="onRejected特性"><a href="#onRejected特性" class="headerlink" title="onRejected特性"></a>onRejected特性</h4><p>如果onRejected是函数：</p>
+<ul>
+<li>当promise被拒绝执行后其必须被调用，其第一个参数为promise的拒因</li>
+<li>在promise被拒绝执行前其不可被调用</li>
+<li>其调用次数不可超过一次</li>
+</ul>
+<h4 id="调用时机"><a href="#调用时机" class="headerlink" title="调用时机"></a>调用时机</h4><p>onFulfilled和onRejected只有在执行环境堆栈仅包含平台代码时才可被调用</p>
+<h4 id="调用要求"><a href="#调用要求" class="headerlink" title="调用要求"></a>调用要求</h4><p>onFulfilled和onRejected必须被作为函数调用(即没有this值)</p>
+<h4 id="多次调用"><a href="#多次调用" class="headerlink" title="多次调用"></a>多次调用</h4><p>then 方法可以被同一个promise调用多次</p>
+<ul>
+<li>当promise成功执行时，所有onFulfilled需按照其注册顺序依次回调</li>
+<li>当promise被拒绝执行时，所有的onRejected需按照其注册顺序依次回调</li>
+</ul>
+<h4 id="返回"><a href="#返回" class="headerlink" title="返回"></a>返回</h4><p>then 方法必须返回一个promise对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">promise2 = promise1.then(onFulfilled, onRejected);</div></pre></td></tr></table></figure>
+<ul>
+<li>如果onFulfilled或者onRejected返回一个值x，则运行下面的Promise解决过程：<a href="promise2, x">[Resolve]</a></li>
+<li>如果onFulfilled或者onRejected抛出一个异常e，则promise2必须拒绝执行，并返回拒因e</li>
+<li>如果onFulfilled不是函数且promise1成功执行，promise2必须成功执行并返回相同的值</li>
+<li>如果onRejected不是函数且promise1拒绝执行，promise2必须拒绝执行并返回相同的拒因</li>
+</ul>
+<p>理解上面的“返回”部分非常重要，即：不论promise1被reject还是被resolve时promise2都会被resolve，只有出现异常时才会被rejected</p>
+<h3 id="Promise解决过程"><a href="#Promise解决过程" class="headerlink" title="Promise解决过程"></a>Promise解决过程</h3><p>Promise解决过程是一个抽象的操作，其需输入一个promise和一个值，我们表示为<a href="promise, x">[Resolve]</a>，如果x有then方法且看上去像一个Promise，解决程序即尝试使promise接受x的状态；否则其用x的值来执行promise。 </p>
+<p>这种thenable的特性使得Promise的实现更具有通用性：只要其暴露出一个遵循Promise/A+协议的then方法即可；这同时也使遵循Promise/A+规范的实现可以与那些不太规范但可用的实现能良好共存。</p>
+<p>运行<a href="promise,x">[Resolve]</a>需遵循以下步骤：</p>
+<h4 id="x与promise相等"><a href="#x与promise相等" class="headerlink" title="x与promise相等"></a>x与promise相等</h4><p>如果promise和x指向同一个对象，以TypeError为拒因拒绝执行promise</p>
+<h4 id="x为Promise"><a href="#x为Promise" class="headerlink" title="x为Promise"></a>x为Promise</h4><p>如果x为Promise，则使promise接受x的状态</p>
+<ul>
+<li>如果x处于等待态，promise需保持为等待态直至x被执行或拒绝</li>
+<li>如果x处于执行态，用相同的值执行promise</li>
+<li>如果x处于拒绝态，用相同的拒因拒绝promise</li>
+</ul>
+<h4 id="x为对象或函数"><a href="#x为对象或函数" class="headerlink" title="x为对象或函数"></a>x为对象或函数</h4><p>如果x为对象或者函数：</p>
+<ul>
+<li>把x.then赋值给then</li>
+<li>如果x.then的值抛出错误e，则以e为拒因拒绝promise</li>
+<li><p>如果then是函数，将x作为函数的作用域this调用之。传递两个回调函数作为参数，第一个参数叫做resolvePromise，第二个参数叫做rejectPromise：</p>
+<ul>
+<li>如果resolvePromise以值y为参数调用，则运行<a href="promise,y">[Resolve]</a></li>
+<li>如果rejectPromise以拒因r为参数被调用，则以拒因r拒绝promise</li>
+<li>如果resolvePromise和rejectPromise均被调用，或者被同一参数调用了多次，则优先采用首次调用并忽略剩下的调用</li>
+<li><p>如果调用then方法抛出了异常e:</p>
+<ul>
+<li>如果resolvePromise或者rejectPromise已经被调用，则忽略之</li>
+<li>否则以e为拒因拒绝promise</li>
+</ul>
+</li>
+<li><p>如果then不是函数，以x为参数执行promise</p>
+</li>
+</ul>
+</li>
+<li>如果x不为对象或者函数，以x为参数执行promise      </li>
+</ul>
+<p>如果一个promise被一个循环的thenable链中的对象解决，而<a href="promise,thenable">[Resolve]</a>的递归性质又使得其被再次调用，根据上述的算法将会陷入无限递归之中。算法虽不强制要求，但也鼓励实现者检测这样的递归是否存在，若检测到存在则以一个可识别的TypeError为拒因来拒绝promise</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><ul>
+<li>这里的平台代码指的是引擎、环境以及promise的实施代码。实践中要确保onFulfilled和onRejected方法异步执行，且应该在then方法被调用的那一轮事件循环之后的新执行栈中执行。这个事件队列可以采用“宏任务(macro-task)”机制或者“微任务(micro-task)”机制来实现。由于promise的实施代码本身就是平台代码(javascript)，故代码自身在处理处理程序时可能已经包含一个任务调度队列。</li>
+<li>也就是说在严格模式(strict)中，函数this的值为undefined;在非严格模式中其为全局对象</li>
+<li>代码实现在满足所有要求的情况下可以允许promise2 === promise1。每个实现都要文档说明其是否允许以及在任何条件下允许promise2 === promise1</li>
+<li>总体来说，如果x符合当前实现，我们才认为它是真正的promise。这一规则允许那些特例实现接受符合已知要求的Promises状态</li>
+<li>先是存储了一个指向x.then的引用，然后测试并调用该引用，以避免多次访问x.then属性。这种预防措施确保了该属性的一致性，因为其值可能在检索调用时被改变。</li>
+<li>实现不应该对thenable链的深度设限，并假定超出本限制的递归就是无限循环。只有真正的循环递归才应该能导致TypeError异常；如果一条无限长的链上的thenable均不相同，那么递归下去永远是正确的行为</li>
+</ul>
+<p>参考：</p>
+<ol>
+<li><a href="http://malcolmyu.github.io/malnote/2015/06/12/Promises-A-Plus/" target="_blank" rel="external">译文</a></li>
+<li><a href="https://promisesaplus.com/" target="_blank" rel="external">原文</a>  </li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/promise/" rel="tag">#promise</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/26/获取函数名称和参数的名称/" rel="next" title="获取函数名称和参数的名称">
+                <i class="fa fa-chevron-left"></i> 获取函数名称和参数的名称
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/29/Promise/" rel="prev" title="Promise">
+                Promise <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">84</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">62</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#术语"><span class="nav-number">1.</span> <span class="nav-text">术语</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise"><span class="nav-number">1.1.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#thenable"><span class="nav-number">1.2.</span> <span class="nav-text">thenable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值（value）"><span class="nav-number">1.3.</span> <span class="nav-text">值（value）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常（exception）"><span class="nav-number">1.4.</span> <span class="nav-text">异常（exception）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拒因-reason"><span class="nav-number">1.5.</span> <span class="nav-text">拒因(reason)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表示一个promise的拒绝原因"><span class="nav-number"></span> <span class="nav-text">表示一个promise的拒绝原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求"><span class="nav-number">1.</span> <span class="nav-text">要求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise的状态"><span class="nav-number">1.1.</span> <span class="nav-text">Promise的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等待态-Pending"><span class="nav-number">1.2.</span> <span class="nav-text">等待态(Pending)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行态-Fulfilled"><span class="nav-number">1.3.</span> <span class="nav-text">执行态(Fulfilled)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝态-Rejected"><span class="nav-number">1.4.</span> <span class="nav-text">拒绝态(Rejected)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Then方法"><span class="nav-number">2.</span> <span class="nav-text">Then方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#onFulfilled-特性"><span class="nav-number">2.1.</span> <span class="nav-text">onFulfilled 特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onRejected特性"><span class="nav-number">2.2.</span> <span class="nav-text">onRejected特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用时机"><span class="nav-number">2.3.</span> <span class="nav-text">调用时机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用要求"><span class="nav-number">2.4.</span> <span class="nav-text">调用要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多次调用"><span class="nav-number">2.5.</span> <span class="nav-text">多次调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回"><span class="nav-number">2.6.</span> <span class="nav-text">返回</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise解决过程"><span class="nav-number">3.</span> <span class="nav-text">Promise解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x与promise相等"><span class="nav-number">3.1.</span> <span class="nav-text">x与promise相等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x为Promise"><span class="nav-number">3.2.</span> <span class="nav-text">x为Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x为对象或函数"><span class="nav-number">3.3.</span> <span class="nav-text">x为对象或函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">4.</span> <span class="nav-text">注释</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
