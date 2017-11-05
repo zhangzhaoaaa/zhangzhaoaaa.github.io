@@ -1,0 +1,765 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="event loop," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="本文是翻译文章，原文链接-&amp;gt;本文来源
+NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Event Loop整体概念">
+<meta property="og:url" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="本文是翻译文章，原文链接-&amp;gt;本文来源
+NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/1.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/2.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/3.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/4.png">
+<meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/5.png">
+<meta property="og:updated_time" content="2017-11-05T10:20:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Event Loop整体概念">
+<meta name="twitter:description" content="本文是翻译文章，原文链接-&amp;gt;本文来源
+NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta name="twitter:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/05/Event-Loop整体概念/"/>
+
+
+  <title> Event Loop整体概念 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Event Loop整体概念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-11-05T18:05:51+08:00" content="2017-11-05">
+              2017-11-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Event-Loop/" itemprop="url" rel="index">
+                    <span itemprop="name">Event Loop</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文是翻译文章，原文链接-&gt;<a href="https://jsblog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810" target="_blank" rel="external">本文来源</a></p>
+<p>NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使用它。</p>
+<h3 id="Reactor-Pattern（响应式模式）"><a href="#Reactor-Pattern（响应式模式）" class="headerlink" title="Reactor Pattern（响应式模式）"></a>Reactor Pattern（响应式模式）</h3><p>NodeJS是在一个事件驱动模型中运行的，包含了一个Event Demultiplexer和一个Event Queue。所有的I/O请求将最终产生一个完成/失败或者其他类型的事件触发。这些事件会根据以下算法来被处理。</p>
+<ol>
+<li>Event demultiplexer接收了I/O请求并且代理了这些请求给对应的硬件</li>
+<li>一旦I/O请求被处理了(文件的数据可读，socket的数据可读等等),event demultiplexer会将注册的callbacks句柄放入特定操作的队列当中处理。这些callbacks被称为事件，事件被加入的队列的地方就叫做Event Queue.</li>
+<li>当事件在event queue里被处理的时候，它们会按照它们接收的顺序依次执行，直到队列为空</li>
+<li>在event queue里如果没有了事件或者Event Demultiplexer没有任何准备处理的请求，程序将完成。否则，这个过程会从第一步开始</li>
+</ol>
+<p>协调整个机制的程序叫做Event Loop</p>
+<img src="/2017/11/05/Event-Loop整体概念/1.png" alt="1.png" title="">
+<p>Event Loop 是一个单线程和半无限循环。被称为半无限循环的原因是当没有更多的工作要处理的时候，在某些点上它会退出运行</p>
+<p>上面那个图是NodeJS运行的更高层级的预览图，展示了一个响应式模式的主要的组件。但是实际上要比这个复杂的多，</p>
+<p>Event demultiplexer在所有操作系统上，不是处理所有I/O类型的单一组件<br>在这里呈现的Event Queue不是这一个单一队列，所有的事件在这个队列里进入进出。<br>所有的I/O也不仅仅是进入队列的事件类型。</p>
+<p>所以让我们深入研究一下</p>
+<h3 id="Event-Demultiplexer"><a href="#Event-Demultiplexer" class="headerlink" title="Event Demultiplexer"></a>Event Demultiplexer</h3><p>Event Demultiplexer不是一个存在在真实世界的一个组件，它是一个响应模型里的抽象概念。<br>在真实的世界里，event demultiplexer在不同的系统里以不同的名字实现了，比如在linux中是epoll，在BSD系统(MacOS)中是kqueue，在Solaris里是event ports，在windows是IOCP(Input Output Completion Port)等。NodeJS使用以上这些实现提供的底层的非阻塞、异步硬件I/O功能</p>
+<h4 id="文件I-O的复杂性"><a href="#文件I-O的复杂性" class="headerlink" title="文件I/O的复杂性"></a>文件I/O的复杂性</h4><p>但是令人困惑的是，不是所有I/O的执行都由以上实现。甚至在相同的操作系统上，提供的不同类型的I/O都是很复杂的。特别来说，使用epoll,kqueue,event ports和IOCP，网络I/O能够以非阻塞方式执行，但是文件的I/O操作是更复杂的。某些系统，比如linux对于文件系统的访问不支持完整的异步操作。在Mac系统的kqueue中，文件系统的事件通知/信号有些限制(阅读更多)。因为这些文件系统实在太复杂了，想要提供完整的异步操作的话，基本上不可能的事情。</p>
+<h4 id="DNS的复杂性"><a href="#DNS的复杂性" class="headerlink" title="DNS的复杂性"></a>DNS的复杂性</h4><p>类似于文件I/O，由Node API提供的某个DNS函数也会有某种复杂性。因为NodeJS的DNS函数比如dns.lookup访问系统的配置文件，比如nsswitch.conf，resolv.conf和/etc/hosts，上面描述的文件系统的复杂性也会适用于dns.reslov方法</p>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>因此，thread pool被引进来支持那些不能被硬件异步I/O工具直接处理的I/O方法，比如epoll/kqueue/event ports或者IOCP。现在我们知道不是所有I/O方法会出现在thread pool里。NodeJS也已经尽可能的利用非租塞和异步硬件I/O，但是对于对于阻塞或者复杂的I/O处理，它会使用thread pool</p>
+<p>正如我们看到的，在真实的世界中不同类型的操作系统中很难支持所有不同类型的I/O（file I/O,网络I/O,DNS等）。在保持完整异步的时候，在使用原生硬件实现的时候，一些I/O可以执行，有一些I/O会在thread pool里执行可以保证这些异步本性。</p>
+<p>在开发者中有个常识错误就是Node的所有I/O执行在thread pool里面</p>
+<p>为了支持跨平台的I/O操作，并且能够把控整个过程，应该有一个抽象层来包装这些内部平台的复杂性，并且对上层Node暴露一个公共的API</p>
+<p>所以谁来做这些事情？女士们先生们，libuv<br><img src="/2017/11/05/Event-Loop整体概念/2.png" alt="2.png" title=""><br>官方的libuv文档<a href="http://docs.libuv.org/en/v1.x/design.html" target="_blank" rel="external">http://docs.libuv.org/en/v1.x/design.html</a></p>
+<p>libuv是一个最初为NodeJS写的一个跨平台的支持库。它被设计为一个事件驱动的异步I/O模型</p>
+<p>这个库在不同I/O polling上提供了一个远超简单抽象的机制: handle和streams对sockets和其他实体来说提供了一个更高的抽象;在其他方面，提供了跨平台的文件I/O和线程功能</p>
+<p>我们来看看libuv是如何组成的。以下的图表来自libuv官方文档，暴露了一个公共的API，描述了不同类型的I/O如何处理<br><img src="/2017/11/05/Event-Loop整体概念/3.png" alt="3.png" title=""><br>现在我们了解了Event Demultiplexer不是一个原子实体，而是一个由Libuv抽象的I/O处理的API集合，并且对NodeJS上层暴露了这些API。libuv不仅仅提供给Nodeevent demuliplexer。Libuv提供了完整的event loop功能给NodeJS，包括事件队列机制。</p>
+<p>现在我们来看看Event Queue</p>
+<h4 id="Event-Queue"><a href="#Event-Queue" class="headerlink" title="Event Queue"></a>Event Queue</h4><p>Event queue被认为是一个数据结构，这里所有的events进入了队列并且event loop会依次执行，直到这个队列为空。在Node中这个事情如何发生的，和抽象响应模型描述的又完全不同。这是个怎么样的不同呢？</p>
+<p>在NodeJS中有不止一个queue(队列)，在这些它们自己的队列中，有自己队列类型的事件</p>
+<p>在一个阶段处理完成之后，在进到下一个阶段之前，event loop会处理两个通用队列，直到在中间队列中没有执行项目为止</p>
+<p>所以有多少个队列？有多少个中间队列？</p>
+<p>有四个由原生libuv event loop处理的主要队列</p>
+<ul>
+<li><p>Expired timers and intervals queue 包含了使用setTimeout增加的过期时间的callbacks和使用setInterval增加的interval方法</p>
+</li>
+<li><p>IO Events Queue 完成IO事件</p>
+</li>
+<li><p>Immediates Queue 使用setImmediate 函数增加的callbacks</p>
+</li>
+<li><p>Close Handlers Queue 任何close 事件句柄</p>
+</li>
+</ul>
+<p>除了这4个主要的队列，还有两个有趣的队列，就是我之前提到的内部队列，这些队列也是由Node处理的。它们是，<br>   Next Ticks Queue 使用process.nextTick增加的callbacks<br>   Other Microtasks Queue 包含了其他microtasks比如promise callbacks resolved</p>
+<h3 id="它是如何工作的呢"><a href="#它是如何工作的呢" class="headerlink" title="它是如何工作的呢"></a>它是如何工作的呢</h3><p> 就想你看到的下图一样，Node启动event loop,检查在timers queue里的所有过期timers，然后在每一步里面完成每一个队列处理，在每一个队列里维护一个全部项目的引用计数器。在处理完close handlers队列后，如果在任何队列里都没有要处理的项目，这个loop会退出。在event loop中每一个队列中的处理被认为整个event loop的一个阶段。</p>
+<img src="/2017/11/05/Event-Loop整体概念/4.png" alt="4.png" title="">
+<p> 图中红色描述的队列是，在event loop周期内一旦一个阶段事件处理完，会检查这两个内部队列中是否有可用的项目。在内部队列中如有有可用项目，event loop会立即处理这些项目指导两个立即处理队列为空为止。一旦这两个队列为空，event loop会继续进入到下一个阶段。</p>
+<p> 例如，event loop当前正在处理一个有5个handlers的立即处理队列。同时，两个handlers被加入了next tick queue。在这个立即处理队列中，一旦event loop完成了5个handlers，那么在event loop进入close handlers队列之前，event loop将会检测到有两个handlers在next tick队列里。那么它会执行所有next tick队列里的handlers，然后再进入close handlers队里里继续处理</p>
+<h3 id="Next-tick-queue-vs-Other-Microtasks"><a href="#Next-tick-queue-vs-Other-Microtasks" class="headerlink" title="Next tick queue vs Other Microtasks"></a>Next tick queue vs Other Microtasks</h3><p>Next tick queue要比Other Microtasks queue的优先级要高，尽管它们都是在event loop的两个阶段之间处理的队列。你会注意到我已经在图表里使用深红来标识next tick queue了。event loop会确保在开始处理存在于microtasks queue里的resolved promises之前，next tick queue是空的</p>
+<p>next tick queue的优先级高于resolved promises是适用于由V8提供的原生JS promises。如果你用了诸如q或者bluebird这样的库，你会发现有不同的结果，因为它们会早于原生promises，并且有不同的语义</p>
+<p>q和bluebird在处理resolved promises的时候有不同的处理方式，这个之后会说</p>
+<p>内部队列的约定会引入一个新的问题，IO匮乏。使用process.nextTick方法将事件加入到next tick queue会保持next tick queue无限期地执行，不往下一个阶段执行。这将会导致IO 匮乏，因为event loop不能够继续执行，next tick queue没有清空。 </p>
+<p>为了避免这种情况，过去在next tick queue里使用过一个process.maxTickDepth的参数来最为最大限制，但是由于某些原因在NodeJS v0.12之后移除了</p>
+<p>现在你知道了什么是event loop，是如何实现的，Node是如何处理异步I/O的。让我们现在看一下Libuv在NodeJS中的架构</p>
+<img src="/2017/11/05/Event-Loop整体概念/5.png" alt="5.png" title="">
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/event-loop/" rel="tag">#event loop</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/29/Promise/" rel="next" title="Promise">
+                <i class="fa fa-chevron-left"></i> Promise
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">85</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">63</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Reactor-Pattern（响应式模式）"><span class="nav-number">1.</span> <span class="nav-text">Reactor Pattern（响应式模式）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Event-Demultiplexer"><span class="nav-number">2.</span> <span class="nav-text">Event Demultiplexer</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件I-O的复杂性"><span class="nav-number">2.1.</span> <span class="nav-text">文件I/O的复杂性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#DNS的复杂性"><span class="nav-number">2.2.</span> <span class="nav-text">DNS的复杂性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法"><span class="nav-number">2.3.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Event-Queue"><span class="nav-number">2.4.</span> <span class="nav-text">Event Queue</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#它是如何工作的呢"><span class="nav-number">3.</span> <span class="nav-text">它是如何工作的呢</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Next-tick-queue-vs-Other-Microtasks"><span class="nav-number">4.</span> <span class="nav-text">Next tick queue vs Other Microtasks</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
