@@ -102,7 +102,7 @@ flags如果指定，标志可以具有以下值的任意组合：
 
 g 全局匹配;找到所有匹配，而不是在第一个匹配后停止
 i">
-<meta property="og:updated_time" content="2017-11-09T08:51:51.000Z">
+<meta property="og:updated_time" content="2017-11-09T09:02:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RegExp对象">
 <meta name="twitter:description" content="RegExp构造函数创建了一个正则表达式对象，用于将文本与一个模式匹配。
@@ -381,42 +381,41 @@ i">
 <p>从ECMAScript 6开始，当第一个参数为正则表达式而第二个标志参数存在时，new RegExp(/ab+c/, ‘i’)不再抛出TypeError的异常，取而代之，将使用这些参数创建一个新的正则表达式。</p>
 <p>当使用构造函数创造正则对象时，需要常规的字符转义规则(在前面加反斜杠)，比如，以下是等价的:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var re = new RegExp(&quot;\\w+&quot;);</div><div class="line">var re = /\w+/;</div></pre></td></tr></table></figure>
-<h3 id="RegExp主要属性"><a href="#RegExp主要属性" class="headerlink" title="RegExp主要属性"></a>RegExp主要属性</h3><ol>
-<li><code>RegExp.$1-$9</code><br>非标准<code>$1-$9</code>属性是包含括号子串匹配的正则表达式的静态只读属性。<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4></li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RegExp.$1</div><div class="line">...</div><div class="line">RegExp.$9</div></pre></td></tr></table></figure>
+<h3 id="RegExp主要属性"><a href="#RegExp主要属性" class="headerlink" title="RegExp主要属性"></a>RegExp主要属性</h3><p><strong>1.<code>RegExp.$1-$9</code></strong><br>非标准<code>$1-$9</code>属性是包含括号子串匹配的正则表达式的静态只读属性。</p>
+<h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">RegExp.$1</div><div class="line">...</div><div class="line">RegExp.$9</div></pre></td></tr></table></figure>
 <h4 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h4><p><code>$1...$9</code>属性是静态的，他不是独立的正则表达式属性。所以，我们总是像这样使用它们<code>RegExp.$1</code></p>
 <p>属性的值是只读的而且只有在正确匹配的情况下才会改变</p>
 <p>括号匹配项是无限的，但是RegExp对象能捕获的只有九个。你可以通过返回一个数组索引来取得所有的括号匹配项。</p>
 <p>这些属性可以在String.replace方法中替换字符串。在这种情况下，不用在前面加上RegExp。下面的例子将详细说明。当正则表达式中不包含括号，脚本中的$n’s 就是字面上的意思(当n是正整数)</p>
 <h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p><strong>$n 在String.replace中的应用</strong><br>以下脚本用replace()方法去匹配一个first last格式的name String实例输出last first格式。在替换文本里，脚本用$1和$2表示正则表达式中的括号匹配项的结果</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var re = /(\w+)\s(\w+)/;</div><div class="line">var str = &apos;John Smith&apos;;</div><div class="line">str.replace(re, &apos;$2,$1&apos;); // &quot;Smith, John&quot;</div><div class="line">RegExp.$1; // &quot;John&quot;</div><div class="line">RegExp.$2; // &quot;Smith&quot;</div></pre></td></tr></table></figure>
-<p>2.RegExp.input($<em>)<br>input 非标准属性是正则表达式静态属性，含有正则表达式所匹配的字符串。RegExp.$</em>是这个属性的别名</p>
+<p><strong>2.<code>RegExp.input($_)</code></strong></p>
+<p>input 非标准属性是正则表达式静态属性，含有正则表达式所匹配的字符串。RegExp.$_是这个属性的别名</p>
 <h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RegExp.input</div><div class="line">RegExp.$_</div></pre></td></tr></table></figure>
 <h4 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h4><p>input属性是静态的，并不是正则表达式独立对象的属性。反之，你应始终将其使用为RegExp.input或者RegExp.$_。</p>
 <p>当正则表达式上搜索的字符串发生改变，并且字符串匹配时，input属性的值会修改。</p>
 <h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><p>使用input和$_</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var re = /hi/g;</div><div class="line">re.test(&apos;hi there!&apos;);</div><div class="line">RegExp.input; // &quot;hi there!&quot;</div><div class="line">re.test(&apos;foo&apos;); // 不匹配</div><div class="line">RegExp.$_; // &quot;hi there!&quot;</div><div class="line">re.test(&apos;hi world!&apos;); // 匹配</div><div class="line">RegExp.$_; // &quot;hi world!&quot;</div></pre></td></tr></table></figure>
-<p>3.RegExp.lastMatch($&amp;)<br>lastMatch非标准属性是正则表达式的静态和只读属性，含有最后匹配到的字符串。RegExp.$&amp;是这个属性的别名。</p>
+<p><strong>3.RegExp.lastMatch($&amp;)</strong></p>
+<p>lastMatch非标准属性是正则表达式的静态和只读属性，含有最后匹配到的字符串。RegExp.$&amp;是这个属性的别名。</p>
 <h4 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RegExp.lastMatch</div><div class="line">RegExp[&apos;$&amp;&apos;]</div></pre></td></tr></table></figure>
 <h4 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h4><p>lastMatch属性是静态的，不是正则表达式独立对象的属性。反之，你应始终将其使用为RegExp.lastMatch或者RegExp[‘$&amp;’]。</p>
 <p>lastMatch属性的值是只读的，并且会在匹配成功时修改。</p>
 <h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var re = /hi/g;</div><div class="line">re.test(&apos;hi there!&apos;);</div><div class="line">RegExp.lastMatch; // &quot;hi&quot;</div><div class="line">RegExp[&apos;$&amp;&apos;]; // &quot;hi&quot;</div></pre></td></tr></table></figure>
-<ol>
-<li>RegExp.lastParen($+)<br>lastParen非标准属性是正则表达式的静态和只读属性，包含匹配到的最后一个子串(如果存在)。RegExp.$+是这一属性的别名。</li>
-</ol>
+<p><strong>4.RegExp.lastParen($+)</strong></p>
+<p>lastParen非标准属性是正则表达式的静态和只读属性，包含匹配到的最后一个子串(如果存在)。RegExp.$+是这一属性的别名。</p>
 <h4 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RegExp.lastParen</div><div class="line">RegExp[&apos;$+&apos;]</div></pre></td></tr></table></figure>
 <h4 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h4><p>lastParen属性是静态的，不是正则表达式独立对象的属性。反之，你应始终将其使用为RegExp.lastParen或者RegExp[‘$+’]。</p>
 <p>lastParen属性的值是只读的，并且会在匹配成功时修改。</p>
 <h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var re = /(hi)/g;</div><div class="line">re.test(&apos;hi there!&apos;);</div><div class="line">RegExp.lastParen; // &quot;hi&quot;</div><div class="line">RegExp[&apos;$+&apos;]; // &quot;hi&quot;</div></pre></td></tr></table></figure>
-<p>5.RegExp.leftContext($<code>)
-leftContext非标准属性是正则表达式的静态和只读属性，含有最新匹配的左侧子串 RegExp[&#39;$</code>‘]是别名</p>
+<p><strong>5.RegExp.leftContext($`)</strong></p>
+<p>leftContext非标准属性是正则表达式的静态和只读属性，含有最新匹配的左侧子串 RegExp[‘$`’]是别名</p>
 <h4 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">RegExp.leftContext</div><div class="line">RegExp[&apos;$`&apos;]</div></pre></td></tr></table></figure>
 <h4 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h4><p>leftContext属性是静态的，不是正则表达式独立对象的属性。你可以使用为上面语法中的形式。</p>
 <p>leftContext属性的值是只读的，并且会在匹配成功时修改。</p>
 <h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var re = /world/g;</div><div class="line">re.test(&apos;hello world!&apos;);</div><div class="line">RegExp.leftContext; // &quot;hello &quot;</div><div class="line">RegExp[&apos;$`&apos;];       // &quot;hello &quot;</div></pre></td></tr></table></figure>
-<p>6.RegExp.prototype.source<br>source属性返回一个值为当前正则表达式对象的模式文本的字符串，该字符串不会包含正则字面量两边的斜杠以及任何的标志字符。</p>
-<p>7.RegExp.lastIndex<br>lastIndex是正则表达式的一个可读可写的整型属性，用来指定下一次匹配的起始索引。</p>
+<p><strong>6.RegExp.prototype.source</strong><br>source属性返回一个值为当前正则表达式对象的模式文本的字符串，该字符串不会包含正则字面量两边的斜杠以及任何的标志字符。</p>
+<p><strong>7.RegExp.lastIndex</strong><br>lastIndex是正则表达式的一个可读可写的整型属性，用来指定下一次匹配的起始索引。</p>
 <h4 id="语法-6"><a href="#语法-6" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lastIndex = regExpObj.lastIndex;</div></pre></td></tr></table></figure>
 <h4 id="描述-6"><a href="#描述-6" class="headerlink" title="描述"></a>描述</h4><p>只有正则表达式使用了表示全局检索的”g”标志时，该属性才会起作用。此时应用下面的规则：</p>
 <ul>
@@ -425,10 +424,20 @@ leftContext非标准属性是正则表达式的静态和只读属性，含有最
 <li>如果lastIndex等于字符串的长度，且该正则表达式不匹配空字符串，则该正则表达式不匹配字符串，lastIndex被设置为0。</li>
 <li>否则，lastIndex被设置为紧随最近一次成功匹配的下一个位置</li>
 </ul>
-<h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">var re = /(hi)?/g;</div><div class="line"></div><div class="line">// 匹配空字符串</div><div class="line"></div><div class="line">console.log(re.exec(&quot;hi&quot;));</div><div class="line">console.log(re.lastIndex);</div><div class="line"></div><div class="line">// 返回[&quot;hi&quot;, &quot;hi&quot;],lastIndex等于2.</div><div class="line"></div><div class="line">console.log(re.exec(&quot;hi&quot;));</div><div class="line">console.log(re.lastIndex);</div><div class="line"></div><div class="line">// 返回[&quot;&quot;, undefined]，即一个数组，其第0个元素为匹配的字符串。此种情况下为空字符串，是因为lastIndex为2（且一直是2）,&quot;hi&quot;长度为2</div><div class="line">``` </div><div class="line">8.RegExp.rightContext($&apos;)</div><div class="line">rightContext 非标准属性是正则表达式的静态和只读属性，含有最新匹配的右侧子串。 RegExp.$&apos; 是这个属性的别名。</div><div class="line">#### 语法</div></pre></td></tr></table></figure>
-<p>RegExp.rightContext<br>RegExp[“$’”]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#### 描述</div><div class="line">rightContext 属性是静态的，不是正则表达式独立对象的属性。反之，你应始终将其使用为 RegExp.rightContext 或者 RegExp[&quot;$&apos;&quot;]。</div><div class="line">rightContext 属性的值是只读的，并且会在匹配成功时修改。</div><div class="line">#### 示例</div></pre></td></tr></table></figure></p>
-<p>var re = /hello/g;<br>re.test(‘hello world!’);<br>RegExp.rightContext; // “ world!”<br>RegExp[“$’”];       // “ world!”<br>```</p>
+<h4 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h4><pre><code>var re = /(hi)?/g;
 
+// 匹配空字符串
+
+console.log(re.exec(&quot;hi&quot;));
+console.log(re.lastIndex);
+
+// 返回[&quot;hi&quot;, &quot;hi&quot;],lastIndex等于2.
+
+console.log(re.exec(&quot;hi&quot;));
+console.log(re.lastIndex);
+
+// 返回[&quot;&quot;, undefined]，即一个数组，其第0个元素为匹配的字符串。此种情况下为空字符串，是因为lastIndex为2（且一直是2）,&quot;hi&quot;长度为2
+</code></pre>
       
     </div>
 
