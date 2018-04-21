@@ -1,0 +1,749 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="动画,翻译," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="CSS中属性animation可以被用在很多CSS属性上，比如color、background-color、height或者width。每一个动画需要使用@keyframes来定义，然后使用animation属性来调用，比如：
+123456789101112.element &amp;#123;	animation: pulse 5s inifinite;&amp;#125;@keyframes pulse &amp;#">
+<meta property="og:type" content="article">
+<meta property="og:title" content="animation入门">
+<meta property="og:url" content="http://yoursite.com/2018/04/21/animation入门-1/index.html">
+<meta property="og:site_name" content="Zeromike的时光机">
+<meta property="og:description" content="CSS中属性animation可以被用在很多CSS属性上，比如color、background-color、height或者width。每一个动画需要使用@keyframes来定义，然后使用animation属性来调用，比如：
+123456789101112.element &amp;#123;	animation: pulse 5s inifinite;&amp;#125;@keyframes pulse &amp;#">
+<meta property="og:image" content="http://yoursite.com/2018/04/21/animation入门-1/1.png">
+<meta property="og:updated_time" content="2018-04-21T08:06:26.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="animation入门">
+<meta name="twitter:description" content="CSS中属性animation可以被用在很多CSS属性上，比如color、background-color、height或者width。每一个动画需要使用@keyframes来定义，然后使用animation属性来调用，比如：
+123456789101112.element &amp;#123;	animation: pulse 5s inifinite;&amp;#125;@keyframes pulse &amp;#">
+<meta name="twitter:image" content="http://yoursite.com/2018/04/21/animation入门-1/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/04/21/animation入门-1/"/>
+
+
+  <title> animation入门 | Zeromike的时光机 </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Zeromike的时光机</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-mylinks">
+          <a href="/mylinks" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+            
+            链接
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-todos">
+          <a href="/todos" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+            
+            TODO
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tools">
+          <a href="/tools" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+            
+            工具
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                animation入门
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-21T14:07:21+08:00" content="2018-04-21">
+              2018-04-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/CSS/" itemprop="url" rel="index">
+                    <span itemprop="name">CSS</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CSS中属性animation可以被用在很多CSS属性上，比如color、background-color、height或者width。每一个动画需要使用@keyframes来定义，然后使用animation属性来调用，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">.element &#123;</div><div class="line">	animation: pulse 5s inifinite;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes pulse &#123;</div><div class="line">	0% &#123;</div><div class="line">		background-color: #001F3F;</div><div class="line">	&#125;</div><div class="line">	100% &#123;</div><div class="line">		background-color: #FF4136;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>每一个@keyframes的规则定义了在动画期间在特定时刻什么应该发生。比如，0%是动画的开始，100%是结束。这些关键帧(keyframes)可以被短的animation属性控制，也可以为了更多的控制这些关键帧使用animation的8个子属性来控制。</p>
+<h3 id="子属性"><a href="#子属性" class="headerlink" title="子属性"></a>子属性</h3><ul>
+<li>animation-name:定义了@keyframes规则的名称</li>
+<li>animation-duration: 完成一个周期的动画花费的时间长度</li>
+<li>animation-timing-function: 建立预置的加速度曲线，比如：ease 或者linear</li>
+<li>animation-delay: 元素加载完成后与动画序列开始时之间的间隔时间</li>
+<li>animation-direction: 设置动画的方向。在每一次循环会重置</li>
+<li>animation-iteration-count: 动画执行的次数</li>
+<li>animation-fill-mode: 设置哪个值应用在动画的前面还是后面<br>比如，你要设置动画的最后一个状态是停留在屏幕上，或者你可以将其设置为在动画开始之前切换回之前的状态</li>
+<li>animation-play-state: 暂停/播放 动画</li>
+</ul>
+<p>这些子属性可以这样使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">@keyframes stretch &#123;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line">.element &#123;</div><div class="line">	animation-name: stretch;</div><div class="line">	animation-duration: 1.5s;</div><div class="line">	animation-timing-function: ease-out;</div><div class="line">	animation-delay: 0s;</div><div class="line">	animation-direction: alternate;</div><div class="line">	animation-iteration-count: infinite;</div><div class="line">	animation-fill-mode: none;</div><div class="line">	animation-play-state: running;</div><div class="line">&#125;</div><div class="line"></div><div class="line">/**</div><div class="line">	和下面一样</div><div class="line">**/</div><div class="line">.element &#123;</div><div class="line">	animation: </div><div class="line">		 stretch</div><div class="line">	    1.5s</div><div class="line">	    ease-out</div><div class="line">	    0s</div><div class="line">	    alternate</div><div class="line">	    infinite</div><div class="line">	    none</div><div class="line">	    running;</div><div class="line"> &#125;</div></pre></td></tr></table></figure>
+<p>以下是一些子属性可使用的值<br>属性  | 值<br>—–|——<br>animation-timing-function | ease,ease-out,ease-in,ease-in-out,linear,cubic-bezier(x1,y1,x2,y2)<br>animation-duration | Xs or Xms (单位为秒/毫秒)<br>animation-delay | Xs or Xms (单位为秒/毫秒)<br>animation-iteration-count | X<br>animation-fill-mode | forwards,backwards,both,none<br>animation-direction | normal,alernate<br>animation-play-state | paused,running</p>
+<h3 id="多步动画"><a href="#多步动画" class="headerlink" title="多步动画"></a>多步动画</h3><p>如果一个动画有相同的开始和结束属性，在@keyframes里，使用逗号定义在0%和100%上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@keyframes pulse &#123;</div><div class="line">	0%, 100% &#123;</div><div class="line">		background-color: yellow;</div><div class="line">	&#125;</div><div class="line">	50% &#123;</div><div class="line">		background-color: red;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="多个动画"><a href="#多个动画" class="headerlink" title="多个动画"></a>多个动画</h3><p>你可以使用逗号在一个元素上定义多个动画。在下面的例子中，我们想要在一个@keyframe里改变圆圈的颜色，同时也移动它从一端到另一端。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">.element &#123;</div><div class="line">  height: 400px;</div><div class="line">  width: 400px;</div><div class="line">  background-color: red;</div><div class="line">  animation: </div><div class="line">    pulse 3s ease infinite alternate, </div><div class="line">    nudge 5s linear infinite alternate;</div><div class="line">  border-radius: 100%;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes pulse &#123;</div><div class="line">  0%, 100% &#123;</div><div class="line">    background-color: red;</div><div class="line">  &#125;</div><div class="line">  50% &#123;</div><div class="line">    background-color: orange;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@keyframes nudge &#123;</div><div class="line">  0%, 100% &#123;</div><div class="line">    transform: translate(0, 0);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  50% &#123;</div><div class="line">    transform: translate(150px, 0);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  80% &#123;</div><div class="line">    transform: translate(-150px, 0);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>大多数属性的动画是有性能方面的考虑，所以我们在采用任何一个属性做动画的时候都应该谨慎。但是，有几个组合使用动画是安全的：</p>
+<ul>
+<li>transform: translate()</li>
+<li>transform: scale()</li>
+<li>transform: rotate()</li>
+<li>opacity</li>
+</ul>
+<h3 id="哪些属性可以使用动画"><a href="#哪些属性可以使用动画" class="headerlink" title="哪些属性可以使用动画"></a>哪些属性可以使用动画</h3><p>MDN有个<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties" target="_blank" rel="external">列表</a><br>background-image是不能进行动画处理的</p>
+<h3 id="更多信息"><a href="#更多信息" class="headerlink" title="更多信息"></a>更多信息</h3><ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/animation" target="_blank" rel="external">animation on MDN</a></li>
+<li><a href="https://developer.mozilla.org/en/css/css_animations" target="_blank" rel="external">Using CSS animations</a></li>
+<li><a href="http://dev.w3.org/csswg/css-animations-1/" target="_blank" rel="external">animation on W3C</a></li>
+<li><a href="http://www.html5rocks.com/en/tutorials/speed/rendering/" target="_blank" rel="external">Jank busting for better rendering performance</a></li>
+<li><a href="http://alistapart.com/article/web-animation-at-work" target="_blank" rel="external">Web animation at work</a></li>
+<li><a href="http://24ways.org/2014/five-ways-to-animate-responsibly/" target="_blank" rel="external">Five ways to animate responsibly</a></li>
+<li><a href="https://css-tricks.com/css-animation-tricks/" target="_blank" rel="external">State Jumping, Negative Delays, Animating Origin, and More</a></li>
+<li><a href="https://css-tricks.com/starting-css-animations-mid-way/" target="_blank" rel="external">Starting CSS animations mid-way</a></li>
+<li><a href="https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/" target="_blank" rel="external">High performance animations</a></li>
+</ul>
+<h3 id="浏览器支持度"><a href="#浏览器支持度" class="headerlink" title="浏览器支持度"></a>浏览器支持度</h3><img src="/2018/04/21/animation入门-1/1.png" alt="1.png" title="">
+<h3 id="前缀"><a href="#前缀" class="headerlink" title="前缀"></a>前缀</h3><p>支持部分老的浏览器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-webkit-animation</div><div class="line">-moz-animation</div><div class="line">-o-animation</div><div class="line">animation</div></pre></td></tr></table></figure>
+<p><a href="https://css-tricks.com/almanac/properties/a/animation/" target="_blank" rel="external">原文链接</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/动画-翻译/" rel="tag">#动画,翻译</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/04/21/animation入门/" rel="next" title="animation入门">
+                <i class="fa fa-chevron-left"></i> animation入门
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zeromike" />
+          <p class="site-author-name" itemprop="name">zeromike</p>
+          <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">77</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/zhangzhaoaaa" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/coolzeromike" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.weibo.com/youthwhite" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/zeromike" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-zhihu"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#子属性"><span class="nav-number">1.</span> <span class="nav-text">子属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多步动画"><span class="nav-number">2.</span> <span class="nav-text">多步动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多个动画"><span class="nav-number">3.</span> <span class="nav-text">多个动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#性能"><span class="nav-number">4.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#哪些属性可以使用动画"><span class="nav-number">5.</span> <span class="nav-text">哪些属性可以使用动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更多信息"><span class="nav-number">6.</span> <span class="nav-text">更多信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览器支持度"><span class="nav-number">7.</span> <span class="nav-text">浏览器支持度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前缀"><span class="nav-number">8.</span> <span class="nav-text">前缀</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromike</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
