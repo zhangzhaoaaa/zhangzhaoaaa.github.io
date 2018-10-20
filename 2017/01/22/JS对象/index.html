@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,21 +63,21 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="JS基础," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="JS基础,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
@@ -85,11 +85,13 @@
 
 
 <meta name="description" content="尽管ECMAScript包含对class的定义，ECMAScript对象在根本上来说不是像C++、Smalltalk、Java这些class-based的对象。它的对象是通过一个文字符号或者通过constructors（构造器）创建出来的，然后初始化代码，将初始值赋值给它们的属性。每一个构造器是一个函数，这个函数有个”prototype”的属性，被用来实现prototype-based 继承和共享">
+<meta name="keywords" content="JS基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS对象">
 <meta property="og:url" content="http://yoursite.com/2017/01/22/JS对象/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
 <meta property="og:description" content="尽管ECMAScript包含对class的定义，ECMAScript对象在根本上来说不是像C++、Smalltalk、Java这些class-based的对象。它的对象是通过一个文字符号或者通过constructors（构造器）创建出来的，然后初始化代码，将初始值赋值给它们的属性。每一个构造器是一个函数，这个函数有个”prototype”的属性，被用来实现prototype-based 继承和共享">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/01/22/JS对象/object.png">
 <meta property="og:updated_time" content="2017-01-22T06:42:58.000Z">
 <meta name="twitter:card" content="summary">
@@ -116,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/22/JS对象/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/22/JS对象/">
 
 
   <title> JS对象 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -143,12 +145,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -175,7 +177,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -185,7 +187,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -195,7 +197,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -205,7 +207,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -215,7 +217,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -225,7 +227,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -235,7 +237,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -245,7 +247,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -278,7 +280,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -307,14 +309,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/JS基础/" itemprop="url" rel="index">
                     <span itemprop="name">JS基础</span>
                   </a>
@@ -355,9 +357,9 @@
 <p>CF是一个构造器（当然也是一个对象）。5个对象是通过new表达式创建出来的：cf1,cf2,cf3,cf4,cf5.以上每个对象都包含q1和q2的属性。虚线表示的是隐式的prototype关系；比如，cf3的原型是CFP。构造器CF本身有两个属性P1和P2,对CFP,cf1,cf2,cf3,cf4和cf5是不可见的。在CFP中的属性CFP1是被cf1,cf2,cf3,cf4和cf5(不包括CF)共享的，在CFP的隐式的原型链中会找到q1,q2或者CFP1.注意在CF和CFP之间没有隐式的原型连接。</p>
 <p>不像大多数class-based的对象语言，属性是通过赋值给它们动态地增加到对象中的。构造器不需要命名或者赋值给所有或者构造器对象属性的任何一个。在上面的图表中，一个新的共享属性只需增加到CFP中，cf1,cf2,cf3,cf4和cf5就能同时共享此属性。</p>
 <p>尽管ECMAScript对象不是class-based继承的，但是基于一个通用的构造器函数，原型对象和方法，很方便的定义了一个class-like的抽象。ECMAScript的内置对象本身依据的就是一个class-like模型。从ECMAScript2015开始，ECMAScript包含了class语法的定义，允许开发者通过使用内置对象定义符合类似class-like抽象的对象。</p>
-<img src="/2017/01/22/JS对象/object.png" alt="object.png" title="">
+<img src="/2017/01/22/JS对象/object.png">
 <p>翻译有些狗P不通的地方，我也不知道咋翻译，反正我自己是理解了。。。。</p>
-<p><a href="http://www.ecma-international.org/ecma-262/6.0/#sec-objects" target="_blank" rel="external">http://www.ecma-international.org/ecma-262/6.0/#sec-objects</a></p>
+<p><a href="http://www.ecma-international.org/ecma-262/6.0/#sec-objects" target="_blank" rel="noopener">http://www.ecma-international.org/ecma-262/6.0/#sec-objects</a></p>
 
       
     </div>
@@ -428,7 +430,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -470,7 +472,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -480,17 +482,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -498,7 +498,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -590,7 +590,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

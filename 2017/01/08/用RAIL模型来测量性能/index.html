@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,71 +63,40 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="性能优化," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="性能优化,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们
-
-
-关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐
-
-立即响应给用户；在100ms以内感知用户输入
-
-有动画或者滚动操作的时候，能够产生10ms以内一帧的效果
-
-尽可能利用主线程的空闲时间
-
-保持用户的参与；在1000ms以内分发互动">
+<meta name="description" content="RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们   关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐  立即响应给用户；在100ms以内感知用户输入  有动画或者滚动操作的时候，能够产生10ms以内一帧的效果  尽可能利用主线程的空闲时间  保持用户的参与；在1000ms以内分发互动">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用RAIL模型来测量性能">
 <meta property="og:url" content="http://yoursite.com/2017/01/08/用RAIL模型来测量性能/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们
-
-
-关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐
-
-立即响应给用户；在100ms以内感知用户输入
-
-有动画或者滚动操作的时候，能够产生10ms以内一帧的效果
-
-尽可能利用主线程的空闲时间
-
-保持用户的参与；在1000ms以内分发互动">
+<meta property="og:description" content="RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们   关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐  立即响应给用户；在100ms以内感知用户输入  有动画或者滚动操作的时候，能够产生10ms以内一帧的效果  尽可能利用主线程的空闲时间  保持用户的参与；在1000ms以内分发互动">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/01/08/用RAIL模型来测量性能/rail.png">
 <meta property="og:updated_time" content="2017-01-08T13:13:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="用RAIL模型来测量性能">
-<meta name="twitter:description" content="RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们
-
-
-关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐
-
-立即响应给用户；在100ms以内感知用户输入
-
-有动画或者滚动操作的时候，能够产生10ms以内一帧的效果
-
-尽可能利用主线程的空闲时间
-
-保持用户的参与；在1000ms以内分发互动">
+<meta name="twitter:description" content="RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们   关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐  立即响应给用户；在100ms以内感知用户输入  有动画或者滚动操作的时候，能够产生10ms以内一帧的效果  尽可能利用主线程的空闲时间  保持用户的参与；在1000ms以内分发互动">
 <meta name="twitter:image" content="http://yoursite.com/2017/01/08/用RAIL模型来测量性能/rail.png">
 
 
@@ -149,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/08/用RAIL模型来测量性能/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/08/用RAIL模型来测量性能/">
 
 
   <title> 用RAIL模型来测量性能 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -176,12 +145,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -208,7 +177,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -218,7 +187,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -228,7 +197,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -238,7 +207,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -248,7 +217,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -258,7 +227,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -268,7 +237,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -278,7 +247,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -311,7 +280,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -340,14 +309,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/性能优化/" itemprop="url" rel="index">
                     <span itemprop="name">性能优化</span>
                   </a>
@@ -382,7 +351,7 @@
 
       
         <p>RAIL是一个以用户为中心的性能模型。每个web app在它自己的生命周期中都有这四个独立的方面，性能以不同的方式来表现它们</p>
-<img src="/2017/01/08/用RAIL模型来测量性能/rail.png" alt="RAIL" title="RAIL">
+<img src="/2017/01/08/用RAIL模型来测量性能/rail.png" title="RAIL">
 <ol>
 <li><p>关注用户；最终目的不是在任何特定的设备上让你的网站表现的更快，最终是让你的用户感到快乐</p>
 </li>
@@ -426,7 +395,7 @@
 <p>Animation  每一帧的工作完成在16ms以内 （从JS到绘制）     用户滚动页面，拖拽一个手指，或者看一个动画。当拖拽时，应用的响应主要是手指的位置，比如pulling to refresh，或者滑动一个轮播。这个度量仅仅应用于拖拽的持续过程，不包含开始</p>
 <p>Idle   主线程js工作块不超过50ms   用户不和页面交互，但是主线程在用户的下一个输入之前有足够可用的时间</p>
 <p>Load  在1秒内页面准备好可用  用户加载页面并看到主要的内容</p>
-<p><strong>原文链接：</strong><a href="https://developers.google.com/web/fundamentals/performance/rail" target="_blank" rel="external">RAIL性能测量</a></p>
+<p><strong>原文链接：</strong><a href="https://developers.google.com/web/fundamentals/performance/rail" target="_blank" rel="noopener">RAIL性能测量</a></p>
 
       
     </div>
@@ -497,7 +466,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -539,7 +508,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -549,17 +518,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -567,7 +534,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -643,7 +610,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关注用户"><span class="nav-number">1.</span> <span class="nav-text">关注用户</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Delay-amp-User-Reaction"><span class="nav-number">1.1.</span> <span class="nav-text">Delay & User Reaction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Response-响应-：100ms内的响应"><span class="nav-number">2.</span> <span class="nav-text">Response(响应)：100ms内的响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation-动画-：10ms生成一帧"><span class="nav-number">3.</span> <span class="nav-text">Animation(动画)：10ms生成一帧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Idle-最大化空闲时间"><span class="nav-number">4.</span> <span class="nav-text">Idle:最大化空闲时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Load-1000ms内发送内容"><span class="nav-number">5.</span> <span class="nav-text">Load: 1000ms内发送内容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#关注用户"><span class="nav-number">1.</span> <span class="nav-text">关注用户</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Delay-amp-User-Reaction"><span class="nav-number">1.1.</span> <span class="nav-text">Delay &amp; User Reaction</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Response-响应-：100ms内的响应"><span class="nav-number">2.</span> <span class="nav-text">Response(响应)：100ms内的响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Animation-动画-：10ms生成一帧"><span class="nav-number">3.</span> <span class="nav-text">Animation(动画)：10ms生成一帧</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Idle-最大化空闲时间"><span class="nav-number">4.</span> <span class="nav-text">Idle:最大化空闲时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Load-1000ms内发送内容"><span class="nav-number">5.</span> <span class="nav-text">Load: 1000ms内发送内容</span></a></li></ol></div>
             
           </div>
         </section>
@@ -659,7 +626,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

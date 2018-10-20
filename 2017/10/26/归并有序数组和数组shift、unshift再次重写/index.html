@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,46 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="归并," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="归并,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="归并有序数组归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。
-以上是归并排序的定义，今天我们主要处理一下归并的过程
-前提：两个有序数组a和b，归并数组arr
-归并过程">
+<meta name="description" content="归并有序数组归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。 以上是归并排序的定义，今天我们主要处理一下归并的过程 前提：两个有序数组a和b，归并数组arr 归并过程">
+<meta name="keywords" content="归并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="归并有序数组和数组shift、unshift再次重写">
 <meta property="og:url" content="http://yoursite.com/2017/10/26/归并有序数组和数组shift、unshift再次重写/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="归并有序数组归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。
-以上是归并排序的定义，今天我们主要处理一下归并的过程
-前提：两个有序数组a和b，归并数组arr
-归并过程">
+<meta property="og:description" content="归并有序数组归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。 以上是归并排序的定义，今天我们主要处理一下归并的过程 前提：两个有序数组a和b，归并数组arr 归并过程">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-10-26T10:13:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="归并有序数组和数组shift、unshift再次重写">
-<meta name="twitter:description" content="归并有序数组归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。
-以上是归并排序的定义，今天我们主要处理一下归并的过程
-前提：两个有序数组a和b，归并数组arr
-归并过程">
+<meta name="twitter:description" content="归并有序数组归并排序（MERGE-SORT）是建立在归并操作上的一种有效的排序算法,该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为二路归并。 以上是归并排序的定义，今天我们主要处理一下归并的过程 前提：两个有序数组a和b，归并数组arr 归并过程">
 
 
 
@@ -123,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/26/归并有序数组和数组shift、unshift再次重写/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/26/归并有序数组和数组shift、unshift再次重写/">
 
 
   <title> 归并有序数组和数组shift、unshift再次重写 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -150,12 +143,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -182,7 +175,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -192,7 +185,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -202,7 +195,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -212,7 +205,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -222,7 +215,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -232,7 +225,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -242,7 +235,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -252,7 +245,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -285,7 +278,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -314,14 +307,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/算法设计/" itemprop="url" rel="index">
                     <span itemprop="name">算法设计</span>
                   </a>
@@ -359,11 +352,11 @@
 <p>以上是归并排序的定义，今天我们主要处理一下归并的过程</p>
 <p>前提：两个有序数组a和b，归并数组arr</p>
 <p>归并过程为：比较a[i]和b[j]的大小，若a[i]≤b[j]，则将第一个有序表中的元素a[i]push到arr数组中，并令i加上1；否则将第二个有序表中的元素b[j]push到arr数组中，并令j加上1，如此循环下去，直到其中一个有序表取完；判断i或者j下标长度和数组长度如果一致，再将另一个有序表中剩余的元素复制到arr中，下标从没有取完的数组的i或者j下标到这个数组的长度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div></pre></td><td class="code"><pre><div class="line">function merge(a, b)&#123;</div><div class="line"></div><div class="line">    var i = 0;</div><div class="line">    var j = 0;</div><div class="line">    var k;</div><div class="line">    var len1 = a.length;</div><div class="line">    var len2 = b.length;</div><div class="line">    var arr = [];</div><div class="line">    for(;i &lt; len1 &amp;&amp; j &lt; len2; )&#123;</div><div class="line">        if(a[i] &gt; b[j]) &#123;</div><div class="line">            arr.push(b[j++]);</div><div class="line">        &#125; else &#123;</div><div class="line">            arr.push(a[i++]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(i == len1) &#123;</div><div class="line">        for(k = j; k &lt; len2; k++)&#123;</div><div class="line">            arr.push(b[k]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    if(j == len2) &#123;</div><div class="line">        for(k = i; k &lt; len1; k++)&#123;</div><div class="line">            arr.push(a[k]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    return arr;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let a = [1, 3, 5];</div><div class="line">let b = [2, 4, 6];</div><div class="line">console.log(merge(a, b)); // [1, 2, 3, 4, 5, 6]</div><div class="line"></div><div class="line">a = [1, 2, 3];</div><div class="line">b = [1, 2, 4];</div><div class="line">console.log(merge(a, b)); // [1, 1, 2, 2, 3, 4]</div><div class="line"></div><div class="line">a = [1, 2, 3];</div><div class="line">b = [4, 5];</div><div class="line"></div><div class="line">console.log(merge(a, b)); // [ 1, 2, 3, 4, 5 ]</div></pre></td></tr></table></figure>
-<h3 id="shift、unshift重写"><a href="#shift、unshift重写" class="headerlink" title="shift、unshift重写"></a>shift、unshift重写</h3><p>之前做过一个数组的shift,reverse,unshift方法的重写<br><a href="http://www.zeromike.net/2017/07/07/%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8pop%E5%92%8Cpush%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%95%B0%E7%BB%84%E7%9A%84shift%E5%92%8Cunshift%E6%96%B9%E6%B3%95/" target="_blank" rel="external">原来的写法</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">function merge(a, b)&#123;</span><br><span class="line"></span><br><span class="line">    var i = 0;</span><br><span class="line">    var j = 0;</span><br><span class="line">    var k;</span><br><span class="line">    var len1 = a.length;</span><br><span class="line">    var len2 = b.length;</span><br><span class="line">    var arr = [];</span><br><span class="line">    for(;i &lt; len1 &amp;&amp; j &lt; len2; )&#123;</span><br><span class="line">        if(a[i] &gt; b[j]) &#123;</span><br><span class="line">            arr.push(b[j++]);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            arr.push(a[i++]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(i == len1) &#123;</span><br><span class="line">        for(k = j; k &lt; len2; k++)&#123;</span><br><span class="line">            arr.push(b[k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if(j == len2) &#123;</span><br><span class="line">        for(k = i; k &lt; len1; k++)&#123;</span><br><span class="line">            arr.push(a[k]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let a = [1, 3, 5];</span><br><span class="line">let b = [2, 4, 6];</span><br><span class="line">console.log(merge(a, b)); // [1, 2, 3, 4, 5, 6]</span><br><span class="line"></span><br><span class="line">a = [1, 2, 3];</span><br><span class="line">b = [1, 2, 4];</span><br><span class="line">console.log(merge(a, b)); // [1, 1, 2, 2, 3, 4]</span><br><span class="line"></span><br><span class="line">a = [1, 2, 3];</span><br><span class="line">b = [4, 5];</span><br><span class="line"></span><br><span class="line">console.log(merge(a, b)); // [ 1, 2, 3, 4, 5 ]</span><br></pre></td></tr></table></figure>
+<h3 id="shift、unshift重写"><a href="#shift、unshift重写" class="headerlink" title="shift、unshift重写"></a>shift、unshift重写</h3><p>之前做过一个数组的shift,reverse,unshift方法的重写<br><a href="http://www.zeromike.net/2017/07/07/%E5%8F%AA%E8%83%BD%E4%BD%BF%E7%94%A8pop%E5%92%8Cpush%E6%9D%A5%E5%AE%9E%E7%8E%B0%E6%95%B0%E7%BB%84%E7%9A%84shift%E5%92%8Cunshift%E6%96%B9%E6%B3%95/" target="_blank" rel="noopener">原来的写法</a></p>
 <p>这次再次重写，要求是：<br>    ①只允许使用pop和push方法<br>    ②不允许创建新的数组<br>    ③允许使用递归，不能用循环</p>
 <p>其实主要是最后一点的变化，就是使用递归来代替循环，它们是很相似的，都有重复的逻辑，有状态的更新，有终止状态</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line">Array.prototype.reverse = function () &#123;</div><div class="line">    var i = 0, len = this.length;</div><div class="line">    function b(arr) &#123;</div><div class="line">        if (i &lt; len / 2) &#123;</div><div class="line">            var t = arr[i];</div><div class="line">            arr[i] = arr[len - i - 1];</div><div class="line">            arr[len - i - 1] = t;</div><div class="line">            i++;</div><div class="line">            return b(arr);</div><div class="line">        &#125; else &#123;</div><div class="line">            return arr;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return b(this);</div><div class="line">&#125;</div><div class="line"></div><div class="line">Array.prototype.shift = function () &#123;</div><div class="line">    this.reverse();</div><div class="line">    var ele = this.pop();</div><div class="line">    this.reverse();</div><div class="line">    return ele;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Array.prototype.unshift = function () &#123;</div><div class="line">    this.reverse();</div><div class="line">    let i = arguments.length - 1, args = arguments;</div><div class="line">    function b(arr) &#123;</div><div class="line">        if (i &gt;= 0) &#123;</div><div class="line">            arr.push(args[i]);</div><div class="line">            i--;</div><div class="line">            return b(arr);</div><div class="line">        &#125; else &#123;</div><div class="line">            return arr;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    b(this);</div><div class="line">    this.reverse();</div><div class="line">    return this.length;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var a = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;];</div><div class="line">console.log(a.shift(), a); // a [ &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]</div><div class="line"></div><div class="line">var b = [1,2,3,4];</div><div class="line">console.log(b.unshift(8,9),b); // 6 [ 8, 9, 1, 2, 3, 4 ]</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.reverse = function () &#123;</span><br><span class="line">    var i = 0, len = this.length;</span><br><span class="line">    function b(arr) &#123;</span><br><span class="line">        if (i &lt; len / 2) &#123;</span><br><span class="line">            var t = arr[i];</span><br><span class="line">            arr[i] = arr[len - i - 1];</span><br><span class="line">            arr[len - i - 1] = t;</span><br><span class="line">            i++;</span><br><span class="line">            return b(arr);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return arr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return b(this);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Array.prototype.shift = function () &#123;</span><br><span class="line">    this.reverse();</span><br><span class="line">    var ele = this.pop();</span><br><span class="line">    this.reverse();</span><br><span class="line">    return ele;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Array.prototype.unshift = function () &#123;</span><br><span class="line">    this.reverse();</span><br><span class="line">    let i = arguments.length - 1, args = arguments;</span><br><span class="line">    function b(arr) &#123;</span><br><span class="line">        if (i &gt;= 0) &#123;</span><br><span class="line">            arr.push(args[i]);</span><br><span class="line">            i--;</span><br><span class="line">            return b(arr);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return arr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    b(this);</span><br><span class="line">    this.reverse();</span><br><span class="line">    return this.length;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var a = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;,&apos;e&apos;];</span><br><span class="line">console.log(a.shift(), a); // a [ &apos;b&apos;, &apos;c&apos;, &apos;d&apos;, &apos;e&apos; ]</span><br><span class="line"></span><br><span class="line">var b = [1,2,3,4];</span><br><span class="line">console.log(b.unshift(8,9),b); // 6 [ 8, 9, 1, 2, 3, 4 ]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -434,7 +427,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -476,7 +469,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -486,17 +479,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -504,7 +495,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -596,7 +587,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

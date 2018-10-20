@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,49 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="promise," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="promise,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译
-一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。
-================译文术语
-
-解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+<meta name="description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译 一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。 ================译文术语  解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+<meta name="keywords" content="promise">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Promise A+规范">
 <meta property="og:url" content="http://yoursite.com/2017/10/28/Promise-A-规范/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译
-一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。
-================译文术语
-
-解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+<meta property="og:description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译 一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。 ================译文术语  解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-10-29T12:18:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Promise A+规范">
-<meta name="twitter:description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译
-一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。
-================译文术语
-
-解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
+<meta name="twitter:description" content="本文手工抄写Promise A/+ 的文章，目的是为了理解Promise,感谢作者的翻译 一个开放、健全且通用的JavaScript Promise标准。由开发者制定，供开发者参考。 ================译文术语  解决(fulfill): 指一个promise成功时进行的一系列操作，如状态的改变、回调的执行。虽然规范中用fulfill来表示解决，但在很多promise实现多以reso">
 
 
 
@@ -126,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/10/28/Promise-A-规范/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/10/28/Promise-A-规范/">
 
 
   <title> Promise A+规范 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -153,12 +143,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -185,7 +175,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -195,7 +185,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -205,7 +195,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -215,7 +205,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -225,7 +215,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -235,7 +225,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -245,7 +235,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -255,7 +245,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -288,7 +278,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -317,14 +307,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/promise/" itemprop="url" rel="index">
                     <span itemprop="name">promise</span>
                   </a>
@@ -412,7 +402,7 @@
 <li>当promise被拒绝执行时，所有的onRejected需按照其注册顺序依次回调</li>
 </ul>
 <h4 id="返回"><a href="#返回" class="headerlink" title="返回"></a>返回</h4><p>then 方法必须返回一个promise对象</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">promise2 = promise1.then(onFulfilled, onRejected);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise2 = promise1.then(onFulfilled, onRejected);</span><br></pre></td></tr></table></figure>
 <ul>
 <li>如果onFulfilled或者onRejected返回一个值x，则运行下面的Promise解决过程：<a href="promise2, x">[Resolve]</a></li>
 <li>如果onFulfilled或者onRejected抛出一个异常e，则promise2必须拒绝执行，并返回拒因e</li>
@@ -462,8 +452,8 @@
 </ul>
 <p>参考：</p>
 <ol>
-<li><a href="http://malcolmyu.github.io/malnote/2015/06/12/Promises-A-Plus/" target="_blank" rel="external">译文</a></li>
-<li><a href="https://promisesaplus.com/" target="_blank" rel="external">原文</a>  </li>
+<li><a href="http://malcolmyu.github.io/malnote/2015/06/12/Promises-A-Plus/" target="_blank" rel="noopener">译文</a></li>
+<li><a href="https://promisesaplus.com/" target="_blank" rel="noopener">原文</a>  </li>
 </ol>
 
       
@@ -535,7 +525,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -577,7 +567,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -587,17 +577,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -605,7 +593,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -681,7 +669,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#术语"><span class="nav-number">1.</span> <span class="nav-text">术语</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise"><span class="nav-number">1.1.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#thenable"><span class="nav-number">1.2.</span> <span class="nav-text">thenable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值（value）"><span class="nav-number">1.3.</span> <span class="nav-text">值（value）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常（exception）"><span class="nav-number">1.4.</span> <span class="nav-text">异常（exception）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拒因-reason"><span class="nav-number">1.5.</span> <span class="nav-text">拒因(reason)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#表示一个promise的拒绝原因"><span class="nav-number"></span> <span class="nav-text">表示一个promise的拒绝原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求"><span class="nav-number">1.</span> <span class="nav-text">要求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise的状态"><span class="nav-number">1.1.</span> <span class="nav-text">Promise的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等待态-Pending"><span class="nav-number">1.2.</span> <span class="nav-text">等待态(Pending)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行态-Fulfilled"><span class="nav-number">1.3.</span> <span class="nav-text">执行态(Fulfilled)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝态-Rejected"><span class="nav-number">1.4.</span> <span class="nav-text">拒绝态(Rejected)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Then方法"><span class="nav-number">2.</span> <span class="nav-text">Then方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#onFulfilled-特性"><span class="nav-number">2.1.</span> <span class="nav-text">onFulfilled 特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onRejected特性"><span class="nav-number">2.2.</span> <span class="nav-text">onRejected特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用时机"><span class="nav-number">2.3.</span> <span class="nav-text">调用时机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用要求"><span class="nav-number">2.4.</span> <span class="nav-text">调用要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多次调用"><span class="nav-number">2.5.</span> <span class="nav-text">多次调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回"><span class="nav-number">2.6.</span> <span class="nav-text">返回</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise解决过程"><span class="nav-number">3.</span> <span class="nav-text">Promise解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x与promise相等"><span class="nav-number">3.1.</span> <span class="nav-text">x与promise相等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x为Promise"><span class="nav-number">3.2.</span> <span class="nav-text">x为Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x为对象或函数"><span class="nav-number">3.3.</span> <span class="nav-text">x为对象或函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">4.</span> <span class="nav-text">注释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#术语"><span class="nav-number">1.</span> <span class="nav-text">术语</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise"><span class="nav-number">1.1.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#thenable"><span class="nav-number">1.2.</span> <span class="nav-text">thenable</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#值（value）"><span class="nav-number">1.3.</span> <span class="nav-text">值（value）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异常（exception）"><span class="nav-number">1.4.</span> <span class="nav-text">异常（exception）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拒因-reason"><span class="nav-number">1.5.</span> <span class="nav-text">拒因(reason)</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#表示一个promise的拒绝原因"><span class="nav-number"></span> <span class="nav-text">表示一个promise的拒绝原因</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#要求"><span class="nav-number">1.</span> <span class="nav-text">要求</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise的状态"><span class="nav-number">1.1.</span> <span class="nav-text">Promise的状态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#等待态-Pending"><span class="nav-number">1.2.</span> <span class="nav-text">等待态(Pending)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#执行态-Fulfilled"><span class="nav-number">1.3.</span> <span class="nav-text">执行态(Fulfilled)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#拒绝态-Rejected"><span class="nav-number">1.4.</span> <span class="nav-text">拒绝态(Rejected)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Then方法"><span class="nav-number">2.</span> <span class="nav-text">Then方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#onFulfilled-特性"><span class="nav-number">2.1.</span> <span class="nav-text">onFulfilled 特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#onRejected特性"><span class="nav-number">2.2.</span> <span class="nav-text">onRejected特性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用时机"><span class="nav-number">2.3.</span> <span class="nav-text">调用时机</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#调用要求"><span class="nav-number">2.4.</span> <span class="nav-text">调用要求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多次调用"><span class="nav-number">2.5.</span> <span class="nav-text">多次调用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回"><span class="nav-number">2.6.</span> <span class="nav-text">返回</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Promise解决过程"><span class="nav-number">3.</span> <span class="nav-text">Promise解决过程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#x与promise相等"><span class="nav-number">3.1.</span> <span class="nav-text">x与promise相等</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x为Promise"><span class="nav-number">3.2.</span> <span class="nav-text">x为Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#x为对象或函数"><span class="nav-number">3.3.</span> <span class="nav-text">x为对象或函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">4.</span> <span class="nav-text">注释</span></a></li></ol></li></div>
             
           </div>
         </section>
@@ -697,7 +685,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

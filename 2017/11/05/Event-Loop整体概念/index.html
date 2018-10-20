@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,35 +63,35 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="event loop," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="event loop,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="本文是翻译文章，原文链接-&amp;gt;本文来源
-NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta name="description" content="本文是翻译文章，原文链接-&amp;gt;本文来源 NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta name="keywords" content="event loop">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Event Loop整体概念">
 <meta property="og:url" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="本文是翻译文章，原文链接-&amp;gt;本文来源
-NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta property="og:description" content="本文是翻译文章，原文链接-&amp;gt;本文来源 NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/1.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/2.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/3.png">
@@ -100,8 +100,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 <meta property="og:updated_time" content="2017-11-05T10:20:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Event Loop整体概念">
-<meta name="twitter:description" content="本文是翻译文章，原文链接-&amp;gt;本文来源
-NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
+<meta name="twitter:description" content="本文是翻译文章，原文链接-&amp;gt;本文来源 NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使">
 <meta name="twitter:image" content="http://yoursite.com/2017/11/05/Event-Loop整体概念/1.png">
 
 
@@ -123,13 +122,13 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/11/05/Event-Loop整体概念/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/05/Event-Loop整体概念/">
 
 
   <title> Event Loop整体概念 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -150,12 +149,12 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -182,7 +181,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -192,7 +191,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -202,7 +201,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -212,7 +211,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -222,7 +221,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -232,7 +231,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -242,7 +241,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -252,7 +251,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -285,7 +284,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -314,14 +313,14 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/Event-Loop/" itemprop="url" rel="index">
                     <span itemprop="name">Event Loop</span>
                   </a>
@@ -355,7 +354,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
       
 
       
-        <p>本文是翻译文章，原文链接-&gt;<a href="https://jsblog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810" target="_blank" rel="external">本文来源</a></p>
+        <p>本文是翻译文章，原文链接-&gt;<a href="https://jsblog.insiderattack.net/event-loop-and-the-big-picture-nodejs-event-loop-part-1-1cb67a182810" target="_blank" rel="noopener">本文来源</a></p>
 <p>NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介绍的时候，我们总能听到，它是一个非阻塞的，基于google V8 javascript引擎的事件驱动平台。非阻塞和事件驱动是什么意思？这些问题的答案的核心就是Event Loop。在接下来的系列中，我会描述什么是event loop,它是如何工作的，如何影响我们的应用，如何更有效地使用它。</p>
 <h3 id="Reactor-Pattern（响应式模式）"><a href="#Reactor-Pattern（响应式模式）" class="headerlink" title="Reactor Pattern（响应式模式）"></a>Reactor Pattern（响应式模式）</h3><p>NodeJS是在一个事件驱动模型中运行的，包含了一个Event Demultiplexer和一个Event Queue。所有的I/O请求将最终产生一个完成/失败或者其他类型的事件触发。这些事件会根据以下算法来被处理。</p>
 <ol>
@@ -365,7 +364,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 <li>在event queue里如果没有了事件或者Event Demultiplexer没有任何准备处理的请求，程序将完成。否则，这个过程会从第一步开始</li>
 </ol>
 <p>协调整个机制的程序叫做Event Loop</p>
-<img src="/2017/11/05/Event-Loop整体概念/1.png" alt="1.png" title="">
+<img src="/2017/11/05/Event-Loop整体概念/1.png">
 <p>Event Loop 是一个单线程和半无限循环。被称为半无限循环的原因是当没有更多的工作要处理的时候，在某些点上它会退出运行</p>
 <p>上面那个图是NodeJS运行的更高层级的预览图，展示了一个响应式模式的主要的组件。但是实际上要比这个复杂的多，</p>
 <p>Event demultiplexer在所有操作系统上，不是处理所有I/O类型的单一组件<br>在这里呈现的Event Queue不是这一个单一队列，所有的事件在这个队列里进入进出。<br>所有的I/O也不仅仅是进入队列的事件类型。</p>
@@ -377,10 +376,10 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 <p>正如我们看到的，在真实的世界中不同类型的操作系统中很难支持所有不同类型的I/O（file I/O,网络I/O,DNS等）。在保持完整异步的时候，在使用原生硬件实现的时候，一些I/O可以执行，有一些I/O会在thread pool里执行可以保证这些异步本性。</p>
 <p>在开发者中有个常识错误就是Node的所有I/O执行在thread pool里面</p>
 <p>为了支持跨平台的I/O操作，并且能够把控整个过程，应该有一个抽象层来包装这些内部平台的复杂性，并且对上层Node暴露一个公共的API</p>
-<p>所以谁来做这些事情？女士们先生们，libuv<br><img src="/2017/11/05/Event-Loop整体概念/2.png" alt="2.png" title=""><br>官方的libuv文档<a href="http://docs.libuv.org/en/v1.x/design.html" target="_blank" rel="external">http://docs.libuv.org/en/v1.x/design.html</a></p>
+<p>所以谁来做这些事情？女士们先生们，libuv<br><img src="/2017/11/05/Event-Loop整体概念/2.png"><br>官方的libuv文档<a href="http://docs.libuv.org/en/v1.x/design.html" target="_blank" rel="noopener">http://docs.libuv.org/en/v1.x/design.html</a></p>
 <p>libuv是一个最初为NodeJS写的一个跨平台的支持库。它被设计为一个事件驱动的异步I/O模型</p>
 <p>这个库在不同I/O polling上提供了一个远超简单抽象的机制: handle和streams对sockets和其他实体来说提供了一个更高的抽象;在其他方面，提供了跨平台的文件I/O和线程功能</p>
-<p>我们来看看libuv是如何组成的。以下的图表来自libuv官方文档，暴露了一个公共的API，描述了不同类型的I/O如何处理<br><img src="/2017/11/05/Event-Loop整体概念/3.png" alt="3.png" title=""><br>现在我们了解了Event Demultiplexer不是一个原子实体，而是一个由Libuv抽象的I/O处理的API集合，并且对NodeJS上层暴露了这些API。libuv不仅仅提供给Nodeevent demuliplexer。Libuv提供了完整的event loop功能给NodeJS，包括事件队列机制。</p>
+<p>我们来看看libuv是如何组成的。以下的图表来自libuv官方文档，暴露了一个公共的API，描述了不同类型的I/O如何处理<br><img src="/2017/11/05/Event-Loop整体概念/3.png"><br>现在我们了解了Event Demultiplexer不是一个原子实体，而是一个由Libuv抽象的I/O处理的API集合，并且对NodeJS上层暴露了这些API。libuv不仅仅提供给Nodeevent demuliplexer。Libuv提供了完整的event loop功能给NodeJS，包括事件队列机制。</p>
 <p>现在我们来看看Event Queue</p>
 <h4 id="Event-Queue"><a href="#Event-Queue" class="headerlink" title="Event Queue"></a>Event Queue</h4><p>Event queue被认为是一个数据结构，这里所有的events进入了队列并且event loop会依次执行，直到这个队列为空。在Node中这个事情如何发生的，和抽象响应模型描述的又完全不同。这是个怎么样的不同呢？</p>
 <p>在NodeJS中有不止一个queue(队列)，在这些它们自己的队列中，有自己队列类型的事件</p>
@@ -399,7 +398,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 </ul>
 <p>除了这4个主要的队列，还有两个有趣的队列，就是我之前提到的内部队列，这些队列也是由Node处理的。它们是，<br>   Next Ticks Queue 使用process.nextTick增加的callbacks<br>   Other Microtasks Queue 包含了其他microtasks比如promise callbacks resolved</p>
 <h3 id="它是如何工作的呢"><a href="#它是如何工作的呢" class="headerlink" title="它是如何工作的呢"></a>它是如何工作的呢</h3><p> 就想你看到的下图一样，Node启动event loop,检查在timers queue里的所有过期timers，然后在每一步里面完成每一个队列处理，在每一个队列里维护一个全部项目的引用计数器。在处理完close handlers队列后，如果在任何队列里都没有要处理的项目，这个loop会退出。在event loop中每一个队列中的处理被认为整个event loop的一个阶段。</p>
-<img src="/2017/11/05/Event-Loop整体概念/4.png" alt="4.png" title="">
+<img src="/2017/11/05/Event-Loop整体概念/4.png">
 <p> 图中红色描述的队列是，在event loop周期内一旦一个阶段事件处理完，会检查这两个内部队列中是否有可用的项目。在内部队列中如有有可用项目，event loop会立即处理这些项目指导两个立即处理队列为空为止。一旦这两个队列为空，event loop会继续进入到下一个阶段。</p>
 <p> 例如，event loop当前正在处理一个有5个handlers的立即处理队列。同时，两个handlers被加入了next tick queue。在这个立即处理队列中，一旦event loop完成了5个handlers，那么在event loop进入close handlers队列之前，event loop将会检测到有两个handlers在next tick队列里。那么它会执行所有next tick队列里的handlers，然后再进入close handlers队里里继续处理</p>
 <h3 id="Next-tick-queue-vs-Other-Microtasks"><a href="#Next-tick-queue-vs-Other-Microtasks" class="headerlink" title="Next tick queue vs Other Microtasks"></a>Next tick queue vs Other Microtasks</h3><p>Next tick queue要比Other Microtasks queue的优先级要高，尽管它们都是在event loop的两个阶段之间处理的队列。你会注意到我已经在图表里使用深红来标识next tick queue了。event loop会确保在开始处理存在于microtasks queue里的resolved promises之前，next tick queue是空的</p>
@@ -408,7 +407,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 <p>内部队列的约定会引入一个新的问题，IO匮乏。使用process.nextTick方法将事件加入到next tick queue会保持next tick queue无限期地执行，不往下一个阶段执行。这将会导致IO 匮乏，因为event loop不能够继续执行，next tick queue没有清空。 </p>
 <p>为了避免这种情况，过去在next tick queue里使用过一个process.maxTickDepth的参数来最为最大限制，但是由于某些原因在NodeJS v0.12之后移除了</p>
 <p>现在你知道了什么是event loop，是如何实现的，Node是如何处理异步I/O的。让我们现在看一下Libuv在NodeJS中的架构</p>
-<img src="/2017/11/05/Event-Loop整体概念/5.png" alt="5.png" title="">
+<img src="/2017/11/05/Event-Loop整体概念/5.png">
 
       
     </div>
@@ -479,7 +478,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -521,7 +520,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -531,17 +530,15 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -549,7 +546,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -641,7 +638,7 @@ NodeJS和其他编程平台的区别是它能处理I/O操作。NodeJS被人介�
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

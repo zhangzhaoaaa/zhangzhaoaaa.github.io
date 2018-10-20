@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,65 +63,40 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="性能优化," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="性能优化,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。
-
-理解资源请求时间的阶段
-
-了解每个阶段提供了什么样的Resouce Timing API
-
-在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。
-
-
-所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network">
+<meta name="description" content="理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。  理解资源请求时间的阶段  了解每个阶段提供了什么样的Resouce Timing API  在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。   所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network">
+<meta name="keywords" content="性能优化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="理解Resource Timing">
 <meta property="og:url" content="http://yoursite.com/2017/01/08/理解Resource-Timing/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。
-
-理解资源请求时间的阶段
-
-了解每个阶段提供了什么样的Resouce Timing API
-
-在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。
-
-
-所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network">
+<meta property="og:description" content="理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。  理解资源请求时间的阶段  了解每个阶段提供了什么样的Resouce Timing API  在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。   所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/01/08/理解Resource-Timing/resource.png">
 <meta property="og:updated_time" content="2017-01-08T13:57:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="理解Resource Timing">
-<meta name="twitter:description" content="理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。
-
-理解资源请求时间的阶段
-
-了解每个阶段提供了什么样的Resouce Timing API
-
-在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。
-
-
-所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network">
+<meta name="twitter:description" content="理解资源在网络上被收集的各个阶段是很重要的。这个是解决加载问题的基础。  理解资源请求时间的阶段  了解每个阶段提供了什么样的Resouce Timing API  在timeline图表中理解不同的性能问题的指标，比如一系列透明的bars或者打的绿色的块。   所有的网络请求被认为是资源。因为它们是通过网络被获取的，这些资源在resouce timing那里有不同的生命周期表示。Network">
 <meta name="twitter:image" content="http://yoursite.com/2017/01/08/理解Resource-Timing/resource.png">
 
 
@@ -143,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/01/08/理解Resource-Timing/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/01/08/理解Resource-Timing/">
 
 
   <title> 理解Resource Timing | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -170,12 +145,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -202,7 +177,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -212,7 +187,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -222,7 +197,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -232,7 +207,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -242,7 +217,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -252,7 +227,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -262,7 +237,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -272,7 +247,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -305,7 +280,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -334,14 +309,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/性能优化/" itemprop="url" rel="index">
                     <span itemprop="name">性能优化</span>
                   </a>
@@ -408,7 +383,7 @@
 <li>当请求结束并且数据被接收到时，responseEnd触发</li>
 </ol>
 <h3 id="DevTools中查看"><a href="#DevTools中查看" class="headerlink" title="DevTools中查看"></a>DevTools中查看</h3><p>以下代码可以运行在console里查看<br>performance.getEntriesByType(‘resource’).filter(item =&gt; item.name.includes(“style.css”))</p>
-<img src="/2017/01/08/理解Resource-Timing/resource.png" alt="Resource Timing" title="Resource Timing">
+<img src="/2017/01/08/理解Resource-Timing/resource.png" title="Resource Timing">
 <h4 id="Queuing（队列）"><a href="#Queuing（队列）" class="headerlink" title="Queuing（队列）"></a>Queuing（队列）</h4><p>在队列中的请求意味着：<br>    这个请求被渲染引擎推迟了，因为它被考虑优先级低于一些关键资源（scripts/styles）.这个经常出现在images上面<br>    请求会被搁置，直到等到一个不可用的TCP socket连接被释放。<br>    因为浏览器在HTTP1协议上对于每个源来说，仅仅允许连接6个TCP，所以请求会被搁置<br>    时间被花在建立磁盘缓存上了（通常来说非常快）</p>
 <h4 id="Stalled-Blocking"><a href="#Stalled-Blocking" class="headerlink" title="Stalled/Blocking"></a>Stalled/Blocking</h4><p>在请求被发送前的等待时间。这个时间是等待任何描述Queuing的原因的时间。另外，这个时间包含花费在代理协商的任何时间。</p>
 <h4 id="Proxy-Negotiation"><a href="#Proxy-Negotiation" class="headerlink" title="Proxy Negotiation"></a>Proxy Negotiation</h4><p>和一个代理服务连接的协商时间</p>
@@ -430,7 +405,7 @@
 <p>为了描述一个高TTFB，首先尽可能切掉网络，理想情况下，从本地访问应用，看是否有大的TTFB。如果有，那么应用需要优化响应速度。这可能需要优化数据库查询，实现某些部分内容的缓存存储，或者修改你的服务器配置。在后端有太多原因让访问变慢。在你的软件上做些研究，发现什么部分不能满足你的性能预期。</p>
 <p>如果本地访问TTFB比较低，那么在你客户端和服务器之间的网络可能就是这个问题。网络可能被各种事情阻塞。在客户端和服务器端之间有很多点，并且每一个点都有自己的连接限制，并且都可能导致问题出现。测试问题的最简单的方法是减去它从你的应用到另一个主机，并且看TTFB是否提升。</p>
 <h4 id="高吞吐能力"><a href="#高吞吐能力" class="headerlink" title="高吞吐能力"></a>高吞吐能力</h4><p>如果你看到在Content Download阶段花费了大量时间，那么提升服务器响应或则连接它们在一起都没用。最主要的解决办法是发送较少的字节。</p>
-<p><strong>原文链接:</strong> <a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" target="_blank" rel="external">Understanding Resouce Timing</a></p>
+<p><strong>原文链接:</strong> <a href="https://developers.google.com/web/tools/chrome-devtools/network-performance/understanding-resource-timing" target="_blank" rel="noopener">Understanding Resouce Timing</a></p>
 
       
     </div>
@@ -501,7 +476,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -543,7 +518,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -553,17 +528,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -571,7 +544,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -663,7 +636,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,58 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="无限滚动条," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="无限滚动条,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。在线demo
-基本需求无限滚动列表会在一个容器里，监听滚动事件，会有初始化时是否加载数据，什么时候开始加载数据，没有数据的时候不加载数据，加载数据时容器底部有个状态区域，包括加载中、没有更多数据、加载异常等信息
-分析
-容器
-scroll监听事件
-是否初始加载数据
-加载数据的时机
-容器底部的加载提">
+<meta name="description" content="在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。在线demo 基本需求无限滚动列表会在一个容器里，监听滚动事件，会有初始化时是否加载数据，什么时候开始加载数据，没有数据的时候不加载数据，加载数据时容器底部有个状态区域，包括加载中、没有更多数据、加载异常等信息 分析 容器 scroll监听事件 是否初始加载数据 加载数据的时机 容器底部的加载提">
+<meta name="keywords" content="无限滚动条">
 <meta property="og:type" content="article">
 <meta property="og:title" content="无限滚动组件">
 <meta property="og:url" content="http://yoursite.com/2017/03/14/无限滚动条/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。在线demo
-基本需求无限滚动列表会在一个容器里，监听滚动事件，会有初始化时是否加载数据，什么时候开始加载数据，没有数据的时候不加载数据，加载数据时容器底部有个状态区域，包括加载中、没有更多数据、加载异常等信息
-分析
-容器
-scroll监听事件
-是否初始加载数据
-加载数据的时机
-容器底部的加载提">
+<meta property="og:description" content="在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。在线demo 基本需求无限滚动列表会在一个容器里，监听滚动事件，会有初始化时是否加载数据，什么时候开始加载数据，没有数据的时候不加载数据，加载数据时容器底部有个状态区域，包括加载中、没有更多数据、加载异常等信息 分析 容器 scroll监听事件 是否初始加载数据 加载数据的时机 容器底部的加载提">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-09-07T07:26:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无限滚动组件">
-<meta name="twitter:description" content="在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。在线demo
-基本需求无限滚动列表会在一个容器里，监听滚动事件，会有初始化时是否加载数据，什么时候开始加载数据，没有数据的时候不加载数据，加载数据时容器底部有个状态区域，包括加载中、没有更多数据、加载异常等信息
-分析
-容器
-scroll监听事件
-是否初始加载数据
-加载数据的时机
-容器底部的加载提">
+<meta name="twitter:description" content="在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。在线demo 基本需求无限滚动列表会在一个容器里，监听滚动事件，会有初始化时是否加载数据，什么时候开始加载数据，没有数据的时候不加载数据，加载数据时容器底部有个状态区域，包括加载中、没有更多数据、加载异常等信息 分析 容器 scroll监听事件 是否初始加载数据 加载数据的时机 容器底部的加载提">
 
 
 
@@ -135,13 +116,13 @@ scroll监听事件
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/14/无限滚动条/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/14/无限滚动条/">
 
 
   <title> 无限滚动组件 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -162,12 +143,12 @@ scroll监听事件
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -194,7 +175,7 @@ scroll监听事件
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -204,7 +185,7 @@ scroll监听事件
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -214,7 +195,7 @@ scroll监听事件
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -224,7 +205,7 @@ scroll监听事件
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -234,7 +215,7 @@ scroll监听事件
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -244,7 +225,7 @@ scroll监听事件
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -254,7 +235,7 @@ scroll监听事件
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -264,7 +245,7 @@ scroll监听事件
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -297,7 +278,7 @@ scroll监听事件
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -326,14 +307,14 @@ scroll监听事件
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/JS应用/" itemprop="url" rel="index">
                     <span itemprop="name">JS应用</span>
                   </a>
@@ -367,7 +348,7 @@ scroll监听事件
       
 
       
-        <p>在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。<br><a href="http://www.zeromike.net/labs/js/infinitescroll/mobile/index.html" target="_blank" rel="external">在线demo</a></p>
+        <p>在移动端和PC端的列表中，我们一般都需要【无限滚动】这样的组件，今天我们就研究和分析一下这个组件的代码。<br><a href="http://www.zeromike.net/labs/js/infinitescroll/mobile/index.html" target="_blank" rel="noopener">在线demo</a></p>
 <h4 id="基本需求"><a href="#基本需求" class="headerlink" title="基本需求"></a>基本需求</h4><p>无限滚动列表会在一个容器里，监听滚动事件，会有初始化时是否加载数据，什么时候开始加载数据，没有数据的时候不加载数据，加载数据时容器底部有个状态区域，包括加载中、没有更多数据、加载异常等信息</p>
 <h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><ol>
 <li>容器</li>
@@ -389,10 +370,10 @@ scroll监听事件
 <li>没有更多数据的时候，我们把锁设为true，代表滚动的时候不可加载，并且把滚动事件解绑，显示没有更多数据的信息</li>
 <li>加载数据失败，显示异常信息；点击解决异常，如果有更多数据，，则继续加载，如果没有数据显示没有更多数据</li>
 </ol>
-<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">createBottomDom 创建底部加载区域</div><div class="line">isBottom 是否页面底部了</div><div class="line">scrollListener 判断锁和判断是否底部，执行loadMore</div><div class="line">showNoDataDom 显示没有更多的数据</div><div class="line">showExceptionDom 显示异常信息</div><div class="line">noData 加锁，调用showNoDataDom，hasMore为false，移除scroll事件</div><div class="line">unLock 解锁，如果hasMore，则调用scrollListener</div><div class="line">attachScrollListener 注册scroll事件</div><div class="line">detachScrollListner 移除scroll事件</div><div class="line">throwException 显示异常信息</div><div class="line">solveException 如果hasMore，则现在加载信息，并unLock，否则显示无更多数据</div></pre></td></tr></table></figure>
-<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> *</div><div class="line"> Created by zhangzhao on 2017/3/14.</div><div class="line"> */</div><div class="line">var assign = function (target, varArgs) &#123; // .length of function is 2</div><div class="line">    if (target == null) &#123; // TypeError if undefined or null</div><div class="line">        throw new TypeError(&apos;Cannot convert undefined or null to object&apos;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    var to = Object(target);</div><div class="line"></div><div class="line">    for (var index = 1; index &lt; arguments.length; index++) &#123;</div><div class="line">        var nextSource = arguments[index];</div><div class="line"></div><div class="line">        if (nextSource != null) &#123; // Skip over if undefined or null</div><div class="line">            for (var nextKey in nextSource) &#123;</div><div class="line">                // Avoid bugs when hasOwnProperty is shadowed</div><div class="line">                if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) &#123;</div><div class="line">                    to[nextKey] = nextSource[nextKey];</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return to;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function throttle(func, wait, options) &#123;</div><div class="line">    var timeout, context, args, result;</div><div class="line">    var previous = 0;</div><div class="line">    if (!options) options = &#123;&#125;;</div><div class="line"></div><div class="line">    var later = function() &#123;</div><div class="line">        previous = options.leading === false ? 0 : Date.now();</div><div class="line">        timeout = null;</div><div class="line">        result = func.apply(context, args);</div><div class="line">        if (!timeout) context = args = null;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    var throttled = function() &#123;</div><div class="line">        var now = Date.now();</div><div class="line">        if (!previous &amp;&amp; options.leading === false) previous = now;</div><div class="line">        var remaining = wait - (now - previous);</div><div class="line">        context = this;</div><div class="line">        args = arguments;</div><div class="line">        if (remaining &lt;= 0 || remaining &gt; wait) &#123;</div><div class="line">            if (timeout) &#123;</div><div class="line">                clearTimeout(timeout);</div><div class="line">                timeout = null;</div><div class="line">            &#125;</div><div class="line">            previous = now;</div><div class="line">            result = func.apply(context, args);</div><div class="line">            if (!timeout) context = args = null;</div><div class="line">        &#125; else if (!timeout &amp;&amp; options.trailing !== false) &#123;</div><div class="line">            timeout = setTimeout(later, remaining);</div><div class="line">        &#125;</div><div class="line">        return result;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    throttled.cancel = function() &#123;</div><div class="line">        clearTimeout(timeout);</div><div class="line">        previous = 0;</div><div class="line">        timeout = context = args = null;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    return throttled;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">function generateHtml(html) &#123;</div><div class="line">    return &apos;&lt;div style=&quot;text-align:center;font-size:14px;line-height:50px;&quot;&gt;&apos; + html + &apos;&lt;/div&gt;&apos;;</div><div class="line">&#125;</div><div class="line">function InfiniteScroll(container, loadMoreFn, opts) &#123;</div><div class="line">    this.defaults = &#123;</div><div class="line">        initLock: false,</div><div class="line">        thredshold: 10,</div><div class="line">        loadingHtml: generateHtml(&apos;加载中...&apos;),</div><div class="line">        noDataHtml: generateHtml(&apos;没有更多数据...&apos;),</div><div class="line">        exceptionHtml: generateHtml(&apos;加载异常...&apos;)</div><div class="line">    &#125;</div><div class="line">    this._options = assign(&#123;&#125;, this.defaults, opts);</div><div class="line">    this.container = container;</div><div class="line">    this.win = window;</div><div class="line">    this.hasMore = true;</div><div class="line"></div><div class="line">    this.isLock = this.initLock;</div><div class="line">    this.loadMoreFn = loadMoreFn;</div><div class="line">    this.scrollListener = this.scrollListener.bind(this);</div><div class="line"></div><div class="line">    this.scrollListenerWrapThrottle = throttle(this.scrollListener, 50);</div><div class="line"></div><div class="line">    this.createBottomDom();</div><div class="line"></div><div class="line">    this.attachScrollListener();</div><div class="line">&#125;</div><div class="line"></div><div class="line">InfiniteScroll.prototype = &#123;</div><div class="line">    constructor: InfiniteScroll,</div><div class="line">    createBottomDom: function () &#123;</div><div class="line">        this.container.insertAdjacentHTML(&apos;beforeend&apos;, &apos;&lt;div class=&quot;scrollload-bottom&quot;&gt;&apos; + this._options.loadingHtml + &apos;&lt;/div&gt;&apos;);</div><div class="line">        this.bottomDom = document.querySelector(&apos;.scrollload-bottom&apos;);</div><div class="line">    &#125;,</div><div class="line">    isBottom() &#123;</div><div class="line">        let domBottom = this.bottomDom.getBoundingClientRect().top;</div><div class="line">        let winHeight = window.innerHeight;</div><div class="line">        return domBottom - winHeight &lt; this._options.thredshold;</div><div class="line">    &#125;,</div><div class="line">    scrollListener: function () &#123;</div><div class="line">        if (this.isLock) &#123;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        if (this.isBottom()) &#123;</div><div class="line">            this.isLock = true;</div><div class="line">            this.loadMoreFn.call(this, this);</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    showNoDataDom: function () &#123;</div><div class="line">      this.bottomDom.innerHTML = this._options.noDataHtml;</div><div class="line">    &#125;,</div><div class="line">    showExceptionDom: function () &#123;</div><div class="line">      this.bottomDom.innerHTML = this._options.exceptionHtml;</div><div class="line">    &#125;,</div><div class="line">    noData: function () &#123;</div><div class="line">      this.lock();</div><div class="line">      this.hasMore = false;</div><div class="line">      this.showNoDataDom();</div><div class="line">      this.detachScrollListner();</div><div class="line">    &#125;,</div><div class="line">    lock: function () &#123;</div><div class="line">      this.isLock = true;</div><div class="line">    &#125;,</div><div class="line">    unLock: function () &#123;</div><div class="line">      this.isLock = false;</div><div class="line">      if (this.hasMore) &#123;</div><div class="line">          this.scrollListener();</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    attachScrollListener: function () &#123;</div><div class="line">        this.win.addEventListener(&apos;scroll&apos;, this.scrollListenerWrapThrottle);</div><div class="line">        this.scrollListener();</div><div class="line">    &#125;,</div><div class="line">    detachScrollListner: function () &#123;</div><div class="line">        this.win.removeEventListener(&apos;scroll&apos;, this.scrollListenerWrapThrottle);</div><div class="line">    &#125;,</div><div class="line">    throwException:function () &#123;</div><div class="line">        this.showExceptionDom();</div><div class="line">    &#125;,</div><div class="line">    solveException: function () &#123;</div><div class="line">        if (this.hasMore) &#123;</div><div class="line">            this.showLoadingDom();</div><div class="line">            this.unLock();</div><div class="line">        &#125; else &#123;</div><div class="line">            this.showNoDataDom();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">var data = [</div><div class="line">    &#123;</div><div class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20141222121421_798.jpg&apos;,</div><div class="line">        name: &apos;画圆圈&apos;,</div><div class="line">        label: &apos;创意游戏&apos;,</div><div class="line">        desc: &apos;动手画个圆，你行吗？&apos;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150611143728_164.png&apos;,</div><div class="line">        name: &apos;英雄难过棍子关&apos;,</div><div class="line">        label: &apos;创意游戏&apos;,</div><div class="line">        desc: &apos;动手画个圆，你行吗？&apos;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150403115426_276.jpg&apos;,</div><div class="line">        name: &apos;胸口碎大石&apos;,</div><div class="line">        label: &apos;创意游戏&apos;,</div><div class="line">        desc: &apos;动手画个圆，你行吗？&apos;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150611160815_643.jpg&apos;,</div><div class="line">        name: &apos;酒后别开车&apos;,</div><div class="line">        label: &apos;创意游戏&apos;,</div><div class="line">        desc: &apos;动手画个圆，你行吗？&apos;</div><div class="line">    &#125;,</div><div class="line">    &#123;</div><div class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150715225730_758.jpg&apos;,</div><div class="line">        name: &apos;是男人就去优衣库&apos;,</div><div class="line">        label: &apos;创意游戏&apos;,</div><div class="line">        desc: &apos;动手画个圆，你行吗？&apos;</div><div class="line">    &#125;</div><div class="line">]</div><div class="line"></div><div class="line">function getData() &#123;</div><div class="line">    return Array.from(new Array(5)).map(function () &#123;</div><div class="line">        var item = data[Math.floor(Math.random() * 5)]</div><div class="line">        return &apos; &lt;li&gt;&lt;p&gt;&apos;+item.name+&apos;&lt;/p&gt;&apos; +</div><div class="line">                    &apos;&lt;span&gt;&apos;+item.label+&apos;&lt;/span&gt;&apos; +</div><div class="line">                    &apos;&lt;p&gt;&apos;+item.desc+&apos;&lt;/p&gt; &lt;/li&gt;&apos;</div><div class="line">    &#125;).join(&apos;&apos;)</div><div class="line">&#125;</div><div class="line">var count = 0</div><div class="line"></div><div class="line">new InfiniteScroll(document.querySelector(&apos;.container&apos;), function(sl)&#123;</div><div class="line">    setTimeout(function () &#123;</div><div class="line">        if (count++ &lt; 5) &#123;</div><div class="line">            document.querySelector(&apos;.list&apos;).insertAdjacentHTML(&apos;beforeend&apos;, getData())</div><div class="line">            sl.unLock()</div><div class="line">        &#125; else &#123;</div><div class="line">            sl.noData()</div><div class="line">        &#125;</div><div class="line">    &#125;, 500)</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
-<p><a href="https://github.com/fa-ge/Scrollload" target="_blank" rel="external">代码参考</a></p>
+<h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">createBottomDom 创建底部加载区域</span><br><span class="line">isBottom 是否页面底部了</span><br><span class="line">scrollListener 判断锁和判断是否底部，执行loadMore</span><br><span class="line">showNoDataDom 显示没有更多的数据</span><br><span class="line">showExceptionDom 显示异常信息</span><br><span class="line">noData 加锁，调用showNoDataDom，hasMore为false，移除scroll事件</span><br><span class="line">unLock 解锁，如果hasMore，则调用scrollListener</span><br><span class="line">attachScrollListener 注册scroll事件</span><br><span class="line">detachScrollListner 移除scroll事件</span><br><span class="line">throwException 显示异常信息</span><br><span class="line">solveException 如果hasMore，则现在加载信息，并unLock，否则显示无更多数据</span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> *</span><br><span class="line"> Created by zhangzhao on 2017/3/14.</span><br><span class="line"> */</span><br><span class="line">var assign = function (target, varArgs) &#123; // .length of function is 2</span><br><span class="line">    if (target == null) &#123; // TypeError if undefined or null</span><br><span class="line">        throw new TypeError(&apos;Cannot convert undefined or null to object&apos;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    var to = Object(target);</span><br><span class="line"></span><br><span class="line">    for (var index = 1; index &lt; arguments.length; index++) &#123;</span><br><span class="line">        var nextSource = arguments[index];</span><br><span class="line"></span><br><span class="line">        if (nextSource != null) &#123; // Skip over if undefined or null</span><br><span class="line">            for (var nextKey in nextSource) &#123;</span><br><span class="line">                // Avoid bugs when hasOwnProperty is shadowed</span><br><span class="line">                if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) &#123;</span><br><span class="line">                    to[nextKey] = nextSource[nextKey];</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return to;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function throttle(func, wait, options) &#123;</span><br><span class="line">    var timeout, context, args, result;</span><br><span class="line">    var previous = 0;</span><br><span class="line">    if (!options) options = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    var later = function() &#123;</span><br><span class="line">        previous = options.leading === false ? 0 : Date.now();</span><br><span class="line">        timeout = null;</span><br><span class="line">        result = func.apply(context, args);</span><br><span class="line">        if (!timeout) context = args = null;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    var throttled = function() &#123;</span><br><span class="line">        var now = Date.now();</span><br><span class="line">        if (!previous &amp;&amp; options.leading === false) previous = now;</span><br><span class="line">        var remaining = wait - (now - previous);</span><br><span class="line">        context = this;</span><br><span class="line">        args = arguments;</span><br><span class="line">        if (remaining &lt;= 0 || remaining &gt; wait) &#123;</span><br><span class="line">            if (timeout) &#123;</span><br><span class="line">                clearTimeout(timeout);</span><br><span class="line">                timeout = null;</span><br><span class="line">            &#125;</span><br><span class="line">            previous = now;</span><br><span class="line">            result = func.apply(context, args);</span><br><span class="line">            if (!timeout) context = args = null;</span><br><span class="line">        &#125; else if (!timeout &amp;&amp; options.trailing !== false) &#123;</span><br><span class="line">            timeout = setTimeout(later, remaining);</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    throttled.cancel = function() &#123;</span><br><span class="line">        clearTimeout(timeout);</span><br><span class="line">        previous = 0;</span><br><span class="line">        timeout = context = args = null;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    return throttled;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">function generateHtml(html) &#123;</span><br><span class="line">    return &apos;&lt;div style=&quot;text-align:center;font-size:14px;line-height:50px;&quot;&gt;&apos; + html + &apos;&lt;/div&gt;&apos;;</span><br><span class="line">&#125;</span><br><span class="line">function InfiniteScroll(container, loadMoreFn, opts) &#123;</span><br><span class="line">    this.defaults = &#123;</span><br><span class="line">        initLock: false,</span><br><span class="line">        thredshold: 10,</span><br><span class="line">        loadingHtml: generateHtml(&apos;加载中...&apos;),</span><br><span class="line">        noDataHtml: generateHtml(&apos;没有更多数据...&apos;),</span><br><span class="line">        exceptionHtml: generateHtml(&apos;加载异常...&apos;)</span><br><span class="line">    &#125;</span><br><span class="line">    this._options = assign(&#123;&#125;, this.defaults, opts);</span><br><span class="line">    this.container = container;</span><br><span class="line">    this.win = window;</span><br><span class="line">    this.hasMore = true;</span><br><span class="line"></span><br><span class="line">    this.isLock = this.initLock;</span><br><span class="line">    this.loadMoreFn = loadMoreFn;</span><br><span class="line">    this.scrollListener = this.scrollListener.bind(this);</span><br><span class="line"></span><br><span class="line">    this.scrollListenerWrapThrottle = throttle(this.scrollListener, 50);</span><br><span class="line"></span><br><span class="line">    this.createBottomDom();</span><br><span class="line"></span><br><span class="line">    this.attachScrollListener();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">InfiniteScroll.prototype = &#123;</span><br><span class="line">    constructor: InfiniteScroll,</span><br><span class="line">    createBottomDom: function () &#123;</span><br><span class="line">        this.container.insertAdjacentHTML(&apos;beforeend&apos;, &apos;&lt;div class=&quot;scrollload-bottom&quot;&gt;&apos; + this._options.loadingHtml + &apos;&lt;/div&gt;&apos;);</span><br><span class="line">        this.bottomDom = document.querySelector(&apos;.scrollload-bottom&apos;);</span><br><span class="line">    &#125;,</span><br><span class="line">    isBottom() &#123;</span><br><span class="line">        let domBottom = this.bottomDom.getBoundingClientRect().top;</span><br><span class="line">        let winHeight = window.innerHeight;</span><br><span class="line">        return domBottom - winHeight &lt; this._options.thredshold;</span><br><span class="line">    &#125;,</span><br><span class="line">    scrollListener: function () &#123;</span><br><span class="line">        if (this.isLock) &#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        if (this.isBottom()) &#123;</span><br><span class="line">            this.isLock = true;</span><br><span class="line">            this.loadMoreFn.call(this, this);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    showNoDataDom: function () &#123;</span><br><span class="line">      this.bottomDom.innerHTML = this._options.noDataHtml;</span><br><span class="line">    &#125;,</span><br><span class="line">    showExceptionDom: function () &#123;</span><br><span class="line">      this.bottomDom.innerHTML = this._options.exceptionHtml;</span><br><span class="line">    &#125;,</span><br><span class="line">    noData: function () &#123;</span><br><span class="line">      this.lock();</span><br><span class="line">      this.hasMore = false;</span><br><span class="line">      this.showNoDataDom();</span><br><span class="line">      this.detachScrollListner();</span><br><span class="line">    &#125;,</span><br><span class="line">    lock: function () &#123;</span><br><span class="line">      this.isLock = true;</span><br><span class="line">    &#125;,</span><br><span class="line">    unLock: function () &#123;</span><br><span class="line">      this.isLock = false;</span><br><span class="line">      if (this.hasMore) &#123;</span><br><span class="line">          this.scrollListener();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    attachScrollListener: function () &#123;</span><br><span class="line">        this.win.addEventListener(&apos;scroll&apos;, this.scrollListenerWrapThrottle);</span><br><span class="line">        this.scrollListener();</span><br><span class="line">    &#125;,</span><br><span class="line">    detachScrollListner: function () &#123;</span><br><span class="line">        this.win.removeEventListener(&apos;scroll&apos;, this.scrollListenerWrapThrottle);</span><br><span class="line">    &#125;,</span><br><span class="line">    throwException:function () &#123;</span><br><span class="line">        this.showExceptionDom();</span><br><span class="line">    &#125;,</span><br><span class="line">    solveException: function () &#123;</span><br><span class="line">        if (this.hasMore) &#123;</span><br><span class="line">            this.showLoadingDom();</span><br><span class="line">            this.unLock();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            this.showNoDataDom();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">var data = [</span><br><span class="line">    &#123;</span><br><span class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20141222121421_798.jpg&apos;,</span><br><span class="line">        name: &apos;画圆圈&apos;,</span><br><span class="line">        label: &apos;创意游戏&apos;,</span><br><span class="line">        desc: &apos;动手画个圆，你行吗？&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150611143728_164.png&apos;,</span><br><span class="line">        name: &apos;英雄难过棍子关&apos;,</span><br><span class="line">        label: &apos;创意游戏&apos;,</span><br><span class="line">        desc: &apos;动手画个圆，你行吗？&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150403115426_276.jpg&apos;,</span><br><span class="line">        name: &apos;胸口碎大石&apos;,</span><br><span class="line">        label: &apos;创意游戏&apos;,</span><br><span class="line">        desc: &apos;动手画个圆，你行吗？&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150611160815_643.jpg&apos;,</span><br><span class="line">        name: &apos;酒后别开车&apos;,</span><br><span class="line">        label: &apos;创意游戏&apos;,</span><br><span class="line">        desc: &apos;动手画个圆，你行吗？&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        image: &apos;http://imagesrcdola.b0.upaiyun.com/0/20150715225730_758.jpg&apos;,</span><br><span class="line">        name: &apos;是男人就去优衣库&apos;,</span><br><span class="line">        label: &apos;创意游戏&apos;,</span><br><span class="line">        desc: &apos;动手画个圆，你行吗？&apos;</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">function getData() &#123;</span><br><span class="line">    return Array.from(new Array(5)).map(function () &#123;</span><br><span class="line">        var item = data[Math.floor(Math.random() * 5)]</span><br><span class="line">        return &apos; &lt;li&gt;&lt;p&gt;&apos;+item.name+&apos;&lt;/p&gt;&apos; +</span><br><span class="line">                    &apos;&lt;span&gt;&apos;+item.label+&apos;&lt;/span&gt;&apos; +</span><br><span class="line">                    &apos;&lt;p&gt;&apos;+item.desc+&apos;&lt;/p&gt; &lt;/li&gt;&apos;</span><br><span class="line">    &#125;).join(&apos;&apos;)</span><br><span class="line">&#125;</span><br><span class="line">var count = 0</span><br><span class="line"></span><br><span class="line">new InfiniteScroll(document.querySelector(&apos;.container&apos;), function(sl)&#123;</span><br><span class="line">    setTimeout(function () &#123;</span><br><span class="line">        if (count++ &lt; 5) &#123;</span><br><span class="line">            document.querySelector(&apos;.list&apos;).insertAdjacentHTML(&apos;beforeend&apos;, getData())</span><br><span class="line">            sl.unLock()</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            sl.noData()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, 500)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://github.com/fa-ge/Scrollload" target="_blank" rel="noopener">代码参考</a></p>
 
       
     </div>
@@ -463,7 +444,7 @@ scroll监听事件
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -505,7 +486,7 @@ scroll监听事件
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -515,17 +496,15 @@ scroll监听事件
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -533,7 +512,7 @@ scroll监听事件
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -625,7 +604,7 @@ scroll监听事件
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

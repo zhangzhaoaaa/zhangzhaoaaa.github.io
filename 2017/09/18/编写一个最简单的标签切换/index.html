@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,65 +63,40 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="tabs,标签切换," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="tabs,标签切换,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件
-使用技术
-原生JS
-jQuery
-CSS:flexbox
-
-分析首先我们知道一个标签切换有标签头(navigator)+标签体(content)
-所以我们来先把结构写出来
-html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法
-标签体就是div了，有几个">
+<meta name="description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件 使用技术 原生JS jQuery CSS:flexbox  分析首先我们知道一个标签切换有标签头(navigator)+标签体(content) 所以我们来先把结构写出来 html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法 标签体就是div了，有几个">
+<meta name="keywords" content="tabs,标签切换">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编写一个最简单的标签切换">
 <meta property="og:url" content="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件
-使用技术
-原生JS
-jQuery
-CSS:flexbox
-
-分析首先我们知道一个标签切换有标签头(navigator)+标签体(content)
-所以我们来先把结构写出来
-html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法
-标签体就是div了，有几个">
+<meta property="og:description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件 使用技术 原生JS jQuery CSS:flexbox  分析首先我们知道一个标签切换有标签头(navigator)+标签体(content) 所以我们来先把结构写出来 html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法 标签体就是div了，有几个">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/1.png">
 <meta property="og:updated_time" content="2017-09-18T10:06:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编写一个最简单的标签切换">
-<meta name="twitter:description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件
-使用技术
-原生JS
-jQuery
-CSS:flexbox
-
-分析首先我们知道一个标签切换有标签头(navigator)+标签体(content)
-所以我们来先把结构写出来
-html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法
-标签体就是div了，有几个">
+<meta name="twitter:description" content="标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件 使用技术 原生JS jQuery CSS:flexbox  分析首先我们知道一个标签切换有标签头(navigator)+标签体(content) 所以我们来先把结构写出来 html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你也可以使用div，我们这里使用一个通常的做法 标签体就是div了，有几个">
 <meta name="twitter:image" content="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/1.png">
 
 
@@ -143,13 +118,13 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/18/编写一个最简单的标签切换/">
 
 
   <title> 编写一个最简单的标签切换 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -170,12 +145,12 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -202,7 +177,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -212,7 +187,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -222,7 +197,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -232,7 +207,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -242,7 +217,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -252,7 +227,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -262,7 +237,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -272,7 +247,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -305,7 +280,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -334,14 +309,14 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/JS应用/" itemprop="url" rel="index">
                     <span itemprop="name">JS应用</span>
                   </a>
@@ -375,7 +350,7 @@ html结构一般来说标签头使用ul&amp;gt;li&amp;gt;a来表示，当然你�
       
 
       
-        <p>标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件<br><img src="/2017/09/18/编写一个最简单的标签切换/1.png" alt="标签切换组件" title="标签切换组件"></p>
+        <p>标签组件是我们工作中常用的组件之一，今天我们分析一下如何来写一个最简单的标签切换组件<br><img src="/2017/09/18/编写一个最简单的标签切换/1.png" title="标签切换组件"></p>
 <h3 id="使用技术"><a href="#使用技术" class="headerlink" title="使用技术"></a>使用技术</h3><ul>
 <li>原生JS</li>
 <li>jQuery</li>
@@ -562,7 +537,7 @@ navs[0].click(); // 触发第一个标签头点击事件
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -604,7 +579,7 @@ navs[0].click(); // 触发第一个标签头点击事件
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -614,17 +589,15 @@ navs[0].click(); // 触发第一个标签头点击事件
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -632,7 +605,7 @@ navs[0].click(); // 触发第一个标签头点击事件
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -724,7 +697,7 @@ navs[0].click(); // 触发第一个标签头点击事件
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

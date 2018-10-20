@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,43 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="setInterval," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="setInterval,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。
-概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。
-语法12var intervalID = scope.setInterva">
+<meta name="description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。 概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。 语法12var intervalID = scope.setInterva">
+<meta name="keywords" content="setInterval">
 <meta property="og:type" content="article">
 <meta property="og:title" content="探秘setInterval">
 <meta property="og:url" content="http://yoursite.com/2017/03/14/探秘setInterval/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。
-概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。
-语法12var intervalID = scope.setInterva">
+<meta property="og:description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。 概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。 语法12var intervalID = scope.setInterva">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-03-16T07:05:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="探秘setInterval">
-<meta name="twitter:description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。
-概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。
-语法12var intervalID = scope.setInterva">
+<meta name="twitter:description" content="我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。 概念和定义window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。 语法12var intervalID = scope.setInterva">
 
 
 
@@ -120,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/14/探秘setInterval/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/14/探秘setInterval/">
 
 
   <title> 探秘setInterval | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -147,12 +143,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -179,7 +175,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -189,7 +185,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -199,7 +195,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -209,7 +205,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -219,7 +215,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -229,7 +225,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -239,7 +235,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -249,7 +245,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -282,7 +278,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -311,14 +307,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/JS基础/" itemprop="url" rel="index">
                     <span itemprop="name">JS基础</span>
                   </a>
@@ -354,7 +350,7 @@
       
         <p>我们在JS开发过程中，很多时候进行异步或者处理周期性业务场景的时候，会使用setInterval方法，今天我们就来探秘一下setInterval的本质。</p>
 <h4 id="概念和定义"><a href="#概念和定义" class="headerlink" title="概念和定义"></a>概念和定义</h4><p>window或者web worker的setInterval方法会在一个固定的时间间隔之间重复的调用一个方法或者执行一个代码片段。返回一个intervalID。</p>
-<p>语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var intervalID = scope.setInterval(func, delay[,param1,param2,...]);</div><div class="line">var intervalID = scope.setInterval(code, delay);</div></pre></td></tr></table></figure></p>
+<p>语法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var intervalID = scope.setInterval(func, delay[,param1,param2,...]);</span><br><span class="line">var intervalID = scope.setInterval(code, delay);</span><br></pre></td></tr></table></figure></p>
 <p>func<br>每delay毫秒被执行的方法</p>
 <p>code</p>
 <p>一个可选的语法，允许使用一段字符串代替function，每隔delay毫秒被编译和执行。这个语法和eval一样有相同的安全风险不建议使用。</p>
@@ -364,12 +360,12 @@
 <p>返回的timeoutID是一个非零数字，是调用setInterval时创建的；这个值被传递给clearInterval()会cancel掉这个timeout</p>
 <p>注意：setInterval()和setTimeout()是共享IDS的，技术上来说，clearInterval()和clearTimeout()是可以交换使用的。但是，为了清楚起见，当维护你的代码的时候，你应该总是匹配使用避免歧义</p>
 <p>这个delay的参数会被转化为一个有符号的32位整数，被限制在2147483647ms。</p>
-<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</div><div class="line">  &lt;title&gt;setInterval/clearInterval example&lt;/title&gt;</div><div class="line"></div><div class="line">  &lt;script&gt;</div><div class="line">    var nIntervId;</div><div class="line"> </div><div class="line">    function changeColor() &#123;</div><div class="line">      nIntervId = setInterval(flashText, 1000);</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    function flashText() &#123;</div><div class="line">      var oElem = document.getElementById(&apos;my_box&apos;);</div><div class="line">      oElem.style.color = oElem.style.color == &apos;red&apos; ? &apos;blue&apos; : &apos;red&apos;;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    function stopTextColor() &#123;</div><div class="line">      clearInterval(nIntervId);</div><div class="line">    &#125;</div><div class="line">  &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line"> </div><div class="line">&lt;body onload=&quot;changeColor();&quot;&gt;</div><div class="line">  &lt;div id=&quot;my_box&quot;&gt;</div><div class="line">    &lt;p&gt;Hello World&lt;/p&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line"></div><div class="line">  &lt;button onclick=&quot;stopTextColor();&quot;&gt;Stop&lt;/button&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;UTF-8&quot; /&gt;</span><br><span class="line">  &lt;title&gt;setInterval/clearInterval example&lt;/title&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var nIntervId;</span><br><span class="line"> </span><br><span class="line">    function changeColor() &#123;</span><br><span class="line">      nIntervId = setInterval(flashText, 1000);</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    function flashText() &#123;</span><br><span class="line">      var oElem = document.getElementById(&apos;my_box&apos;);</span><br><span class="line">      oElem.style.color = oElem.style.color == &apos;red&apos; ? &apos;blue&apos; : &apos;red&apos;;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    function stopTextColor() &#123;</span><br><span class="line">      clearInterval(nIntervId);</span><br><span class="line">    &#125;</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line"> </span><br><span class="line">&lt;body onload=&quot;changeColor();&quot;&gt;</span><br><span class="line">  &lt;div id=&quot;my_box&quot;&gt;</span><br><span class="line">    &lt;p&gt;Hello World&lt;/p&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;button onclick=&quot;stopTextColor();&quot;&gt;Stop&lt;/button&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <h4 id="This"><a href="#This" class="headerlink" title="This"></a>This</h4><p>setInterval()的代码在一个独立的执行环境中执行，里面的this指向了window(or global)对象</p>
 <h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>setInterval()方法通常是被用来设置一个delay给来一次一次的执行functions，比如动画。</p>
 <p>确保执行周期是小于interval的频率</p>
 <p>假如有一种可能是你的逻辑会执行超过interval time的时间，建议你周期性的调用setTimeout方法。比如，使用setInterval每隔5秒获取远程服务器的数据，网络延迟，没有响应的服务和其他一些问题能够阻止你在你分配的时间内完成这次请求的。你可以将没必要顺序返回的XHR的请求放入队列</p>
-<p>这种情况下，一个循环的setTimeout模式可能是更好的选择：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">(function loop()&#123;</div><div class="line">	setTimeout(function()&#123;</div><div class="line">	  // 你的逻辑...</div><div class="line">		loop();</div><div class="line">	&#125;, delay);</div><div class="line">&#125;)()</div></pre></td></tr></table></figure></p>
+<p>这种情况下，一个循环的setTimeout模式可能是更好的选择：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(function loop()&#123;</span><br><span class="line">	setTimeout(function()&#123;</span><br><span class="line">	  // 你的逻辑...</span><br><span class="line">		loop();</span><br><span class="line">	&#125;, delay);</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure></p>
 <p>在上面的代码片段中，一个名为loop()的方法被声明，并且会立即执行。在代码逻辑执行完成后，loop()在setTimeout()里面循环调用。这种模式不能保证执行是在一个固定的周期，它能保证在循环开始之前，之前的周期已经完成了。</p>
 <h4 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h4><p>我们来看标准是如何定义setInterval（）方法的</p>
 <p>setInterval()方法必须返回timer initialization steps的返回值，传递它们给方法的参数，。。。。</p>
@@ -402,7 +398,7 @@
 <li>如果方法的上下文是window对象，wait util the Document associated with method context has been fully active for a further timeout milliseconds(没必要是连续地)否则，如果方法的上下文是WorkerGlobalScope对象；wait until timeout milliseconds have passed with the worker not suspended(没必要是连续地)</li>
 <li>Wait until any invocation of this algorithm that had the same method context,that started before this one,and whose timeout is equal to or less than this one’s,have completed.</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">So for example, the following rather silly code will result in the log containing &quot;ONE TWO &quot;:</div><div class="line">var log = &apos;&apos;;</div><div class="line">function logger(s) &#123; log += s + &apos; &apos;; &#125;</div><div class="line"></div><div class="line">setTimeout(&#123; toString: function () &#123;</div><div class="line">  setTimeout(&quot;logger(&apos;ONE&apos;)&quot;, 100);</div><div class="line">  return &quot;logger(&apos;TWO&apos;)&quot;;</div><div class="line">&#125; &#125;, 100);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">So for example, the following rather silly code will result in the log containing &quot;ONE TWO &quot;:</span><br><span class="line">var log = &apos;&apos;;</span><br><span class="line">function logger(s) &#123; log += s + &apos; &apos;; &#125;</span><br><span class="line"></span><br><span class="line">setTimeout(&#123; toString: function () &#123;</span><br><span class="line">  setTimeout(&quot;logger(&apos;ONE&apos;)&quot;, 100);</span><br><span class="line">  return &quot;logger(&apos;TWO&apos;)&quot;;</span><br><span class="line">&#125; &#125;, 100);</span><br></pre></td></tr></table></figure>
 <ol>
 <li>可选的是，等一个更远的用户代理定义的时间长度</li>
 <li>把任务放入队列</li>
@@ -477,7 +473,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -519,7 +515,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -529,17 +525,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -547,7 +541,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -639,7 +633,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,80 +63,40 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="回到顶部,js组件," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="回到顶部,js组件,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑
-需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮
-前提不考虑兼容性的手机端或者只考虑chrome浏览器
-分析思路我们分析这个需求里都包含的元素和交互
-
-一个按钮
-按钮显示和隐藏
-滑出半屏幕
-点击按钮
-回到页面顶部
-平滑地
-
-然后我们逐一击破：
-
-一个按钮：构建一个div配合css实现，放到body底部">
+<meta name="description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑 需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮 前提不考虑兼容性的手机端或者只考虑chrome浏览器 分析思路我们分析这个需求里都包含的元素和交互  一个按钮 按钮显示和隐藏 滑出半屏幕 点击按钮 回到页面顶部 平滑地  然后我们逐一击破：  一个按钮：构建一个div配合css实现，放到body底部">
+<meta name="keywords" content="回到顶部,js组件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="回到顶部组件研究">
 <meta property="og:url" content="http://yoursite.com/2017/03/04/回到顶部组件研究/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑
-需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮
-前提不考虑兼容性的手机端或者只考虑chrome浏览器
-分析思路我们分析这个需求里都包含的元素和交互
-
-一个按钮
-按钮显示和隐藏
-滑出半屏幕
-点击按钮
-回到页面顶部
-平滑地
-
-然后我们逐一击破：
-
-一个按钮：构建一个div配合css实现，放到body底部">
+<meta property="og:description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑 需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮 前提不考虑兼容性的手机端或者只考虑chrome浏览器 分析思路我们分析这个需求里都包含的元素和交互  一个按钮 按钮显示和隐藏 滑出半屏幕 点击按钮 回到页面顶部 平滑地  然后我们逐一击破：  一个按钮：构建一个div配合css实现，放到body底部">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/03/04/回到顶部组件研究/back2top.jpg">
 <meta property="og:updated_time" content="2017-09-07T07:27:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="回到顶部组件研究">
-<meta name="twitter:description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑
-需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮
-前提不考虑兼容性的手机端或者只考虑chrome浏览器
-分析思路我们分析这个需求里都包含的元素和交互
-
-一个按钮
-按钮显示和隐藏
-滑出半屏幕
-点击按钮
-回到页面顶部
-平滑地
-
-然后我们逐一击破：
-
-一个按钮：构建一个div配合css实现，放到body底部">
+<meta name="twitter:description" content="我们今天来分析拆解一个【回到顶部】的代码，主要说JS的逻辑 需求做一个滑出半屏幕后显示的【回到顶部】的按钮，点击按钮，平滑地回到页面顶部并隐藏按钮 前提不考虑兼容性的手机端或者只考虑chrome浏览器 分析思路我们分析这个需求里都包含的元素和交互  一个按钮 按钮显示和隐藏 滑出半屏幕 点击按钮 回到页面顶部 平滑地  然后我们逐一击破：  一个按钮：构建一个div配合css实现，放到body底部">
 <meta name="twitter:image" content="http://yoursite.com/2017/03/04/回到顶部组件研究/back2top.jpg">
 
 
@@ -158,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/03/04/回到顶部组件研究/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/03/04/回到顶部组件研究/">
 
 
   <title> 回到顶部组件研究 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -185,12 +145,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -217,7 +177,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -227,7 +187,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -237,7 +197,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -247,7 +207,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -257,7 +217,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -267,7 +227,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -277,7 +237,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -287,7 +247,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -320,7 +280,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -349,14 +309,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/JS应用/" itemprop="url" rel="index">
                     <span itemprop="name">JS应用</span>
                   </a>
@@ -411,12 +371,12 @@
 <li>回到顶部：如何让纵向滚动条回到顶部，那肯定是window.scrollTo(0,0)</li>
 <li>平滑地：平滑就是有个速度的问题，要让滚动条有由快而慢的到顶端，纵坐标就得由大到小的减为0，这样滚动的时候就会看起来有个速度的变化。</li>
 </ol>
-<h3 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">var div = document.createElement(&apos;div&apos;); // 创建DIV</div><div class="line">div.className = &apos;back2top&apos;; // 添加样式</div><div class="line">div.style.display = &apos;none&apos;; // 刚开始为隐藏</div><div class="line">var screenHeight = window.screen.height / 2; // 屏幕一半的高度</div><div class="line">document.body.append(div);</div><div class="line">var body = document.querySelector(&apos;body&apos;);</div><div class="line">document.addEventListener(&apos;scroll&apos;, function (e) &#123;</div><div class="line">    var scrollTop = window.pageYOffset; // 纵向滚动条距顶部的高度</div><div class="line">    if (scrollTop &gt; screenHeight) &#123; // 和半屏高度比较</div><div class="line">        div.style.display = &apos;block&apos;;</div><div class="line">    &#125; else &#123;</div><div class="line">        div.style.display = &apos;none&apos;;</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line">function scroll(duration) &#123;</div><div class="line">    document.querySelector(&apos;.back2top&apos;).addEventListener(&apos;click&apos;, function(e)&#123;</div><div class="line">        var scrollY = window.scrollY;</div><div class="line">        var scrollMargin,</div><div class="line">            scrollCount = 0;</div><div class="line">        var half = scrollY / 2; // 滚动条距离顶部的一半距离</div><div class="line">        var step = Math.PI / Math.floor(duration / 15);</div><div class="line">        var timer = setInterval(function render() &#123;</div><div class="line">            if (window.scrollY != 0) &#123;</div><div class="line">                scrollCount = scrollCount + 1;</div><div class="line">                scrollMargin = half - half * Math.cos(scrollCount * step);</div><div class="line">                // console.log(scrollY, scrollMargin);</div><div class="line">                window.scrollTo(0, (scrollY - scrollMargin));</div><div class="line">            &#125; else &#123;</div><div class="line">                clearInterval(timer);</div><div class="line">            &#125;</div><div class="line">        &#125;, 15);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line">scroll(500); // 给500的duration</div></pre></td></tr></table></figure>
+<h3 id="分析代码"><a href="#分析代码" class="headerlink" title="分析代码"></a>分析代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">var div = document.createElement(&apos;div&apos;); // 创建DIV</span><br><span class="line">div.className = &apos;back2top&apos;; // 添加样式</span><br><span class="line">div.style.display = &apos;none&apos;; // 刚开始为隐藏</span><br><span class="line">var screenHeight = window.screen.height / 2; // 屏幕一半的高度</span><br><span class="line">document.body.append(div);</span><br><span class="line">var body = document.querySelector(&apos;body&apos;);</span><br><span class="line">document.addEventListener(&apos;scroll&apos;, function (e) &#123;</span><br><span class="line">    var scrollTop = window.pageYOffset; // 纵向滚动条距顶部的高度</span><br><span class="line">    if (scrollTop &gt; screenHeight) &#123; // 和半屏高度比较</span><br><span class="line">        div.style.display = &apos;block&apos;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        div.style.display = &apos;none&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">function scroll(duration) &#123;</span><br><span class="line">    document.querySelector(&apos;.back2top&apos;).addEventListener(&apos;click&apos;, function(e)&#123;</span><br><span class="line">        var scrollY = window.scrollY;</span><br><span class="line">        var scrollMargin,</span><br><span class="line">            scrollCount = 0;</span><br><span class="line">        var half = scrollY / 2; // 滚动条距离顶部的一半距离</span><br><span class="line">        var step = Math.PI / Math.floor(duration / 15);</span><br><span class="line">        var timer = setInterval(function render() &#123;</span><br><span class="line">            if (window.scrollY != 0) &#123;</span><br><span class="line">                scrollCount = scrollCount + 1;</span><br><span class="line">                scrollMargin = half - half * Math.cos(scrollCount * step);</span><br><span class="line">                // console.log(scrollY, scrollMargin);</span><br><span class="line">                window.scrollTo(0, (scrollY - scrollMargin));</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                clearInterval(timer);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, 15);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">scroll(500); // 给500的duration</span><br></pre></td></tr></table></figure>
 <p>window.pageYOffset和window.scrollY的值是一样的，都是滚动条距离顶部的距离</p>
 <h4 id="平缓滚动代码分析"><a href="#平缓滚动代码分析" class="headerlink" title="平缓滚动代码分析"></a>平缓滚动代码分析</h4><p>因为需要滚动条连续周期性的滚动，所以我们这里使用setInterval函数，我们看里面的代码，如果滚动条的距离距离页面顶部不为0，则执行滚动，否则清除interval</p>
 <p>我们再看怎么就可以平滑滚动的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Window.scrollTo(0, scrollY-scrollMargin);</div></pre></td></tr></table></figure>
-<p>如果回到顶部，scrollMaring必须等于scrollY<br>我们再看scrollMargin = half - half <em> 参数<br>这个怎么就能够让scrollMargin等于scrollY呢，我们来看参数<br><strong>Math.cos(权值)</strong><br><img src="/2017/03/04/回到顶部组件研究/back2top.jpg" alt="余弦函数" title="余弦函数"><br>首先我们得了解点数学知识，cos(0)等于1，cos(Math.PI/2)是0，cos(Math.PI)是-1, cos(3 </em> Math.PI/2)是0，cos(2 * Math.PI)是1，这是余弦函数的特性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Window.scrollTo(0, scrollY-scrollMargin);</span><br></pre></td></tr></table></figure>
+<p>如果回到顶部，scrollMaring必须等于scrollY<br>我们再看scrollMargin = half - half <em> 参数<br>这个怎么就能够让scrollMargin等于scrollY呢，我们来看参数<br><strong>Math.cos(权值)</strong><br><img src="/2017/03/04/回到顶部组件研究/back2top.jpg" title="余弦函数"><br>首先我们得了解点数学知识，cos(0)等于1，cos(Math.PI/2)是0，cos(Math.PI)是-1, cos(3 </em> Math.PI/2)是0，cos(2 * Math.PI)是1，这是余弦函数的特性</p>
 <p>然后我们再看 -half <em> 参数，参数从1到-1，然后half - half </em> 参数就能达到滚动距离慢慢变成scrollY了。</p>
 <p>好了我们分析完了怎么进行平缓滚动了。<br>我们接下来分析这些数据之间的关系。</p>
 <h4 id="平滑滚动的数据关系"><a href="#平滑滚动的数据关系" class="headerlink" title="平滑滚动的数据关系"></a>平滑滚动的数据关系</h4><p>我们根据上面的分析知道，为了让Math.cos达到-1，那么它的参数就必须是Math.PI，也就是Math.cos(Math.PI)的值是-1，而Math.cos(Math.PI/2)为0，所以这个参数只要比Math.PI/2，那么Math.cos(Math.PI / 参数)就无限接近于1，（我们的目的是让这个值从1转变到-1），我们用一个接近1的数到-1，不会影响整体效果。<br>所以现在的问题就是怎么让参数变为1，我们可以迭代一个数字，让迭代次数乘以参数为1，就可以达到我们的最终目的获得Math.PI这个值了。然而这个迭代的过程，就是距离变化的过程，scrollMargin的距离可以认为从0 -&gt; half -&gt; 2 * half 的转变</p>
@@ -497,7 +457,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -539,7 +499,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -549,17 +509,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -567,7 +525,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -659,7 +617,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

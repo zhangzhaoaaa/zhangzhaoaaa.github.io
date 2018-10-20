@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,64 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="mac,charles,debug," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="mac,charles,debug,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
-
-Charles版本：4.0.2
-操作系统： MAC
-下载地址： https://www.charlesproxy.com/latest-release/download.do
-代理URL: 
-https://h5.gomeplus.com
-https://js.meixincdn.com
-
-1. 打开">
+<meta name="description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。  Charles版本：4.0.2 操作系统： MAC 下载地址： https://www.charlesproxy.com/latest-release/download.do 代理URL:  https://h5.gomeplus.com https://js.meixincdn.com  1. 打开">
+<meta name="keywords" content="mac,charles,debug">
 <meta property="og:type" content="article">
 <meta property="og:title" content="charles代理调试">
 <meta property="og:url" content="http://yoursite.com/2016/12/04/charles代理调试/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
-
-Charles版本：4.0.2
-操作系统： MAC
-下载地址： https://www.charlesproxy.com/latest-release/download.do
-代理URL: 
-https://h5.gomeplus.com
-https://js.meixincdn.com
-
-1. 打开">
+<meta property="og:description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。  Charles版本：4.0.2 操作系统： MAC 下载地址： https://www.charlesproxy.com/latest-release/download.do 代理URL:  https://h5.gomeplus.com https://js.meixincdn.com  1. 打开">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-04-27T03:51:29.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="charles代理调试">
-<meta name="twitter:description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。
-
-Charles版本：4.0.2
-操作系统： MAC
-下载地址： https://www.charlesproxy.com/latest-release/download.do
-代理URL: 
-https://h5.gomeplus.com
-https://js.meixincdn.com
-
-1. 打开">
+<meta name="twitter:description" content="今天我们来好好搞一下charles代理本地js文件做调试，主要说明针对于SSL的代理如何调试。  Charles版本：4.0.2 操作系统： MAC 下载地址： https://www.charlesproxy.com/latest-release/download.do 代理URL:  https://h5.gomeplus.com https://js.meixincdn.com  1. 打开">
 
 
 
@@ -141,13 +116,13 @@ https://js.meixincdn.com
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/12/04/charles代理调试/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/12/04/charles代理调试/">
 
 
   <title> charles代理调试 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -168,12 +143,12 @@ https://js.meixincdn.com
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -200,7 +175,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -210,7 +185,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -220,7 +195,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -230,7 +205,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -240,7 +215,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -250,7 +225,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -260,7 +235,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -270,7 +245,7 @@ https://js.meixincdn.com
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -303,7 +278,7 @@ https://js.meixincdn.com
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -332,14 +307,14 @@ https://js.meixincdn.com
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/Mobile开发/" itemprop="url" rel="index">
                     <span itemprop="name">Mobile开发</span>
                   </a>
@@ -377,15 +352,15 @@ https://js.meixincdn.com
 <ul>
 <li>Charles版本：4.0.2</li>
 <li>操作系统： MAC</li>
-<li>下载地址： <a href="https://www.charlesproxy.com/latest-release/download.do" target="_blank" rel="external">https://www.charlesproxy.com/latest-release/download.do</a></li>
+<li>下载地址： <a href="https://www.charlesproxy.com/latest-release/download.do" target="_blank" rel="noopener">https://www.charlesproxy.com/latest-release/download.do</a></li>
 <li>代理URL: </li>
-<li><a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a></li>
-<li><a href="https://js.meixincdn.com" target="_blank" rel="external">https://js.meixincdn.com</a></li>
+<li><a href="https://h5.gomeplus.com" target="_blank" rel="noopener">https://h5.gomeplus.com</a></li>
+<li><a href="https://js.meixincdn.com" target="_blank" rel="noopener">https://js.meixincdn.com</a></li>
 </ul>
 <h4 id="1-打开charles，设置Root认证"><a href="#1-打开charles，设置Root认证" class="headerlink" title="1. 打开charles，设置Root认证"></a>1. 打开charles，设置Root认证</h4><p>1.1【Proxy】菜单-&gt;勾选【macOS Proxy】。</p>
 <p>1.2 保存root证书。【Help】菜单-&gt;点击【SSL Proxying】-&gt;点击【Save Charles Root Certificate…】-&gt;保存root认证(默认pem结尾的，你选择.crt结尾保存)，保存到你的桌面，或者你能很容易找到此文件的地方。</p>
 <p>1.3 chrome浏览器信任证书。打开chrome浏览器，打开【设置】页面，找到【HTTPS/SSL】，点击【管理证书…】-&gt;钥匙串为【系统】，种类为【证书】，导入刚才保存的.crt结尾的证书，导入后会显示个红叉-&gt;右键导入的证书，点击【显示简介】，在弹出框中的【信任】里，选择【始终信任】，证书会显示成蓝色加号-&gt; OK，搞定，chrome就会总是信任Charles证书了。</p>
-<p>1.4 IOS devices认证，在移动设备的safari浏览器里，打开<a href="http://www.charlesproxy.com/getssl" target="_blank" rel="external">SSL证书</a>，安装证书即可。</p>
+<p>1.4 IOS devices认证，在移动设备的safari浏览器里，打开<a href="http://www.charlesproxy.com/getssl" target="_blank" rel="noopener">SSL证书</a>，安装证书即可。</p>
 <p>1.5 导出root认证。【Help】菜单-&gt;点击【SSL Proxying】-&gt;点击【Export Charles Root Certificate and private key…】,此时会弹出一个框让你输入密码，你自己输入一个密码并记住它-&gt;导出到你的桌面或者你自己能找到的地方，此文件以.p12结尾的文件。</p>
 <p>1.6 Root系统认证。【Proxy】菜单-&gt;【SSL Proxying Settings…】-&gt;【Root Certificate】选项卡，导入.p12结尾的认证文件，此时会让你输入密码，就是你刚才导出此文件时输入的密码。</p>
 <p>根据以上步骤，已经设置好系统的SSL认证问题。  </p>
@@ -395,8 +370,8 @@ https://js.meixincdn.com
 <p> 选择Https协议<br> Host： js.meixincdn.com<br> Path:  填入/m/app/dist/js/conf/newhome/index.js<br> Query: 参数写上timestamp=0.0.140，这个是url后面所带的请求参数<br> LocalPath:  在你本机上选择要代理的对应的js文件<br> -&gt;点击【ok】大功告成</p>
 <p>2.4 代理本地文件夹：【Tools】菜单-&gt;勾选【Map Local】，打开对话框，勾选【Enable Map Local】-&gt;点击【Add】增加本地代理文件，在弹出框中：</p>
 <p> 选择Https协议<br> Host： js.meixincdn.com<br> Path:  填入/m/app/dist/js/*<br> Query: 参数写上timestamp=0.0.140，这个是url后面所带的请求参数<br> LocalPath: 在你本机上选择要代理的对应的js文件夹<br> 如：<code>/Users/zhangmike/WebstormProjects/gomeplus/gitlab/app/dist/js</code><br> -&gt;点击【ok】大功告成  </p>
-<p> 2.5 请求的<a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a>如果加debug的话，在mapRemote上将其url<br> 改为<a href="https://h5.gomeplus.com?debug=1" target="_blank" rel="external">https://h5.gomeplus.com?debug=1</a></p>
-<h4 id="3-最后"><a href="#3-最后" class="headerlink" title="3.最后"></a>3.最后</h4><p>在以上步骤完成后，其他都按照charles的默认选项即可，在chrome浏览器里，输入  <a href="https://h5.gomeplus.com" target="_blank" rel="external">https://h5.gomeplus.com</a> 就可以代理本机的文件了；如果是手机app代理的话，需要让本机和手机处在同一个网络，然后在手机的网络代理中，服务器地址输入本机地址，端口号为8888(charles代理默认端口)</p>
+<p> 2.5 请求的<a href="https://h5.gomeplus.com" target="_blank" rel="noopener">https://h5.gomeplus.com</a>如果加debug的话，在mapRemote上将其url<br> 改为<a href="https://h5.gomeplus.com?debug=1" target="_blank" rel="noopener">https://h5.gomeplus.com?debug=1</a></p>
+<h4 id="3-最后"><a href="#3-最后" class="headerlink" title="3.最后"></a>3.最后</h4><p>在以上步骤完成后，其他都按照charles的默认选项即可，在chrome浏览器里，输入  <a href="https://h5.gomeplus.com" target="_blank" rel="noopener">https://h5.gomeplus.com</a> 就可以代理本机的文件了；如果是手机app代理的话，需要让本机和手机处在同一个网络，然后在手机的网络代理中，服务器地址输入本机地址，端口号为8888(charles代理默认端口)</p>
 <h4 id="4-补充"><a href="#4-补充" class="headerlink" title="4.补充"></a>4.补充</h4><p>如果在手机上调试，在本地启动webpack中的服务（比如端口号是8080），在charles中，选中要代理的js文件，在mapremote中，设置本地127.0.0.1，端口8080，代理文件路径（webpack服务启动后，在本地浏览器端可以访问的js文件路径）</p>
 
       
@@ -468,7 +443,7 @@ https://js.meixincdn.com
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -510,7 +485,7 @@ https://js.meixincdn.com
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -520,17 +495,15 @@ https://js.meixincdn.com
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -538,7 +511,7 @@ https://js.meixincdn.com
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -630,7 +603,7 @@ https://js.meixincdn.com
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,40 +63,39 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="mac,virtualbox,centos7,访问网络," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="mac,virtualbox,centos7,访问网络,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="每次在virtualbox下安装centos的时候，都需要在网上找资料，有时候版本不同，还老出一些问题，今天索性自己把这个过程记录下来，以备之后使用。VirtualBox和CentOS7的下载和安装我就不多说了，主要就是centos的联网和主机访问虚拟机的问题
-假设已经安装好了CentOS7，那么Centos的默认网络设置是【网络地址转换NAT】，那么在虚拟主机里是可以直接访问主机已经联网的网络的">
+<meta name="description" content="每次在virtualbox下安装centos的时候，都需要在网上找资料，有时候版本不同，还老出一些问题，今天索性自己把这个过程记录下来，以备之后使用。VirtualBox和CentOS7的下载和安装我就不多说了，主要就是centos的联网和主机访问虚拟机的问题 假设已经安装好了CentOS7，那么Centos的默认网络设置是【网络地址转换NAT】，那么在虚拟主机里是可以直接访问主机已经联网的网络的">
+<meta name="keywords" content="mac,virtualbox,centos7,访问网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mac下使用virtualbox安装centos7">
 <meta property="og:url" content="http://yoursite.com/2017/04/05/mac下使用virtualbox安装centos7/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="每次在virtualbox下安装centos的时候，都需要在网上找资料，有时候版本不同，还老出一些问题，今天索性自己把这个过程记录下来，以备之后使用。VirtualBox和CentOS7的下载和安装我就不多说了，主要就是centos的联网和主机访问虚拟机的问题
-假设已经安装好了CentOS7，那么Centos的默认网络设置是【网络地址转换NAT】，那么在虚拟主机里是可以直接访问主机已经联网的网络的">
+<meta property="og:description" content="每次在virtualbox下安装centos的时候，都需要在网上找资料，有时候版本不同，还老出一些问题，今天索性自己把这个过程记录下来，以备之后使用。VirtualBox和CentOS7的下载和安装我就不多说了，主要就是centos的联网和主机访问虚拟机的问题 假设已经安装好了CentOS7，那么Centos的默认网络设置是【网络地址转换NAT】，那么在虚拟主机里是可以直接访问主机已经联网的网络的">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:updated_time" content="2017-04-05T15:29:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mac下使用virtualbox安装centos7">
-<meta name="twitter:description" content="每次在virtualbox下安装centos的时候，都需要在网上找资料，有时候版本不同，还老出一些问题，今天索性自己把这个过程记录下来，以备之后使用。VirtualBox和CentOS7的下载和安装我就不多说了，主要就是centos的联网和主机访问虚拟机的问题
-假设已经安装好了CentOS7，那么Centos的默认网络设置是【网络地址转换NAT】，那么在虚拟主机里是可以直接访问主机已经联网的网络的">
+<meta name="twitter:description" content="每次在virtualbox下安装centos的时候，都需要在网上找资料，有时候版本不同，还老出一些问题，今天索性自己把这个过程记录下来，以备之后使用。VirtualBox和CentOS7的下载和安装我就不多说了，主要就是centos的联网和主机访问虚拟机的问题 假设已经安装好了CentOS7，那么Centos的默认网络设置是【网络地址转换NAT】，那么在虚拟主机里是可以直接访问主机已经联网的网络的">
 
 
 
@@ -117,13 +116,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/05/mac下使用virtualbox安装centos7/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/05/mac下使用virtualbox安装centos7/">
 
 
   <title> mac下使用virtualbox安装centos7 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -144,12 +143,12 @@
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -176,7 +175,7 @@
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -186,7 +185,7 @@
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -196,7 +195,7 @@
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -206,7 +205,7 @@
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -216,7 +215,7 @@
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -226,7 +225,7 @@
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -236,7 +235,7 @@
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -246,7 +245,7 @@
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -279,7 +278,7 @@
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -308,14 +307,14 @@
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/mac/" itemprop="url" rel="index">
                     <span itemprop="name">mac</span>
                   </a>
@@ -351,19 +350,19 @@
       
         <p>每次在virtualbox下安装centos的时候，都需要在网上找资料，有时候版本不同，还老出一些问题，今天索性自己把这个过程记录下来，以备之后使用。<br>VirtualBox和CentOS7的下载和安装我就不多说了，主要就是centos的联网和主机访问虚拟机的问题</p>
 <p>假设已经安装好了CentOS7，那么Centos的默认网络设置是【网络地址转换NAT】，那么在虚拟主机里是可以直接访问主机已经联网的网络的，也就是主机能上网，虚拟主机也可以上网的。</p>
-<p>在此时，如果我们<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ip addr</div></pre></td></tr></table></figure></p>
+<p>在此时，如果我们<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure></p>
 <p>可以看到enp0s3是没有Ip的，我们需要这样设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vi /etc/etc/sysconfig/network-scripts/ifcfg-enp0s3</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vi /etc/etc/sysconfig/network-scripts/ifcfg-enp0s3</span><br></pre></td></tr></table></figure>
 <p>将其中的将ONBOOT=no改为yes，然后重启机器或者重启网络（我是重启机器）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">service network restart</div></pre></td></tr></table></figure>
-<p>然后我们使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ip addr</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service network restart</span><br></pre></td></tr></table></figure>
+<p>然后我们使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br></pre></td></tr></table></figure></p>
 <p>看到有了10.0.2.15</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000</div><div class="line">    link/ether 08:00:27:7a:54:f3 brd ff:ff:ff:ff:ff:ff</div><div class="line">    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s3</div><div class="line">       valid_lft 84688sec preferred_lft 84688sec</div><div class="line">    inet6 fe80::47ef:b28e:e0df:9b9/64 scope link</div><div class="line">       valid_lft forever preferred_lft forever</div></pre></td></tr></table></figure>
-<p>但是我们现在在宿主机器上通过SSH是访问不到虚拟主机的，我们可以这样处理<br>我的虚拟主机名为centos<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;规则名&gt;,&lt;协议&gt;,&lt;主机IP&gt;,&lt;主机端口&gt;,&lt;虚拟机IP&gt;,&lt;虚拟机端口&gt;  </div><div class="line">//可在虚拟机关闭的情况下在主机上使用如下命令设置(非root权限)</div><div class="line">VBoxManage modifyvm &quot;centos&quot; --natpf1 &quot;SSH,tcp,,2222,,22&quot;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc pfifo_fast state UP qlen 1000</span><br><span class="line">    link/ether 08:00:27:7a:54:f3 brd ff:ff:ff:ff:ff:ff</span><br><span class="line">    inet 10.0.2.15/24 brd 10.0.2.255 scope global dynamic enp0s3</span><br><span class="line">       valid_lft 84688sec preferred_lft 84688sec</span><br><span class="line">    inet6 fe80::47ef:b28e:e0df:9b9/64 scope link</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
+<p>但是我们现在在宿主机器上通过SSH是访问不到虚拟主机的，我们可以这样处理<br>我的虚拟主机名为centos<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;规则名&gt;,&lt;协议&gt;,&lt;主机IP&gt;,&lt;主机端口&gt;,&lt;虚拟机IP&gt;,&lt;虚拟机端口&gt;  </span><br><span class="line">//可在虚拟机关闭的情况下在主机上使用如下命令设置(非root权限)</span><br><span class="line">VBoxManage modifyvm &quot;centos&quot; --natpf1 &quot;SSH,tcp,,2222,,22&quot;</span><br></pre></td></tr></table></figure></p>
 <p>设置Host-Only</p>
 <p>通过端口转发在NAT模式下实现主机访问虚拟机，但是每个端口都需要设置很麻烦。另一种办法就是设置一个Host-Only网络，为虚拟机增加一个Host-Only的网络适配器，实现主机与虚拟机之间的互通。<br>首先，需要创建一个Host-Only网络，路径VirtualBox-&gt;Preferences-&gt;Network-&gt;Host-Only Networks点击新增，会创建vboxnet0。</p>
 <p>关闭虚拟机，设置虚拟机Settings-&gt;Network-&gt;Adapter2-&gt;Enable Network Adapter选择Host-Only Adapter，Name选择刚创建的vboxnet0，点完成，重启虚拟机。<br>虚拟机中使用ip addr可以看到多了一个网卡enp0s8的IP地址192.168.56.101<br>//使用ssh通过该IP访问虚拟机<br>ssh root@192.168.56.101 //OK，成功  </p>
-<p>参考<a href="http://www.zkt.name/macshang-shi-yong-virtualboxxu-ni-centos/" target="_blank" rel="external">http://www.zkt.name/macshang-shi-yong-virtualboxxu-ni-centos/</a></p>
+<p>参考<a href="http://www.zkt.name/macshang-shi-yong-virtualboxxu-ni-centos/" target="_blank" rel="noopener">http://www.zkt.name/macshang-shi-yong-virtualboxxu-ni-centos/</a></p>
 
       
     </div>
@@ -434,7 +433,7 @@
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -476,7 +475,7 @@
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -486,17 +485,15 @@
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -504,7 +501,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -596,7 +593,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>

@@ -6,15 +6,15 @@
 
 
 <html class="theme-next pisces use-motion">
-<head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -29,7 +29,7 @@
 
   
   
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
@@ -63,59 +63,40 @@
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css">
 
-<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="webpack," />
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css">
 
 
+  <meta name="keywords" content="webpack,">
 
 
 
 
 
 
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2" />
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.2">
 
 
 
 
 
 
-<meta name="description" content="目录
-what is webpack
-what is its goal
-what is module
-webpack核心概念
-webpack入门例子
-
-1. what is webpackwebpack是一个模块打包工具，将依赖的模块打包成最后的包含这些模块的静态资源。当webpack处理你的项目的时候，它会递归构建一个你项目里的每个模块的依赖图，然后打包这些模块到少量的会被浏览器加载的静态资源">
+<meta name="description" content="目录 what is webpack what is its goal what is module webpack核心概念 webpack入门例子  1. what is webpackwebpack是一个模块打包工具，将依赖的模块打包成最后的包含这些模块的静态资源。当webpack处理你的项目的时候，它会递归构建一个你项目里的每个模块的依赖图，然后打包这些模块到少量的会被浏览器加载的静态资源">
+<meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack初探">
 <meta property="og:url" content="http://yoursite.com/2017/07/01/webpack初探/index.html">
 <meta property="og:site_name" content="Zeromike的时光机">
-<meta property="og:description" content="目录
-what is webpack
-what is its goal
-what is module
-webpack核心概念
-webpack入门例子
-
-1. what is webpackwebpack是一个模块打包工具，将依赖的模块打包成最后的包含这些模块的静态资源。当webpack处理你的项目的时候，它会递归构建一个你项目里的每个模块的依赖图，然后打包这些模块到少量的会被浏览器加载的静态资源">
+<meta property="og:description" content="目录 what is webpack what is its goal what is module webpack核心概念 webpack入门例子  1. what is webpackwebpack是一个模块打包工具，将依赖的模块打包成最后的包含这些模块的静态资源。当webpack处理你的项目的时候，它会递归构建一个你项目里的每个模块的依赖图，然后打包这些模块到少量的会被浏览器加载的静态资源">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2017/07/01/webpack初探/webpack.png">
 <meta property="og:updated_time" content="2017-07-01T15:14:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack初探">
-<meta name="twitter:description" content="目录
-what is webpack
-what is its goal
-what is module
-webpack核心概念
-webpack入门例子
-
-1. what is webpackwebpack是一个模块打包工具，将依赖的模块打包成最后的包含这些模块的静态资源。当webpack处理你的项目的时候，它会递归构建一个你项目里的每个模块的依赖图，然后打包这些模块到少量的会被浏览器加载的静态资源">
+<meta name="twitter:description" content="目录 what is webpack what is its goal what is module webpack核心概念 webpack入门例子  1. what is webpackwebpack是一个模块打包工具，将依赖的模块打包成最后的包含这些模块的静态资源。当webpack处理你的项目的时候，它会递归构建一个你项目里的每个模块的依赖图，然后打包这些模块到少量的会被浏览器加载的静态资源">
 <meta name="twitter:image" content="http://yoursite.com/2017/07/01/webpack初探/webpack.png">
 
 
@@ -137,13 +118,13 @@ webpack入门例子
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/07/01/webpack初探/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/01/webpack初探/">
 
 
   <title> webpack初探 | Zeromike的时光机 </title>
 </head>
 
-<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+<body itemscope="" itemtype="//schema.org/WebPage" lang="zh-Hans">
 
   
 
@@ -164,12 +145,12 @@ webpack入门例子
   <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+    <header id="header" class="header" itemscope="" itemtype="//schema.org/WPHeader">
       <div class="header-inner"><div class="site-meta ">
   
 
   <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <span class="logo-line-before"><i></i></span>
       <span class="site-title">Zeromike的时光机</span>
       <span class="logo-line-after"><i></i></span>
@@ -196,7 +177,7 @@ webpack入门例子
         <li class="menu-item menu-item-home">
           <a href="/" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-fa-home"></i> <br>
             
             首页
           </a>
@@ -206,7 +187,7 @@ webpack入门例子
         <li class="menu-item menu-item-about">
           <a href="/about" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
             
             关于
           </a>
@@ -216,7 +197,7 @@ webpack入门例子
         <li class="menu-item menu-item-categories">
           <a href="/categories" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
             
             分类
           </a>
@@ -226,7 +207,7 @@ webpack入门例子
         <li class="menu-item menu-item-archives">
           <a href="/archives" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
             
             归档
           </a>
@@ -236,7 +217,7 @@ webpack入门例子
         <li class="menu-item menu-item-tags">
           <a href="/tags" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
             
             标签
           </a>
@@ -246,7 +227,7 @@ webpack入门例子
         <li class="menu-item menu-item-mylinks">
           <a href="/mylinks" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-external-link"></i> <br>
             
             链接
           </a>
@@ -256,7 +237,7 @@ webpack入门例子
         <li class="menu-item menu-item-todos">
           <a href="/todos" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-list"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-list"></i> <br>
             
             TODO
           </a>
@@ -266,7 +247,7 @@ webpack入门例子
         <li class="menu-item menu-item-tools">
           <a href="/tools" rel="section">
             
-              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br />
+              <i class="menu-item-icon fa fa-fw fa-wrench"></i> <br>
             
             工具
           </a>
@@ -299,7 +280,7 @@ webpack入门例子
   
   
 
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+  <article class="post post-type-normal " itemscope="" itemtype="//schema.org/Article">
 
     
       <header class="post-header">
@@ -328,14 +309,14 @@ webpack入门例子
           </span>
 
           
-            <span class="post-category" >
+            <span class="post-category">
               &nbsp; | &nbsp;
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <span itemprop="about" itemscope="" itemtype="https://schema.org/Thing">
                   <a href="/categories/webpack/" itemprop="url" rel="index">
                     <span itemprop="name">webpack</span>
                   </a>
@@ -369,7 +350,7 @@ webpack入门例子
       
 
       
-        <img src="/2017/07/01/webpack初探/webpack.png" alt="webpack" title="webpack">
+        <img src="/2017/07/01/webpack初探/webpack.png" title="webpack">
 <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h3><ol>
 <li>what is webpack</li>
 <li>what is its goal</li>
@@ -417,9 +398,9 @@ webpack入门例子
 </ol>
 <h5 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h5><p>webpack创建了一个应用的依赖图。这个图的起点就是entry，entry告诉webpack从哪开始，并且按这个依赖图就知道打包什么模块了。你可以把这个entry作为你的项目的根节点或者是启动你应用的第一个文件。</p>
 <p>我们来看一个最简答的例子：</p>
-<p>webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">	entry: &apos;./path/to/my/entry/file.js&apos;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">	entry: &apos;./path/to/my/entry/file.js&apos;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
 <h5 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h5><p>一旦你已经将你的资源打包到了一起，那么你需要告诉webpack将你的应用打包到什么位置。output属性用来告诉webpack如何处理打包的代码</p>
-<p>webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line">module.exports = &#123;</div><div class="line">	entry: &apos;./path/to/my/entry/file.js&apos;,</div><div class="line">	output: &#123;</div><div class="line">		path: path.resolve(__dirname, &apos;dist&apos;),</div><div class="line">		filename: &apos;my-first-webpack.bundle.js&apos;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">	entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">	output: &#123;</span><br><span class="line">		path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">		filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>上面这个例子，我们用了output.filename和output.path属性来告诉webpack我们打包的bundle的名字和我们想要把这个bundle放到什么位置</p>
 <h5 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a>Loaders</h5><p>它的目的是让你项目里的所有的资源变成webpack关心的而不是浏览器关心的东西。webpack认为每一个文件都是一个模块，css,html,scss,jpg等等，但是webpack仅仅理解javascript。</p>
 <p>在webpack中Loaders把这些文件转换成modules，它们会被加到你的依赖图中。</p>
@@ -429,20 +410,20 @@ webpack入门例子
 <li>转换文件能够加入到依赖图中（最终到bundle中）(use属性)</li>
 </ol>
 <p>webpack.config.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">const path = require(&apos;path&apos;);</div><div class="line"></div><div class="line">const config = &#123;</div><div class="line">	entry: &apos;./path/to/my/entry/file.js&apos;,</div><div class="line">	output: &#123;</div><div class="line">		path: path.resolve(__dirname, &apos;dist&apos;),</div><div class="line">		filename: &apos;my-first-webpack.bundle.js&apos;</div><div class="line">	&#125;,</div><div class="line">	module: &#123;</div><div class="line">		rules: [</div><div class="line">			&#123;</div><div class="line">				test: /\.txt/,</div><div class="line">				use: &apos;raw-loader&apos;</div><div class="line">			&#125;</div><div class="line">		]</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = config;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">const config = &#123;</span><br><span class="line">	entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">	output: &#123;</span><br><span class="line">		path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">		filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">	&#125;,</span><br><span class="line">	module: &#123;</span><br><span class="line">		rules: [</span><br><span class="line">			&#123;</span><br><span class="line">				test: /\.txt/,</span><br><span class="line">				use: &apos;raw-loader&apos;</span><br><span class="line">			&#125;</span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
 <p>以上的配置定义了一个rules的属性在module里，并且有两个必要的属性：test和use。这就告诉webpack的编译器以下事情：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">嘿，webpack编译器，当你遇到一个路径中，使用requrie或者import语句处理&apos;.txt&apos;文件的时候，在你将其加入到bundle中前，使用raw-loader转换一下</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">嘿，webpack编译器，当你遇到一个路径中，使用requrie或者import语句处理&apos;.txt&apos;文件的时候，在你将其加入到bundle中前，使用raw-loader转换一下</span><br></pre></td></tr></table></figure>
 <p>raw-loader是将文件当做字符串来处理的</p>
 <h5 id="Plugins"><a href="#Plugins" class="headerlink" title="Plugins"></a>Plugins</h5><p>我们看到Loaders是在每一个文件的基础上执行转换，plugins大多被用在你的bundled模块在“compilations”和”chunks”的时候，执行一些操作和做一些定制化的功能。webpack的插件系统是非常强大和可定制化的。</p>
 <p>使用一个插件，你需要require它，把它加到plugins的数组中。大多数插件是可以使用参数配置的。在一个配置里，为了不同的目的，你可以使用一个插件多次，你需要使用new来创建这个插件的实例</p>
-<p>webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</div><div class="line">const webpack = require(&apos;webpack&apos;);</div><div class="line">const path = require(&apos;path&apos;);</div><div class="line"></div><div class="line">const config = &#123;</div><div class="line">	entry: &apos;./path/to/my/entry/file.js&apos;,</div><div class="line">   output: &#123;</div><div class="line">   	path: path.resolve(__dirname, &apos;dist&apos;),</div><div class="line">   	filename: &apos;my-first-webpack.bundle.js&apos;</div><div class="line">   &#125;,</div><div class="line">   module: &#123;</div><div class="line">   	rules: [</div><div class="line">   		&#123;</div><div class="line">   			test: /\.txt$/,</div><div class="line">   			use: &apos;raw-loader&apos;</div><div class="line">   		&#125;</div><div class="line">   	]</div><div class="line">   &#125;,</div><div class="line">   plugins: [</div><div class="line">   	new webpack.optimise.UglifyJsPlugin(),</div><div class="line">   	new HtmlWebpackPlugin(&#123;template: &apos;./src/index.html&apos;&#125;]</div><div class="line">   ]</div><div class="line">&#125;</div><div class="line">module.exports = config;</div></pre></td></tr></table></figure></p>
+<p>webpack.config.js<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const HtmlWebpackPlugin = require(&apos;html-webpack-plugin&apos;);</span><br><span class="line">const webpack = require(&apos;webpack&apos;);</span><br><span class="line">const path = require(&apos;path&apos;);</span><br><span class="line"></span><br><span class="line">const config = &#123;</span><br><span class="line">	entry: &apos;./path/to/my/entry/file.js&apos;,</span><br><span class="line">   output: &#123;</span><br><span class="line">   	path: path.resolve(__dirname, &apos;dist&apos;),</span><br><span class="line">   	filename: &apos;my-first-webpack.bundle.js&apos;</span><br><span class="line">   &#125;,</span><br><span class="line">   module: &#123;</span><br><span class="line">   	rules: [</span><br><span class="line">   		&#123;</span><br><span class="line">   			test: /\.txt$/,</span><br><span class="line">   			use: &apos;raw-loader&apos;</span><br><span class="line">   		&#125;</span><br><span class="line">   	]</span><br><span class="line">   &#125;,</span><br><span class="line">   plugins: [</span><br><span class="line">   	new webpack.optimise.UglifyJsPlugin(),</span><br><span class="line">   	new HtmlWebpackPlugin(&#123;template: &apos;./src/index.html&apos;&#125;]</span><br><span class="line">   ]</span><br><span class="line">&#125;</span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure></p>
 <h4 id="5-入门例子"><a href="#5-入门例子" class="headerlink" title="5. 入门例子"></a>5. 入门例子</h4><p>以下是一些简单的配置例子，webpack的配置项十分丰富（复杂），当然十分强大，所以详细的配置参数还是需要看webpack官方文档和插件的官方文档</p>
 <ul>
-<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-config" target="_blank" rel="external">最简单配置/Entry/Output</a></li>
-<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-loader" target="_blank" rel="external">配置Loader</a></li>
-<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-plugin" target="_blank" rel="external">配置Plugins</a></li>
-<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-es6" target="_blank" rel="external">配置Es6</a></li>
-<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-sass" target="_blank" rel="external">配置Sass</a></li>
+<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-config" target="_blank" rel="noopener">最简单配置/Entry/Output</a></li>
+<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-loader" target="_blank" rel="noopener">配置Loader</a></li>
+<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-plugin" target="_blank" rel="noopener">配置Plugins</a></li>
+<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-es6" target="_blank" rel="noopener">配置Es6</a></li>
+<li><a href="https://github.com/zhangzhaoaaa/webpack-share/tree/master/share-0/simple-sass" target="_blank" rel="noopener">配置Sass</a></li>
 </ul>
 
       
@@ -514,7 +495,7 @@ webpack入门例子
   <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
   <a class="jiathis_counter_style"></a>
 </div>
-<script type="text/javascript" >
+<script type="text/javascript">
   var jiathis_config={
     hideMore:false
   }
@@ -556,7 +537,7 @@ webpack入门例子
 
       
         <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
             文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
@@ -566,17 +547,15 @@ webpack入门例子
       
 
       <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/avatar.png"
-               alt="zeromike" />
+        <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="zeromike">
           <p class="site-author-name" itemprop="name">zeromike</p>
           <p class="site-description motion-element" itemprop="description">这是zeromike的时光机器,技术博客</p>
         </div>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">101</span>
+              <span class="site-state-item-count">102</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -584,7 +563,7 @@ webpack入门例子
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -676,7 +655,7 @@ webpack入门例子
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright" >
+        <div class="copyright">
   
   &copy; 
   <span itemprop="copyrightYear">2018</span>
